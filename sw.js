@@ -1,7 +1,7 @@
-/* KHEDUT SETU — Hardened Service Worker v4 (Voice + UPI + APMC) */
+/* KHEDUT SETU AI v4.0 — Hardened Service Worker */
 'use strict';
 
-const CACHE_NAME = 'khedut-setu-v4-master';
+const CACHE_NAME = 'khedut-setu-ai-v4';
 const APP_SHELL = [
   './',
   './index.html',
@@ -38,7 +38,6 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Never cache Supabase Auth, API, or Storage calls
   if (url.hostname.endsWith('.supabase.co') || url.pathname.includes('/auth/')) {
     return;
   }

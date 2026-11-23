@@ -7,20 +7,18 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU — ખેડૂત સેતુ | સીધું ખેતરથી બજાર</title>
-  <meta name="description" content="KHEDUT SETU — ખેડૂતો અને ખરીદારો માટેનું સુરક્ષિત કૃષિ બજાર. બોલીને શોધ, સુરક્ષિત UPI ચૂકવણી, APMC માર્કેટ યાર્ડ ભાવ અને સ્થાનિક વાહન વ્યવસ્થા." />
+  <title>KHEDUT SETU AI v4.0 — ખેડૂત સેતુ | સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v4.0 — AI ભાવ સલાહકાર, પાક રોગ/હવામાન માર્ગદર્શન, ગુજરાતી વૉઇસ AI, સુરક્ષિત UPI ચૂકવણી અને APMC માર્કેટ યાર્ડ ભાવ." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="KHEDUT SETU" />
+  <meta name="apple-mobile-web-app-title" content="KHEDUT SETU AI" />
 
-  <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
   <link rel="apple-touch-icon" href="./icon-192.png" />
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     if (window.tailwind) {
@@ -50,7 +48,6 @@
     }
   </script>
 
-  <!-- Supabase JS v2, Lucide Icons & Local-Render QR Generator -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
@@ -61,7 +58,7 @@
       font-family: 'Noto Sans Gujarati', 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;
       background-color: #f6f8f5;
       -webkit-tap-highlight-color: transparent;
-      padding-bottom: 88px;
+      padding-bottom: 92px;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -78,7 +75,7 @@
 
   <!-- Offline Alert Strip -->
   <div id="offline-banner" class="hidden sticky top-0 z-50 bg-red-700 text-white text-xs font-bold px-4 py-2 text-center">
-    ⚠️ ઇન્ટરનેટ કનેક્શન બંધ છે — કનેક્શન ચાલુ થતાં જ ડેટા આપોઆપ અપડેટ થશે.
+    ⚠️ ઇન્ટરનેટ કનેક્શન બંધ છે — AI ઑફલાઇન સલાહકાર અને સાચવેલો ડેટા ઉપલબ્ધ છે.
   </div>
 
   <!-- Toast Container -->
@@ -92,15 +89,16 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span title="Hardened Security v3.0" class="text-[10px] font-semibold bg-emerald-500/25 border border-emerald-300/30 text-emerald-100 px-1.5 py-0.5 rounded-md">🔒</span>
+            <span title="AI Engine v4.0 + Hardened Security" class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v4</span>
           </h1>
-          <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline">સીધું ખેતરથી બજાર</p>
+          <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline">સીધું ખેતરથી બજાર • AI સ્માર્ટ કૃષિ</p>
         </div>
       </div>
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-1 text-sm font-medium" aria-label="Main Navigation">
         <button type="button" data-action="nav-tab" data-tab="market" data-nav="market" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_market">બજાર</button>
+        <button type="button" data-action="nav-tab" data-tab="ai_advisor" data-nav="ai_advisor" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition">✨ AI સલાહકાર</button>
         <button type="button" data-action="nav-tab" data-tab="yard" data-nav="yard" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_yard">યાર્ડ & વાહન</button>
         <button type="button" data-action="nav-tab" data-tab="sell" data-nav="sell" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_sell">વેચાણ</button>
         <button type="button" data-action="nav-tab" data-tab="requests" data-nav="requests" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_requests">ખરીદી માંગ</button>
@@ -157,7 +155,7 @@
 
     <!-- ==================== TAB 1: MARKET ==================== -->
     <section id="tab-market" class="tab-view space-y-4 animate-fade">
-      <!-- Search + Voice Mic + District Filter -->
+      <!-- Search + Voice AI Mic + District Filter -->
       <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200/80 space-y-3">
         <div class="flex flex-col sm:flex-row gap-2.5">
           <div class="relative flex-1 flex items-center">
@@ -165,7 +163,7 @@
             <input id="search-input" type="text" maxlength="80" autocomplete="off"
               class="w-full pl-10 pr-12 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white"
               data-i18n-placeholder="search_placeholder" placeholder="બોલીને અથવા લખીને પાક, ગામ, જિલ્લો શોધો..." />
-            <button type="button" data-action="open-voice" title="બોલીને ચલાવો (Voice)" class="absolute right-2 w-8 h-8 rounded-lg bg-farm-100 hover:bg-farm-200 text-farm-800 flex items-center justify-center transition">
+            <button type="button" data-action="open-voice" title="AI વૉઇસ અને કમાન્ડ (Voice AI)" class="absolute right-2 w-8 h-8 rounded-lg bg-farm-100 hover:bg-farm-200 text-farm-800 flex items-center justify-center transition">
               <i data-lucide="mic" class="w-4 h-4"></i>
             </button>
           </div>
@@ -186,25 +184,31 @@
         <div id="subcategories-strip" class="hidden flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 border-t border-slate-100"></div>
       </div>
 
-      <!-- Quick Action CTA Banner -->
-      <div class="bg-gradient-to-r from-farm-700 to-farm-800 rounded-2xl p-4 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
-        <div>
-          <h2 class="font-bold text-base sm:text-lg" data-i18n="hero_title">સીધી ખેતી ઉપજ વેચો અને ખરીદો</h2>
-          <p class="text-xs sm:text-sm text-farm-100 mt-0.5" data-i18n="hero_sub">બોલીને શોધ, સુરક્ષિત UPI ચૂકવણી અને રોજના APMC ભાવ</p>
-        </div>
-        <div class="grid grid-cols-3 sm:flex gap-2 w-full sm:w-auto">
-          <button type="button" data-action="nav-tab" data-tab="sell" class="bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
-            <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
-            <span data-i18n="btn_post_crop">ઉપજ મૂકો</span>
-          </button>
-          <button type="button" data-action="nav-tab" data-tab="yard" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
-            <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
-            <span data-i18n="btn_yard_short">યાર્ડ ભાવ</span>
-          </button>
-          <button type="button" data-action="open-voice" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
-            <i data-lucide="mic" class="w-3.5 h-3.5"></i>
-            <span data-i18n="btn_voice">બોલીને શોધો</span>
-          </button>
+      <!-- AI Smart Daily Brief Strip -->
+      <div id="ai-market-pulse" class="bg-gradient-to-r from-emerald-900 via-farm-800 to-farm-700 rounded-2xl p-4 text-white space-y-3 shadow-sm">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
+              <span>✨ KHEDUT SETU AI ENGINE</span>
+              <span>•</span>
+              <span>ભવિષ્યલક્ષી સ્માર્ટ કૃષિ બજાર</span>
+            </div>
+            <h2 class="font-bold text-base sm:text-lg" data-i18n="hero_title">સીધી ખેતી ઉપજ વેચો અને ખરીદો — AI સલાહ સાથે</h2>
+            <p id="ai-pulse-summary" class="text-xs sm:text-sm text-farm-100">બજારના ભાવ, પાકની માંગ અને સ્થાનિક APMC વલણનું સ્માર્ટ વિશ્લેષણ તૈયાર છે.</p>
+          </div>
+          <div class="grid grid-cols-3 sm:flex gap-2 w-full sm:w-auto shrink-0">
+            <button type="button" data-action="nav-tab" data-tab="sell" class="bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
+              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+              <span data-i18n="btn_post_crop">ઉપજ મૂકો</span>
+            </button>
+            <button type="button" data-action="nav-tab" data-tab="ai_advisor" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
+              <span>✨ AI ડૉક્ટર</span>
+            </button>
+            <button type="button" data-action="open-voice" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
+              <i data-lucide="mic" class="w-3.5 h-3.5"></i>
+              <span data-i18n="btn_voice">બોલીને શોધો</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -224,7 +228,92 @@
       <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
     </section>
 
-    <!-- ==================== TAB 2: APMC YARD RATES & LOCAL TRANSPORT ==================== -->
+    <!-- ==================== TAB 2: AI AGRI INTELLIGENCE HUB ==================== -->
+    <section id="tab-ai_advisor" class="tab-view hidden space-y-4 animate-fade">
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900 flex items-center gap-1.5">✨ KHEDUT SETU AI સલાહકાર (Smart AI Hub)</h2>
+            <p class="text-xs text-slate-500">ભાવ અંદાજ, પાક રોગ નિદાન, સિંચાઈ/હવામાન સલાહ અને સ્માર્ટ ખરીદાર મેચિંગ</p>
+          </div>
+          <div class="flex gap-1.5 bg-slate-100 p-1 rounded-xl w-full sm:w-fit overflow-x-auto no-scrollbar">
+            <button type="button" data-action="ai-subtab" data-subtab="price" id="aisub-price" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold bg-farm-700 text-white transition">💰 AI ભાવ અંદાજ</button>
+            <button type="button" data-action="ai-subtab" data-subtab="doctor" id="aisub-doctor" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition">🩺 પાક ડૉક્ટર</button>
+            <button type="button" data-action="ai-subtab" data-subtab="match" id="aisub-match" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition">🎯 સ્માર્ટ મેચ</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Subtab 1: Price Estimator & Sell/Hold AI -->
+      <div id="ai-panel-price" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <h3 class="font-bold text-slate-900 text-base">💰 AI સ્માર્ટ ભાવ અંદાજ અને "વેચવું કે રોકવું?" સલાહ</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">પાક પસંદ કરો</label>
+            <select id="ai-crop-select" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="paddy">ડાંગર (Paddy / Dangar)</option>
+              <option value="wheat">ઘઉં (Wheat / Ghau)</option>
+              <option value="bajra">બાજરી (Bajra)</option>
+              <option value="cumin">જીરું (Jeeru / Cumin)</option>
+              <option value="groundnut">મગફળી (Groundnut)</option>
+              <option value="cotton">કપાસ (Cotton / Kapas)</option>
+              <option value="fodder">ઘાસચારો / પુળિયા (Fodder)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">જથ્થો (મણ / 20 kg)</label>
+            <input id="ai-qty-input" type="number" min="1" max="10000" value="50" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">ગુણવત્તા (Quality)</label>
+            <select id="ai-qual-select" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="prime">Grade A+ (ઉત્તમ / સૂકો પાક)</option>
+              <option value="standard" selected>Standard (સામાન્ય ગુણવત્તા)</option>
+              <option value="moisture">થોડો ભેજ / સાધારણ</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" data-action="run-ai-price" class="bg-farm-700 hover:bg-farm-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow">✨ AI ભાવ ગણતરી કરો</button>
+        <div id="ai-price-output" class="bg-farm-50 border border-farm-200 rounded-2xl p-4 space-y-2 text-sm"></div>
+      </div>
+
+      <!-- AI Subtab 2: Crop Doctor (Symptom & Weather/Irrigation Advisor) -->
+      <div id="ai-panel-doctor" class="hidden bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <h3 class="font-bold text-slate-900 text-base">🩺 AI પાક ડૉક્ટર — લક્ષણ, રોગ નિદાન અને સિંચાઈ સલાહ</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">પાકનો પ્રકાર</label>
+            <input id="doc-crop" type="text" maxlength="80" value="ડાંગર / ઘઉં" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">પાન કે છોડમાં શું દેખાય છે?</label>
+            <select id="doc-symptom" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="yellow">પાન પીળા પડવા અથવા કરમાવા</option>
+              <option value="spots">પાન પર કાળા/ભૂરા ડાઘ કે ફૂગ</option>
+              <option value="pests">જીવાત / ચૂસિયા / ઈયળનો ઉપદ્રવ</option>
+              <option value="water">પાણીની અછત કે ભેજ/સિંચાઈ સમસ્યા</option>
+            </select>
+          </div>
+        </div>
+        <textarea id="doc-extra" rows="2" maxlength="300" placeholder="વધારાના લક્ષણો લખો (વૈકલ્પિક, દા.ત. પાનના છેડા સુકાય છે)..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm"></textarea>
+        <button type="button" data-action="run-ai-doctor" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow">🩺 AI નિદાન અને ઉપાય જુઓ</button>
+        <div id="ai-doctor-output" class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 space-y-2 text-sm"></div>
+      </div>
+
+      <!-- AI Subtab 3: Smart Buyer-Seller Demand Matcher -->
+      <div id="ai-panel-match" class="hidden bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">🎯 AI સ્માર્ટ માંગ અને ઉપજ મેચિંગ</h3>
+            <p class="text-xs text-slate-500">હાલ બજારમાં રહેલી ખરીદીની માંગ અને ઉપજ વચ્ચે AI સુસંગતતા તપાસે છે</p>
+          </div>
+          <button type="button" data-action="run-ai-match" class="px-3.5 py-2 rounded-xl bg-farm-700 text-white text-xs font-bold">↻ મેચ તાજા કરો</button>
+        </div>
+        <div id="ai-match-output" class="space-y-2.5 text-sm"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: APMC YARD RATES & LOCAL TRANSPORT ==================== -->
     <section id="tab-yard" class="tab-view hidden space-y-4 animate-fade">
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
@@ -239,7 +328,6 @@
         </div>
       </div>
 
-      <!-- APMC Sub-view -->
       <div id="apmc-panel" class="space-y-3">
         <div class="flex flex-col sm:flex-row gap-2">
           <input id="apmc-search" type="text" maxlength="60" placeholder="યાર્ડ, જિલ્લો કે પાક શોધો (દા.ત. આણંદ, ઊંઝા, ડાંગર)..." class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
@@ -248,7 +336,6 @@
         <div id="apmc-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
 
-      <!-- Local Transport Sub-view -->
       <div id="transport-panel" class="hidden space-y-3">
         <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-between">
           <input id="transport-search" type="text" maxlength="60" placeholder="ગામ, જિલ્લો કે વાહન શોધો (દા.ત. ખંભાત, ટેમ્પો)..." class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
@@ -260,7 +347,7 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 3: BUYER REQUESTS ==================== -->
+    <!-- ==================== TAB 4: BUYER REQUESTS ==================== -->
     <section id="tab-requests" class="tab-view hidden space-y-4 animate-fade">
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
@@ -276,7 +363,7 @@
       <div id="requests-list" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
     </section>
 
-    <!-- ==================== TAB 4: SELL / FARMER DASHBOARD ==================== -->
+    <!-- ==================== TAB 5: SELL / FARMER DASHBOARD ==================== -->
     <section id="tab-sell" class="tab-view hidden space-y-4 animate-fade">
       <div id="sell-guest-box" class="hidden bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 space-y-3">
         <div class="w-14 h-14 mx-auto rounded-2xl bg-farm-50 text-farm-700 flex items-center justify-center text-3xl">🚜</div>
@@ -320,7 +407,7 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 5: ALERTS & FAVORITES ==================== -->
+    <!-- ==================== TAB 6: ALERTS & FAVORITES ==================== -->
     <section id="tab-alerts" class="tab-view hidden space-y-4 animate-fade">
       <div id="alerts-guest-box" class="hidden bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 space-y-3">
         <div class="text-3xl">🔔</div>
@@ -338,17 +425,15 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 6: ACCOUNT, UPI RECEIPTS & ADMIN ==================== -->
+    <!-- ==================== TAB 7: ACCOUNT, UPI RECEIPTS & ADMIN ==================== -->
     <section id="tab-account" class="tab-view hidden space-y-4 animate-fade">
-      <!-- Auth Forms (When Logged Out) -->
       <div id="auth-box" class="max-w-md mx-auto bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
         <div class="text-center">
           <div class="w-12 h-12 mx-auto rounded-2xl bg-farm-100 text-farm-700 flex items-center justify-center text-2xl mb-2">🌾</div>
-          <h2 class="text-xl font-bold text-slate-900">KHEDUT SETU</h2>
+          <h2 class="text-xl font-bold text-slate-900">KHEDUT SETU AI</h2>
           <p class="text-xs text-slate-500 mt-0.5" data-i18n="auth_sub">તમારા ખાતામાં લૉગિન કરો અથવા નવું મફત ખાતું બનાવો</p>
         </div>
 
-        <!-- One-Tap Google Login -->
         <button type="button" data-action="google-login" class="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold py-2.5 px-4 rounded-xl shadow-sm transition text-sm flex items-center justify-center gap-2">
           <span class="text-base font-extrabold text-blue-600">G</span>
           <span>Google થી સીધું લૉગિન (1-Tap)</span>
@@ -365,7 +450,6 @@
           <button type="button" data-action="auth-mode" data-mode="register" id="auth-tab-register" class="py-2 rounded-lg text-slate-600" data-i18n="register">નવું ખાતું</button>
         </div>
 
-        <!-- Login Form -->
         <form id="login-form" class="space-y-3" novalidate>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="email">ઈમેલ (Email)</label>
@@ -379,7 +463,6 @@
           <button type="button" data-action="forgot-password" class="w-full text-xs text-farm-700 font-semibold hover:underline pt-1" data-i18n="forgot_pwd">પાસવર્ડ ભૂલી ગયા?</button>
         </form>
 
-        <!-- Register Form -->
         <form id="register-form" class="hidden space-y-3" novalidate>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name">પૂરું નામ *</label>
@@ -420,7 +503,6 @@
         </form>
       </div>
 
-      <!-- Logged-in Profile, Payments & Admin Section -->
       <div id="profile-box" class="hidden space-y-4 max-w-3xl mx-auto">
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between gap-3">
           <div class="flex items-center gap-3">
@@ -440,7 +522,6 @@
           </button>
         </div>
 
-        <!-- Profile & Secure UPI Settings Form -->
         <form id="profile-form" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3.5">
           <h3 class="font-bold text-slate-900 text-base border-b border-slate-100 pb-2" data-i18n="profile_settings">પ્રોફાઇલ અને સુરક્ષિત UPI વિગતો</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -472,7 +553,6 @@
               <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="pincode">પિન કોડ</label>
               <input id="p-pin" type="text" maxlength="6" inputmode="numeric" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
             </div>
-            <!-- Secure UPI ID Field -->
             <div class="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200">
               <label class="block text-xs font-bold text-emerald-900 mb-1">💳 UPI ID (સીધી ચૂકવણી મેળવવા)</label>
               <input id="p-upi" type="text" maxlength="96" placeholder="દા.ત. 9876543210@ybl કે name@okhdfcbank" class="w-full px-3 py-2 rounded-lg border border-emerald-300 bg-white text-sm" />
@@ -497,7 +577,6 @@
           <button type="submit" id="profile-save-btn" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition" data-i18n="save_profile">પ્રોફાઇલ સેવ કરો</button>
         </form>
 
-        <!-- MY PAYMENT ORDERS & DIGITAL RECEIPTS -->
         <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <div>
@@ -509,26 +588,23 @@
           <div id="my-payments-list" class="space-y-2.5"></div>
         </div>
 
-        <!-- ADMIN PANEL -->
         <div id="admin-panel" class="hidden bg-white rounded-2xl p-5 shadow-sm border-2 border-amber-300 space-y-5">
           <div class="flex items-center justify-between border-b border-amber-100 pb-3">
             <div class="flex items-center gap-2">
               <span class="text-xl">🛡️</span>
               <div>
-                <h3 class="font-bold text-slate-900">Admin Panel (એડમિન કંટ્રોલ v3.0)</h3>
+                <h3 class="font-bold text-slate-900">Admin Panel (એડમિન કંટ્રોલ v4.0)</h3>
                 <p class="text-xs text-slate-500">ઉપજ મંજૂરી, રોજના APMC ભાવ, જાહેરાતો અને ચૂકવણી તકરાર</p>
               </div>
             </div>
             <button type="button" data-action="admin-refresh" class="text-xs font-semibold text-farm-700 hover:underline">રિફ્રેશ</button>
           </div>
 
-          <!-- Pending Listings -->
           <div>
             <h4 class="font-bold text-sm text-slate-800 mb-2">મંજૂરી માટે બાકી ઉપજ (Pending Listings)</h4>
             <div id="admin-pending-list" class="space-y-2.5"></div>
           </div>
 
-          <!-- Admin Daily APMC Rate Publisher -->
           <form id="admin-apmc-form" class="pt-3 border-t border-slate-100 space-y-2.5">
             <h4 class="font-bold text-sm text-slate-800">📊 રોજના APMC માર્કેટ યાર્ડ ભાવ ઉમેરો</h4>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -545,7 +621,6 @@
             </div>
           </form>
 
-          <!-- Broadcast -->
           <div class="pt-3 border-t border-slate-100 space-y-2.5">
             <h4 class="font-bold text-sm text-slate-800">📢 બધા યુઝર્સને સૂચના મોકલો (Broadcast)</h4>
             <input id="bc-title" type="text" maxlength="120" placeholder="સૂચનાનું શીર્ષક (ઓછામાં ઓછા 3 અક્ષર)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
@@ -557,7 +632,6 @@
           </div>
         </div>
 
-        <!-- Install App Card -->
         <div id="account-install-card" class="bg-white rounded-2xl p-4 shadow-sm border border-farm-200 flex items-center justify-between gap-3">
           <div class="flex items-center gap-3">
             <img src="./icon-192.png" alt="App Icon" class="w-10 h-10 rounded-xl shadow-sm" />
@@ -569,32 +643,31 @@
           <button type="button" data-action="install-app" class="shrink-0 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition" data-i18n="btn_install_app">ઇન્સ્ટોલ કરો</button>
         </div>
 
-        <!-- Support & Security Card -->
         <div id="support-card" class="bg-farm-50 rounded-2xl p-4 border border-farm-200 text-xs text-farm-900 flex flex-wrap items-center justify-between gap-2">
-          <span>🔒 <strong>KHEDUT SETU v3.0</strong> — વૉઇસ + સુરક્ષિત UPI + APMC કૃષિ બજાર</span>
+          <span>✨ <strong>KHEDUT SETU AI v4.0</strong> — સ્માર્ટ AI સલાહકાર + વૉઇસ + સુરક્ષિત UPI + APMC</span>
           <span id="support-contact-text" class="font-medium"></span>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ==================== FLOATING GUJARATI VOICE ASSISTANT BUTTON ==================== -->
-  <button type="button" data-action="open-voice" aria-label="બોલીને એપ ચલાવો"
-    class="fixed right-4 bottom-20 md:bottom-6 z-40 w-13 h-13 px-3.5 py-3 rounded-full bg-farm-700 hover:bg-farm-800 text-white shadow-xl border-2 border-white flex items-center gap-1.5 transition">
+  <!-- Floating Gujarati Voice AI Assistant Button -->
+  <button type="button" data-action="open-voice" aria-label="બોલીને AI એપ ચલાવો"
+    class="fixed right-4 bottom-20 md:bottom-6 z-40 px-3.5 py-3 rounded-full bg-farm-700 hover:bg-farm-800 text-white shadow-xl border-2 border-white flex items-center gap-1.5 transition">
     <i data-lucide="mic" class="w-5 h-5"></i>
-    <span class="text-xs font-bold hidden sm:inline">બોલો</span>
+    <span class="text-xs font-bold hidden sm:inline">AI બોલો</span>
   </button>
 
-  <!-- ==================== MOBILE BOTTOM NAVIGATION (5 CORE TABS) ==================== -->
+  <!-- Mobile Bottom Navigation (5 Core Tabs) -->
   <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] safe-bottom" aria-label="Mobile Navigation">
     <div class="grid grid-cols-5 h-16">
       <button type="button" data-action="nav-tab" data-tab="market" data-mnav="market" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-farm-700">
         <i data-lucide="store" class="w-5 h-5"></i>
         <span class="text-[10px] font-semibold" data-i18n="nav_market">બજાર</span>
       </button>
-      <button type="button" data-action="nav-tab" data-tab="yard" data-mnav="yard" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
-        <i data-lucide="trending-up" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold" data-i18n="nav_yard_short">યાર્ડ ભાવ</span>
+      <button type="button" data-action="nav-tab" data-tab="ai_advisor" data-mnav="ai_advisor" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
+        <i data-lucide="sparkles" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold">AI સલાહ</span>
       </button>
       <button type="button" data-action="nav-tab" data-tab="sell" data-mnav="sell" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
         <div class="w-10 h-10 -mt-4 rounded-full bg-farm-700 text-white flex items-center justify-center shadow-md border-2 border-white">
@@ -602,9 +675,9 @@
         </div>
         <span class="text-[10px] font-semibold" data-i18n="nav_sell">વેચાણ</span>
       </button>
-      <button type="button" data-action="nav-tab" data-tab="requests" data-mnav="requests" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
-        <i data-lucide="clipboard-list" class="w-5 h-5"></i>
-        <span class="text-[10px] font-semibold" data-i18n="nav_requests_short">માંગ</span>
+      <button type="button" data-action="nav-tab" data-tab="yard" data-mnav="yard" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
+        <i data-lucide="trending-up" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold" data-i18n="nav_yard_short">યાર્ડ ભાવ</span>
       </button>
       <button type="button" data-action="nav-tab" data-tab="account" data-mnav="account" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
         <i data-lucide="user" class="w-5 h-5"></i>
@@ -613,11 +686,11 @@
     </div>
   </nav>
 
-  <!-- ==================== MODAL: GUJARATI VOICE ASSISTANT ==================== -->
+  <!-- ==================== MODALS ==================== -->
   <div id="voice-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-        <h3 class="font-bold text-slate-900 text-base">🎙️ બોલીને KHEDUT SETU ચલાવો</h3>
+        <h3 class="font-bold text-slate-900 text-base">🎙️ AI વૉઇસ આસિસ્ટન્ટ</h3>
         <button type="button" data-action="close-modal" data-modal="voice-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
@@ -634,18 +707,17 @@
           <div class="text-[11px] font-bold text-slate-500">આવું બોલીને સીધું ચલાવી શકો છો:</div>
           <div class="flex flex-wrap gap-1.5 text-[11px]">
             <button type="button" data-action="voice-example" data-text="ડાંગર" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"ડાંગર શોધો"</button>
+            <button type="button" data-action="voice-example" data-text="AI સલાહકાર" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"AI સલાહકાર"</button>
             <button type="button" data-action="voice-example" data-text="માર્કેટ યાર્ડ ભાવ" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"માર્કેટ યાર્ડ ભાવ"</button>
             <button type="button" data-action="voice-example" data-text="નવી ઉપજ મૂકો" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"નવી ઉપજ મૂકો"</button>
             <button type="button" data-action="voice-example" data-text="ટેમ્પો ટ્રેક્ટર" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"ટેમ્પો ટ્રેક્ટર"</button>
             <button type="button" data-action="voice-example" data-text="ખરીદી માંગ" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"ખરીદી માંગ"</button>
-            <button type="button" data-action="voice-example" data-text="મારું ખાતું" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"મારું ખાતું"</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ==================== MODAL: SECURE UPI PAYMENT ==================== -->
   <div id="upi-payment-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
@@ -658,7 +730,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: DIGITAL PAYMENT RECEIPT ==================== -->
   <div id="receipt-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between bg-farm-800 text-white">
@@ -671,7 +742,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: ADD LOCAL TRANSPORT ==================== -->
   <div id="add-transport-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
@@ -724,7 +794,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: PASSWORD RECOVERY ==================== -->
   <div id="reset-password-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
@@ -747,7 +816,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: MANUAL INSTALL GUIDE ==================== -->
   <div id="install-guide-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
@@ -760,7 +828,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: PRODUCT DETAIL ==================== -->
   <div id="product-detail-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white/95 backdrop-blur px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10 gap-2">
@@ -776,7 +843,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: ADD / EDIT PRODUCT (UP TO 4 PHOTOS) ==================== -->
   <div id="add-product-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
@@ -829,7 +895,10 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="price">અપેક્ષિત ભાવ (₹) *</label>
-            <input id="np-price" type="number" step="any" min="1" max="10000000" required placeholder="2400" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+            <div class="flex gap-1.5">
+              <input id="np-price" type="number" step="any" min="1" max="10000000" required placeholder="2400" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+              <button type="button" data-action="ai-suggest-price-form" title="AI સૂચિત ભાવ" class="px-2.5 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-bold shrink-0">✨ AI</button>
+            </div>
           </div>
           <div class="flex items-end pb-2">
             <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer">
@@ -866,7 +935,6 @@
           <textarea id="np-desc" rows="2" maxlength="1500" placeholder="પાકની ગુણવત્તા, ભેજ, પેકિંગ કે વાહન વ્યવસ્થા વિશે લખો..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm"></textarea>
         </div>
 
-        <!-- Multi-Photo Secure Upload (Up to 4 Photos) -->
         <div class="bg-farm-50 border border-dashed border-farm-500 rounded-xl p-3 space-y-1.5">
           <label class="block text-xs font-bold text-farm-900">📸 ઉપજના ફોટા અપલોડ કરો (મહત્તમ ૪ ફોટા, દરેક 5MB થી નાનો)</label>
           <p class="text-[11px] text-farm-700">🔒 દરેક ફોટો આપોઆપ વાયરસ-ફ્રી સ્કેન અને ક્લીન થઈને અપલોડ થશે.</p>
@@ -878,7 +946,6 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: ADD BUYER REQUEST ==================== -->
   <div id="add-request-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
@@ -956,12 +1023,11 @@
     </div>
   </div>
 
-  <!-- ==================== HARDENED ENCAPSULATED APPLICATION (v3.0 MASTER) ==================== -->
+  <!-- ==================== ENCAPSULATED APPLICATION (AI v4.0 + HARDENED SECURITY) ==================== -->
   <script>
     (() => {
       'use strict';
 
-      // 1. IMMUTABLE CONFIG
       const CONFIG = Object.freeze({
         SUPABASE_URL: 'https://oqldgdnqypykbddwtwvq.supabase.co',
         SUPABASE_KEY: 'sb_publishable_91m3LPrT1FwtGqBzkHWHxg_BesbqDTX',
@@ -971,7 +1037,7 @@
         IMG_QUALITY: 0.82,
         ALLOWED_UNITS: Object.freeze(['kg', 'quintal', 'ton', 'mann', 'bag', 'bundle', 'piece']),
         ALLOWED_ROLES_SELF: Object.freeze(['buyer', 'seller']),
-        ALLOWED_TABS: Object.freeze(['market', 'yard', 'requests', 'sell', 'alerts', 'account']),
+        ALLOWED_TABS: Object.freeze(['market', 'ai_advisor', 'yard', 'requests', 'sell', 'alerts', 'account']),
         ALLOWED_LANGS: Object.freeze(['gu', 'hi', 'en']),
         ALLOWED_MODALS: Object.freeze([
           'voice-modal',
@@ -987,7 +1053,7 @@
       });
 
       if (!window.supabase || typeof window.supabase.createClient !== 'function') {
-        document.body.innerHTML = '<div style="padding:32px;text-align:center;font-family:sans-serif;"><h2>KHEDUT SETU</h2><p>ઇન્ટરનેટ કનેક્શન ચેક કરીને પેજ રિફ્રેશ કરો.</p></div>';
+        document.body.innerHTML = '<div style="padding:32px;text-align:center;font-family:sans-serif;"><h2>KHEDUT SETU AI</h2><p>ઇન્ટરનેટ કનેક્શન ચેક કરીને પેજ રિફ્રેશ કરો.</p></div>';
         return;
       }
 
@@ -995,7 +1061,7 @@
         auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
       });
 
-      // 2. SECURITY & VALIDATION UTILITIES
+      // SECURITY & VALIDATION
       const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
       const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
       const PIN_RE = /^[1-9][0-9]{5}$/;
@@ -1050,7 +1116,7 @@
         return true;
       }
 
-      // 3. ANTIVIRUS IMAGE SANITIZER (Magic Bytes + Canvas Re-encode)
+      // ANTIVIRUS IMAGE SANITIZER
       async function verifyMagicBytes(file) {
         const buf = await file.slice(0, 12).arrayBuffer();
         const b = new Uint8Array(buf);
@@ -1074,7 +1140,7 @@
           const img = await new Promise((resolve, reject) => {
             const el = new Image();
             el.onload = () => resolve(el);
-            el.onerror = () => reject(new Error('ફોટો વાંચી શકાયો નહીં. બીજો સાચો ફોટો પસંદ કરો.'));
+            el.onerror = () => reject(new Error('ફોટો વાંચી શકાયો નહીં.'));
             el.src = blobUrl;
           });
 
@@ -1106,7 +1172,7 @@
         }
       }
 
-      // 4. GLOBAL ERROR BOUNDARY, TOASTS & OFFLINE GUARD
+      // GLOBAL ERROR & TOASTS
       function refreshIcons() {
         try { if (window.lucide?.createIcons) window.lucide.createIcons(); } catch {}
       }
@@ -1116,7 +1182,6 @@
         if (!navigator.onLine || /Failed to fetch|NetworkError/i.test(msg)) return 'ઇન્ટરનેટ કનેક્શન ચેક કરીને ફરી પ્રયાસ કરો.';
         if (/Invalid login credentials/i.test(msg)) return 'ઈમેલ અથવા પાસવર્ડ ખોટો છે.';
         if (/User already registered/i.test(msg)) return 'આ ઈમેલથી ખાતું પહેલેથી બનેલું છે. સીધું લૉગિન કરો.';
-        if (/does not exist|schema cache/i.test(msg)) return 'નવું ફીચર ચાલુ કરવા પહેલા Supabase માં 010 SQL કોડ Run કરો.';
         if (/row-level security/i.test(msg)) return 'આ ક્રિયા માટે મંજૂરી નથી. કૃપા કરીને ફરી લૉગિન કરો.';
         return msg.slice(0, 180) || 'કંઈક ભૂલ આવી, કૃપા કરીને ફરી પ્રયાસ કરો.';
       }
@@ -1147,7 +1212,7 @@
       window.addEventListener('online', () => { updateOnlineBanner(); loadProducts(); });
       window.addEventListener('offline', updateOnlineBanner);
 
-      // 5. PWA INSTALL LOGIC
+      // PWA INSTALL
       let deferredInstallPrompt = null;
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
@@ -1173,7 +1238,7 @@
         document.getElementById('header-install-btn')?.classList.add('hidden');
         document.getElementById('pwa-install-banner')?.classList.add('hidden');
         document.getElementById('account-install-card')?.classList.add('hidden');
-        showToast('KHEDUT SETU એપ તમારા ફોનમાં ઇન્સ્ટોલ થઈ ગઈ!');
+        showToast('KHEDUT SETU AI એપ તમારા ફોનમાં ઇન્સ્ટોલ થઈ ગઈ!');
       });
 
       async function triggerInstallApp() {
@@ -1196,7 +1261,7 @@
         openModal('install-guide-modal');
       }
 
-      // 6. STATE & I18N
+      // STATE & I18N
       const savedLang = localStorage.getItem('ks_lang');
       const state = {
         lang: CONFIG.ALLOWED_LANGS.includes(savedLang) ? savedLang : 'gu',
@@ -1210,6 +1275,7 @@
         myListings: [],
         apmcRates: [],
         transportList: [],
+        buyerRequests: [],
         paymentOrders: [],
         favorites: new Set(),
         notifications: [],
@@ -1220,25 +1286,22 @@
 
       const I18N = {
         gu: {
-          tagline: 'સીધું ખેતરથી બજાર',
+          tagline: 'સીધું ખેતરથી બજાર • AI સ્માર્ટ કૃષિ',
           install_short: 'ઇન્સ્ટોલ',
-          install_banner_title: 'KHEDUT SETU એપ ઇન્સ્ટોલ કરો',
+          install_banner_title: 'KHEDUT SETU AI એપ ઇન્સ્ટોલ કરો',
           install_banner_sub: 'મોબાઇલમાં અસલી એપ જેમ ઝડપથી વાપરો',
           btn_install_app: 'ઇન્સ્ટોલ કરો',
           nav_market: 'બજાર',
           nav_yard: 'યાર્ડ & વાહન',
           nav_yard_short: 'યાર્ડ ભાવ',
           nav_requests: 'ખરીદી માંગ',
-          nav_requests_short: 'માંગ',
           nav_sell: 'વેચાણ',
           nav_alerts: 'સૂચના',
           nav_account: 'ખાતું',
           search_placeholder: 'બોલીને અથવા લખીને પાક, ગામ, જિલ્લો શોધો...',
           district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
-          hero_title: 'સીધી ખેતી ઉપજ વેચો અને ખરીદો',
-          hero_sub: 'બોલીને શોધ, સુરક્ષિત UPI ચૂકવણી અને રોજના APMC ભાવ',
+          hero_title: 'સીધી ખેતી ઉપજ વેચો અને ખરીદો — AI સલાહ સાથે',
           btn_post_crop: 'ઉપજ મૂકો',
-          btn_yard_short: 'યાર્ડ ભાવ',
           btn_voice: 'બોલીને શોધો',
           latest_listings: 'તાજેતરની ઉપજ',
           refresh: 'રિફ્રેશ',
@@ -1308,25 +1371,22 @@
           submit_req: 'માંગ પોસ્ટ કરો',
         },
         hi: {
-          tagline: 'सीधे खेत से बाज़ार',
+          tagline: 'सीधे खेत से बाज़ार • AI स्मार्ट कृषि',
           install_short: 'इंस्टॉल',
-          install_banner_title: 'KHEDUT SETU ऐप इंस्टॉल करें',
+          install_banner_title: 'KHEDUT SETU AI ऐप इंस्टॉल करें',
           install_banner_sub: 'मोबाइल में असली ऐप की तरह तेज़ी से चलाएं',
           btn_install_app: 'इंस्टॉल करें',
           nav_market: 'बाज़ार',
           nav_yard: 'मंडी & वाहन',
           nav_yard_short: 'मंडी भाव',
           nav_requests: 'खरीद मांग',
-          nav_requests_short: 'मांग',
           nav_sell: 'बेचें',
           nav_alerts: 'सूचना',
           nav_account: 'खाता',
           search_placeholder: 'बोलकर या लिखकर फसल, गांव, जिला खोजें...',
           district_placeholder: 'जिला (जैसे आनंद)',
-          hero_title: 'सीधे कृषि उपज बेचें और खरीदें',
-          hero_sub: 'बोलकर खोजें, सुरक्षित UPI भुगतान और रोज़ के APMC भाव',
+          hero_title: 'सीधे कृषि उपज बेचें और खरीदें — AI सलाह के साथ',
           btn_post_crop: 'उपज डालें',
-          btn_yard_short: 'मंडी भाव',
           btn_voice: 'बोलकर खोजें',
           latest_listings: 'ताज़ा उपज',
           refresh: 'रिफ्रेश',
@@ -1396,26 +1456,23 @@
           submit_req: 'मांग पोस्ट करें',
         },
         en: {
-          tagline: 'Direct Farm to Market',
+          tagline: 'Direct Farm to Market • Smart AI Agri',
           install_short: 'Install',
-          install_banner_title: 'Install KHEDUT SETU App',
+          install_banner_title: 'Install KHEDUT SETU AI App',
           install_banner_sub: 'Fast, full-screen app experience on your phone',
           btn_install_app: 'Install App',
           nav_market: 'Market',
           nav_yard: 'APMC & Transport',
           nav_yard_short: 'APMC',
           nav_requests: 'Requests',
-          nav_requests_short: 'Requests',
           nav_sell: 'Sell',
           nav_alerts: 'Alerts',
           nav_account: 'Account',
           search_placeholder: 'Speak or type crop, village or district...',
           district_placeholder: 'District (e.g. Anand)',
-          hero_title: 'Buy & Sell Farm Produce Directly',
-          hero_sub: 'Voice control, Secure UPI payments & daily APMC rates',
+          hero_title: 'Buy & Sell Farm Produce Directly — With Smart AI',
           btn_post_crop: 'Post Crop',
-          btn_yard_short: 'APMC Rates',
-          btn_voice: 'Voice Search',
+          btn_voice: 'Voice AI',
           latest_listings: 'Latest Produce',
           refresh: 'Refresh',
           all_categories: 'All Categories',
@@ -1517,7 +1574,186 @@
         renderProducts();
       }
 
-      // 7. GUJARATI / HINDI / ENGLISH VOICE CONTROL & SPEECH SYNTHESIS
+      // ==================== AI INTELLIGENCE ENGINE ====================
+      const AI_CROP_BASE = Object.freeze({
+        paddy: { name: 'ડાંગર (ગુજરાત-૧૭)', perMann: 470, perQuintal: 2350, adviceSell: 'હાલ બજારમાં ડાંગરની સારી માંગ છે; સૂકો અને સાફ માલ હોય તો તબક્કાવાર વેચાણ લાભદાયી છે.', adviceHold: 'જો ભેજ વધુ હોય તો પહેલા તડકામાં સુકવીને પછી વેચો — ₹30–₹50/મણ વધુ મળી શકે.' },
+        wheat: { name: 'ઘઉં (ટુકડા / લોકવન)', perMann: 555, perQuintal: 2775, adviceSell: 'ઘઉંના ભાવ સ્થિર અને મજબૂત છે; યોગ્ય ગ્રેડિંગ સાથે સીધો ખરીદાર મળે ત્યારે સોદો કરી શકાય.', adviceHold: 'સંગ્રહ સુવિધા અને સારી ગુણવત્તા હોય તો આગામી અઠવાડિયાના યાર્ડ ભાવ સાથે સરખાવી નિર્ણય લો.' },
+        bajra: { name: 'બાજરી', perMann: 480, perQuintal: 2400, adviceSell: 'પશુ આહાર અને સ્થાનિક બજારમાં બાજરીની માંગ સારી છે.', adviceHold: 'તાજો પાક હોય તો સારી સફાઈ કરીને બજારમાં મૂકો.' },
+        cumin: { name: 'જીરું', perMann: 4800, perQuintal: 24000, adviceSell: 'જીરામાં ઊંચી કિંમત હોવાથી ગુણવત્તા અને રંગ પર ખાસ ધ્યાન આપી વેચાણ કરો.', adviceHold: 'ઊંઝા APMC ના દૈનિક વલણ મુજબ ભાગ-ભાગમાં વેચાણ કરવું જોખમ ઘટાડે છે.' },
+        groundnut: { name: 'મગફળી', perMann: 1210, perQuintal: 6050, adviceSell: 'તેલીબિયાં બજારમાં મગફળીનો ભાવ સારો છે.', adviceHold: 'દાણાનો ભરાવો અને સુકાઈ ગયેલી સ્થિતિ ચકાસીને વેચાણ કરો.' },
+        cotton: { name: 'કપાસ', perMann: 1510, perQuintal: 7550, adviceSell: 'કપાસમાં ભેજ ઓછો હોય તો સારો ભાવ મળે છે.', adviceHold: 'ભેજ વધારે હોય તો બજારમાં લઈ જતા પહેલા સુકવણી કરો.' },
+        fodder: { name: 'ઘાસચારો / પુળિયા', perMann: 180, perQuintal: 900, adviceSell: 'આસપાસના ગામો અને ડેરી/પશુપાલકોને સીધો WhatsApp શેર કરવાથી ઝડપી ગ્રાહક મળે છે.', adviceHold: 'પુળિયાનું વજન અને બાંધણી મજબૂત રાખો.' }
+      });
+
+      function detectCropKeyFromText(text) {
+        const s = String(text || '').toLowerCase();
+        if (/ઘઉં|wheat|ghau/.test(s)) return 'wheat';
+        if (/બાજરી|bajra/.test(s)) return 'bajra';
+        if (/જીરું|jeeru|cumin/.test(s)) return 'cumin';
+        if (/મગફળી|groundnut|magfali/.test(s)) return 'groundnut';
+        if (/કપાસ|cotton|kapas/.test(s)) return 'cotton';
+        if (/ઘાસ|પુળિયા|fodder|ghas/.test(s)) return 'fodder';
+        return 'paddy';
+      }
+
+      function computeFairPriceBadge(product) {
+        const key = detectCropKeyFromText(`${product.title_gu || ''} ${product.title_en || ''}`);
+        const base = AI_CROP_BASE[key] || AI_CROP_BASE.paddy;
+        const unit = String(product.unit || '').toLowerCase();
+        const price = Number(product.expected_price) || 0;
+        if (!price) return null;
+
+        let refPrice = base.perMann;
+        if (unit.includes('quintal')) refPrice = base.perQuintal;
+        else if (unit.includes('kg')) refPrice = Math.round(base.perMann / 20);
+        else if (unit.includes('ton')) refPrice = base.perQuintal * 10;
+
+        const ratio = price / refPrice;
+        if (ratio <= 1.08) return { text: '✨ AI વાજબી ભાવ', cls: 'bg-emerald-100 text-emerald-800' };
+        if (ratio <= 1.25) return { text: '✨ AI બજાર સ્તર', cls: 'bg-amber-100 text-amber-800' };
+        return { text: '✨ AI પ્રીમિયમ ભાવ', cls: 'bg-indigo-100 text-indigo-800' };
+      }
+
+      function runAiPriceEstimator(presetCropKey = null) {
+        const cropKey = presetCropKey || document.getElementById('ai-crop-select')?.value || 'paddy';
+        if (presetCropKey && document.getElementById('ai-crop-select')) {
+          document.getElementById('ai-crop-select').value = presetCropKey;
+        }
+        const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) || 50;
+        const qual = document.getElementById('ai-qual-select')?.value || 'standard';
+        const info = AI_CROP_BASE[cropKey] || AI_CROP_BASE.paddy;
+
+        const mult = qual === 'prime' ? 1.12 : qual === 'moisture' ? 0.90 : 1.0;
+        const estMann = Math.round(info.perMann * mult);
+        const estQuintal = Math.round(info.perQuintal * mult);
+        const estTotal = Math.round(qty * estMann);
+
+        const out = document.getElementById('ai-price-output');
+        if (!out) return;
+        out.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <strong class="text-farm-900 text-base">🌾 ${escapeHtml(info.name)} — AI અંદાજ</strong>
+            <span class="text-xs font-bold bg-farm-700 text-white px-3 py-1 rounded-full">અંદાજિત કુલ મૂલ્ય: ₹${estTotal.toLocaleString('en-IN')}</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-1">
+            <div class="bg-white p-3 rounded-xl border border-farm-200">
+              <div class="text-[11px] text-slate-500">AI સૂચિત ભાવ (20 kg / મણ)</div>
+              <div class="text-lg font-extrabold text-farm-800">₹${estMann.toLocaleString('en-IN')}</div>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-farm-200">
+              <div class="text-[11px] text-slate-500">AI સૂચિત ભાવ (100 kg / ક્વિન્ટલ)</div>
+              <div class="text-lg font-extrabold text-farm-800">₹${estQuintal.toLocaleString('en-IN')}</div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed pt-1">
+            <strong>💡 AI વેચાણ સલાહ:</strong> ${escapeHtml(qual === 'moisture' ? info.adviceHold : info.adviceSell)}
+          </p>
+          <div class="pt-1">
+            <button type="button" data-action="apply-ai-price-to-sell" data-price="${estQuintal}" data-title="${escapeHtml(info.name)}" class="px-4 py-2 rounded-xl bg-harvest-500 hover:bg-harvest-600 text-white text-xs font-bold shadow-sm">
+              + આ ભાવ સાથે ઉપજ વેચાણમાં મૂકો
+            </button>
+          </div>
+        `;
+      }
+
+      function applyAiPriceToSellModal(price, title) {
+        switchTab('sell');
+        if (!state.user) { showToast('પહેલા લૉગિન કરો.', 'info'); switchTab('account'); return; }
+        openProductModal(null);
+        document.getElementById('np-title-gu').value = title;
+        document.getElementById('np-unit').value = 'quintal';
+        document.getElementById('np-price').value = String(price);
+      }
+
+      function runAiCropDoctor() {
+        const crop = cleanText(document.getElementById('doc-crop')?.value, 80) || 'પાક';
+        const sym = document.getElementById('doc-symptom')?.value || 'yellow';
+        const extra = cleanText(document.getElementById('doc-extra')?.value, 300);
+
+        const plans = {
+          yellow: {
+            cause: 'નાઇટ્રોજનની ઉણપ, મૂળમાં ભેજ/પાણી ભરાવું અથવા ચૂસિયા જીવાતની શરૂઆત',
+            steps: ['ખેતરમાં પાણીનો ભરાવો હોય તો નિકાલ કરો.', 'પાકના તબક્કા મુજબ સંતુલિત ખાતર અને સૂક્ષ્મ તત્ત્વો (Zinc/Iron) નો ઉપયોગ કરો.', 'ખેતીવાડી કેન્દ્ર / કૃષિ નિષ્ણાતની સલાહ લઈ દવાનો છંટકાવ કરો.']
+          },
+          spots: {
+            cause: 'વધુ ભેજ અથવા વાતાવરણમાં બદલાવથી ફૂગજન્ય રોગ (Fungal spot/blight)',
+            steps: ['અસરગ્રસ્ત પાન/ભાગ પર નજર રાખો અને વધારાની સિંચાઈ ટાળો.', 'છોડ વચ્ચે હવા-પ્રકાશ જળવાય તેવી વ્યવસ્થા રાખો.', 'યોગ્ય ફૂગનાશક (Fungicide) નો નિયત માત્રામાં છંટકાવ કરો.']
+          },
+          pests: {
+            cause: 'ઈયળ, મોલો, થ્રિપ્સ કે સફેદ માખી જેવી જીવાતનો ઉપદ્રવ',
+            steps: ['શરૂઆતના તબક્કે લીમડા આધારિત અર્ક / નિયંત્રણ પગલાં લો.', 'ખેતરની આસપાસ નીંદણ સાફ રાખો.', 'જરૂર પડે તો માન્ય કૃષિ દવા વિક્રેતા કે કૃષિ અધિકારીના માર્ગદર્શન મુજબ ઉપાય કરો.']
+          },
+          water: {
+            cause: 'જમીનનો ભેજ ઘટવો અથવા સિંચાઈના સમયમાં અનિયમિતતા',
+            steps: ['સવાર વહેલા અથવા સાંજે સિંચાઈ કરો જેથી બાષ્પીભવન ઓછું થાય.', 'મલ્ચિંગ અથવા જમીનનો ભેજ ટકાવવાની રીત અપનાવો.', 'પાકની સંવેદનશીલ અવસ્થામાં (ફૂલ/દાણા ભરાતા સમયે) ભેજ જાળવો.']
+          }
+        };
+
+        const plan = plans[sym] || plans.yellow;
+        const out = document.getElementById('ai-doctor-output');
+        if (!out) return;
+        out.innerHTML = `
+          <div class="font-bold text-emerald-950 text-base">🩺 AI નિદાન — ${escapeHtml(crop)}</div>
+          <div class="text-xs text-slate-700"><strong>સંભવિત કારણ:</strong> ${escapeHtml(plan.cause)}</div>
+          ${extra ? `<div class="text-xs text-slate-600 bg-white/80 p-2 rounded-lg">તમારી નોંધ: ${escapeHtml(extra)}</div>` : ''}
+          <ul class="list-disc pl-5 text-xs text-slate-800 space-y-1">
+            ${plan.steps.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}
+          </ul>
+          <p class="text-[11px] text-emerald-900 bg-white/90 p-2 rounded-xl border border-emerald-200">
+            ⚠️ <strong>AI નોંધ:</strong> આ પ્રાથમિક AI માર્ગદર્શન છે. ગંભીર રોગ કે દવાની ચોક્કસ માત્રા માટે સ્થાનિક કૃષિ વિજ્ઞાન કેન્દ્ર / નિષ્ણાતનો સંપર્ક અવશ્ય કરો.
+          </p>
+        `;
+      }
+
+      async function runAiSmartMatch() {
+        const box = document.getElementById('ai-match-output');
+        if (!box) return;
+        box.innerHTML = `<div class="text-xs text-slate-400 py-4 text-center">AI માંગ અને ઉપજનું વિશ્લેષણ કરી રહ્યું છે...</div>`;
+
+        const { data: reqs } = await sb.from('public_buyer_requests').select('*').order('created_at', { ascending: false }).limit(20);
+        const list = Array.isArray(reqs) ? reqs : [];
+        if (!list.length) {
+          box.innerHTML = `<div class="bg-slate-50 p-4 rounded-xl text-xs text-slate-600">હાલ કોઈ ખરીદીની માંગ નોંધાઈ નથી. "ખરીદી માંગ" ટેબમાં માંગ મૂકાય એટલે AI અહીં સીધો મેળ (Match) બતાવશે.</div>`;
+          return;
+        }
+
+        const matchedHtml = list.map((r) => {
+          const reqWord = String(r.product_required || '').toLowerCase();
+          const matchingProds = state.products.filter((p) => {
+            const title = `${p.title_gu || ''} ${p.title_en || ''}`.toLowerCase();
+            return reqWord.split(/\s+/).some((w) => w.length >= 2 && title.includes(w));
+          });
+          const score = matchingProds.length ? Math.min(98, 72 + matchingProds.length * 10) : 55;
+          return `
+            <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-2">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <strong class="text-slate-900 text-sm">${escapeHtml(r.product_required)}</strong>
+                  <span class="text-[10px] font-extrabold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full">✨ AI Match ${score}%</span>
+                </div>
+                <div class="text-xs text-slate-500">માંગ: ${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)} • 📍 ${escapeHtml([r.delivery_location, r.district].filter(Boolean).join(', '))}</div>
+                <div class="text-[11px] text-farm-700 font-semibold">બજારમાં મળતી ઉપજ: ${matchingProds.length} લિસ્ટિંગ તૈયાર</div>
+              </div>
+              <button type="button" data-action="nav-tab" data-tab="requests" class="px-3 py-1.5 rounded-xl bg-farm-700 text-white text-xs font-bold">માંગ જુઓ</button>
+            </div>`;
+        }).join('');
+        box.innerHTML = matchedHtml;
+      }
+
+      function switchAiSubtab(which) {
+        const panels = { price: 'ai-panel-price', doctor: 'ai-panel-doctor', match: 'ai-panel-match' };
+        const btns = { price: 'aisub-price', doctor: 'aisub-doctor', match: 'aisub-match' };
+        Object.entries(panels).forEach(([k, id]) => document.getElementById(id)?.classList.toggle('hidden', k !== which));
+        Object.entries(btns).forEach(([k, id]) => {
+          const b = document.getElementById(id);
+          if (b) b.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === which ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
+        });
+        if (which === 'price') runAiPriceEstimator();
+        if (which === 'doctor') runAiCropDoctor();
+        if (which === 'match') runAiSmartMatch();
+      }
+
+      // ==================== VOICE AI ASSISTANT ====================
       const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition || null;
       let recognition = null;
 
@@ -1535,10 +1771,7 @@
       function stopVoiceListening() {
         state.isListening = false;
         const btn = document.getElementById('voice-mic-trigger');
-        if (btn) {
-          btn.classList.remove('voice-pulse', 'bg-red-600');
-          btn.classList.add('bg-farm-700');
-        }
+        if (btn) { btn.classList.remove('voice-pulse', 'bg-red-600'); btn.classList.add('bg-farm-700'); }
         try { if (recognition) recognition.stop(); } catch {}
       }
 
@@ -1548,61 +1781,51 @@
         const low = spoken.toLowerCase();
         closeModal('voice-modal');
 
-        // Command Routing (Gujarati, Hindi & English voice commands)
-        if (/નવી ઉપજ|ઉપજ મૂકો|ફસલ|post crop|add product|upaj muko|vechvu|વેચવું/.test(low)) {
-          switchTab('sell');
-          if (state.user && (state.profile?.role === 'seller' || state.profile?.role === 'admin')) {
-            openProductModal();
-          }
-          showToast('વેચાણ વિભાગ ખોલ્યો છે');
-          speakText('વેચાણ વિભાગ ખોલ્યો છે');
+        if (/ai|સલાહ|ડૉક્ટર|રોગ|ભાવ અંદાજ|advisor|doctor|smart/.test(low)) {
+          switchTab('ai_advisor');
+          if (/ડૉક્ટર|રોગ|પાન|doctor|disease/.test(low)) switchAiSubtab('doctor');
+          else switchAiSubtab('price');
+          showToast('AI સલાહકાર ખોલ્યો છે');
+          speakText('AI સલાહકાર ખોલ્યો છે');
           return;
         }
-        if (/નવી માંગ|માંગ મૂકો|ખરીદી માંગ|kharidi mang|requirement|buyer request/.test(low)) {
+        if (/નવી ઉપજ|ઉપજ મૂકો|ફસલ|post crop|add product|વેચવું/.test(low)) {
+          switchTab('sell');
+          if (state.user && (state.profile?.role === 'seller' || state.profile?.role === 'admin')) openProductModal();
+          showToast('વેચાણ વિભાગ ખોલ્યો છે');
+          return;
+        }
+        if (/નવી માંગ|માંગ મૂકો|ખરીદી માંગ|buyer request/.test(low)) {
           switchTab('requests');
           showToast('ખરીદી માંગ વિભાગ ખોલ્યો છે');
-          speakText('ખરીદી માંગ વિભાગ ખોલ્યો છે');
           return;
         }
-        if (/યાર્ડ|માર્કેટ ભાવ|એપીએમસી|મંડી|apmc|yard|bhav|ભાવ/.test(low)) {
-          switchTab('yard');
-          switchYardSubtab('apmc');
+        if (/યાર્ડ|માર્કેટ ભાવ|એપીએમસી|apmc|yard|bhav|ભાવ/.test(low)) {
+          switchTab('yard'); switchYardSubtab('apmc');
           showToast('માર્કેટ યાર્ડ ભાવ ખોલ્યા છે');
-          speakText('માર્કેટ યાર્ડના ભાવ ખોલ્યા છે');
           return;
         }
-        if (/ટેમ્પો|ટ્રેક્ટર|ટ્રક|વાહન|ગાડી|tempo|tractor|transport|vahan/.test(low)) {
-          switchTab('yard');
-          switchYardSubtab('transport');
+        if (/ટેમ્પો|ટ્રેક્ટર|વાહન|tempo|tractor|transport/.test(low)) {
+          switchTab('yard'); switchYardSubtab('transport');
           showToast('સ્થાનિક ટેમ્પો અને ટ્રેક્ટર સેવા ખોલી છે');
-          speakText('સ્થાનિક ટેમ્પો અને ટ્રેક્ટર સેવા ખોલી છે');
           return;
         }
-        if (/ખાતું|પ્રોફાઇલ|ચૂકવણી|રસીદ|પેમેન્ટ|account|profile|upi|payment|khatu/.test(low)) {
+        if (/ખાતું|પ્રોફાઇલ|ચૂકવણી|રસીદ|account|profile|upi/.test(low)) {
           switchTab('account');
-          showToast('તમારું ખાતું અને ચૂકવણી વિભાગ ખોલ્યો છે');
-          speakText('તમારું ખાતું ખોલ્યું છે');
+          showToast('તમારું ખાતું ખોલ્યું છે');
           return;
         }
         if (/સૂચના|સેવ|પસંદ|notification|alert|saved/.test(low)) {
           switchTab('alerts');
-          showToast('સૂચના વિભાગ ખોલ્યો છે');
-          return;
-        }
-        if (/બજાર|હોમ|bajar|market|home/.test(low) && low.length < 18) {
-          switchTab('market');
-          resetFilters();
-          showToast('મુખ્ય બજાર ખોલ્યું છે');
           return;
         }
 
-        // Default: Smart Crop / Village / District Search
-        const cleanedQuery = spoken.replace(/(શોધો|બતાવો|ખોલો|search|find|show|shodho|batavo)/gi, '').trim();
+        const cleanedQuery = spoken.replace(/(શોધો|બતાવો|ખોલો|search|find|show)/gi, '').trim();
         switchTab('market');
         const sIn = document.getElementById('search-input');
         if (sIn) sIn.value = cleanedQuery || spoken;
         loadProducts();
-        showToast(`"${cleanedQuery || spoken}" માટે શોધી રહ્યા છીએ...`);
+        showToast(`"${cleanedQuery || spoken}" માટે AI શોધ ચાલુ છે...`);
         speakText(`${cleanedQuery || spoken} માટે ઉપજ બતાવી રહ્યા છીએ`);
       }
 
@@ -1611,22 +1834,15 @@
           showToast('તમારા બ્રાઉઝરમાં વૉઇસ સપોર્ટ નથી — Google Chrome વાપરો અથવા નીચેના બટન દબાવો.', 'info');
           return;
         }
-        if (state.isListening) {
-          stopVoiceListening();
-          return;
-        }
+        if (state.isListening) { stopVoiceListening(); return; }
         try {
           recognition = new SpeechRec();
           recognition.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
           recognition.interimResults = true;
           recognition.maxAlternatives = 1;
-
           state.isListening = true;
           const btn = document.getElementById('voice-mic-trigger');
-          if (btn) {
-            btn.classList.add('voice-pulse', 'bg-red-600');
-            btn.classList.remove('bg-farm-700');
-          }
+          if (btn) { btn.classList.add('voice-pulse', 'bg-red-600'); btn.classList.remove('bg-farm-700'); }
           document.getElementById('voice-status').textContent = 'સાંભળી રહ્યા છીએ... હવે બોલો 🎙️';
           document.getElementById('voice-transcript').textContent = '';
 
@@ -1639,34 +1855,21 @@
               else interim += txt;
             }
             document.getElementById('voice-transcript').textContent = `"${(finalTranscript || interim).trim()}"`;
-            if (finalTranscript.trim()) {
-              stopVoiceListening();
-              processVoiceCommand(finalTranscript.trim());
-            }
+            if (finalTranscript.trim()) { stopVoiceListening(); processVoiceCommand(finalTranscript.trim()); }
           };
-
-          recognition.onerror = (ev) => {
+          recognition.onerror = () => {
             stopVoiceListening();
-            const statusEl = document.getElementById('voice-status');
-            if (ev.error === 'not-allowed') {
-              statusEl.textContent = 'માઇકની પરવાનગી (Permission) ચાલુ કરો.';
-            } else {
-              statusEl.textContent = 'અવાજ સ્પષ્ટ ન સંભળાયો — ફરી માઇક દબાવીને બોલો.';
-            }
+            document.getElementById('voice-status').textContent = 'અવાજ સ્પષ્ટ ન સંભળાયો — ફરી માઇક દબાવીને બોલો.';
           };
-
-          recognition.onend = () => {
-            if (state.isListening) stopVoiceListening();
-          };
-
+          recognition.onend = () => { if (state.isListening) stopVoiceListening(); };
           recognition.start();
         } catch {
           stopVoiceListening();
-          showToast('વૉઇસ શરૂ કરવામાં ભૂલ આવી — Chrome માં ફરી પ્રયાસ કરો.', 'error');
+          showToast('વૉઇસ શરૂ કરવામાં ભૂલ આવી.', 'error');
         }
       }
 
-      // 8. NAVIGATION & MODALS
+      // NAVIGATION & MODALS
       function switchTab(tab) {
         if (!CONFIG.ALLOWED_TABS.includes(tab)) return;
         state.tab = tab;
@@ -1684,6 +1887,7 @@
         });
 
         if (tab === 'market') loadProducts();
+        if (tab === 'ai_advisor') switchAiSubtab('price');
         if (tab === 'yard') { loadApmcRates(); loadTransportList(); }
         if (tab === 'requests') loadBuyerRequests();
         if (tab === 'sell') refreshSellTab();
@@ -1705,7 +1909,7 @@
         document.getElementById(id)?.classList.add('hidden');
       }
 
-      // 9. PLATFORM SETTINGS & CATEGORIES
+      // SETTINGS & CATEGORIES
       async function loadPlatformSettings() {
         const { data } = await sb.from('platform_settings').select('key, value').eq('is_public', true);
         if (!Array.isArray(data)) return;
@@ -1775,7 +1979,7 @@
         subSel.innerHTML = `<option value="">-- પસંદ કરો --</option>` + subs.map((s) => `<option value="${escapeHtml(s.id)}">${escapeHtml(pickLangField(s, 'name'))}</option>`).join('');
       }
 
-      // 10. PRODUCTS MARKETPLACE (With WhatsApp Share, Multi-Photo, Sold Tag, UPI Pay, Reviews)
+      // PRODUCTS MARKETPLACE
       let searchTimer = null;
       function debouncedLoadProducts() { clearTimeout(searchTimer); searchTimer = setTimeout(loadProducts, 300); }
 
@@ -1794,7 +1998,7 @@
         const title = pickLangField(p, 'title') || 'ખેતી ઉપજ';
         const loc = [p.village, p.district].filter(Boolean).join(', ');
         const shareUrl = `${window.location.origin}${window.location.pathname}?product=${encodeURIComponent(p.id)}`;
-        const msg = `🌾 *KHEDUT SETU — સીધું ખેતરથી બજાર*\n\n*ઉપજ:* ${title}\n*ભાવ:* ₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} / ${p.price_unit || p.unit}\n*જથ્થો:* ${p.available_quantity} ${p.unit}\n*સ્થળ:* ${loc}\n\nસીધો સંપર્ક કરવા નીચેની લિંક ખોલો:\n${shareUrl}`;
+        const msg = `🌾 *KHEDUT SETU AI — સીધું ખેતરથી બજાર*\n\n*ઉપજ:* ${title}\n*ભાવ:* ₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} / ${p.price_unit || p.unit}\n*જથ્થો:* ${p.available_quantity} ${p.unit}\n*સ્થળ:* ${loc}\n\nસીધો સંપર્ક કરવા નીચેની લિંક ખોલો:\n${shareUrl}`;
         window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
       }
 
@@ -1838,9 +2042,17 @@
           );
         }
 
-        // Put active (non-sold) listings before sold listings
         list.sort((a, b) => Number(Boolean(a.is_sold)) - Number(Boolean(b.is_sold)));
         state.products = list;
+
+        const pulseEl = document.getElementById('ai-pulse-summary');
+        if (pulseEl) {
+          const activeCount = list.filter((x) => !x.is_sold).length;
+          pulseEl.textContent = activeCount > 0
+            ? `હાલ બજારમાં ${activeCount} સક્રિય ઉપજ ઉપલબ્ધ છે • AI ભાવ તપાસ અને સીધી UPI ચૂકવણી સક્રિય.`
+            : `બજારમાં પ્રથમ ઉપજ મૂકવા તૈયાર છે • AI ભાવ અંદાજ અને પાક ડૉક્ટર સેવા 24×7 ઉપલબ્ધ.`;
+        }
+
         renderProducts();
       }
 
@@ -1867,6 +2079,7 @@
         const isFav = state.favorites.has(p.id);
         const isSold = Boolean(p.is_sold);
         const priceNum = Number(p.expected_price) || 0;
+        const aiBadge = !isSold ? computeFairPriceBadge(p) : null;
 
         return `
           <article data-action="open-product" data-id="${escapeHtml(p.id)}" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200/80 transition cursor-pointer flex flex-col ${isSold ? 'opacity-80' : ''}">
@@ -1877,8 +2090,8 @@
               }
               ${isSold
                 ? `<span class="absolute top-2.5 left-2.5 bg-red-600 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">✓ વેચાઈ ગયું (SOLD)</span>`
-                : p.is_negotiable
-                  ? `<span class="absolute top-2.5 left-2.5 bg-white/90 text-farm-800 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">${escapeHtml(t('negotiable_tag'))}</span>`
+                : aiBadge
+                  ? `<span class="absolute top-2.5 left-2.5 ${aiBadge.cls} text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow-sm">${escapeHtml(aiBadge.text)}</span>`
                   : ''
               }
               ${imgs.length > 1 ? `<span class="absolute bottom-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">📸 ${imgs.length}</span>` : ''}
@@ -1925,6 +2138,7 @@
         const desc = pickLangField(p, 'description') || '';
         const imgs = Array.isArray(p.image_paths) ? p.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
         const isSold = Boolean(p.is_sold);
+        const aiBadge = computeFairPriceBadge(p);
 
         state.activeProductDetail = { ...p, _displayTitle: title };
         sb.rpc('increment_product_views', { p_product_id: p.id }).then(() => {}).catch(() => {});
@@ -1968,7 +2182,10 @@
 
           <div class="flex items-center justify-between bg-farm-50 p-3.5 rounded-2xl border border-farm-100 gap-2">
             <div>
-              <div class="text-2xl font-extrabold text-farm-800">₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} <span class="text-xs font-medium text-slate-600">/ ${escapeHtml(p.price_unit || p.unit)}</span></div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-2xl font-extrabold text-farm-800">₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} <span class="text-xs font-medium text-slate-600">/ ${escapeHtml(p.price_unit || p.unit)}</span></span>
+                ${aiBadge ? `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${aiBadge.cls}">${escapeHtml(aiBadge.text)}</span>` : ''}
+              </div>
               <div class="text-xs font-semibold text-farm-700 mt-0.5">ઉપલબ્ધ જથ્થો: ${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)} ${p.is_negotiable ? '• વાતચીત શક્ય' : ''}</div>
             </div>
             <button type="button" data-action="share-product" data-id="${escapeHtml(p.id)}" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1 shrink-0 shadow-sm">
@@ -1983,18 +2200,15 @@
 
           ${desc ? `<div class="text-sm text-slate-700 bg-slate-50 p-3.5 rounded-xl leading-relaxed">${escapeHtml(desc)}</div>` : ''}
 
-          <!-- Seller & Actions Card -->
           <div class="border border-slate-200 rounded-2xl p-3.5 space-y-3">
-            <div class="flex items-center justify-between gap-2">
-              <div>
-                <div class="text-xs text-slate-400">ખેડૂત / વેચનાર</div>
-                <div class="font-bold text-slate-900 flex items-center gap-1.5 flex-wrap">
-                  ${escapeHtml(sellerProf?.full_name || 'KHEDUT SETU Seller')}
-                  ${sellerProf?.is_verified ? `<span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">✓ Verified</span>` : ''}
-                  ${avgRating ? `<span class="text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">★ ${avgRating} (${reviews.length})</span>` : ''}
-                </div>
-                ${sellerProf?.business_name ? `<div class="text-xs text-slate-500">${escapeHtml(sellerProf.business_name)}</div>` : ''}
+            <div>
+              <div class="text-xs text-slate-400">ખેડૂત / વેચનાર</div>
+              <div class="font-bold text-slate-900 flex items-center gap-1.5 flex-wrap">
+                ${escapeHtml(sellerProf?.full_name || 'KHEDUT SETU Seller')}
+                ${sellerProf?.is_verified ? `<span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">✓ Verified</span>` : ''}
+                ${avgRating ? `<span class="text-[11px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-bold">★ ${avgRating} (${reviews.length})</span>` : ''}
               </div>
+              ${sellerProf?.business_name ? `<div class="text-xs text-slate-500">${escapeHtml(sellerProf.business_name)}</div>` : ''}
             </div>
 
             ${state.user ? `
@@ -2036,7 +2250,6 @@
             `}
           </div>
 
-          <!-- Ratings & Reviews Section -->
           <div class="border border-slate-200 rounded-2xl p-3.5 space-y-3">
             <h4 class="font-bold text-slate-900 text-sm">⭐ ખેડૂતનો પ્રતિભાવ (Reviews)</h4>
             ${state.user && p.seller_id !== state.user.id ? `
@@ -2120,7 +2333,7 @@
         }
       }
 
-      // 11. SECURE UPI PAYMENT + QR + UTR VERIFICATION + DIGITAL RECEIPT
+      // SECURE UPI PAYMENT + QR + UTR + RECEIPT
       function buildUpiUri(upiId, payeeName, amount, note) {
         const params = new URLSearchParams({
           pa: upiId,
@@ -2169,7 +2382,7 @@
 
         document.getElementById('upi-modal-body').innerHTML = `
           <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-900 space-y-1">
-            <div class="font-bold">🛡️ સુરક્ષા સૂચના (જરૂર વાંચો):</div>
+            <div class="font-bold">🛡️ AI સુરક્ષા કવચ (Fraud Shield):</div>
             <div>• ચૂકવણી કરતી વખતે UPI એપમાં <strong>${escapeHtml(payInfo.seller_name)}</strong> નું નામ ખાસ ચેક કરો.</div>
             <div>• ક્યારેય કોઈને તમારો <strong>UPI PIN કે OTP</strong> શેર ન કરો.</div>
           </div>
@@ -2195,7 +2408,6 @@
             </div>
           </div>
 
-          <!-- Step 1: QR & Direct UPI App Launch -->
           <div class="text-center space-y-2.5 bg-white border border-slate-200 rounded-2xl p-4">
             <div class="text-xs font-bold text-slate-700">સ્ટેપ ૧: કોઈપણ UPI એપથી ચૂકવણી કરો</div>
             <div id="upi-qr-box" class="p-2 bg-white inline-block rounded-xl border border-slate-100"></div>
@@ -2205,7 +2417,6 @@
             </div>
           </div>
 
-          <!-- Step 2: Submit UTR for Digital Receipt -->
           <form id="upi-utr-form" class="bg-farm-50 border border-farm-200 rounded-2xl p-3.5 space-y-2.5">
             <div class="text-xs font-bold text-farm-900">સ્ટેપ ૨: ચૂકવણી પછી ૧૨ અંકનો UTR / Reference નંબર સબમિટ કરો</div>
             <input id="upi-utr-input" type="text" required minlength="8" maxlength="30" placeholder="દા.ત. 432819204812 (UPI Reference / UTR)" class="w-full px-3 py-2.5 rounded-xl border border-farm-300 bg-white text-sm font-mono" />
@@ -2342,7 +2553,7 @@
         if (!box || !state.user) return;
         const incoming = state.paymentOrders.filter((o) => o.seller_id === state.user.id);
         if (!incoming.length) {
-          box.innerHTML = `<div class="bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">હજુ સુધી કોઈ UPI ચૂકવણી આવી નથી. (ખાતામાં તમારું UPI ID સેવ કરી ચાલુ કરજો.)</div>`;
+          box.innerHTML = `<div class="bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">હજુ સુધી કોઈ UPI ચૂકવણી આવી નથી.</div>`;
           return;
         }
         box.innerHTML = incoming.map((o) => `
@@ -2371,7 +2582,7 @@
 
       async function disputePaymentOrder(id) {
         if (!isValidUUID(id)) return;
-        const reason = cleanText(prompt('તકરારનું કારણ લખો (દા.ત. પૈસા કપાયા પણ વેચનારે મંજૂર ન કર્યા):') || '', 300);
+        const reason = cleanText(prompt('તકરારનું કારણ લખો:') || '', 300);
         if (reason.length < 4) return;
         const { error } = await sb.from('payment_orders').update({ payment_status: 'disputed', dispute_reason: reason }).eq('id', id);
         if (error) { showToast(friendlyError(error), 'error'); return; }
@@ -2400,12 +2611,11 @@
             <span class="font-bold text-farm-900 text-xs">કુલ રકમ</span>
             <span class="text-xl font-extrabold text-farm-800">₹${(Number(order.total_amount) || 0).toLocaleString('en-IN')}</span>
           </div>
-          <p class="text-[11px] text-slate-400 text-center">આ KHEDUT SETU ની ડિજિટલ વ્યવહાર રસીદ છે. સ્ક્રીનશૉટ સાચવી રાખો.</p>
         `;
         openModal('receipt-modal');
       }
 
-      // 12. APMC YARD RATES & LOCAL TRANSPORT DIRECTORY
+      // APMC & TRANSPORT
       function switchYardSubtab(which) {
         const isApmc = which === 'apmc';
         document.getElementById('apmc-panel').classList.toggle('hidden', !isApmc);
@@ -2418,10 +2628,7 @@
         const box = document.getElementById('apmc-list');
         if (!box) return;
         const { data, error } = await sb.from('apmc_rates').select('*').order('rate_date', { ascending: false }).order('created_at', { ascending: false }).limit(80);
-        if (error) {
-          box.innerHTML = `<div class="col-span-full bg-amber-50 text-amber-900 p-4 rounded-xl text-xs">${escapeHtml(friendlyError(error))}</div>`;
-          return;
-        }
+        if (error) { box.innerHTML = `<div class="col-span-full bg-amber-50 text-amber-900 p-4 rounded-xl text-xs">${escapeHtml(friendlyError(error))}</div>`; return; }
         state.apmcRates = Array.isArray(data) ? data : [];
         renderApmcRates();
       }
@@ -2463,10 +2670,7 @@
         const box = document.getElementById('transport-list');
         if (!box) return;
         const { data, error } = await sb.from('transport_providers').select('*').eq('is_available', true).order('created_at', { ascending: false }).limit(60);
-        if (error) {
-          box.innerHTML = `<div class="col-span-full bg-amber-50 text-amber-900 p-4 rounded-xl text-xs">${escapeHtml(friendlyError(error))}</div>`;
-          return;
-        }
+        if (error) { box.innerHTML = `<div class="col-span-full bg-amber-50 text-amber-900 p-4 rounded-xl text-xs">${escapeHtml(friendlyError(error))}</div>`; return; }
         state.transportList = Array.isArray(data) ? data : [];
         renderTransportList();
       }
@@ -2484,7 +2688,7 @@
           : state.transportList;
 
         if (!list.length) {
-          box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-sm text-slate-500 border border-slate-200">હજુ સુધી કોઈ વાહન સેવા નોંધાઈ નથી. ઉપર "તમારું વાહન ઉમેરો" દબાવી પ્રથમ વાહન ઉમેરો!</div>`;
+          box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-sm text-slate-500 border border-slate-200">હજુ સુધી કોઈ વાહન સેવા નોંધાઈ નથી.</div>`;
           return;
         }
         box.innerHTML = list.map((tr) => {
@@ -2536,11 +2740,8 @@
           e.target.reset();
           closeModal('add-transport-modal');
           loadTransportList();
-        } catch (err) {
-          showToast(friendlyError(err), 'error');
-        } finally {
-          btn.disabled = false;
-        }
+        } catch (err) { showToast(friendlyError(err), 'error'); }
+        finally { btn.disabled = false; }
       }
 
       async function deleteTransport(id) {
@@ -2551,7 +2752,7 @@
         loadTransportList();
       }
 
-      // 13. FAVORITES & BUYER REQUESTS
+      // FAVORITES & REQUESTS
       async function loadFavoritesIds() {
         if (!state.user) return;
         const { data } = await sb.from('favorites').select('product_id').eq('user_id', state.user.id);
@@ -2578,7 +2779,7 @@
         container.innerHTML = `<div class="col-span-full py-10 text-center text-slate-400 text-sm">લોડ થઈ રહ્યું છે...</div>`;
         const { data, error } = await sb.from('public_buyer_requests').select('*').order('created_at', { ascending: false }).limit(50);
         if (error) { container.innerHTML = `<div class="col-span-full bg-red-50 text-red-700 p-4 rounded-xl text-sm">${escapeHtml(friendlyError(error))}</div>`; return; }
-        if (!data || !data.length) { container.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border border-slate-200 text-sm text-slate-500">હાલ કોઈ ખરીદીની માંગ નથી. પ્રથમ માંગ મૂકવા ઉપરનું બટન દબાવો!</div>`; return; }
+        if (!data || !data.length) { container.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border border-slate-200 text-sm text-slate-500">હાલ કોઈ ખરીદીની માંગ નથી.</div>`; return; }
         container.innerHTML = data.map((r) => {
           const cleanPhone = sanitizeIndianPhone(r.contact_number);
           const waPhone = cleanPhone ? `91${cleanPhone}` : '';
@@ -2628,7 +2829,6 @@
           showToast('કૃપા કરીને બધી જરૂરી વિગતો અને સાચો 10 અંકનો નંબર ભરો.', 'error');
           return;
         }
-
         const btn = document.getElementById('nr-submit-btn');
         btn.disabled = true;
         try {
@@ -2656,14 +2856,11 @@
           e.target.reset();
           closeModal('add-request-modal');
           loadBuyerRequests();
-        } catch (err) {
-          showToast(friendlyError(err), 'error');
-        } finally {
-          btn.disabled = false;
-        }
+        } catch (err) { showToast(friendlyError(err), 'error'); }
+        finally { btn.disabled = false; }
       }
 
-      // 14. SELL TAB, MULTI-PHOTO (4), EDIT & SOLD TOGGLE
+      // SELL TAB
       async function refreshSellTab() {
         const guest = document.getElementById('sell-guest-box');
         const upgrade = document.getElementById('sell-upgrade-box');
@@ -2819,12 +3016,8 @@
           e.target.reset();
           closeModal('add-product-modal');
           await Promise.all([loadMyListings(), loadProducts()]);
-        } catch (err) {
-          showToast(friendlyError(err), 'error');
-        } finally {
-          btn.disabled = false;
-          btn.textContent = t('submit_product');
-        }
+        } catch (err) { showToast(friendlyError(err), 'error'); }
+        finally { btn.disabled = false; btn.textContent = t('submit_product'); }
       }
 
       async function loadMyListings() {
@@ -2834,7 +3027,7 @@
         if (error) { box.innerHTML = `<div class="text-red-600 text-sm">${escapeHtml(friendlyError(error))}</div>`; return; }
         state.myListings = Array.isArray(data) ? data : [];
         if (!state.myListings.length) {
-          box.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">તમે હજુ સુધી કોઈ ઉપજ મૂકી નથી. ઉપર "નવી ઉપજ મૂકો" પર ક્લિક કરો.</div>`;
+          box.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">તમે હજુ સુધી કોઈ ઉપજ મૂકી નથી.</div>`;
           return;
         }
         box.innerHTML = state.myListings.map((p) => {
@@ -2852,9 +3045,7 @@
                   <div class="text-xs font-bold text-farm-700">₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} / ${escapeHtml(p.price_unit || p.unit)} • ${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)}</div>
                   <div class="text-[11px] text-slate-500">${escapeHtml([p.village, p.district].filter(Boolean).join(', '))} • 👁️ ${Number(p.views_count) || 0}</div>
                 </div>
-                <button type="button" data-action="delete-product" data-id="${escapeHtml(p.id)}" class="self-start p-2 rounded-xl text-red-500 hover:bg-red-50" title="Delete">
-                  <i data-lucide="trash-2" class="w-4 h-4"></i>
-                </button>
+                <button type="button" data-action="delete-product" data-id="${escapeHtml(p.id)}" class="self-start p-2 rounded-xl text-red-500 hover:bg-red-50"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
               </div>
               <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
                 <button type="button" data-action="edit-product" data-id="${escapeHtml(p.id)}" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">✏️ સુધારો</button>
@@ -2908,7 +3099,7 @@
         }).join('');
       }
 
-      // 15. ALERTS & SAVED
+      // ALERTS & SAVED
       async function loadNotifications() {
         if (!state.user) return;
         const { data } = await sb.from('notifications').select('*').eq('user_id', state.user.id).order('created_at', { ascending: false }).limit(30);
@@ -2969,7 +3160,7 @@
         refreshIcons();
       }
 
-      // 16. AUTH, GOOGLE LOGIN, PROFILE & ADMIN
+      // AUTH & PROFILE
       function setAuthMode(mode) {
         const isLogin = mode === 'login';
         document.getElementById('login-form').classList.toggle('hidden', !isLogin);
@@ -2981,10 +3172,7 @@
       async function handleGoogleLogin() {
         if (!checkRateLimit('google-login', 3000)) return;
         const appBaseUrl = window.location.origin + window.location.pathname;
-        const { error } = await sb.auth.signInWithOAuth({
-          provider: 'google',
-          options: { redirectTo: appBaseUrl }
-        });
+        const { error } = await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: appBaseUrl } });
         if (error) showToast('Google Login માટે Supabase Auth → Providers માં Google ચાલુ કરવું જરૂરી છે.', 'info');
       }
 
@@ -3158,7 +3346,7 @@
         finally { btn.disabled = false; }
       }
 
-      // 17. ADMIN ACTIONS
+      // ADMIN ACTIONS
       async function loadAdminPending() {
         if (state.profile?.role !== 'admin') return;
         const box = document.getElementById('admin-pending-list');
@@ -3234,7 +3422,7 @@
         showToast(`${data} એક્સપાયરિંગ એલર્ટ મોકલાયા.`);
       }
 
-      // 18. CENTRALIZED SAFE EVENT DELEGATION (ZERO INLINE JS)
+      // EVENT DELEGATION
       document.addEventListener('click', (e) => {
         const el = e.target.closest('[data-action]');
         if (!el) return;
@@ -3253,6 +3441,24 @@
           case 'refresh-apmc': loadApmcRates(); break;
           case 'refresh-payments': loadMyPaymentOrders(); break;
           case 'yard-subtab': switchYardSubtab(el.getAttribute('data-subtab')); break;
+          case 'ai-subtab': switchAiSubtab(el.getAttribute('data-subtab')); break;
+          case 'run-ai-price': runAiPriceEstimator(); break;
+          case 'run-ai-doctor': runAiCropDoctor(); break;
+          case 'run-ai-match': runAiSmartMatch(); break;
+          case 'ai-suggest-price-form': {
+            const key = detectCropKeyFromText(document.getElementById('np-title-gu')?.value || '');
+            const base = AI_CROP_BASE[key] || AI_CROP_BASE.paddy;
+            const unit = document.getElementById('np-unit')?.value || 'quintal';
+            const suggested = unit === 'mann' ? base.perMann : unit === 'kg' ? Math.round(base.perMann / 20) : base.perQuintal;
+            const priceInput = document.getElementById('np-price');
+            if (priceInput) priceInput.value = String(suggested);
+            showToast(`✨ AI સૂચિત ભાવ: ₹${suggested} (${base.name})`);
+            break;
+          }
+          case 'apply-ai-price-to-sell': {
+            applyAiPriceToSellModal(el.getAttribute('data-price'), el.getAttribute('data-title'));
+            break;
+          }
           case 'open-voice':
             openModal('voice-modal');
             startVoiceListening();
@@ -3350,7 +3556,6 @@
         }
       });
 
-      // Bind Form & Search Listeners
       document.getElementById('search-input')?.addEventListener('input', debouncedLoadProducts);
       document.getElementById('district-filter')?.addEventListener('input', debouncedLoadProducts);
       document.getElementById('apmc-search')?.addEventListener('input', renderApmcRates);
@@ -3369,7 +3574,6 @@
         if (e.key === 'Escape') CONFIG.ALLOWED_MODALS.forEach(closeModal);
       });
 
-      // 19. BOOTSTRAP & DEEP-LINK SUPPORT (?product=uuid)
       async function handleAuthSession(session) {
         state.user = session?.user || null;
         state.profile = null;
@@ -3406,11 +3610,8 @@
         await loadProducts();
         refreshIcons();
 
-        // Deep link: open shared product directly
         const sharedId = new URLSearchParams(window.location.search).get('product');
-        if (isValidUUID(sharedId)) {
-          openProductDetail(sharedId);
-        }
+        if (isValidUUID(sharedId)) openProductDetail(sharedId);
       }
 
       initApp();
