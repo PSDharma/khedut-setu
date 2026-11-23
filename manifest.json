@@ -1,0 +1,43 @@
+{
+  "id": "/khedut-setu/",
+  "name": "KHEDUT SETU — ખેડૂત સેતુ",
+  "short_name": "KHEDUT SETU",
+  "description": "ખેડૂતો અને ખરીદારો માટેનું સીધું કૃષિ બજાર. અનાજ, ઘાસચારો, કઠોળ અને ખેતી ઉપજ સીધી વેચો અને ખરીદો.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f8f5",
+  "theme_color": "#15803d",
+  "lang": "gu",
+  "categories": [
+    "shopping",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
