@@ -6,10 +6,15 @@
   <title>KHEDUT SETU — ખેડૂત સેતુ | સીધું ખેતરથી બજાર</title>
   <meta name="description" content="KHEDUT SETU — ખેડૂતો અને ખરીદારો માટેનું સીધું કૃષિ બજાર. અનાજ, ઘાસચારો, કઠોળ, તેલીબિયાં અને ખેતી ઉપજ સીધી વેચો અને ખરીદો." />
   <meta name="theme-color" content="#15803d" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="KHEDUT SETU" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315803d'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='34'%3E🌾%3C/text%3E%3C/svg%3E" />
+
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -88,14 +93,39 @@
         <button onclick="switchTab('account')" data-nav="account" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_account">ખાતું</button>
       </nav>
 
-      <!-- Language Selector -->
-      <div class="flex items-center gap-1 bg-farm-900/60 p-1 rounded-lg border border-white/15 text-xs font-semibold">
-        <button onclick="setLang('gu')" id="lang-gu" class="lang-btn px-2 py-1 rounded-md transition">ગુ</button>
-        <button onclick="setLang('hi')" id="lang-hi" class="lang-btn px-2 py-1 rounded-md transition">हिं</button>
-        <button onclick="setLang('en')" id="lang-en" class="lang-btn px-2 py-1 rounded-md transition">EN</button>
+      <!-- Right Controls: Install Button + Language -->
+      <div class="flex items-center gap-1.5">
+        <button id="header-install-btn" onclick="triggerInstallApp()" class="hidden bg-harvest-500 hover:bg-harvest-600 text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span data-i18n="install_short">ઇન્સ્ટોલ</span>
+        </button>
+        <div class="flex items-center gap-1 bg-farm-900/60 p-1 rounded-lg border border-white/15 text-xs font-semibold">
+          <button onclick="setLang('gu')" id="lang-gu" class="lang-btn px-2 py-1 rounded-md transition">ગુ</button>
+          <button onclick="setLang('hi')" id="lang-hi" class="lang-btn px-2 py-1 rounded-md transition">हिं</button>
+          <button onclick="setLang('en')" id="lang-en" class="lang-btn px-2 py-1 rounded-md transition">EN</button>
+        </div>
       </div>
     </div>
   </header>
+
+  <!-- PWA Smart Install Banner -->
+  <div id="pwa-install-banner" class="hidden bg-farm-50 border-b border-farm-200 px-3.5 py-2.5">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <img src="./icon-192.png" alt="KHEDUT SETU" class="w-9 h-9 rounded-xl shadow-sm shrink-0" />
+        <div class="min-w-0">
+          <div class="text-xs sm:text-sm font-bold text-farm-900 truncate" data-i18n="install_banner_title">KHEDUT SETU એપ ઇન્સ્ટોલ કરો</div>
+          <div class="text-[11px] text-farm-700 truncate" data-i18n="install_banner_sub">મોબાઇલમાં અસલી એપ જેમ ઝડપથી વાપરો</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5 shrink-0">
+        <button onclick="triggerInstallApp()" class="bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition" data-i18n="btn_install_app">ઇન્સ્ટોલ કરો</button>
+        <button onclick="dismissInstallBanner()" class="p-1.5 text-slate-400 hover:text-slate-600" aria-label="Close">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Announcement Banner (from platform_settings) -->
   <div id="announcement-banner" class="hidden bg-harvest-50 border-b border-amber-200 text-amber-900 text-xs sm:text-sm px-4 py-2 text-center font-medium"></div>
@@ -420,6 +450,18 @@
           </div>
         </div>
 
+        <!-- Install App Card inside Account -->
+        <div id="account-install-card" class="bg-white rounded-2xl p-4 shadow-sm border border-farm-200 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <img src="./icon-192.png" alt="App Icon" class="w-10 h-10 rounded-xl shadow-sm" />
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm" data-i18n="install_banner_title">KHEDUT SETU એપ ઇન્સ્ટોલ કરો</h4>
+              <p class="text-xs text-slate-500" data-i18n="install_banner_sub">મોબાઇલમાં અસલી એપ જેમ ઝડપથી વાપરો</p>
+            </div>
+          </div>
+          <button onclick="triggerInstallApp()" class="shrink-0 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition" data-i18n="btn_install_app">ઇન્સ્ટોલ કરો</button>
+        </div>
+
         <!-- Support Footer Card -->
         <div id="support-card" class="bg-farm-50 rounded-2xl p-4 border border-farm-200 text-xs text-farm-900 flex flex-wrap items-center justify-between gap-2">
           <span>🌾 <strong>KHEDUT SETU</strong> — ગુજરાતના ખેડૂતોનું પોતાનું ડિજિટલ બજાર</span>
@@ -457,6 +499,19 @@
       </button>
     </div>
   </nav>
+
+  <!-- ==================== MODAL: MANUAL INSTALL GUIDE ==================== -->
+  <div id="install-guide-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
+      <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+        <h3 class="font-bold text-slate-900 text-base">📲 KHEDUT SETU ઇન્સ્ટોલ કરો</h3>
+        <button onclick="closeModal('install-guide-modal')" class="p-1.5 rounded-full bg-slate-100 text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="install-guide-body" class="p-4 space-y-3 text-sm text-slate-700"></div>
+    </div>
+  </div>
 
   <!-- ==================== MODAL: PRODUCT DETAIL ==================== -->
   <div id="product-detail-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
@@ -656,6 +711,80 @@
     const SUPABASE_KEY = 'sb_publishable_91m3LPrT1FwtGqBzkHWHxg_BesbqDTX';
     const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+    // 1B. PWA SERVICE WORKER & INSTALL LOGIC
+    let deferredInstallPrompt = null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js', { scope: './' }).catch((err) => {
+          console.warn('SW registration failed:', err);
+        });
+      });
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredInstallPrompt = e;
+      if (!isStandalone) {
+        document.getElementById('header-install-btn')?.classList.remove('hidden');
+        if (!sessionStorage.getItem('ks_install_dismissed')) {
+          document.getElementById('pwa-install-banner')?.classList.remove('hidden');
+        }
+      }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredInstallPrompt = null;
+      document.getElementById('header-install-btn')?.classList.add('hidden');
+      document.getElementById('pwa-install-banner')?.classList.add('hidden');
+      document.getElementById('account-install-card')?.classList.add('hidden');
+      showToast('KHEDUT SETU એપ તમારા ફોનમાં ઇન્સ્ટોલ થઈ ગઈ!');
+    });
+
+    function dismissInstallBanner() {
+      sessionStorage.setItem('ks_install_dismissed', '1');
+      document.getElementById('pwa-install-banner')?.classList.add('hidden');
+    }
+
+    async function triggerInstallApp() {
+      if (isStandalone) {
+        showToast('KHEDUT SETU એપ પહેલેથી ઇન્સ્ટોલ છે!', 'info');
+        return;
+      }
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        const choice = await deferredInstallPrompt.userChoice;
+        if (choice.outcome === 'accepted') {
+          deferredInstallPrompt = null;
+          document.getElementById('header-install-btn')?.classList.add('hidden');
+          document.getElementById('pwa-install-banner')?.classList.add('hidden');
+        }
+        return;
+      }
+      // Manual install instructions for iPhone Safari or in-app browsers
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const body = document.getElementById('install-guide-body');
+      if (isIOS) {
+        body.innerHTML = `
+          <p class="font-semibold text-slate-900">iPhone (Safari) માં એપ ઇન્સ્ટોલ કરવા:</p>
+          <ol class="list-decimal pl-5 space-y-1.5 text-xs sm:text-sm">
+            <li>નીચે દેખાતા <strong>Share</strong> બટન પર ટૅપ કરો.</li>
+            <li>થોડું નીચે સ્ક્રોલ કરી <strong>"Add to Home Screen"</strong> પસંદ કરો.</li>
+            <li>ઉપર જમણી બાજુ <strong>Add</strong> દબાવો.</li>
+          </ol>`;
+      } else {
+        body.innerHTML = `
+          <p class="font-semibold text-slate-900">Android (Chrome) માં એપ ઇન્સ્ટોલ કરવા:</p>
+          <ol class="list-decimal pl-5 space-y-1.5 text-xs sm:text-sm">
+            <li>જો આ પેજ WhatsApp/Chat ની અંદર ખુલ્યું હોય, તો પહેલા ઉપર <strong>⋮ (3 ટપકાં)</strong> → <strong>Open in Chrome</strong> દબાવો.</li>
+            <li>Chrome માં ઉપર <strong>⋮ (3 ટપકાં)</strong> પર ટૅપ કરો.</li>
+            <li><strong>"Install app"</strong> અથવા <strong>"Add to Home screen"</strong> → <strong>Install</strong> દબાવો.</li>
+          </ol>`;
+      }
+      openModal('install-guide-modal');
+    }
+
     // 2. APP STATE
     const state = {
       lang: localStorage.getItem('ks_lang') || 'gu',
@@ -674,6 +803,10 @@
     const I18N = {
       gu: {
         tagline: 'સીધું ખેતરથી બજાર',
+        install_short: 'ઇન્સ્ટોલ',
+        install_banner_title: 'KHEDUT SETU એપ ઇન્સ્ટોલ કરો',
+        install_banner_sub: 'મોબાઇલમાં અસલી એપ જેમ ઝડપથી વાપરો',
+        btn_install_app: 'ઇન્સ્ટોલ કરો',
         nav_market: 'બજાર',
         nav_requests: 'ખરીદી માંગ',
         nav_sell: 'વેચાણ',
@@ -751,6 +884,10 @@
       },
       hi: {
         tagline: 'सीधे खेत से बाज़ार',
+        install_short: 'इंस्टॉल',
+        install_banner_title: 'KHEDUT SETU ऐप इंस्टॉल करें',
+        install_banner_sub: 'मोबाइल में असली ऐप की तरह तेज़ी से चलाएं',
+        btn_install_app: 'इंस्टॉल करें',
         nav_market: 'बाज़ार',
         nav_requests: 'खरीद मांग',
         nav_sell: 'बेचें',
@@ -828,6 +965,10 @@
       },
       en: {
         tagline: 'Direct Farm to Market',
+        install_short: 'Install',
+        install_banner_title: 'Install KHEDUT SETU App',
+        install_banner_sub: 'Fast, full-screen app experience on your phone',
+        btn_install_app: 'Install App',
         nav_market: 'Market',
         nav_requests: 'Requests',
         nav_sell: 'Sell',
@@ -996,6 +1137,9 @@
 
     // 5. INITIALIZATION & AUTH STATE
     async function initApp() {
+      if (isStandalone) {
+        document.getElementById('account-install-card')?.classList.add('hidden');
+      }
       setLang(state.lang);
       await loadPlatformSettings();
       await loadCategories();
@@ -1241,7 +1385,6 @@
       const p = state.products.find(x => x.id === productId) || (await sb.from('products').select('*').eq('id', productId).maybeSingle()).data;
       if (!p) return;
 
-      // Increment view count silently
       sb.rpc('increment_product_views', { p_product_id: p.id }).then(() => {});
 
       const title = pickLangField(p, 'title') || 'ખેતી ઉપજ';
@@ -1249,7 +1392,6 @@
       const imgPath = Array.isArray(p.image_paths) && p.image_paths.length ? getImgUrl(p.image_paths[0]) : null;
       document.getElementById('dm-title').textContent = title;
 
-      // Fetch seller public profile & private contact if logged in
       const { data: sellerProf } = await sb.from('public_seller_profiles').select('*').eq('id', p.seller_id).maybeSingle();
       let contactInfo = null;
       if (state.user) {
@@ -1738,10 +1880,11 @@
       const email = document.getElementById('reg-email').value.trim();
       const password = document.getElementById('reg-password').value;
 
+      const appBaseUrl = window.location.origin + window.location.pathname;
       const { data, error } = await sb.auth.signUp({
         email, password,
         options: {
-          emailRedirectTo: window.location.origin,
+          emailRedirectTo: appBaseUrl,
           data: { full_name: fullName, mobile_number: mobile, role, village_city: village, district, state: 'Gujarat' }
         }
       });
@@ -1764,7 +1907,8 @@
     async function handleForgotPassword() {
       const email = document.getElementById('login-email').value.trim();
       if (!email) { showToast('પહેલા ઉપર તમારો ઈમેલ લખો', 'info'); return; }
-      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin });
+      const appBaseUrl = window.location.origin + window.location.pathname;
+      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: appBaseUrl });
       if (error) { showToast(error.message, 'error'); return; }
       showToast('પાસવર્ડ રિસેટ લિંક તમારા ઈમેલ પર મોકલી દીધી છે.');
     }
@@ -1867,7 +2011,7 @@
     async function sendAdminBroadcast() {
       const title = document.getElementById('bc-title').value.trim();
       const body = document.getElementById('bc-body').value.trim();
-      const { data, error } = await sb.rpc('broadcast_admin_announcement', { p_title: title, p_body: body, p_action_url: '/' });
+      const { data, error } = await sb.rpc('broadcast_admin_announcement', { p_title: title, p_body: body, p_action_url: './' });
       if (error) { showToast(error.message, 'error'); return; }
       showToast(`${data} યુઝર્સને સૂચના મોકલી દેવાઈ!`);
       document.getElementById('bc-title').value = '';
