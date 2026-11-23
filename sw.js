@@ -1,7 +1,7 @@
-/* KHEDUT SETU — Hardened Service Worker v3 */
+/* KHEDUT SETU — Hardened Service Worker v4 (Voice + UPI + APMC) */
 'use strict';
 
-const CACHE_NAME = 'khedut-setu-v3-sec';
+const CACHE_NAME = 'khedut-setu-v4-master';
 const APP_SHELL = [
   './',
   './index.html',
@@ -38,12 +38,11 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Never cache authenticated API, Auth, or Storage writes from Supabase
+  // Never cache Supabase Auth, API, or Storage calls
   if (url.hostname.endsWith('.supabase.co') || url.pathname.includes('/auth/')) {
     return;
   }
 
-  // Same-origin network-first with strict status validation
   if (url.origin === self.location.origin) {
     event.respondWith(
       fetch(req)
