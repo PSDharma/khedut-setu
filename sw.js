@@ -1,4 +1,7 @@
-const CACHE_NAME = 'khedut-setu-v2';
+/* KHEDUT SETU — Hardened Service Worker v3 */
+'use strict';
+
+const CACHE_NAME = 'khedut-setu-v3-sec';
 const APP_SHELL = [
   './',
   './index.html',
@@ -12,14 +15,15 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(APP_SHELL))
       .then(() => self.skipWaiting())
+      .catch(() => {})
   );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
 });
 
@@ -27,22 +31,32 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
-  const url = new URL(req.url);
-  // Always hit network directly for Supabase API & Auth requests
-  if (url.hostname.includes('supabase.co')) return;
+  let url;
+  try {
+    url = new URL(req.url);
+  } catch {
+    return;
+  }
 
-  // Network-first for HTML pages and same-origin assets, fallback to cache if offline
+  // Never cache authenticated API, Auth, or Storage writes from Supabase
+  if (url.hostname.endsWith('.supabase.co') || url.pathname.includes('/auth/')) {
+    return;
+  }
+
+  // Same-origin network-first with strict status validation
   if (url.origin === self.location.origin) {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          if (res && res.status === 200) {
+          if (res && res.status === 200 && res.type === 'basic') {
             const copy = res.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy)).catch(() => {});
           }
           return res;
         })
-        .catch(() => caches.match(req).then((cached) => cached || caches.match('./index.html')))
+        .catch(() =>
+          caches.match(req).then((cached) => cached || caches.match('./index.html'))
+        )
     );
   }
 });
