@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>KHEDUT SETU — ખેડૂત સેતુ | સીધું ખેતરથી બજાર</title>
+  <meta name="description" content="KHEDUT SETU — ખેડૂતો અને ખરીદારો માટેનું સીધું કૃષિ બજાર. અનાજ, ઘાસચારો, કઠોળ, તેલીબિયાં અને ખેતી ઉપજ સીધી વેચો અને ખરીદો." />
+  <meta name="theme-color" content="#15803d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="KHEDUT SETU" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315803d'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='34'%3E🌾%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            farm: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            },
+            harvest: {
+              50: '#fffbeb',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Noto Sans Gujarati', 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;
+      background-color: #f6f8f5;
+      -webkit-tap-highlight-color: transparent;
+      padding-bottom: 84px;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .modal-backdrop { background: rgba(15, 23, 42, 0.58); backdrop-filter: blur(3px); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade { animation: fadeIn 0.2s ease-out; }
+  </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-md space-y-2 pointer-events-none"></div>
+
+  <!-- Top App Bar -->
+  <header class="sticky top-0 z-40 bg-farm-800 text-white shadow-md">
+    <div class="max-w-6xl mx-auto px-3.5 py-2.5 flex items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="switchTab('market')">
+        <div class="w-9 h-9 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center text-xl shadow-inner">🌾</div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold leading-tight tracking-wide">KHEDUT SETU</h1>
+          <p class="text-[11px] text-farm-100 leading-tight" data-i18n="tagline">સીધું ખેતરથી બજાર</p>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1 text-sm font-medium">
+        <button onclick="switchTab('market')" data-nav="market" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_market">બજાર</button>
+        <button onclick="switchTab('requests')" data-nav="requests" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_requests">ખરીદી માંગ</button>
+        <button onclick="switchTab('sell')" data-nav="sell" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_sell">વેચાણ</button>
+        <button onclick="switchTab('alerts')" data-nav="alerts" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition relative">
+          <span data-i18n="nav_alerts">સૂચના</span>
+          <span id="desk-badge" class="hidden ml-1 bg-harvest-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+        </button>
+        <button onclick="switchTab('account')" data-nav="account" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_account">ખાતું</button>
+      </nav>
+
+      <!-- Language Selector -->
+      <div class="flex items-center gap-1 bg-farm-900/60 p-1 rounded-lg border border-white/15 text-xs font-semibold">
+        <button onclick="setLang('gu')" id="lang-gu" class="lang-btn px-2 py-1 rounded-md transition">ગુ</button>
+        <button onclick="setLang('hi')" id="lang-hi" class="lang-btn px-2 py-1 rounded-md transition">हिं</button>
+        <button onclick="setLang('en')" id="lang-en" class="lang-btn px-2 py-1 rounded-md transition">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Announcement Banner (from platform_settings) -->
+  <div id="announcement-banner" class="hidden bg-harvest-50 border-b border-amber-200 text-amber-900 text-xs sm:text-sm px-4 py-2 text-center font-medium"></div>
+
+  <!-- Main Content Container -->
+  <main class="max-w-6xl mx-auto px-3.5 py-4">
+
+    <!-- ==================== TAB 1: MARKET ==================== -->
+    <section id="tab-market" class="tab-view space-y-4 animate-fade">
+      <!-- Search & District Filter Card -->
+      <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200/80 space-y-3">
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+            <input id="search-input" type="text" oninput="debouncedLoadProducts()"
+              class="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white"
+              data-i18n-placeholder="search_placeholder" placeholder="પાક, અનાજ, ઘાસચારો, ગામ કે જિલ્લો શોધો..." />
+          </div>
+          <div class="flex gap-2">
+            <input id="district-filter" type="text" oninput="debouncedLoadProducts()"
+              class="flex-1 sm:w-44 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white"
+              data-i18n-placeholder="district_placeholder" placeholder="જિલ્લો (દા.ત. આણંદ)" />
+            <button onclick="resetFilters()" title="Reset" class="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition">
+              <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Categories Strip -->
+        <div id="categories-strip" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Subcategories Strip -->
+        <div id="subcategories-strip" class="hidden flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 border-t border-slate-100">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Quick Action CTA Banner -->
+      <div class="bg-gradient-to-r from-farm-700 to-farm-800 rounded-2xl p-4 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+        <div>
+          <h2 class="font-bold text-base sm:text-lg" data-i18n="hero_title">સીધી ખેતી ઉપજ વેચો અને ખરીદો</h2>
+          <p class="text-xs sm:text-sm text-farm-100 mt-0.5" data-i18n="hero_sub">કોઈ વચેટિયા વગર સીધો ખેડૂત અને ખરીદારનો સંપર્ક</p>
+        </div>
+        <div class="flex gap-2 w-full sm:w-auto">
+          <button onclick="switchTab('sell')" class="flex-1 sm:flex-none bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span data-i18n="btn_post_crop">ઉપજ મૂકો</span>
+          </button>
+          <button onclick="switchTab('requests')" class="flex-1 sm:flex-none bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-1.5">
+            <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+            <span data-i18n="btn_view_requests">ખરીદી માંગ</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Listings Header -->
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
+          <span data-i18n="latest_listings">તાજેતરની ઉપજ</span>
+          <span id="products-count" class="text-xs font-semibold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full">0</span>
+        </h3>
+        <button onclick="loadProducts()" class="text-xs font-semibold text-farm-700 hover:underline flex items-center gap-1">
+          <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+          <span data-i18n="refresh">રિફ્રેશ</span>
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: BUYER REQUESTS ==================== -->
+    <section id="tab-requests" class="tab-view hidden space-y-4 animate-fade">
+      <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 class="text-lg font-bold text-slate-900" data-i18n="req_title">ખરીદારોની માંગ (Buyer Requirements)</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="req_sub">ખરીદારોને કઈ ઉપજ જોઈએ છે તે જુઓ અથવા તમારી માંગ મૂકો.</p>
+        </div>
+        <button onclick="openRequestModal()" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-sm transition flex items-center justify-center gap-1.5">
+          <i data-lucide="plus" class="w-4 h-4"></i>
+          <span data-i18n="btn_add_req">નવી માંગ મૂકો</span>
+        </button>
+      </div>
+
+      <div id="requests-list" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: SELL / FARMER DASHBOARD ==================== -->
+    <section id="tab-sell" class="tab-view hidden space-y-4 animate-fade">
+      <!-- Guest Prompt -->
+      <div id="sell-guest-box" class="hidden bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 space-y-3">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-farm-50 text-farm-700 flex items-center justify-center text-3xl">🚜</div>
+        <h2 class="text-lg font-bold text-slate-900" data-i18n="sell_login_title">તમારી ખેતી ઉપજ વેચવા માટે લૉગિન કરો</h2>
+        <p class="text-sm text-slate-500 max-w-md mx-auto" data-i18n="sell_login_sub">મફત ખાતું બનાવો, ફોટો સાથે ઉપજ મૂકો અને સીધા ખરીદારોના કૉલ કે WhatsApp મેળવો.</p>
+        <button onclick="switchTab('account')" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow transition" data-i18n="btn_go_login">લૉગિન / નવું ખાતું</button>
+      </div>
+
+      <!-- Upgrade to Seller Prompt -->
+      <div id="sell-upgrade-box" class="hidden bg-amber-50 rounded-2xl p-5 border border-amber-200 space-y-3">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">🌱</span>
+          <div>
+            <h3 class="font-bold text-amber-900" data-i18n="upgrade_seller_title">વેચાણ શરૂ કરવા માટે ખેડૂત / વેચનાર મોડ ચાલુ કરો</h3>
+            <p class="text-xs sm:text-sm text-amber-800 mt-1" data-i18n="upgrade_seller_sub">હાલ તમારું ખાતું 'ખરીદાર (Buyer)' તરીકે સેટ છે. નીચેનું બટન દબાવીને 'વેચનાર (Seller)' બનો.</p>
+          </div>
+        </div>
+        <button onclick="activateSellerRole()" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition" data-i18n="btn_become_seller">ખેડૂત / વેચનાર બનો</button>
+      </div>
+
+      <!-- Seller Workspace -->
+      <div id="sell-workspace" class="hidden space-y-4">
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900" data-i18n="seller_hub">ખેડૂત વેચાણ ડેશબોર્ડ</h2>
+            <p class="text-xs text-slate-500" data-i18n="seller_hub_sub">તમારી ઉપજ મૂકો અને ખરીદારોની પૂછપરછ જુઓ</p>
+          </div>
+          <button onclick="openProductModal()" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span data-i18n="btn_add_product">નવી ઉપજ મૂકો</span>
+          </button>
+        </div>
+
+        <!-- Sub-tabs: My Listings / Received Inquiries -->
+        <div class="flex gap-2 bg-white p-1.5 rounded-xl border border-slate-200 w-full sm:w-fit">
+          <button onclick="switchSellerSubtab('listings')" id="subtab-listings" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-farm-700 text-white" data-i18n="my_listings">મારી ઉપજ</button>
+          <button onclick="switchSellerSubtab('inquiries')" id="subtab-inquiries" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-600 hover:bg-slate-100" data-i18n="received_inquiries">આવેલી પૂછપરછ</button>
+        </div>
+
+        <div id="my-listings-container" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
+        <div id="my-inquiries-container" class="hidden space-y-3"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: ALERTS & FAVORITES ==================== -->
+    <section id="tab-alerts" class="tab-view hidden space-y-4 animate-fade">
+      <div id="alerts-guest-box" class="hidden bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 space-y-3">
+        <div class="text-3xl">🔔</div>
+        <h2 class="font-bold text-slate-900" data-i18n="alerts_login">સૂચનાઓ અને સેવ કરેલી ઉપજ જોવા લૉગિન કરો</h2>
+        <button onclick="switchTab('account')" class="bg-farm-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl" data-i18n="btn_go_login">લૉગિન / નવું ખાતું</button>
+      </div>
+
+      <div id="alerts-workspace" class="hidden space-y-4">
+        <div class="flex gap-2 bg-white p-1.5 rounded-xl border border-slate-200 w-full sm:w-fit">
+          <button onclick="switchAlertSubtab('notifications')" id="subtab-notifs" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-farm-700 text-white" data-i18n="tab_notifs">સૂચનાઓ</button>
+          <button onclick="switchAlertSubtab('favorites')" id="subtab-favs" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-100" data-i18n="tab_favs">પસંદ કરેલ (Saved)</button>
+        </div>
+        <div id="notifications-list" class="space-y-2.5"></div>
+        <div id="favorites-list" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 5: ACCOUNT & ADMIN ==================== -->
+    <section id="tab-account" class="tab-view hidden space-y-4 animate-fade">
+      <!-- Auth Forms (When Logged Out) -->
+      <div id="auth-box" class="max-w-md mx-auto bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <div class="text-center">
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-farm-100 text-farm-700 flex items-center justify-center text-2xl mb-2">🌾</div>
+          <h2 class="text-xl font-bold text-slate-900">KHEDUT SETU</h2>
+          <p class="text-xs text-slate-500 mt-0.5" data-i18n="auth_sub">તમારા ખાતામાં લૉગિન કરો અથવા નવું મફત ખાતું બનાવો</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-1.5 bg-slate-100 p-1 rounded-xl text-sm font-semibold">
+          <button onclick="setAuthMode('login')" id="auth-tab-login" class="py-2 rounded-lg bg-white text-farm-800 shadow-sm" data-i18n="login">લૉગિન</button>
+          <button onclick="setAuthMode('register')" id="auth-tab-register" class="py-2 rounded-lg text-slate-600" data-i18n="register">નવું ખાતું</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="email">ઈમેલ (Email)</label>
+            <input id="login-email" type="email" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="name@example.com" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="password">પાસવર્ડ</label>
+            <input id="login-password" type="password" required minlength="6" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="••••••••" />
+          </div>
+          <button type="submit" id="login-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="login">લૉગિન</button>
+          <button type="button" onclick="handleForgotPassword()" class="w-full text-xs text-farm-700 font-semibold hover:underline pt-1" data-i18n="forgot_pwd">પાસવર્ડ ભૂલી ગયા?</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" onsubmit="handleRegister(event)" class="hidden space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name">પૂરું નામ *</label>
+            <input id="reg-name" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="દા.ત. રમેશભાઈ પટેલ" />
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile">મોબાઇલ નંબર *</label>
+              <input id="reg-mobile" type="tel" required pattern="[0-9+\-\s]{10,15}" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="9876543210" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="role_label">તમે કોણ છો? *</label>
+              <select id="reg-role" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:ring-2 focus:ring-farm-600 focus:outline-none">
+                <option value="seller">ખેડૂત / વેચનાર (Seller)</option>
+                <option value="buyer">ખરીદાર (Buyer)</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village">ગામ / શહેર</label>
+              <input id="reg-village" type="text" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="ખંભાત" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district">જિલ્લો</label>
+              <input id="reg-district" type="text" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="આણંદ" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="email">ઈમેલ (Email) *</label>
+            <input id="reg-email" type="email" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="name@example.com" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="password">પાસવર્ડ (ઓછામાં ઓછા 6 અક્ષર) *</label>
+            <input id="reg-password" type="password" required minlength="6" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="••••••••" />
+          </div>
+          <button type="submit" id="reg-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="create_account">નવું ખાતું બનાવો</button>
+        </form>
+      </div>
+
+      <!-- Logged-in Profile & Admin Section -->
+      <div id="profile-box" class="hidden space-y-4 max-w-3xl mx-auto">
+        <!-- User Header Card -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-farm-100 text-farm-800 font-bold text-lg flex items-center justify-center" id="prof-avatar">K</div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="font-bold text-slate-900" id="prof-display-name">User</h2>
+                <span id="prof-role-badge" class="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full bg-farm-100 text-farm-800">seller</span>
+              </div>
+              <p class="text-xs text-slate-500" id="prof-display-email"></p>
+            </div>
+          </div>
+          <button onclick="handleLogout()" class="px-3.5 py-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 font-semibold text-xs flex items-center gap-1.5 transition">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+            <span data-i18n="logout">લૉગઆઉટ</span>
+          </button>
+        </div>
+
+        <!-- Profile Form -->
+        <form onsubmit="handleProfileSave(event)" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3.5">
+          <h3 class="font-bold text-slate-900 text-base border-b border-slate-100 pb-2" data-i18n="profile_settings">પ્રોફાઇલ વિગતો</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name">પૂરું નામ</label>
+              <input id="p-name" type="text" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="business_name">ફાર્મ / દુકાનનું નામ</label>
+              <input id="p-business" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile">મોબાઇલ નંબર</label>
+              <input id="p-mobile" type="tel" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village">ગામ / શહેર</label>
+              <input id="p-village" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district">જિલ્લો</label>
+              <input id="p-district" type="text" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="state">રાજ્ય</label>
+              <input id="p-state" type="text" value="Gujarat" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="pincode">પિન કોડ</label>
+              <input id="p-pin" type="text" maxlength="6" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            </div>
+            <div class="flex flex-col justify-center gap-2 pt-2">
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
+                <input id="p-phone-ok" type="checkbox" class="w-4 h-4 accent-farm-700 rounded" />
+                <span data-i18n="allow_phone">ખરીદારો સીધો ફોન કરી શકે</span>
+              </label>
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
+                <input id="p-wa-ok" type="checkbox" class="w-4 h-4 accent-farm-700 rounded" />
+                <span data-i18n="allow_wa">ખરીદારો WhatsApp મેસેજ કરી શકે</span>
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition" data-i18n="save_profile">પ્રોફાઇલ સેવ કરો</button>
+        </form>
+
+        <!-- ADMIN PANEL (Only visible to role === 'admin') -->
+        <div id="admin-panel" class="hidden bg-white rounded-2xl p-5 shadow-sm border-2 border-amber-300 space-y-5">
+          <div class="flex items-center justify-between border-b border-amber-100 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🛡️</span>
+              <div>
+                <h3 class="font-bold text-slate-900">Admin Panel (એડમિન કંટ્રોલ)</h3>
+                <p class="text-xs text-slate-500">મંજૂરી બાકી ઉપજ અને જાહેરાતો સંભાળો</p>
+              </div>
+            </div>
+            <button onclick="loadAdminPending()" class="text-xs font-semibold text-farm-700 hover:underline">રિફ્રેશ</button>
+          </div>
+
+          <!-- Pending Products -->
+          <div>
+            <h4 class="font-bold text-sm text-slate-800 mb-2">મંજૂરી માટે બાકી ઉપજ (Pending Listings)</h4>
+            <div id="admin-pending-list" class="space-y-2.5"></div>
+          </div>
+
+          <!-- Broadcast Announcement -->
+          <div class="pt-3 border-t border-slate-100 space-y-2.5">
+            <h4 class="font-bold text-sm text-slate-800">બધા યુઝર્સને સૂચના મોકલો (Broadcast)</h4>
+            <input id="bc-title" type="text" placeholder="સૂચનાનું શીર્ષક (ઓછામાં ઓછા 3 અક્ષર)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+            <textarea id="bc-body" rows="2" placeholder="સંદેશો લખો..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm"></textarea>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="sendAdminBroadcast()" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition">બધાને મોકલો</button>
+              <button onclick="triggerExpiringAlerts()" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition">Expiring Alerts ચલાવો</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Footer Card -->
+        <div id="support-card" class="bg-farm-50 rounded-2xl p-4 border border-farm-200 text-xs text-farm-900 flex flex-wrap items-center justify-between gap-2">
+          <span>🌾 <strong>KHEDUT SETU</strong> — ગુજરાતના ખેડૂતોનું પોતાનું ડિજિટલ બજાર</span>
+          <span id="support-contact-text" class="font-medium"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== MOBILE BOTTOM NAVIGATION ==================== -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] safe-bottom">
+    <div class="grid grid-cols-5 h-16">
+      <button onclick="switchTab('market')" data-mnav="market" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-farm-700">
+        <i data-lucide="store" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold" data-i18n="nav_market">બજાર</span>
+      </button>
+      <button onclick="switchTab('requests')" data-mnav="requests" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
+        <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold" data-i18n="nav_requests">માંગ</span>
+      </button>
+      <button onclick="switchTab('sell')" data-mnav="sell" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
+        <div class="w-10 h-10 -mt-4 rounded-full bg-farm-700 text-white flex items-center justify-center shadow-md border-2 border-white">
+          <i data-lucide="plus" class="w-5 h-5"></i>
+        </div>
+        <span class="text-[10px] font-semibold" data-i18n="nav_sell">વેચાણ</span>
+      </button>
+      <button onclick="switchTab('alerts')" data-mnav="alerts" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500 relative">
+        <i data-lucide="bell" class="w-5 h-5"></i>
+        <span id="mob-badge" class="hidden absolute top-1.5 right-4 bg-red-500 text-white text-[9px] font-bold px-1.5 rounded-full">0</span>
+        <span class="text-[10px] font-semibold" data-i18n="nav_alerts">સૂચના</span>
+      </button>
+      <button onclick="switchTab('account')" data-mnav="account" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold" data-i18n="nav_account">ખાતું</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== MODAL: PRODUCT DETAIL ==================== -->
+  <div id="product-detail-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
+      <div class="sticky top-0 bg-white/95 backdrop-blur px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
+        <h3 id="dm-title" class="font-bold text-slate-900 text-base truncate pr-3">Product</h3>
+        <button onclick="closeModal('product-detail-modal')" class="p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="dm-body" class="p-4 space-y-4"></div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ADD PRODUCT ==================== -->
+  <div id="add-product-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
+      <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="modal_add_product">નવી ખેતી ઉપજ મૂકો</h3>
+        <button onclick="closeModal('add-product-modal')" class="p-1.5 rounded-full bg-slate-100 text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <form id="add-product-form" onsubmit="handleCreateProduct(event)" class="p-4 space-y-3.5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="category">કેટેગરી *</label>
+            <select id="np-cat" required onchange="populateSubcatSelect('np-cat', 'np-subcat')" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="subcategory">પેટા-કેટેગરી</label>
+            <select id="np-subcat" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="crop_title_gu">ઉપજનું નામ (ગુજરાતીમાં) *</label>
+          <input id="np-title-gu" type="text" required placeholder="દા.ત. ગુજરાત-17 ડાંગર (તાજો પાક)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="crop_title_en">અંગ્રેજી નામ (વૈકલ્પિક)</label>
+          <input id="np-title-en" type="text" placeholder="e.g. Gujarat-17 Fresh Paddy" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quantity">ઉપલબ્ધ જથ્થો *</label>
+            <input id="np-qty" type="number" step="any" min="0.1" required placeholder="50" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="unit">એકમ (Unit) *</label>
+            <select id="np-unit" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="kg">કિલો (kg)</option>
+              <option value="quintal" selected>ક્વિન્ટલ (quintal)</option>
+              <option value="ton">ટન (ton)</option>
+              <option value="mann">મણ (mann)</option>
+              <option value="bag">થેલી / બોરી (bag)</option>
+              <option value="bundle">પુળિયા / ભારી (bundle)</option>
+              <option value="piece">નંગ (piece)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="price">અપેક્ષિત ભાવ (₹) *</label>
+            <input id="np-price" type="number" step="any" min="1" required placeholder="2400" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div class="flex items-end pb-2">
+            <label class="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer">
+              <input id="np-neg" type="checkbox" checked class="w-4 h-4 accent-farm-700" />
+              <span data-i18n="negotiable">ભાવમાં વાતચીત શક્ય</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village">ગામ *</label>
+            <input id="np-village" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district">જિલ્લો *</label>
+            <input id="np-district" type="text" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="state">રાજ્ય *</label>
+            <input id="np-state" type="text" value="Gujarat" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quality">ગુણવત્તા (વૈકલ્પિક)</label>
+            <input id="np-quality" type="text" placeholder="Grade A / ઓર્ગેનિક" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="description">વધુ વિગત</label>
+          <textarea id="np-desc" rows="2" placeholder="પાકની ગુણવત્તા, ભેજ, પેકિંગ કે વાહન વ્યવસ્થા વિશે લખો..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm"></textarea>
+        </div>
+
+        <!-- Photo Upload -->
+        <div class="bg-farm-50 border border-dashed border-farm-500 rounded-xl p-3">
+          <label class="block text-xs font-bold text-farm-900 mb-1" data-i18n="upload_photo">ઉપજનો ફોટો અપલોડ કરો (મહત્તમ 5MB - JPG/PNG/WebP)</label>
+          <input id="np-photo" type="file" accept="image/jpeg,image/png,image/webp" class="w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-farm-700 file:text-white file:font-semibold" />
+        </div>
+
+        <button type="submit" id="np-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_product">ઉપજ સબમિટ કરો</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: ADD BUYER REQUEST ==================== -->
+  <div id="add-request-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
+      <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="modal_add_req">ખરીદીની માંગ મૂકો</h3>
+        <button onclick="closeModal('add-request-modal')" class="p-1.5 rounded-full bg-slate-100 text-slate-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <form id="add-request-form" onsubmit="handleCreateRequest(event)" class="p-4 space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="category">કેટેગરી</label>
+          <select id="nr-cat" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="req_product">કઈ ઉપજ જોઈએ છે? *</label>
+          <input id="nr-product" type="text" required placeholder="દા.ત. ડાંગરના પુળિયા અથવા સૂકા ઘઉં" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quantity">જરૂરી જથ્થો *</label>
+            <input id="nr-qty" type="number" step="any" min="0.1" required placeholder="100" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="unit">એકમ *</label>
+            <select id="nr-unit" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="kg">કિલો (kg)</option>
+              <option value="quintal" selected>ક્વિન્ટલ (quintal)</option>
+              <option value="ton">ટન (ton)</option>
+              <option value="mann">મણ (mann)</option>
+              <option value="bag">થેલી (bag)</option>
+              <option value="bundle">પુળિયા (bundle)</option>
+              <option value="piece">નંગ (piece)</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="target_price">અંદાજિત ભાવ (₹)</label>
+            <input id="nr-price" type="number" step="any" min="0" placeholder="2200" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="delivery_date">ક્યારે જોઈએ છે?</label>
+            <input id="nr-date" type="date" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="delivery_loc">ડિલિવરી સ્થળ *</label>
+            <input id="nr-loc" type="text" required placeholder="ખંભાત / આણંદ" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district">જિલ્લો *</label>
+            <input id="nr-district" type="text" required placeholder="આણંદ" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="contact_pref">સંપર્ક પદ્ધતિ</label>
+            <select id="nr-pref" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="whatsapp">WhatsApp</option>
+              <option value="phone">ફોન કૉલ (Phone)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile">સંપર્ક નંબર *</label>
+            <input id="nr-phone" type="tel" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quality_req">ગુણવત્તાની જરૂરિયાત</label>
+          <textarea id="nr-notes" rows="2" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm"></textarea>
+        </div>
+        <button type="submit" id="nr-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_req">માંગ પોસ્ટ કરો</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT APPLICATION ==================== -->
+  <script>
+    // 1. SUPABASE CONFIGURATION (Connected to KHEDUT SETU Project)
+    const SUPABASE_URL = 'https://oqldgdnqypykbddwtwvq.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_91m3LPrT1FwtGqBzkHWHxg_BesbqDTX';
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // 2. APP STATE
+    const state = {
+      lang: localStorage.getItem('ks_lang') || 'gu',
+      tab: 'market',
+      user: null,
+      profile: null,
+      categories: [],
+      selectedCategory: null,
+      selectedSubcategory: null,
+      products: [],
+      favorites: new Set(),
+      notifications: [],
+    };
+
+    // 3. TRILINGUAL DICTIONARY (GU / HI / EN)
+    const I18N = {
+      gu: {
+        tagline: 'સીધું ખેતરથી બજાર',
+        nav_market: 'બજાર',
+        nav_requests: 'ખરીદી માંગ',
+        nav_sell: 'વેચાણ',
+        nav_alerts: 'સૂચના',
+        nav_account: 'ખાતું',
+        search_placeholder: 'પાક, અનાજ, ઘાસચારો, ગામ કે જિલ્લો શોધો...',
+        district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
+        hero_title: 'સીધી ખેતી ઉપજ વેચો અને ખરીદો',
+        hero_sub: 'કોઈ વચેટિયા વગર સીધો ખેડૂત અને ખરીદારનો સંપર્ક',
+        btn_post_crop: 'ઉપજ મૂકો',
+        btn_view_requests: 'ખરીદી માંગ',
+        latest_listings: 'તાજેતરની ઉપજ',
+        refresh: 'રિફ્રેશ',
+        all_categories: 'બધી કેટેગરી',
+        no_products: 'હાલ કોઈ ઉપજ ઉપલબ્ધ નથી. પ્રથમ ઉપજ મૂકવા માટે "વેચાણ" ટેબ ખોલો!',
+        negotiable_tag: 'વાતચીત શક્ય',
+        req_title: 'ખરીદારોની માંગ (Buyer Requirements)',
+        req_sub: 'ખરીદારોને કઈ ઉપજ જોઈએ છે તે જુઓ અથવા તમારી માંગ મૂકો.',
+        btn_add_req: 'નવી માંગ મૂકો',
+        sell_login_title: 'તમારી ખેતી ઉપજ વેચવા માટે લૉગિન કરો',
+        sell_login_sub: 'મફત ખાતું બનાવો, ફોટો સાથે ઉપજ મૂકો અને સીધા ખરીદારોના કૉલ કે WhatsApp મેળવો.',
+        btn_go_login: 'લૉગિન / નવું ખાતું',
+        upgrade_seller_title: 'વેચાણ શરૂ કરવા માટે ખેડૂત / વેચનાર મોડ ચાલુ કરો',
+        upgrade_seller_sub: "હાલ તમારું ખાતું 'ખરીદાર (Buyer)' તરીકે સેટ છે. નીચેનું બટન દબાવીને 'વેચનાર (Seller)' બનો.",
+        btn_become_seller: 'ખેડૂત / વેચનાર બનો',
+        seller_hub: 'ખેડૂત વેચાણ ડેશબોર્ડ',
+        seller_hub_sub: 'તમારી ઉપજ મૂકો અને ખરીદારોની પૂછપરછ જુઓ',
+        btn_add_product: 'નવી ઉપજ મૂકો',
+        my_listings: 'મારી ઉપજ',
+        received_inquiries: 'આવેલી પૂછપરછ',
+        alerts_login: 'સૂચનાઓ અને સેવ કરેલી ઉપજ જોવા લૉગિન કરો',
+        tab_notifs: 'સૂચનાઓ',
+        tab_favs: 'પસંદ કરેલ (Saved)',
+        auth_sub: 'તમારા ખાતામાં લૉગિન કરો અથવા નવું મફત ખાતું બનાવો',
+        login: 'લૉગિન',
+        register: 'નવું ખાતું',
+        email: 'ઈમેલ (Email)',
+        password: 'પાસવર્ડ',
+        forgot_pwd: 'પાસવર્ડ ભૂલી ગયા?',
+        full_name: 'પૂરું નામ *',
+        mobile: 'મોબાઇલ નંબર *',
+        role_label: 'તમે કોણ છો? *',
+        village: 'ગામ / શહેર',
+        district: 'જિલ્લો',
+        state: 'રાજ્ય',
+        pincode: 'પિન કોડ',
+        create_account: 'નવું ખાતું બનાવો',
+        logout: 'લૉગઆઉટ',
+        profile_settings: 'પ્રોફાઇલ વિગતો',
+        business_name: 'ફાર્મ / દુકાનનું નામ',
+        allow_phone: 'ખરીદારો સીધો ફોન કરી શકે',
+        allow_wa: 'ખરીદારો WhatsApp મેસેજ કરી શકે',
+        save_profile: 'પ્રોફાઇલ સેવ કરો',
+        modal_add_product: 'નવી ખેતી ઉપજ મૂકો',
+        category: 'કેટેગરી *',
+        subcategory: 'પેટા-કેટેગરી',
+        crop_title_gu: 'ઉપજનું નામ (ગુજરાતીમાં) *',
+        crop_title_en: 'અંગ્રેજી નામ (વૈકલ્પિક)',
+        quantity: 'જથ્થો *',
+        unit: 'એકમ *',
+        price: 'અપેક્ષિત ભાવ (₹) *',
+        negotiable: 'ભાવમાં વાતચીત શક્ય',
+        quality: 'ગુણવત્તા (વૈકલ્પિક)',
+        description: 'વધુ વિગત',
+        upload_photo: 'ઉપજનો ફોટો અપલોડ કરો (મહત્તમ 5MB)',
+        submit_product: 'ઉપજ સબમિટ કરો',
+        modal_add_req: 'ખરીદીની માંગ મૂકો',
+        req_product: 'કઈ ઉપજ જોઈએ છે? *',
+        target_price: 'અંદાજિત ભાવ (₹)',
+        delivery_date: 'ક્યારે જોઈએ છે?',
+        delivery_loc: 'ડિલિવરી સ્થળ *',
+        contact_pref: 'સંપર્ક પદ્ધતિ',
+        quality_req: 'ગુણવત્તાની જરૂરિયાત',
+        submit_req: 'માંગ પોસ્ટ કરો',
+      },
+      hi: {
+        tagline: 'सीधे खेत से बाज़ार',
+        nav_market: 'बाज़ार',
+        nav_requests: 'खरीद मांग',
+        nav_sell: 'बेचें',
+        nav_alerts: 'सूचना',
+        nav_account: 'खाता',
+        search_placeholder: 'फसल, अनाज, चारा, गांव या जिला खोजें...',
+        district_placeholder: 'जिला (जैसे आनंद)',
+        hero_title: 'सीधे कृषि उपज बेचें और खरीदें',
+        hero_sub: 'बिना किसी बिचौलिए के सीधे किसान और खरीदार का संपर्क',
+        btn_post_crop: 'उपज डालें',
+        btn_view_requests: 'खरीद मांग',
+        latest_listings: 'ताज़ा उपज',
+        refresh: 'रिफ्रेश',
+        all_categories: 'सभी श्रेणियां',
+        no_products: 'अभी कोई उपज उपलब्ध नहीं है। पहली उपज डालने के लिए "बेचें" टैब खोलें!',
+        negotiable_tag: 'भाव पर बातचीत संभव',
+        req_title: 'खरीदारों की मांग (Buyer Requirements)',
+        req_sub: 'खरीदारों को क्या चाहिए देखें या अपनी मांग पोस्ट करें।',
+        btn_add_req: 'नई मांग डालें',
+        sell_login_title: 'अपनी फसल बेचने के लिए लॉगिन करें',
+        sell_login_sub: 'मुफ़्त खाता बनाएं, फोटो के साथ उपज डालें और सीधे कॉल या WhatsApp पाएं।',
+        btn_go_login: 'लॉगिन / नया खाता',
+        upgrade_seller_title: 'बिक्री शुरू करने के लिए किसान / विक्रेता मोड चालू करें',
+        upgrade_seller_sub: 'अभी आपका खाता खरीदार के रूप में सेट है। विक्रेता बनने के लिए नीचे दबाएं।',
+        btn_become_seller: 'किसान / विक्रेता बनें',
+        seller_hub: 'किसान बिक्री डैशबोर्ड',
+        seller_hub_sub: 'अपनी उपज डालें और खरीदारों की पूछताछ देखें',
+        btn_add_product: 'नई उपज डालें',
+        my_listings: 'मेरी उपज',
+        received_inquiries: 'आई हुई पूछताछ',
+        alerts_login: 'सूचनाएं और सेव की गई उपज देखने के लिए लॉगिन करें',
+        tab_notifs: 'सूचनाएं',
+        tab_favs: 'पसंदीदा (Saved)',
+        auth_sub: 'अपने खाते में लॉगिन करें या नया मुफ़्त खाता बनाएं',
+        login: 'लॉगिन',
+        register: 'नया खाता',
+        email: 'ईमेल (Email)',
+        password: 'पासवर्ड',
+        forgot_pwd: 'पासवर्ड भूल गए?',
+        full_name: 'पूरा नाम *',
+        mobile: 'मोबाइल नंबर *',
+        role_label: 'आप कौन हैं? *',
+        village: 'गांव / शहर',
+        district: 'जिला',
+        state: 'राज्य',
+        pincode: 'पिन कोड',
+        create_account: 'नया खाता बनाएं',
+        logout: 'लॉगआउट',
+        profile_settings: 'प्रोफ़ाइल विवरण',
+        business_name: 'फार्म / दुकान का नाम',
+        allow_phone: 'खरीदार सीधा कॉल कर सकें',
+        allow_wa: 'खरीदार WhatsApp मैसेज कर सकें',
+        save_profile: 'प्रोफ़ाइल सेव करें',
+        modal_add_product: 'नई कृषि उपज डालें',
+        category: 'श्रेणी *',
+        subcategory: 'उप-श्रेणी',
+        crop_title_gu: 'उपज का नाम (गुजराती/स्थानीय) *',
+        crop_title_en: 'अंग्रेज़ी नाम (वैकल्पिक)',
+        quantity: 'मात्रा *',
+        unit: 'इकाई *',
+        price: 'अपेक्षित भाव (₹) *',
+        negotiable: 'भाव पर बातचीत संभव',
+        quality: 'गुणवत्ता (वैकल्पिक)',
+        description: 'अधिक जानकारी',
+        upload_photo: 'उपज का फोटो अपलोड करें (अधिकतम 5MB)',
+        submit_product: 'उपज सबमिट करें',
+        modal_add_req: 'खरीद की मांग डालें',
+        req_product: 'कौन सी उपज चाहिए? *',
+        target_price: 'अनुमानित भाव (₹)',
+        delivery_date: 'कब चाहिए?',
+        delivery_loc: 'डिलीवरी स्थान *',
+        contact_pref: 'संपर्क तरीका',
+        quality_req: 'गुणवत्ता की आवश्यकता',
+        submit_req: 'मांग पोस्ट करें',
+      },
+      en: {
+        tagline: 'Direct Farm to Market',
+        nav_market: 'Market',
+        nav_requests: 'Requests',
+        nav_sell: 'Sell',
+        nav_alerts: 'Alerts',
+        nav_account: 'Account',
+        search_placeholder: 'Search crop, grains, fodder, village or district...',
+        district_placeholder: 'District (e.g. Anand)',
+        hero_title: 'Buy & Sell Farm Produce Directly',
+        hero_sub: 'Direct connection between farmers and buyers with zero middlemen',
+        btn_post_crop: 'Post Crop',
+        btn_view_requests: 'Buyer Requests',
+        latest_listings: 'Latest Produce',
+        refresh: 'Refresh',
+        all_categories: 'All Categories',
+        no_products: 'No approved listings yet. Go to the "Sell" tab to post the first crop!',
+        negotiable_tag: 'Negotiable',
+        req_title: 'Buyer Requirements',
+        req_sub: 'See what buyers need or post your own requirement.',
+        btn_add_req: 'Post Requirement',
+        sell_login_title: 'Login to Sell Your Farm Produce',
+        sell_login_sub: 'Create a free account, upload photos of your produce, and get direct calls & WhatsApp inquiries.',
+        btn_go_login: 'Login / Register',
+        upgrade_seller_title: 'Enable Farmer / Seller Mode to Post Crops',
+        upgrade_seller_sub: 'Your account is currently set as Buyer. Tap below to activate Seller access.',
+        btn_become_seller: 'Become a Seller',
+        seller_hub: 'Farmer Seller Dashboard',
+        seller_hub_sub: 'Manage your crop listings and respond to buyer inquiries',
+        btn_add_product: 'Add New Crop',
+        my_listings: 'My Listings',
+        received_inquiries: 'Inquiries',
+        alerts_login: 'Login to view notifications & saved items',
+        tab_notifs: 'Notifications',
+        tab_favs: 'Saved Items',
+        auth_sub: 'Login to your account or create a new free account',
+        login: 'Login',
+        register: 'Register',
+        email: 'Email',
+        password: 'Password',
+        forgot_pwd: 'Forgot password?',
+        full_name: 'Full Name *',
+        mobile: 'Mobile Number *',
+        role_label: 'Account Type *',
+        village: 'Village / City',
+        district: 'District',
+        state: 'State',
+        pincode: 'PIN Code',
+        create_account: 'Create Account',
+        logout: 'Logout',
+        profile_settings: 'Profile Settings',
+        business_name: 'Farm / Business Name',
+        allow_phone: 'Allow buyers to call me',
+        allow_wa: 'Allow buyers to WhatsApp me',
+        save_profile: 'Save Profile',
+        modal_add_product: 'Add New Farm Produce',
+        category: 'Category *',
+        subcategory: 'Subcategory',
+        crop_title_gu: 'Produce Title (Gujarati/Local) *',
+        crop_title_en: 'English Title (Optional)',
+        quantity: 'Quantity *',
+        unit: 'Unit *',
+        price: 'Expected Price (₹) *',
+        negotiable: 'Price Negotiable',
+        quality: 'Quality Grade (Optional)',
+        description: 'Additional Details',
+        upload_photo: 'Upload Crop Photo (Max 5MB)',
+        submit_product: 'Submit Listing',
+        modal_add_req: 'Post Buyer Requirement',
+        req_product: 'Produce Required *',
+        target_price: 'Target Price (₹)',
+        delivery_date: 'Required By Date',
+        delivery_loc: 'Delivery Location *',
+        contact_pref: 'Contact Method',
+        quality_req: 'Quality Requirements',
+        submit_req: 'Post Requirement',
+      }
+    };
+
+    const CAT_EMOJI = {
+      'grains': '🌾',
+      'straw-animal-feed': '🌿',
+      'pulses': '🫘',
+      'oilseeds': '🌻',
+      'fruits-vegetables': '🥬',
+      'fertilizers-seeds': '🌱',
+      'agricultural-equipment': '🚜',
+    };
+
+    function t(key) {
+      return (I18N[state.lang] && I18N[state.lang][key]) || I18N.gu[key] || key;
+    }
+
+    function pickLangField(obj, base) {
+      if (!obj) return '';
+      return obj[`${base}_${state.lang}`] || obj[`${base}_gu`] || obj[`${base}_en`] || obj[`${base}_hi`] || '';
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? '').replace(/[&<>"']/g, s => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[s]));
+    }
+
+    function getImgUrl(path) {
+      if (!path) return null;
+      if (path.startsWith('http://') || path.startsWith('https://')) return path;
+      const { data } = sb.storage.from('product-images').getPublicUrl(path);
+      return data?.publicUrl || null;
+    }
+
+    function showToast(msg, type = 'success') {
+      const el = document.createElement('div');
+      const bg = type === 'error' ? 'bg-red-600' : type === 'info' ? 'bg-slate-800' : 'bg-farm-700';
+      el.className = `${bg} text-white text-xs sm:text-sm font-semibold px-4 py-3 rounded-xl shadow-lg pointer-events-auto animate-fade flex items-center justify-between gap-2`;
+      el.innerHTML = `<span>${escapeHtml(msg)}</span>`;
+      const container = document.getElementById('toast-container');
+      container.appendChild(el);
+      setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3600);
+    }
+
+    function setLang(lang) {
+      state.lang = lang;
+      localStorage.setItem('ks_lang', lang);
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        b.className = 'lang-btn px-2 py-1 rounded-md transition text-farm-100 hover:text-white';
+      });
+      const activeBtn = document.getElementById(`lang-${lang}`);
+      if (activeBtn) activeBtn.className = 'lang-btn px-2 py-1 rounded-md transition bg-white text-farm-900 font-bold shadow-sm';
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.textContent = t(el.getAttribute('data-i18n'));
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
+      });
+      renderCategories();
+      renderProducts();
+    }
+
+    // 4. NAVIGATION
+    function switchTab(tab) {
+      state.tab = tab;
+      document.querySelectorAll('.tab-view').forEach(s => s.classList.add('hidden'));
+      const target = document.getElementById(`tab-${tab}`);
+      if (target) target.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-desk').forEach(b => {
+        const active = b.getAttribute('data-nav') === tab;
+        b.className = `nav-desk px-3 py-1.5 rounded-lg transition relative ${active ? 'bg-white/20 text-white font-bold' : 'text-farm-100 hover:bg-white/10'}`;
+      });
+      document.querySelectorAll('.mnav-btn').forEach(b => {
+        const active = b.getAttribute('data-mnav') === tab;
+        b.classList.toggle('text-farm-700', active);
+        b.classList.toggle('text-slate-500', !active);
+      });
+
+      if (tab === 'market') loadProducts();
+      if (tab === 'requests') loadBuyerRequests();
+      if (tab === 'sell') refreshSellTab();
+      if (tab === 'alerts') refreshAlertsTab();
+      if (tab === 'account') refreshAccountTab();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); lucide.createIcons(); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    // 5. INITIALIZATION & AUTH STATE
+    async function initApp() {
+      setLang(state.lang);
+      await loadPlatformSettings();
+      await loadCategories();
+
+      const { data: { session } } = await sb.auth.getSession();
+      await handleAuthSession(session);
+
+      sb.auth.onAuthStateChange(async (_event, newSession) => {
+        await handleAuthSession(newSession);
+      });
+
+      await loadProducts();
+      lucide.createIcons();
+    }
+
+    async function handleAuthSession(session) {
+      state.user = session?.user || null;
+      state.profile = null;
+      state.favorites.clear();
+
+      if (state.user) {
+        const { data: prof } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle();
+        state.profile = prof;
+        await loadFavoritesIds();
+        await loadNotifications();
+      } else {
+        updateNotifBadge(0);
+      }
+      refreshAccountTab();
+      if (state.tab === 'sell') refreshSellTab();
+      if (state.tab === 'alerts') refreshAlertsTab();
+      renderProducts();
+    }
+
+    // 6. PLATFORM SETTINGS
+    async function loadPlatformSettings() {
+      const { data } = await sb.from('platform_settings').select('key, value').eq('is_public', true);
+      if (!data) return;
+      data.forEach(row => {
+        if (row.key === 'announcement' && row.value?.enabled) {
+          const text = row.value[state.lang] || row.value.gu || row.value.en || '';
+          if (text) {
+            const b = document.getElementById('announcement-banner');
+            b.textContent = '📢 ' + text;
+            b.classList.remove('hidden');
+          }
+        }
+        if (row.key === 'support_contact' && row.value) {
+          const parts = [row.value.phone_display, row.value.email, row.value.city].filter(Boolean);
+          const el = document.getElementById('support-contact-text');
+          if (el) el.textContent = parts.join(' • ');
+        }
+      });
+    }
+
+    // 7. CATEGORIES
+    async function loadCategories() {
+      const { data, error } = await sb.from('categories').select('*').eq('is_active', true).order('sort_order', { ascending: true });
+      if (error) { console.error(error); return; }
+      state.categories = data || [];
+      renderCategories();
+      populateCategoryDropdowns();
+    }
+
+    function renderCategories() {
+      const mainCats = state.categories.filter(c => !c.parent_id);
+      const strip = document.getElementById('categories-strip');
+      let html = `<button onclick="selectCategory(null)" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border transition ${!state.selectedCategory ? 'bg-farm-700 text-white border-farm-700 shadow-sm' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">🌾 ${escapeHtml(t('all_categories'))}</button>`;
+      mainCats.forEach(c => {
+        const active = state.selectedCategory === c.id;
+        const emoji = CAT_EMOJI[c.slug] || '🌱';
+        html += `<button onclick="selectCategory('${c.id}')" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border transition ${active ? 'bg-farm-700 text-white border-farm-700 shadow-sm' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">${emoji} ${escapeHtml(pickLangField(c, 'name'))}</button>`;
+      });
+      strip.innerHTML = html;
+
+      const subStrip = document.getElementById('subcategories-strip');
+      if (state.selectedCategory) {
+        const subs = state.categories.filter(c => c.parent_id === state.selectedCategory);
+        if (subs.length > 0) {
+          subStrip.classList.remove('hidden');
+          subStrip.innerHTML = subs.map(s => {
+            const active = state.selectedSubcategory === s.id;
+            return `<button onclick="selectSubcategory('${s.id}')" class="shrink-0 px-3 py-1 rounded-full text-xs font-semibold border transition ${active ? 'bg-harvest-500 text-white border-harvest-500' : 'bg-white text-slate-600 border-slate-200 hover:border-farm-500'}">${escapeHtml(pickLangField(s, 'name'))}</button>`;
+          }).join('');
+        } else {
+          subStrip.classList.add('hidden');
+        }
+      } else {
+        subStrip.classList.add('hidden');
+      }
+    }
+
+    function selectCategory(id) {
+      state.selectedCategory = id;
+      state.selectedSubcategory = null;
+      renderCategories();
+      loadProducts();
+    }
+
+    function selectSubcategory(id) {
+      state.selectedSubcategory = state.selectedSubcategory === id ? null : id;
+      renderCategories();
+      loadProducts();
+    }
+
+    function populateCategoryDropdowns() {
+      const mainCats = state.categories.filter(c => !c.parent_id);
+      const opts = mainCats.map(c => `<option value="${c.id}">${escapeHtml(pickLangField(c, 'name'))}</option>`).join('');
+      const npCat = document.getElementById('np-cat');
+      const nrCat = document.getElementById('nr-cat');
+      if (npCat) {
+        npCat.innerHTML = `<option value="">-- પસંદ કરો --</option>` + opts;
+        populateSubcatSelect('np-cat', 'np-subcat');
+      }
+      if (nrCat) {
+        nrCat.innerHTML = `<option value="">-- કોઈપણ --</option>` + opts;
+      }
+    }
+
+    function populateSubcatSelect(catSelId, subSelId) {
+      const catId = document.getElementById(catSelId).value;
+      const subSel = document.getElementById(subSelId);
+      const subs = state.categories.filter(c => c.parent_id === catId);
+      subSel.innerHTML = `<option value="">-- પસંદ કરો --</option>` + subs.map(s => `<option value="${s.id}">${escapeHtml(pickLangField(s, 'name'))}</option>`).join('');
+    }
+
+    // 8. PRODUCTS MARKETPLACE
+    let searchTimer = null;
+    function debouncedLoadProducts() {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(loadProducts, 300);
+    }
+
+    function resetFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('district-filter').value = '';
+      state.selectedCategory = null;
+      state.selectedSubcategory = null;
+      renderCategories();
+      loadProducts();
+    }
+
+    async function loadProducts() {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = `<div class="col-span-full py-10 text-center text-slate-400 text-sm">લોડ થઈ રહ્યું છે...</div>`;
+
+      let q = sb.from('products')
+        .select('id, reference_code, seller_id, category_id, subcategory_id, title_gu, title_hi, title_en, description_gu, description_hi, description_en, image_paths, available_quantity, unit, expected_price, price_unit, is_negotiable, quality_grade, moisture_percent, packaging_details, village, district, state, pin_code, status, is_featured, views_count, expires_at, created_at')
+        .eq('status', 'approved')
+        .is('deleted_at', null)
+        .order('is_featured', { ascending: false })
+        .order('created_at', { ascending: false })
+        .limit(60);
+
+      if (state.selectedCategory) q = q.eq('category_id', state.selectedCategory);
+      if (state.selectedSubcategory) q = q.eq('subcategory_id', state.selectedSubcategory);
+
+      const dist = document.getElementById('district-filter').value.trim();
+      if (dist) q = q.ilike('district', `%${dist}%`);
+
+      const { data, error } = await q;
+      if (error) {
+        grid.innerHTML = `<div class="col-span-full bg-red-50 text-red-700 p-4 rounded-xl text-sm">Error: ${escapeHtml(error.message)}</div>`;
+        return;
+      }
+
+      const term = document.getElementById('search-input').value.trim().toLowerCase();
+      let list = data || [];
+      if (term) {
+        list = list.filter(p =>
+          (p.title_gu || '').toLowerCase().includes(term) ||
+          (p.title_hi || '').toLowerCase().includes(term) ||
+          (p.title_en || '').toLowerCase().includes(term) ||
+          (p.village || '').toLowerCase().includes(term) ||
+          (p.district || '').toLowerCase().includes(term)
+        );
+      }
+
+      state.products = list;
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('products-grid');
+      document.getElementById('products-count').textContent = state.products.length;
+
+      if (!state.products.length) {
+        grid.innerHTML = `
+          <div class="col-span-full bg-white rounded-2xl p-8 text-center border border-slate-200 space-y-2">
+            <div class="text-4xl">🌾</div>
+            <p class="text-sm text-slate-600 font-medium">${escapeHtml(t('no_products'))}</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = state.products.map(p => productCardHtml(p)).join('');
+      lucide.createIcons();
+    }
+
+    function productCardHtml(p) {
+      const title = pickLangField(p, 'title') || 'ખેતી ઉપજ';
+      const cat = state.categories.find(c => c.id === p.category_id);
+      const emoji = cat ? (CAT_EMOJI[cat.slug] || '🌾') : '🌾';
+      const imgPath = Array.isArray(p.image_paths) && p.image_paths.length ? getImgUrl(p.image_paths[0]) : null;
+      const isFav = state.favorites.has(p.id);
+
+      return `
+        <div onclick="openProductDetail('${p.id}')" class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-slate-200/80 transition cursor-pointer flex flex-col">
+          <div class="relative h-44 bg-farm-50 flex items-center justify-center overflow-hidden">
+            ${imgPath
+              ? `<img src="${escapeHtml(imgPath)}" alt="${escapeHtml(title)}" class="w-full h-full object-cover" loading="lazy" />`
+              : `<div class="text-5xl opacity-80">${emoji}</div>`
+            }
+            ${p.is_negotiable ? `<span class="absolute top-2.5 left-2.5 bg-white/90 text-farm-800 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">${escapeHtml(t('negotiable_tag'))}</span>` : ''}
+            <button onclick="event.stopPropagation(); toggleFavorite('${p.id}')" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-sm ${isFav ? 'text-red-500' : 'text-slate-400'}">
+              <i data-lucide="heart" class="w-4 h-4 ${isFav ? 'fill-red-500' : ''}"></i>
+            </button>
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-between space-y-2.5">
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base line-clamp-2">${escapeHtml(title)}</h4>
+              </div>
+              <p class="text-xs text-slate-500 mt-1 flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-farm-600 shrink-0"></i>
+                <span class="truncate">${escapeHtml([p.village, p.district].filter(Boolean).join(', '))}</span>
+              </p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 flex items-end justify-between">
+              <div>
+                <div class="text-lg font-extrabold text-farm-800">₹${Number(p.expected_price).toLocaleString('en-IN')} <span class="text-xs font-medium text-slate-500">/ ${escapeHtml(p.price_unit || p.unit)}</span></div>
+                <div class="text-xs font-semibold text-slate-600">${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)}</div>
+              </div>
+              <span class="text-[11px] text-slate-400 flex items-center gap-1">
+                <i data-lucide="eye" class="w-3.5 h-3.5"></i> ${p.views_count || 0}
+              </span>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    async function openProductDetail(productId) {
+      const p = state.products.find(x => x.id === productId) || (await sb.from('products').select('*').eq('id', productId).maybeSingle()).data;
+      if (!p) return;
+
+      // Increment view count silently
+      sb.rpc('increment_product_views', { p_product_id: p.id }).then(() => {});
+
+      const title = pickLangField(p, 'title') || 'ખેતી ઉપજ';
+      const desc = pickLangField(p, 'description') || '';
+      const imgPath = Array.isArray(p.image_paths) && p.image_paths.length ? getImgUrl(p.image_paths[0]) : null;
+      document.getElementById('dm-title').textContent = title;
+
+      // Fetch seller public profile & private contact if logged in
+      const { data: sellerProf } = await sb.from('public_seller_profiles').select('*').eq('id', p.seller_id).maybeSingle();
+      let contactInfo = null;
+      if (state.user) {
+        const { data: cData } = await sb.rpc('get_product_seller_contact', { p_product_id: p.id });
+        if (Array.isArray(cData) && cData.length) contactInfo = cData[0];
+      }
+
+      const cleanPhone = contactInfo?.contact_number ? contactInfo.contact_number.replace(/[^0-9]/g, '') : '';
+      const waPhone = cleanPhone.length === 10 ? '91' + cleanPhone : cleanPhone;
+
+      document.getElementById('dm-body').innerHTML = `
+        ${imgPath ? `<img src="${escapeHtml(imgPath)}" class="w-full h-56 object-cover rounded-2xl border border-slate-100" />` : ''}
+        <div class="flex items-center justify-between bg-farm-50 p-3.5 rounded-2xl border border-farm-100">
+          <div>
+            <div class="text-2xl font-extrabold text-farm-800">₹${Number(p.expected_price).toLocaleString('en-IN')} <span class="text-xs font-medium text-slate-600">/ ${escapeHtml(p.price_unit || p.unit)}</span></div>
+            <div class="text-xs font-semibold text-farm-700 mt-0.5">ઉપલબ્ધ જથ્થો: ${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)} ${p.is_negotiable ? '• ભાવમાં વાતચીત શક્ય' : ''}</div>
+          </div>
+          ${p.reference_code ? `<span class="text-[11px] font-mono bg-white px-2 py-1 rounded-lg border border-farm-200 text-slate-600">${escapeHtml(p.reference_code)}</span>` : ''}
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="bg-slate-50 p-2.5 rounded-xl"><span class="text-slate-400 block">ગામ / જિલ્લો</span><strong>${escapeHtml([p.village, p.district, p.state].filter(Boolean).join(', '))}</strong></div>
+          <div class="bg-slate-50 p-2.5 rounded-xl"><span class="text-slate-400 block">ગુણવત્તા</span><strong>${escapeHtml(p.quality_grade || 'સ્ટાન્ડર્ડ')}</strong></div>
+        </div>
+
+        ${desc ? `<div class="text-sm text-slate-700 bg-slate-50 p-3.5 rounded-xl leading-relaxed">${escapeHtml(desc)}</div>` : ''}
+
+        <!-- Seller Card -->
+        <div class="border border-slate-200 rounded-2xl p-3.5 space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-xs text-slate-400">ખેડૂત / વેચનાર</div>
+              <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                ${escapeHtml(sellerProf?.full_name || 'KHEDUT SETU Seller')}
+                ${sellerProf?.is_verified ? `<span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">✓ Verified</span>` : ''}
+              </div>
+              ${sellerProf?.business_name ? `<div class="text-xs text-slate-500">${escapeHtml(sellerProf.business_name)}</div>` : ''}
+            </div>
+          </div>
+
+          ${state.user ? `
+            <div class="flex gap-2">
+              ${contactInfo?.allow_phone_contact && cleanPhone ? `
+                <a href="tel:${cleanPhone}" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white font-bold text-xs sm:text-sm py-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm">
+                  <i data-lucide="phone" class="w-4 h-4"></i> કૉલ કરો
+                </a>` : ''}
+              ${contactInfo?.allow_whatsapp_contact && waPhone ? `
+                <a href="https://wa.me/${waPhone}?text=${encodeURIComponent('નમસ્તે, KHEDUT SETU પર તમારી ઉપજ "' + title + '" વિશે જાણવું છે.')}" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm py-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp
+                </a>` : ''}
+            </div>
+            ${p.seller_id !== state.user.id ? `
+              <form onsubmit="handleSendInquiry(event, '${p.id}', '${p.seller_id}')" class="pt-3 border-t border-slate-100 space-y-2.5">
+                <div class="text-xs font-bold text-slate-700">સીધી પૂછપરછ મોકલો (Send Inquiry)</div>
+                <div class="grid grid-cols-2 gap-2">
+                  <input id="inq-qty" type="number" step="any" min="0.1" placeholder="જરૂરી જથ્થો (${escapeHtml(p.unit)})" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+                  <select id="inq-method" class="px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="phone">Phone Call</option>
+                  </select>
+                </div>
+                <textarea id="inq-msg" required rows="2" placeholder="તમારો સંદેશો લખો (ભાવ, ડિલિવરી વગેરે)..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs"></textarea>
+                <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2.5 rounded-xl">પૂછપરછ મોકલો</button>
+              </form>` : ''}
+          ` : `
+            <button onclick="closeModal('product-detail-modal'); switchTab('account')" class="w-full bg-farm-700 text-white font-bold text-xs py-2.5 rounded-xl">ખેડૂતનો મોબાઇલ નંબર જોવા અને પૂછપરછ કરવા લૉગિન કરો</button>
+          `}
+        </div>
+      `;
+      openModal('product-detail-modal');
+    }
+
+    async function handleSendInquiry(e, productId, sellerId) {
+      e.preventDefault();
+      if (!state.user) return;
+      const qtyVal = document.getElementById('inq-qty').value;
+      const payload = {
+        product_id: productId,
+        seller_id: sellerId,
+        buyer_id: state.user.id,
+        message: document.getElementById('inq-msg').value.trim(),
+        requested_quantity: qtyVal ? Number(qtyVal) : null,
+        contact_method: document.getElementById('inq-method').value,
+      };
+      const { error } = await sb.from('inquiries').insert(payload);
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast('તમારી પૂછપરછ ખેડૂતને મોકલી દેવાઈ છે!');
+      closeModal('product-detail-modal');
+    }
+
+    // 9. FAVORITES
+    async function loadFavoritesIds() {
+      if (!state.user) return;
+      const { data } = await sb.from('favorites').select('product_id').eq('user_id', state.user.id);
+      state.favorites = new Set((data || []).map(r => r.product_id));
+    }
+
+    async function toggleFavorite(productId) {
+      if (!state.user) {
+        showToast('પસંદ કરવા માટે પહેલા લૉગિન કરો', 'info');
+        switchTab('account');
+        return;
+      }
+      if (state.favorites.has(productId)) {
+        const { error } = await sb.from('favorites').delete().eq('user_id', state.user.id).eq('product_id', productId);
+        if (!error) { state.favorites.delete(productId); showToast('પસંદગીમાંથી દૂર કર્યું', 'info'); }
+      } else {
+        const { error } = await sb.from('favorites').insert({ user_id: state.user.id, product_id: productId });
+        if (!error) { state.favorites.add(productId); showToast('પસંદ કરેલ યાદીમાં સેવ કર્યું'); }
+      }
+      renderProducts();
+    }
+
+    // 10. BUYER REQUESTS
+    async function loadBuyerRequests() {
+      const container = document.getElementById('requests-list');
+      container.innerHTML = `<div class="col-span-full py-10 text-center text-slate-400 text-sm">લોડ થઈ રહ્યું છે...</div>`;
+      const { data, error } = await sb.from('public_buyer_requests').select('*').order('created_at', { ascending: false }).limit(50);
+      if (error) {
+        container.innerHTML = `<div class="col-span-full bg-red-50 text-red-700 p-4 rounded-xl text-sm">${escapeHtml(error.message)}</div>`;
+        return;
+      }
+      if (!data || !data.length) {
+        container.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border border-slate-200 text-sm text-slate-500">હાલ કોઈ ખરીદીની માંગ નથી. પ્રથમ માંગ મૂકવા ઉપરનું બટન દબાવો!</div>`;
+        return;
+      }
+      container.innerHTML = data.map(r => {
+        const cleanPhone = r.contact_number ? r.contact_number.replace(/[^0-9]/g, '') : '';
+        const waPhone = cleanPhone.length === 10 ? '91' + cleanPhone : cleanPhone;
+        return `
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2.5 flex flex-col justify-between">
+            <div class="space-y-1.5">
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="font-bold text-slate-900 text-base">${escapeHtml(r.product_required)}</h4>
+                <span class="shrink-0 bg-farm-100 text-farm-800 text-xs font-bold px-2.5 py-1 rounded-full">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}</span>
+              </div>
+              <p class="text-xs text-slate-500 flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-farm-600"></i>
+                ${escapeHtml([r.delivery_location, r.district, r.state].filter(Boolean).join(', '))}
+              </p>
+              ${r.target_price ? `<div class="text-xs font-bold text-harvest-600">અંદાજિત ભાવ: ₹${Number(r.target_price).toLocaleString('en-IN')} / ${escapeHtml(r.price_unit || r.unit)}</div>` : ''}
+              ${r.quality_requirements ? `<p class="text-xs text-slate-600 bg-slate-50 p-2 rounded-lg">${escapeHtml(r.quality_requirements)}</p>` : ''}
+            </div>
+            <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div class="text-xs text-slate-500">ખરીદાર: <strong class="text-slate-800">${escapeHtml(r.buyer_name || 'Buyer')}</strong></div>
+              ${state.user && cleanPhone ? `
+                <div class="flex gap-1.5">
+                  <a href="tel:${cleanPhone}" class="px-3 py-1.5 rounded-lg bg-farm-700 text-white text-xs font-bold">કૉલ</a>
+                  <a href="https://wa.me/${waPhone}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold">WhatsApp</a>
+                </div>
+              ` : !state.user ? `<button onclick="switchTab('account')" class="text-xs font-bold text-farm-700 hover:underline">સંપર્ક માટે લૉગિન કરો</button>` : ''}
+            </div>
+          </div>`;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    function openRequestModal() {
+      if (!state.user) {
+        showToast('માંગ મૂકવા માટે પહેલા લૉગિન કરો', 'info');
+        switchTab('account');
+        return;
+      }
+      if (state.profile) {
+        document.getElementById('nr-district').value = state.profile.district || '';
+        document.getElementById('nr-loc').value = state.profile.village_city || '';
+        document.getElementById('nr-phone').value = state.profile.mobile_number || '';
+      }
+      openModal('add-request-modal');
+    }
+
+    async function handleCreateRequest(e) {
+      e.preventDefault();
+      const btn = document.getElementById('nr-submit-btn');
+      btn.disabled = true; btn.textContent = 'પોસ્ટ થઈ રહ્યું છે...';
+      try {
+        const unit = document.getElementById('nr-unit').value;
+        const catVal = document.getElementById('nr-cat').value;
+        const priceVal = document.getElementById('nr-price').value;
+        const dateVal = document.getElementById('nr-date').value;
+        const payload = {
+          buyer_id: state.user.id,
+          category_id: catVal || null,
+          product_required: document.getElementById('nr-product').value.trim(),
+          required_quantity: Number(document.getElementById('nr-qty').value),
+          unit: unit,
+          target_price: priceVal ? Number(priceVal) : null,
+          price_unit: unit,
+          quality_requirements: document.getElementById('nr-notes').value.trim() || null,
+          delivery_location: document.getElementById('nr-loc').value.trim(),
+          district: document.getElementById('nr-district').value.trim(),
+          state: state.profile?.state || 'Gujarat',
+          required_delivery_date: dateVal || null,
+          buyer_name: state.profile?.full_name || state.user.email.split('@')[0],
+          contact_preference: document.getElementById('nr-pref').value,
+          contact_number: document.getElementById('nr-phone').value.trim(),
+        };
+        const { error } = await sb.from('buyer_requests').insert(payload);
+        if (error) throw error;
+        showToast('તમારી ખરીદીની માંગ સફળતાપૂર્વક પોસ્ટ થઈ ગઈ!');
+        e.target.reset();
+        closeModal('add-request-modal');
+        loadBuyerRequests();
+      } catch (err) {
+        showToast(err.message || 'Error posting requirement', 'error');
+      } finally {
+        btn.disabled = false; btn.textContent = t('submit_req');
+      }
+    }
+
+    // 11. SELL TAB & PRODUCT CREATION
+    async function refreshSellTab() {
+      const guest = document.getElementById('sell-guest-box');
+      const upgrade = document.getElementById('sell-upgrade-box');
+      const work = document.getElementById('sell-workspace');
+      guest.classList.add('hidden'); upgrade.classList.add('hidden'); work.classList.add('hidden');
+
+      if (!state.user) { guest.classList.remove('hidden'); return; }
+      const role = state.profile?.role || 'buyer';
+      if (role !== 'seller' && role !== 'admin') { upgrade.classList.remove('hidden'); return; }
+
+      work.classList.remove('hidden');
+      await loadMyListings();
+      await loadSellerInquiries();
+    }
+
+    async function activateSellerRole() {
+      if (!state.user) return;
+      const { error } = await sb.from('profiles').update({ role: 'seller' }).eq('id', state.user.id);
+      if (error) { showToast(error.message, 'error'); return; }
+      const { data: prof } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle();
+      state.profile = prof;
+      showToast('અભિનંદન! હવે તમે ઉપજ વેચાણ માટે મૂકી શકો છો.');
+      refreshSellTab();
+      refreshAccountTab();
+    }
+
+    function switchSellerSubtab(which) {
+      const isL = which === 'listings';
+      document.getElementById('my-listings-container').classList.toggle('hidden', !isL);
+      document.getElementById('my-inquiries-container').classList.toggle('hidden', isL);
+      document.getElementById('subtab-listings').className = `flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition ${isL ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-slate-100'}`;
+      document.getElementById('subtab-inquiries').className = `flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition ${!isL ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-slate-100'}`;
+    }
+
+    function openProductModal() {
+      if (state.profile) {
+        document.getElementById('np-village').value = state.profile.village_city || '';
+        document.getElementById('np-district').value = state.profile.district || '';
+        document.getElementById('np-state').value = state.profile.state || 'Gujarat';
+      }
+      openModal('add-product-modal');
+    }
+
+    async function handleCreateProduct(e) {
+      e.preventDefault();
+      const btn = document.getElementById('np-submit-btn');
+      btn.disabled = true; btn.textContent = 'અપલોડ થઈ રહ્યું છે...';
+      try {
+        let imagePaths = [];
+        const fileInput = document.getElementById('np-photo');
+        if (fileInput.files && fileInput.files[0]) {
+          const file = fileInput.files[0];
+          if (file.size > 5 * 1024 * 1024) throw new Error('ફોટો 5MB થી નાનો હોવો જોઈએ.');
+          const ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '');
+          const filePath = `${state.user.id}/${Date.now()}.${ext}`;
+          const { error: upErr } = await sb.storage.from('product-images').upload(filePath, file, { upsert: false });
+          if (upErr) throw upErr;
+          imagePaths = [filePath];
+        }
+
+        const unit = document.getElementById('np-unit').value;
+        const titleGu = document.getElementById('np-title-gu').value.trim();
+        const titleEn = document.getElementById('np-title-en').value.trim() || titleGu;
+        const subVal = document.getElementById('np-subcat').value;
+        const desc = document.getElementById('np-desc').value.trim();
+        const expiry = new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0];
+
+        const payload = {
+          seller_id: state.user.id,
+          category_id: document.getElementById('np-cat').value,
+          subcategory_id: subVal || null,
+          title_gu: titleGu,
+          title_hi: titleGu,
+          title_en: titleEn,
+          description_gu: desc || null,
+          description_en: desc || null,
+          image_paths: imagePaths,
+          available_quantity: Number(document.getElementById('np-qty').value),
+          unit: unit,
+          expected_price: Number(document.getElementById('np-price').value),
+          price_unit: unit,
+          is_negotiable: document.getElementById('np-neg').checked,
+          quality_grade: document.getElementById('np-quality').value.trim() || null,
+          village: document.getElementById('np-village').value.trim(),
+          district: document.getElementById('np-district').value.trim(),
+          state: document.getElementById('np-state').value.trim() || 'Gujarat',
+          expires_at: expiry,
+        };
+
+        const { error } = await sb.from('products').insert(payload);
+        if (error) throw error;
+
+        showToast('ઉપજ સફળતાપૂર્વક સબમિટ થઈ ગઈ! એડમિન મંજૂરી બાદ બજારમાં દેખાશે.');
+        e.target.reset();
+        closeModal('add-product-modal');
+        await loadMyListings();
+        await loadProducts();
+      } catch (err) {
+        showToast(err.message || 'Error adding product', 'error');
+      } finally {
+        btn.disabled = false; btn.textContent = t('submit_product');
+      }
+    }
+
+    async function loadMyListings() {
+      const box = document.getElementById('my-listings-container');
+      const { data, error } = await sb.from('products').select('*').eq('seller_id', state.user.id).is('deleted_at', null).order('created_at', { ascending: false });
+      if (error) { box.innerHTML = `<div class="text-red-600 text-sm">${escapeHtml(error.message)}</div>`; return; }
+      if (!data || !data.length) {
+        box.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">તમે હજુ સુધી કોઈ ઉપજ મૂકી નથી. ઉપર "નવી ઉપજ મૂકો" પર ક્લિક કરો.</div>`;
+        return;
+      }
+      box.innerHTML = data.map(p => {
+        const badgeColor = p.status === 'approved' ? 'bg-green-100 text-green-800' : p.status === 'rejected' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-800';
+        return `
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${badgeColor}">${escapeHtml(p.status)}</span>
+                <span class="text-[11px] text-slate-400 font-mono">${escapeHtml(p.reference_code || '')}</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-sm">${escapeHtml(pickLangField(p, 'title'))}</h4>
+              <div class="text-xs font-bold text-farm-700">₹${Number(p.expected_price).toLocaleString('en-IN')} / ${escapeHtml(p.price_unit || p.unit)} • ${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)}</div>
+              <div class="text-[11px] text-slate-500">${escapeHtml([p.village, p.district].filter(Boolean).join(', '))} • 👁️ ${p.views_count || 0}</div>
+            </div>
+            <button onclick="deleteMyProduct('${p.id}')" class="self-start p-2 rounded-xl text-red-500 hover:bg-red-50" title="Delete">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>`;
+      }).join('');
+      lucide.createIcons();
+    }
+
+    async function deleteMyProduct(id) {
+      if (!confirm('શું તમે આ ઉપજ દૂર કરવા માંગો છો?')) return;
+      const { error } = await sb.from('products').delete().eq('id', id);
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast('ઉપજ દૂર કરવામાં આવી', 'info');
+      loadMyListings();
+      loadProducts();
+    }
+
+    async function loadSellerInquiries() {
+      const box = document.getElementById('my-inquiries-container');
+      const { data, error } = await sb.rpc('get_seller_inquiries');
+      if (error) { box.innerHTML = `<div class="text-red-600 text-sm">${escapeHtml(error.message)}</div>`; return; }
+      if (!data || !data.length) {
+        box.innerHTML = `<div class="bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">હજુ સુધી કોઈ પૂછપરછ આવી નથી.</div>`;
+        return;
+      }
+      box.innerHTML = data.map(inq => {
+        const cleanPhone = (inq.buyer_mobile || '').replace(/[^0-9]/g, '');
+        const waPhone = cleanPhone.length === 10 ? '91' + cleanPhone : cleanPhone;
+        return `
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <strong class="text-sm text-slate-900">${escapeHtml(inq.product_title_gu || inq.product_title_en)}</strong>
+              <span class="text-[11px] text-slate-400">${new Date(inq.created_at).toLocaleDateString('en-IN')}</span>
+            </div>
+            <p class="text-xs text-slate-700 bg-slate-50 p-2.5 rounded-xl">${escapeHtml(inq.message)}</p>
+            <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div>ખરીદાર: <strong>${escapeHtml(inq.buyer_name || 'Buyer')}</strong> ${inq.buyer_location ? `(${escapeHtml(inq.buyer_location)})` : ''} ${inq.requested_quantity ? `• જથ્થો: ${escapeHtml(inq.requested_quantity)}` : ''}</div>
+              ${cleanPhone ? `
+                <div class="flex gap-1.5">
+                  <a href="tel:${cleanPhone}" class="px-3 py-1.5 rounded-lg bg-farm-700 text-white font-bold">કૉલ</a>
+                  <a href="https://wa.me/${waPhone}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold">WhatsApp</a>
+                </div>` : ''}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    // 12. ALERTS & SAVED
+    async function loadNotifications() {
+      if (!state.user) return;
+      const { data } = await sb.from('notifications').select('*').eq('user_id', state.user.id).order('created_at', { ascending: false }).limit(30);
+      state.notifications = data || [];
+      const unread = state.notifications.filter(n => !n.is_read).length;
+      updateNotifBadge(unread);
+    }
+
+    function updateNotifBadge(count) {
+      ['desk-badge', 'mob-badge'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (count > 0) { el.textContent = count; el.classList.remove('hidden'); }
+        else el.classList.add('hidden');
+      });
+    }
+
+    async function refreshAlertsTab() {
+      const guest = document.getElementById('alerts-guest-box');
+      const work = document.getElementById('alerts-workspace');
+      if (!state.user) { guest.classList.remove('hidden'); work.classList.add('hidden'); return; }
+      guest.classList.add('hidden'); work.classList.remove('hidden');
+      await loadNotifications();
+      renderNotifications();
+      await loadFavoriteProducts();
+    }
+
+    function switchAlertSubtab(which) {
+      const isN = which === 'notifications';
+      document.getElementById('notifications-list').classList.toggle('hidden', !isN);
+      document.getElementById('favorites-list').classList.toggle('hidden', isN);
+      document.getElementById('subtab-notifs').className = `flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold ${isN ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-slate-100'}`;
+      document.getElementById('subtab-favs').className = `flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold ${!isN ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-slate-100'}`;
+    }
+
+    function renderNotifications() {
+      const box = document.getElementById('notifications-list');
+      if (!state.notifications.length) {
+        box.innerHTML = `<div class="bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">હાલ કોઈ નવી સૂચના નથી.</div>`;
+        return;
+      }
+      box.innerHTML = state.notifications.map(n => `
+        <div onclick="markNotifRead('${n.id}')" class="bg-white rounded-2xl p-3.5 border ${n.is_read ? 'border-slate-200 opacity-75' : 'border-farm-500 bg-farm-50/40'} shadow-sm cursor-pointer">
+          <div class="flex items-center justify-between gap-2">
+            <strong class="text-sm text-slate-900">${!n.is_read ? '🟢 ' : ''}${escapeHtml(n.title)}</strong>
+            <span class="text-[10px] text-slate-400">${new Date(n.created_at).toLocaleDateString('en-IN')}</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-1">${escapeHtml(n.body)}</p>
+        </div>`).join('');
+    }
+
+    async function markNotifRead(id) {
+      await sb.from('notifications').update({ is_read: true }).eq('id', id);
+      await loadNotifications();
+      renderNotifications();
+    }
+
+    async function loadFavoriteProducts() {
+      const box = document.getElementById('favorites-list');
+      const ids = Array.from(state.favorites);
+      if (!ids.length) {
+        box.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-6 text-center border border-slate-200 text-sm text-slate-500">તમે હજુ કોઈ ઉપજ પસંદ (Save) કરી નથી.</div>`;
+        return;
+      }
+      const { data } = await sb.from('products').select('*').in('id', ids);
+      box.innerHTML = (data || []).map(p => productCardHtml(p)).join('');
+      lucide.createIcons();
+    }
+
+    // 13. ACCOUNT, AUTH & ADMIN
+    function setAuthMode(mode) {
+      const isLogin = mode === 'login';
+      document.getElementById('login-form').classList.toggle('hidden', !isLogin);
+      document.getElementById('register-form').classList.toggle('hidden', isLogin);
+      document.getElementById('auth-tab-login').className = `py-2 rounded-lg transition ${isLogin ? 'bg-white text-farm-800 shadow-sm' : 'text-slate-600'}`;
+      document.getElementById('auth-tab-register').className = `py-2 rounded-lg transition ${!isLogin ? 'bg-white text-farm-800 shadow-sm' : 'text-slate-600'}`;
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const btn = document.getElementById('login-btn');
+      btn.disabled = true;
+      const { error } = await sb.auth.signInWithPassword({
+        email: document.getElementById('login-email').value.trim(),
+        password: document.getElementById('login-password').value,
+      });
+      btn.disabled = false;
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast('સફળતાપૂર્વક લૉગિન થઈ ગયું!');
+      switchTab('market');
+    }
+
+    async function handleRegister(e) {
+      e.preventDefault();
+      const btn = document.getElementById('reg-btn');
+      btn.disabled = true;
+      const fullName = document.getElementById('reg-name').value.trim();
+      const mobile = document.getElementById('reg-mobile').value.trim();
+      const role = document.getElementById('reg-role').value;
+      const village = document.getElementById('reg-village').value.trim();
+      const district = document.getElementById('reg-district').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value;
+
+      const { data, error } = await sb.auth.signUp({
+        email, password,
+        options: {
+          emailRedirectTo: window.location.origin,
+          data: { full_name: fullName, mobile_number: mobile, role, village_city: village, district, state: 'Gujarat' }
+        }
+      });
+      btn.disabled = false;
+      if (error) { showToast(error.message, 'error'); return; }
+
+      if (data?.session?.user) {
+        await sb.from('profiles').update({
+          full_name: fullName, mobile_number: mobile, role,
+          village_city: village, district, state: 'Gujarat',
+          allow_phone_contact: true, allow_whatsapp_contact: true
+        }).eq('id', data.session.user.id);
+        showToast('નવું ખાતું બની ગયું અને લૉગિન થઈ ગયું!');
+      } else {
+        showToast('ખાતું બની ગયું! કૃપા કરીને તમારો ઈમેલ ચેક કરી કન્ફર્મ લિંક પર ક્લિક કરો.');
+        setAuthMode('login');
+      }
+    }
+
+    async function handleForgotPassword() {
+      const email = document.getElementById('login-email').value.trim();
+      if (!email) { showToast('પહેલા ઉપર તમારો ઈમેલ લખો', 'info'); return; }
+      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin });
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast('પાસવર્ડ રિસેટ લિંક તમારા ઈમેલ પર મોકલી દીધી છે.');
+    }
+
+    async function handleLogout() {
+      await sb.auth.signOut();
+      showToast('લૉગઆઉટ થઈ ગયું', 'info');
+      switchTab('market');
+    }
+
+    function refreshAccountTab() {
+      const authBox = document.getElementById('auth-box');
+      const profBox = document.getElementById('profile-box');
+      if (!state.user) {
+        authBox.classList.remove('hidden');
+        profBox.classList.add('hidden');
+        return;
+      }
+      authBox.classList.add('hidden');
+      profBox.classList.remove('hidden');
+
+      const p = state.profile || {};
+      const name = p.full_name || state.user.email.split('@')[0];
+      document.getElementById('prof-avatar').textContent = name.charAt(0).toUpperCase();
+      document.getElementById('prof-display-name').textContent = name;
+      document.getElementById('prof-display-email').textContent = state.user.email;
+      document.getElementById('prof-role-badge').textContent = p.role || 'buyer';
+
+      document.getElementById('p-name').value = p.full_name || '';
+      document.getElementById('p-business').value = p.business_name || '';
+      document.getElementById('p-mobile').value = p.mobile_number || '';
+      document.getElementById('p-village').value = p.village_city || '';
+      document.getElementById('p-district').value = p.district || '';
+      document.getElementById('p-state').value = p.state || 'Gujarat';
+      document.getElementById('p-pin').value = p.pin_code || '';
+      document.getElementById('p-phone-ok').checked = !!p.allow_phone_contact;
+      document.getElementById('p-wa-ok').checked = !!p.allow_whatsapp_contact;
+
+      const adminPanel = document.getElementById('admin-panel');
+      if (p.role === 'admin') {
+        adminPanel.classList.remove('hidden');
+        loadAdminPending();
+      } else {
+        adminPanel.classList.add('hidden');
+      }
+    }
+
+    async function handleProfileSave(e) {
+      e.preventDefault();
+      const updates = {
+        full_name: document.getElementById('p-name').value.trim(),
+        business_name: document.getElementById('p-business').value.trim() || null,
+        mobile_number: document.getElementById('p-mobile').value.trim() || null,
+        village_city: document.getElementById('p-village').value.trim() || null,
+        district: document.getElementById('p-district').value.trim() || null,
+        state: document.getElementById('p-state').value.trim() || 'Gujarat',
+        pin_code: document.getElementById('p-pin').value.trim() || null,
+        allow_phone_contact: document.getElementById('p-phone-ok').checked,
+        allow_whatsapp_contact: document.getElementById('p-wa-ok').checked,
+        preferred_language: state.lang,
+      };
+      const { error } = await sb.from('profiles').update(updates).eq('id', state.user.id);
+      if (error) { showToast(error.message, 'error'); return; }
+      const { data: prof } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle();
+      state.profile = prof;
+      refreshAccountTab();
+      showToast('પ્રોફાઇલ સેવ થઈ ગઈ!');
+    }
+
+    // 14. ADMIN FUNCTIONS
+    async function loadAdminPending() {
+      const box = document.getElementById('admin-pending-list');
+      const { data, error } = await sb.from('products').select('*').eq('status', 'pending').is('deleted_at', null).order('created_at', { ascending: false });
+      if (error) { box.innerHTML = `<div class="text-xs text-red-600">${escapeHtml(error.message)}</div>`; return; }
+      if (!data || !data.length) {
+        box.innerHTML = `<div class="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl">કોઈ લિસ્ટિંગ મંજૂરી માટે બાકી નથી.</div>`;
+        return;
+      }
+      box.innerHTML = data.map(p => `
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-2">
+          <div class="text-xs">
+            <strong class="text-slate-900">${escapeHtml(p.title_gu || p.title_en)}</strong>
+            <div class="text-slate-500">₹${p.expected_price} / ${escapeHtml(p.unit)} • ${escapeHtml([p.village, p.district].filter(Boolean).join(', '))}</div>
+          </div>
+          <div class="flex gap-1.5">
+            <button onclick="moderateProduct('${p.id}', 'approved')" class="px-3 py-1.5 rounded-lg bg-farm-700 text-white text-xs font-bold">મંજૂર (Approve)</button>
+            <button onclick="moderateProduct('${p.id}', 'rejected')" class="px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-bold">રદ (Reject)</button>
+          </div>
+        </div>`).join('');
+    }
+
+    async function moderateProduct(id, newStatus) {
+      const { error } = await sb.from('products').update({ status: newStatus }).eq('id', id);
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast(`લિસ્ટિંગ ${newStatus} કરવામાં આવ્યું!`);
+      loadAdminPending();
+      loadProducts();
+    }
+
+    async function sendAdminBroadcast() {
+      const title = document.getElementById('bc-title').value.trim();
+      const body = document.getElementById('bc-body').value.trim();
+      const { data, error } = await sb.rpc('broadcast_admin_announcement', { p_title: title, p_body: body, p_action_url: '/' });
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast(`${data} યુઝર્સને સૂચના મોકલી દેવાઈ!`);
+      document.getElementById('bc-title').value = '';
+      document.getElementById('bc-body').value = '';
+    }
+
+    async function triggerExpiringAlerts() {
+      const { data, error } = await sb.rpc('generate_expiring_listing_notifications');
+      if (error) { showToast(error.message, 'error'); return; }
+      showToast(`${data} એક્સપાયરિંગ એલર્ટ મોકલાયા.`);
+    }
+
+    // Boot Application
+    initApp();
+  </script>
+</body>
+</html>
