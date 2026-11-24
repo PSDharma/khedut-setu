@@ -41,7 +41,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
@@ -89,6 +88,16 @@
       </nav>
 
       <div class="flex items-center gap-1.5 shrink-0">
+        <button type="button" id="header-install-btn" data-action="install-app"
+          class="bg-harvest-500 hover:bg-harvest-600 text-white text-[11px] font-bold px-2 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span data-i18n="btn_install"></span>
+        </button>
+        <button type="button" id="header-share-btn" data-action="share-app" aria-label="Share App"
+          class="bg-white/15 hover:bg-white/25 border border-white/20 text-white text-[11px] font-bold px-2 py-1.5 rounded-lg flex items-center gap-1 transition">
+          <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline" data-i18n="btn_share"></span>
+        </button>
         <div class="flex items-center gap-0.5 bg-farm-900/60 p-1 rounded-lg border border-white/15 text-[11px] font-semibold">
           <button type="button" data-action="set-lang" data-lang="gu" id="lang-gu" class="lang-btn px-1.5 py-1 rounded-md transition">ગુ</button>
           <button type="button" data-action="set-lang" data-lang="hi" id="lang-hi" class="lang-btn px-1.5 py-1 rounded-md transition">हिं</button>
@@ -147,6 +156,26 @@
               <span data-i18n="btn_ai_doc_short"></span>
             </button>
           </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-farm-700 text-white flex items-center justify-center text-2xl shadow shrink-0">🌾</div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-sm" data-i18n="pwa_card_title"></h3>
+            <p class="text-xs text-slate-500" data-i18n="pwa_card_sub"></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button type="button" data-action="install-app" class="flex-1 sm:flex-initial bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl shadow-sm transition flex items-center justify-center gap-1.5">
+            <i data-lucide="smartphone" class="w-4 h-4"></i>
+            <span data-i18n="btn_install"></span>
+          </button>
+          <button type="button" data-action="share-app" class="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl shadow-sm transition flex items-center justify-center gap-1.5">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+            <span data-i18n="btn_share"></span>
+          </button>
         </div>
       </div>
 
@@ -245,7 +274,6 @@
         </div>
       </div>
 
-      <!-- Subtab A: Daily Mandi Rates (Veg, Fruits, Flowers, Kathol, Anaj) + Daily Update & Admin Approval -->
       <div id="apmc-panel" class="space-y-3">
         <div class="bg-white rounded-2xl p-3 border border-slate-200 flex flex-wrap items-center justify-between gap-2">
           <div id="mandi-cat-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar"></div>
@@ -258,7 +286,6 @@
         <div id="apmc-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
 
-      <!-- Subtab B: Dava, Biyaran, Khatar, Sadhano & Yantro -->
       <div id="inputs-panel" class="hidden space-y-3">
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-2">
           <div>
@@ -274,7 +301,6 @@
         <div id="agri-inputs-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
 
-      <!-- Subtab C: Local Transport -->
       <div id="transport-panel" class="hidden space-y-3">
         <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-between">
           <input id="transport-search" type="text" maxlength="60" data-i18n-placeholder="tr_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
@@ -382,7 +408,6 @@
           <button type="submit" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm" data-i18n="save_profile"></button>
         </form>
 
-        <!-- ADMIN PANEL: APPROVE/REJECT PENDING MANDI RATES & AGRI INPUTS -->
         <div id="admin-panel" class="hidden bg-white rounded-2xl p-5 shadow-sm border-2 border-amber-300 space-y-5">
           <div class="flex items-center justify-between border-b border-amber-100 pb-3">
             <div>
@@ -463,6 +488,32 @@
   </nav>
 
   <!-- MODALS -->
+    <div id="install-guide-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
+      <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="install_modal_title"></h3>
+        <button type="button" data-action="close-modal" data-modal="install-guide-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="p-5 space-y-3 text-xs sm:text-sm text-slate-700">
+        <div class="flex items-center gap-3 bg-farm-50 p-3 rounded-2xl border border-farm-200">
+          <div class="w-12 h-12 rounded-2xl bg-farm-700 text-white flex items-center justify-center text-2xl font-bold shrink-0">🌾</div>
+          <div>
+            <div class="font-bold text-slate-900">KHEDUT SETU AI v5.2 PRO</div>
+            <div class="text-xs text-slate-600" data-i18n="install_modal_sub"></div>
+          </div>
+        </div>
+        <ul class="space-y-2 list-disc pl-5 text-xs">
+          <li data-i18n="install_step_android"></li>
+          <li data-i18n="install_step_ios"></li>
+        </ul>
+        <div class="flex gap-2 pt-2">
+          <button type="button" data-action="share-app" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl text-xs" data-i18n="btn_share"></button>
+          <button type="button" data-action="close-modal" data-modal="install-guide-modal" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="voice-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
@@ -472,7 +523,13 @@
       <div class="p-5 text-center space-y-4">
         <button type="button" id="voice-mic-trigger" data-action="toggle-voice-listen" class="w-20 h-20 mx-auto rounded-full bg-farm-700 text-white flex items-center justify-center shadow-lg transition"><i data-lucide="mic" class="w-9 h-9"></i></button>
         <p id="voice-status" class="text-sm font-bold text-farm-800" data-i18n="voice_prompt"></p>
-        <p id="voice-transcript" class="text-xs text-slate-500 min-h-[20px]"></p>
+        <p id="voice-transcript" class="text-xs text-slate-500 mt-1 min-h-[20px]"></p>
+        <div class="flex flex-wrap justify-center gap-1.5 pt-1 text-[11px]">
+          <button type="button" data-action="voice-example" data-text="શાકભાજી ભાવ" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"શાકભાજી ભાવ"</button>
+          <button type="button" data-action="voice-example" data-text="દવા બિયારણ" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"દવા બિયારણ"</button>
+          <button type="button" data-action="voice-example" data-text="AI સલાહકાર" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"AI સલાહકાર"</button>
+          <button type="button" data-action="voice-example" data-text="ડાંગર" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"ડાંગર"</button>
+        </div>
       </div>
     </div>
   </div>
@@ -630,22 +687,47 @@
         ALLOWED_UNITS: Object.freeze(['kg', 'quintal', 'ton', 'mann', 'bag', 'bundle', 'piece']),
         ALLOWED_TABS: Object.freeze(['market', 'ai_advisor', 'yard', 'requests', 'sell', 'account']),
         ALLOWED_LANGS: Object.freeze(['gu', 'hi', 'en']),
-        ALLOWED_MODALS: Object.freeze(['voice-modal', 'mandi-rate-modal', 'agri-input-modal', 'add-transport-modal', 'add-product-modal', 'add-request-modal'])
+        ALLOWED_MODALS: Object.freeze(['install-guide-modal', 'voice-modal', 'mandi-rate-modal', 'agri-input-modal', 'add-transport-modal', 'add-product-modal', 'add-request-modal'])
       });
 
       if (!window.supabase || typeof window.supabase.createClient !== 'function') return;
-      const sb = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+      const sb = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY, {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      });
 
       const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      const UPI_RE = /^[a-z0-9._-]{2,64}@[a-z0-9.-]{2,32}$/i;
       const STORAGE_PREFIX = `${CONFIG.SUPABASE_URL}/storage/v1/object/public/product-images/`;
 
       function isValidUUID(v) { return typeof v === 'string' && UUID_RE.test(v); }
-      function escapeHtml(s) { return String(s ?? '').replace(/[&<>"'`]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '`': '&#96;' }[c])); }
-      function cleanText(v, m = 200) { return String(v ?? '').replace(/[\u0000-\u001F\u007F-\u009F\u200B-\u200D\uFEFF]/g, '').replace(/[<>]/g, '').trim().slice(0, m); }
-      function sanitizeIndianPhone(r) { const d = String(r ?? '').replace(/[^0-9]/g, ''); return (d.length === 10 && /^[6-9]/.test(d)) ? d : ((d.length === 12 && d.startsWith('91') && /^[6-9]/.test(d.slice(2))) ? d.slice(2) : ''); }
-      function safePositiveNumber(r, min = 0.01, max = 100000000) { const n = Number(r); return (!Number.isFinite(n) || n < min || n > max) ? null : Math.round(n * 100) / 100; }
-      function getSafeImgUrl(p) { if (!p || typeof p !== 'string') return null; if (p.startsWith('https://')) return p.startsWith(STORAGE_PREFIX) ? p : null; const { data } = sb.storage.from('product-images').getPublicUrl(p); return (data?.publicUrl || '').startsWith(STORAGE_PREFIX) ? data.publicUrl : null; }
+      function escapeHtml(s) {
+        return String(s ?? '').replace(/[&<>"'`]/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '`': '&#96;'
+        }[c]));
+      }
+      function cleanText(v, m = 200) {
+        return String(v ?? '').replace(/[\u0000-\u001F\u007F-\u009F\u200B-\u200D\uFEFF]/g, '').replace(/[<>]/g, '').trim().slice(0, m);
+      }
+      function sanitizeIndianPhone(r) {
+        const d = String(r ?? '').replace(/[^0-9]/g, '');
+        if (d.length === 10 && /^[6-9]/.test(d)) return d;
+        if (d.length === 12 && d.startsWith('91') && /^[6-9]/.test(d.slice(2))) return d.slice(2);
+        return '';
+      }
+      function safePositiveNumber(r, min = 0.01, max = 100000000) {
+        const n = Number(r);
+        return (!Number.isFinite(n) || n < min || n > max) ? null : Math.round(n * 100) / 100;
+      }
+      function getSafeImgUrl(p) {
+        if (!p || typeof p !== 'string') return null;
+        if (p.startsWith('https://')) return p.startsWith(STORAGE_PREFIX) ? p : null;
+        if (p.includes('..') || p.startsWith('/')) return null;
+        const { data } = sb.storage.from('product-images').getPublicUrl(p);
+        return (data?.publicUrl || '').startsWith(STORAGE_PREFIX) ? data.publicUrl : null;
+      }
       function refreshIcons() { try { if (window.lucide?.createIcons) window.lucide.createIcons(); } catch {} }
+
       function showToast(msg, type = 'success') {
         const c = document.getElementById('toast-container'); if (!c) return;
         const el = document.createElement('div');
@@ -654,11 +736,57 @@
         setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3500);
       }
 
-      // ==================== PRO SELF-HEALING & SECURITY ENGINE v5.2 ====================
-      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-      const UPI_RE = /^[a-z0-9._-]{2,64}@[a-z0-9.-]{2,32}$/i;
-      const cooldownMap = new Map();
 
+      let deferredInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+      });
+      window.addEventListener('appinstalled', () => {
+        deferredInstallPrompt = null;
+        showToast(state.lang === 'en' ? 'App installed!' : state.lang === 'hi' ? 'ऐप इंस्टॉल हो गया!' : 'KHEDUT SETU App Install thai gayi!');
+      });
+
+      async function triggerInstallApp() {
+        try {
+          if (deferredInstallPrompt && typeof deferredInstallPrompt.prompt === 'function') {
+            deferredInstallPrompt.prompt();
+            await deferredInstallPrompt.userChoice.catch(() => {});
+            deferredInstallPrompt = null;
+            return;
+          }
+        } catch {}
+        openModal('install-guide-modal');
+      }
+
+      async function shareKhedutSetuApp() {
+        const shareUrl = window.location.origin + window.location.pathname;
+        const shareTitle = 'KHEDUT SETU AI v5.2 PRO';
+        const shareText = state.lang === 'en'
+          ? `Check out ${shareTitle} — Daily Mandi Rates, Agri Inputs & AI Advisor: ${shareUrl}`
+          : state.lang === 'hi'
+            ? `${shareTitle} — दैनिक मंडी भाव, कृषि सामग्री और AI सलाह: ${shareUrl}`
+            : `${shareTitle} — દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને AI સલાહ: ${shareUrl}`;
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: shareTitle, text: shareText, url: shareUrl });
+            return;
+          }
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+        }
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(shareUrl);
+            showToast(state.lang === 'en' ? 'App link copied!' : state.lang === 'hi' ? 'ऐप लिंक कॉपी हो गया!' : 'App link copy thai gayi!');
+            return;
+          }
+        } catch {}
+        window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+      }
+
+      // Self-Healing Retry, Offline Cache & Rate Limiting
+      const cooldownMap = new Map();
       function checkRateLimit(key, waitMs = 1500) {
         const now = Date.now();
         const prev = cooldownMap.get(key) || 0;
@@ -666,31 +794,20 @@
         cooldownMap.set(key, now);
         return true;
       }
-
-      // Local cache for offline / self-healing fallback
       function saveCache(key, data) {
         try { localStorage.setItem('ks_cache_' + key, JSON.stringify({ ts: Date.now(), data })); } catch {}
       }
       function loadCache(key) {
-        try {
-          const raw = localStorage.getItem('ks_cache_' + key);
-          if (!raw) return null;
-          return JSON.parse(raw).data ?? null;
-        } catch { return null; }
+        try { const raw = localStorage.getItem('ks_cache_' + key); return raw ? (JSON.parse(raw).data ?? null) : null; } catch { return null; }
       }
-
-      // Self-healing async query wrapper with automatic retry (up to 2 retries)
       async function withRetry(fn, retries = 2, delayMs = 600) {
         let lastErr = null;
         for (let i = 0; i <= retries; i++) {
           try {
             const res = await fn();
-            if (res && res.error) {
-              const msg = String(res.error.message || '');
-              if (/Failed to fetch|NetworkError|timeout|502|503|504/i.test(msg) && i < retries) {
-                await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
-                continue;
-              }
+            if (res && res.error && /Failed to fetch|NetworkError|timeout|502|503|504/i.test(String(res.error.message || '')) && i < retries) {
+              await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
+              continue;
             }
             return res;
           } catch (err) {
@@ -701,192 +818,30 @@
         return { data: null, error: lastErr || new Error('Network error') };
       }
 
-      // Global Self-Healing Error Boundaries (Zero unhandled crash)
-      let healCount = 0;
-      window.addEventListener('error', (ev) => {
-        ev.preventDefault();
-        if (++healCount <= 3) {
-          try { refreshIcons(); } catch {}
-        }
-      });
-      window.addEventListener('unhandledrejection', (ev) => {
-        ev.preventDefault();
-        if (!navigator.onLine) {
-          document.getElementById('offline-banner')?.classList.remove('hidden');
-        }
-      });
-
-      // Online / Offline Auto-Recovery
-      function syncOnlineStatus() {
-        const isOnline = navigator.onLine;
-        document.getElementById('offline-banner')?.classList.toggle('hidden', isOnline);
-        if (isOnline) {
-          loadProducts().catch(() => {});
-          if (state.tab === 'yard') {
-            loadApmcRates().catch(() => {});
-            loadAgriInputs().catch(() => {});
-          }
-        }
-      }
-      window.addEventListener('online', syncOnlineStatus);
-      window.addEventListener('offline', syncOnlineStatus);
-
-      // Register Service Worker safely for smooth PWA performance
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
-        });
-      }
-
-      // Escape key & backdrop click to close modals cleanly
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          stopVoiceListening();
-          CONFIG.ALLOWED_MODALS.forEach(closeModal);
-        }
-      });
-      document.addEventListener('click', (e) => {
-        if (e.target && e.target.classList && e.target.classList.contains('modal-backdrop') && e.target.id) {
-          if (e.target.id === 'voice-modal') stopVoiceListening();
-          closeModal(e.target.id);
-        }
-      });
-
-
-
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition || null;
-      let recognition = null;
-
-      function speakText(text) {
-        try {
-          if (!('speechSynthesis' in window)) return;
-          window.speechSynthesis.cancel();
-          const utter = new SpeechSynthesisUtterance(cleanText(text, 260));
-          utter.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
-          utter.rate = 0.96;
-          window.speechSynthesis.speak(utter);
-        } catch {}
-      }
-
-      function stopVoiceListening() {
-        state.isListening = false;
-        const btn = document.getElementById('voice-mic-trigger');
-        if (btn) { btn.classList.remove('voice-pulse', 'bg-red-600'); btn.classList.add('bg-farm-700'); }
-        try { if (recognition) recognition.stop(); } catch {}
-      }
-
-      function processVoiceCommand(rawSpoken) {
-        const spoken = cleanText(rawSpoken, 100);
-        if (!spoken) return;
-        const low = spoken.toLowerCase();
-        closeModal('voice-modal');
-
-        if (/ai|સલાહ|ડૉક્ટર|advisor|doctor|सलाह/.test(low)) {
-          switchTab('ai_advisor');
-          showToast(state.lang === 'en' ? 'Opened AI Advisor' : state.lang === 'hi' ? 'AI सलाहकार खोला' : 'AI સલાહકાર ખોલ્યો');
-          return;
-        }
-        if (/દવા|બિયારણ|ખાતર|સાધન|યંત્ર|input|seed|pesticide|दवा|बीज|यंत्र/.test(low)) {
-          switchTab('yard'); switchYardSubtab('inputs');
-          showToast(state.lang === 'en' ? 'Opened Agri Inputs & Machinery' : state.lang === 'hi' ? 'कृषि सामग्री खोली' : 'દવા, બિયારણ અને યંત્ર ખોલ્યા');
-          return;
-        }
-        if (/ટેમ્પો|ટ્રેક્ટર|વાહન|tempo|tractor|ट्रैक्टर/.test(low)) {
-          switchTab('yard'); switchYardSubtab('transport');
-          showToast(state.lang === 'en' ? 'Opened Transport' : state.lang === 'hi' ? 'वाहन सेवा खोली' : 'ટેમ્પો-ટ્રેક્ટર સેવા ખોલી');
-          return;
-        }
-        if (/મંડી|શાકભાજી|ફળ|ફૂલ|કઠોળ|અનાજ|apmc|yard|mandi|ભાવ|भाव/.test(low)) {
-          switchTab('yard'); switchYardSubtab('apmc');
-          if (/શાકભાજી|veg|सब्ज़ी/.test(low)) state.mandiCatFilter = 'vegetables';
-          else if (/ફળ|fruit|फल/.test(low)) state.mandiCatFilter = 'fruits';
-          else if (/ફૂલ|flower|फूल/.test(low)) state.mandiCatFilter = 'flowers';
-          else if (/કઠોળ|pulse|दलहन/.test(low)) state.mandiCatFilter = 'pulses';
-          else if (/અનાજ|grain|अनाज/.test(low)) state.mandiCatFilter = 'grains';
-          renderApmcRates();
-          return;
-        }
-        if (/નવી ઉપજ|ઉપજ મૂકો|વેચાણ|sell|post crop|नई उपज/.test(low)) {
-          switchTab('sell');
-          return;
-        }
-        if (/માંગ|request|मांग/.test(low)) {
-          switchTab('requests');
-          return;
-        }
-        if (/ખાતું|account|खाता/.test(low)) {
-          switchTab('account');
-          return;
-        }
-
-        const cleaned = spoken.replace(/(શોધો|બતાવો|ખોલો|search|find|show|खोजो|दिखाओ)/gi, '').trim();
-        switchTab('market');
-        const sIn = document.getElementById('search-input');
-        if (sIn) sIn.value = cleaned || spoken;
-        loadProducts();
-      }
-
-      function startVoiceListening() {
-        const statusEl = document.getElementById('voice-status');
-        const trEl = document.getElementById('voice-transcript');
-        if (!SpeechRec) {
-          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Voice API not supported in this browser.' : state.lang === 'hi' ? 'इस ब्राउज़र में वॉइस उपलब्ध नहीं है।' : 'આ બ્રાઉઝરમાં વૉઇસ સપોર્ટ નથી — Google Chrome વાપરો.';
-          return;
-        }
-        if (state.isListening) { stopVoiceListening(); return; }
-        try {
-          recognition = new SpeechRec();
-          recognition.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
-          recognition.interimResults = true;
-          recognition.maxAlternatives = 1;
-          state.isListening = true;
-          const btn = document.getElementById('voice-mic-trigger');
-          if (btn) { btn.classList.add('voice-pulse', 'bg-red-600'); btn.classList.remove('bg-farm-700'); }
-          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Listening... speak now 🎙️' : state.lang === 'hi' ? 'सुन रहे हैं... अब बोलें 🎙️' : 'સાંભળી રહ્યા છીએ... હવે બોલો 🎙️';
-          if (trEl) trEl.textContent = '';
-
-          let finalTxt = '';
-          recognition.onresult = (ev) => {
-            let interim = '';
-            for (let i = ev.resultIndex; i < ev.results.length; i++) {
-              const txt = ev.results[i][0].transcript;
-              if (ev.results[i].isFinal) finalTxt += txt;
-              else interim += txt;
-            }
-            if (trEl) trEl.textContent = `"${(finalTxt || interim).trim()}"`;
-            if (finalTxt.trim()) {
-              stopVoiceListening();
-              processVoiceCommand(finalTxt.trim());
-            }
-          };
-          recognition.onerror = () => {
-            stopVoiceListening();
-            if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Mic error or permission denied.' : state.lang === 'hi' ? 'माइक अनुमति या त्रुटि — फिर प्रयास करें।' : 'માઇક પરવાનગી કે અવાજમાં તકલીફ — ફરી પ્રયાસ કરો.';
-          };
-          recognition.onend = () => { if (state.isListening) stopVoiceListening(); };
-          recognition.start();
-        } catch {
-          stopVoiceListening();
-        }
-      }
-
       const savedLang = localStorage.getItem('ks_lang');
       const state = {
         lang: CONFIG.ALLOWED_LANGS.includes(savedLang) ? savedLang : 'gu',
         tab: 'market', aiSubtab: 'price',
         mandiCatFilter: 'all', agriInputTypeFilter: 'all',
         user: null, profile: null, categories: [],
-        selectedCategory: null, products: [], apmcRates: [], agriInputs: [], transportList: []
+        selectedCategory: null, products: [], apmcRates: [], agriInputs: [], transportList: [],
+        isListening: false
       };
 
       const L = {
         gu: {
-          tagline: 'દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ', offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે.',
+          tagline: 'દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ', offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે — સાચવેલો ડેટા ઉપલબ્ધ છે.',
           nav_market: 'બજાર', nav_ai: '✨ AI સલાહકાર', nav_ai_short: 'AI સલાહ', nav_yard: 'મંડી & સાધન', nav_yard_short: 'મંડી ભાવ',
           nav_requests: 'ખરીદી માંગ', nav_sell: 'વેચાણ', nav_account: 'ખાતું',
           search_placeholder: 'પાક, શાકભાજી, ફળ, ફૂલ, કઠોળ, ગામ કે જિલ્લો શોધો...', district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
           ai_badge_sub: 'એડમિન મંજૂરી સાથે દૈનિક અપડેટ', hero_title: 'મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ અને કૃષિ સામગ્રી',
           btn_daily_rates: '📊 દૈનિક મંડી ભાવ', btn_post_crop: 'ઉપજ મૂકો', btn_ai_doc_short: '✨ AI ડૉક્ટર', btn_voice_float: 'AI બોલો',
+          btn_install: 'Install', btn_share: 'Share',
+          pwa_card_title: '📱 ફોનમાં App Icon સાથે Install કરો અને ખેડૂતોને Share કરો',
+          pwa_card_sub: 'Home Screen પર App Icon મુકો — 1 ક્લિકમાં સીધું ખુલશે અને મિત્રોને WhatsApp/Link મોકલો.',
+          install_modal_title: '📱 KHEDUT SETU App Install કરો', install_modal_sub: 'મોબાઇલ Home Screen પર App Icon ઉમેરો',
+          install_step_android: 'Android Chrome: ઉપર જમણી બાજુ ⋮ (3 dots) → "Install app" અથવા "Add to Home screen" દબાવો.',
+          install_step_ios: 'iPhone Safari: નીચે Share (↑) બટન → "Add to Home Screen" દબાવો.',
           latest_listings: 'તાજેતરની ઉપજ', refresh: 'રિફ્રેશ', all_categories: 'બધી કેટેગરી',
           no_products: 'હાલ કોઈ ઉપજ ઉપલબ્ધ નથી.',
           ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ મેચિંગ',
@@ -925,12 +880,18 @@
           modal_add_req: 'નવી માંગ મૂકો', req_product: 'કઈ ઉપજ જોઈએ? *', delivery_loc: 'સ્થળ *', submit_req: 'માંગ મૂકો'
         },
         hi: {
-          tagline: 'दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि', offline_msg: '⚠️ इंटरनेट बंद है।',
+          tagline: 'दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि', offline_msg: '⚠️ इंटरनेट बंद है — सेव किया डेटा उपलब्ध है।',
           nav_market: 'बाज़ार', nav_ai: '✨ AI सलाहकार', nav_ai_short: 'AI सलाह', nav_yard: 'मंडी & सामग्री', nav_yard_short: 'मंडी भाव',
           nav_requests: 'खरीद मांग', nav_sell: 'बेचें', nav_account: 'खाता',
           search_placeholder: 'सब्ज़ी, फल, फूल, दलहन, अनाज, गांव या जिला खोजें...', district_placeholder: 'जिला (जैसे आनंद)',
           ai_badge_sub: 'एडमिन स्वीकृति के साथ दैनिक अपडेट', hero_title: 'मौसमी सब्ज़ी, फल, फूल, दलहन, अनाज और कृषि सामग्री',
           btn_daily_rates: '📊 दैनिक मंडी भाव', btn_post_crop: 'उपज डालें', btn_ai_doc_short: '✨ AI डॉक्टर', btn_voice_float: 'AI बोलें',
+          btn_install: 'Install', btn_share: 'Share',
+          pwa_card_title: '📱 फ़ोन में App Icon के साथ Install करें और Share करें',
+          pwa_card_sub: 'Home Screen पर App Icon जोड़ें — तुरंत खुलेगा और साथियों को शेयर करें.',
+          install_modal_title: '📱 KHEDUT SETU App Install करें', install_modal_sub: 'मोबाइल Home Screen पर App Icon जोड़ें',
+          install_step_android: 'Android Chrome: ऊपर दाईं ओर ⋮ → "Install app" या "Add to Home screen" चुनें.',
+          install_step_ios: 'iPhone Safari: नीचे Share (↑) → "Add to Home Screen" चुनें.',
           latest_listings: 'ताज़ा उपज', refresh: 'रिफ्रेश', all_categories: 'सभी श्रेणियां', no_products: 'कोई उपज नहीं है।',
           ai_hub_title: '✨ KHEDUT SETU AI सलाहकार', ai_hub_sub: 'भाव अनुमान, फसल डॉक्टर और मैचिंग',
           aisub_price_btn: '💰 AI भाव अनुमान', aisub_doctor_btn: '🩺 फसल डॉक्टर', aisub_match_btn: '🎯 स्मार्ट मैच',
@@ -968,12 +929,18 @@
           modal_add_req: 'नई मांग डालें', req_product: 'उपज *', delivery_loc: 'स्थान *', submit_req: 'मांग डालें'
         },
         en: {
-          tagline: 'Daily Mandi Rates • Agri Inputs & Machinery • AI', offline_msg: '⚠️ You are offline.',
+          tagline: 'Daily Mandi Rates • Agri Inputs & Machinery • AI', offline_msg: '⚠️ You are offline — cached data available.',
           nav_market: 'Market', nav_ai: '✨ AI Advisor', nav_ai_short: 'AI Help', nav_yard: 'Mandi & Inputs', nav_yard_short: 'Mandi Rates',
           nav_requests: 'Requests', nav_sell: 'Sell', nav_account: 'Account',
           search_placeholder: 'Search veg, fruits, flowers, pulses, grains, village or district...', district_placeholder: 'District (e.g. Anand)',
           ai_badge_sub: 'Daily Updates with Admin Approval', hero_title: 'Seasonal Veg, Fruits, Flowers, Pulses, Grains & Agri Inputs',
           btn_daily_rates: '📊 Daily Mandi Rates', btn_post_crop: 'Post Crop', btn_ai_doc_short: '✨ AI Doctor', btn_voice_float: 'AI Voice',
+          btn_install: 'Install', btn_share: 'Share',
+          pwa_card_title: '📱 Install with App Icon & Share with Farmers',
+          pwa_card_sub: 'Add App Icon to Home Screen for instant launch and share link easily.',
+          install_modal_title: '📱 Install KHEDUT SETU App', install_modal_sub: 'Add App Icon to your mobile Home Screen',
+          install_step_android: 'Android Chrome: Tap ⋮ (menu) → "Install app" or "Add to Home screen".',
+          install_step_ios: 'iPhone Safari: Tap Share (↑) → "Add to Home Screen".',
           latest_listings: 'Latest Produce', refresh: 'Refresh', all_categories: 'All Categories', no_products: 'No produce found.',
           ai_hub_title: '✨ KHEDUT SETU AI Advisor', ai_hub_sub: 'Price forecast, crop doctor & demand matching',
           aisub_price_btn: '💰 AI Price Forecast', aisub_doctor_btn: '🩺 Crop Doctor', aisub_match_btn: '🎯 Smart Match',
@@ -1075,6 +1042,83 @@
         populateSelects(); renderChips(); renderCategories(); renderProducts(); renderApmcRates(); renderAgriInputs(); renderTransportList();
       }
 
+      // Voice Assistant Engine
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+      let recognition = null;
+
+      function stopVoiceListening() {
+        state.isListening = false;
+        const btn = document.getElementById('voice-mic-trigger');
+        if (btn) { btn.classList.remove('voice-pulse', 'bg-red-600'); btn.classList.add('bg-farm-700'); }
+        try { if (recognition) recognition.stop(); } catch {}
+      }
+
+      function processVoiceCommand(rawSpoken) {
+        const spoken = cleanText(rawSpoken, 100);
+        if (!spoken) return;
+        const low = spoken.toLowerCase();
+        closeModal('voice-modal');
+
+        if (/ai|સલાહ|ડૉક્ટર|advisor|doctor|सलाह/.test(low)) { switchTab('ai_advisor'); return; }
+        if (/દવા|બિયારણ|ખાતર|સાધન|યંત્ર|input|seed|pesticide|दवा|बीज|यंत्र/.test(low)) { switchTab('yard'); switchYardSubtab('inputs'); return; }
+        if (/ટેમ્પો|ટ્રેક્ટર|વાહન|tempo|tractor|ट्रैक्टर/.test(low)) { switchTab('yard'); switchYardSubtab('transport'); return; }
+        if (/મંડી|શાકભાજી|ફળ|ફૂલ|કઠોળ|અનાજ|apmc|yard|mandi|ભાવ|भाव/.test(low)) {
+          switchTab('yard'); switchYardSubtab('apmc');
+          if (/શાકભાજી|veg|सब्ज़ी/.test(low)) state.mandiCatFilter = 'vegetables';
+          else if (/ફળ|fruit|फल/.test(low)) state.mandiCatFilter = 'fruits';
+          else if (/ફૂલ|flower|फूल/.test(low)) state.mandiCatFilter = 'flowers';
+          else if (/કઠોળ|pulse|दलहन/.test(low)) state.mandiCatFilter = 'pulses';
+          else if (/અનાજ|grain|अनाज/.test(low)) state.mandiCatFilter = 'grains';
+          renderApmcRates();
+          return;
+        }
+        if (/નવી ઉપજ|ઉપજ મૂકો|વેચાણ|sell|post crop|नई उपज/.test(low)) { switchTab('sell'); return; }
+        if (/માંગ|request|मांग/.test(low)) { switchTab('requests'); return; }
+        if (/ખાતું|account|खाता/.test(low)) { switchTab('account'); return; }
+
+        const cleaned = spoken.replace(/(શોધો|બતાવો|ખોલો|search|find|show|खोजो|दिखाओ)/gi, '').trim();
+        switchTab('market');
+        const sIn = document.getElementById('search-input');
+        if (sIn) sIn.value = cleaned || spoken;
+        loadProducts();
+      }
+
+      function startVoiceListening() {
+        const statusEl = document.getElementById('voice-status');
+        const trEl = document.getElementById('voice-transcript');
+        if (!SpeechRec) {
+          if (statusEl) statusEl.textContent = 'Voice API not supported in this browser.';
+          return;
+        }
+        if (state.isListening) { stopVoiceListening(); return; }
+        try {
+          recognition = new SpeechRec();
+          recognition.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
+          recognition.interimResults = true;
+          recognition.maxAlternatives = 1;
+          state.isListening = true;
+          const btn = document.getElementById('voice-mic-trigger');
+          if (btn) { btn.classList.add('voice-pulse', 'bg-red-600'); btn.classList.remove('bg-farm-700'); }
+          if (statusEl) statusEl.textContent = 'Listening... 🎙️';
+          if (trEl) trEl.textContent = '';
+
+          let finalTxt = '';
+          recognition.onresult = (ev) => {
+            let interim = '';
+            for (let i = ev.resultIndex; i < ev.results.length; i++) {
+              const txt = ev.results[i][0].transcript;
+              if (ev.results[i].isFinal) finalTxt += txt;
+              else interim += txt;
+            }
+            if (trEl) trEl.textContent = `"${(finalTxt || interim).trim()}"`;
+            if (finalTxt.trim()) { stopVoiceListening(); processVoiceCommand(finalTxt.trim()); }
+          };
+          recognition.onerror = () => { stopVoiceListening(); };
+          recognition.onend = () => { if (state.isListening) stopVoiceListening(); };
+          recognition.start();
+        } catch { stopVoiceListening(); }
+      }
+
       function switchTab(tab) {
         if (!CONFIG.ALLOWED_TABS.includes(tab)) return; state.tab = tab;
         document.querySelectorAll('.tab-view').forEach((s) => s.classList.add('hidden'));
@@ -1090,7 +1134,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' }); refreshIcons();
       }
       function openModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { document.getElementById(id)?.classList.remove('hidden'); refreshIcons(); } }
-      function closeModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) document.getElementById(id)?.classList.add('hidden'); }
+      function closeModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { if (id === 'voice-modal') stopVoiceListening(); document.getElementById(id)?.classList.add('hidden'); } }
 
       function switchAiSubtab(w) {
         state.aiSubtab = w;
@@ -1112,7 +1156,7 @@
       }
       async function runAiMatch() {
         const box = document.getElementById('ai-match-output'); if (!box) return;
-        const { data } = await sb.from('public_buyer_requests').select('*').limit(15);
+        const { data } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(15));
         box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}) • ${escapeHtml(r.district || '')}</div>`).join('') || '<div class="text-xs text-slate-500">-</div>';
       }
 
@@ -1169,15 +1213,17 @@
       async function handleMandiRateSubmit(e) {
         e.preventDefault(); if (!state.user || !checkRateLimit('mandi_sub', 2000)) return;
         const editId = document.getElementById('mr-edit-id').value;
+        const minP = safePositiveNumber(document.getElementById('mr-min').value, 0, 1000000);
+        const modP = safePositiveNumber(document.getElementById('mr-modal').value, 0, 1000000);
+        const maxP = safePositiveNumber(document.getElementById('mr-max').value, 0, 1000000);
+        if (minP === null || modP === null || maxP === null || maxP < minP) { showToast('Invalid prices.', 'error'); return; }
         const payload = {
           rate_category: document.getElementById('mr-cat').value,
           crop_name_gu: cleanText(document.getElementById('mr-crop').value, 100),
           crop_name_en: cleanText(document.getElementById('mr-crop').value, 100),
           yard_name: cleanText(document.getElementById('mr-yard').value, 90),
           district: cleanText(document.getElementById('mr-dist').value, 70),
-          min_price: safePositiveNumber(document.getElementById('mr-min').value, 0, 1000000),
-          modal_price: safePositiveNumber(document.getElementById('mr-modal').value, 0, 1000000),
-          max_price: safePositiveNumber(document.getElementById('mr-max').value, 0, 1000000),
+          min_price: minP, modal_price: modP, max_price: maxP,
           unit: cleanText(document.getElementById('mr-unit').value, 35) || '20 kg (મણ)',
           rate_date: new Date().toISOString().split('T')[0],
           submitted_by: state.user.id
@@ -1228,19 +1274,27 @@
       async function handleAgriInputSubmit(e) {
         e.preventDefault(); if (!state.user || !checkRateLimit('input_sub', 2000)) return;
         const editId = document.getElementById('ain-edit-id').value;
+        const price = safePositiveNumber(document.getElementById('ain-price').value, 0, 10000000);
+        const ph = sanitizeIndianPhone(document.getElementById('ain-mobile').value);
+        if (price === null || !ph) { showToast('Invalid price or phone.', 'error'); return; }
         const payload = {
           supplier_id: state.user.id, input_type: document.getElementById('ain-type').value,
           item_name_gu: cleanText(document.getElementById('ain-name').value, 120), item_name_en: cleanText(document.getElementById('ain-name').value, 120),
-          brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null, price: safePositiveNumber(document.getElementById('ain-price').value, 0, 10000000),
+          brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null, price,
           unit: cleanText(document.getElementById('ain-unit').value, 35) || '1 Unit', village: cleanText(document.getElementById('ain-village').value, 70),
-          district: cleanText(document.getElementById('ain-district').value, 70), contact_number: sanitizeIndianPhone(document.getElementById('ain-mobile').value),
+          district: cleanText(document.getElementById('ain-district').value, 70), contact_number: ph,
           stock_note: cleanText(document.getElementById('ain-note').value, 160) || null
         };
         const res = isValidUUID(editId) ? await sb.from('agri_inputs').update(payload).eq('id', editId) : await sb.from('agri_inputs').insert(payload);
         if (res.error) showToast(res.error.message, 'error'); else { closeModal('agri-input-modal'); showToast('OK'); loadAgriInputs(); loadV5AdminQueues(); }
       }
 
-      async function loadTransportList() { const { data } = await sb.from('transport_providers').select('*').eq('is_available', true).limit(60); state.transportList = Array.isArray(data) ? data : []; renderTransportList(); }
+      async function loadTransportList() {
+        const { data } = await withRetry(() => sb.from('transport_providers').select('*').eq('is_available', true).limit(60));
+        if (Array.isArray(data)) { state.transportList = data; saveCache('transport', data); }
+        else { state.transportList = loadCache('transport') || []; }
+        renderTransportList();
+      }
       function renderTransportList() {
         const box = document.getElementById('transport-list'); if (!box) return;
         const term = cleanText(document.getElementById('transport-search')?.value, 60).toLowerCase();
@@ -1256,15 +1310,25 @@
         const mBox = document.getElementById('admin-pending-mandi-list');
         const iBox = document.getElementById('admin-pending-inputs-list');
         const [mRes, iRes] = await Promise.all([
-          sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25),
-          sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)
+          withRetry(() => sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)),
+          withRetry(() => sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25))
         ]);
         if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${r.modal_price}</div><div class="flex gap-1"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-bold">Reject</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
         if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${it.price}</div><div class="flex gap-1"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-bold">Reject</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
       }
 
-      async function loadCategories() { const { data } = await sb.from('categories').select('id, parent_id, slug, name_gu, name_hi, name_en').eq('is_active', true).order('sort_order', { ascending: true }); state.categories = Array.isArray(data) ? data : []; renderCategories(); const np = document.getElementById('np-cat'); if (np) np.innerHTML = state.categories.filter((c) => !c.parent_id).map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(pickLangField(c, 'name'))}</option>`).join(''); }
-      function renderCategories() { const s = document.getElementById('categories-strip'); if (!s) return; s.innerHTML = `<button type="button" data-action="select-cat" data-id="" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border ${!state.selectedCategory ? 'bg-farm-700 text-white border-farm-700' : 'bg-slate-50 text-slate-700'}">🌾 ${escapeHtml(tr('all_categories'))}</button>` + state.categories.filter((c) => !c.parent_id).map((c) => `<button type="button" data-action="select-cat" data-id="${escapeHtml(c.id)}" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border ${state.selectedCategory === c.id ? 'bg-farm-700 text-white border-farm-700' : 'bg-slate-50 text-slate-700'}">${escapeHtml(pickLangField(c, 'name'))}</button>`).join(''); }
+      async function loadCategories() {
+        const { data } = await withRetry(() => sb.from('categories').select('id, parent_id, slug, name_gu, name_hi, name_en').eq('is_active', true).order('sort_order', { ascending: true }));
+        state.categories = Array.isArray(data) ? data : [];
+        renderCategories();
+        const np = document.getElementById('np-cat');
+        if (np) np.innerHTML = state.categories.filter((c) => !c.parent_id).map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(pickLangField(c, 'name'))}</option>`).join('');
+      }
+      function renderCategories() {
+        const s = document.getElementById('categories-strip'); if (!s) return;
+        s.innerHTML = `<button type="button" data-action="select-cat" data-id="" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border ${!state.selectedCategory ? 'bg-farm-700 text-white border-farm-700' : 'bg-slate-50 text-slate-700'}">🌾 ${escapeHtml(tr('all_categories'))}</button>` +
+          state.categories.filter((c) => !c.parent_id).map((c) => `<button type="button" data-action="select-cat" data-id="${escapeHtml(c.id)}" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border ${state.selectedCategory === c.id ? 'bg-farm-700 text-white border-farm-700' : 'bg-slate-50 text-slate-700'}">${escapeHtml(pickLangField(c, 'name'))}</button>`).join('');
+      }
 
       async function loadProducts() {
         let q = sb.from('products').select('*').eq('status', 'approved').is('deleted_at', null).order('created_at', { ascending: false }).limit(60);
@@ -1277,7 +1341,8 @@
         let list = Array.isArray(data) ? data : (loadCache('products') || []);
         if (term) list = list.filter((p) => (p.title_gu || '').toLowerCase().includes(term) || (p.village || '').toLowerCase().includes(term) || (p.district || '').toLowerCase().includes(term));
         state.products = list;
-        document.getElementById('ai-pulse-summary').textContent = `${list.length} active items`;
+        const pulse = document.getElementById('ai-pulse-summary');
+        if (pulse) pulse.textContent = `${list.length} active items`;
         renderProducts();
       }
       function renderProducts() {
@@ -1290,11 +1355,18 @@
         }).join('');
       }
 
-      async function loadBuyerRequests() { const { data } = await sb.from('public_buyer_requests').select('*').limit(30); document.getElementById('requests-list').innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border"><strong class="text-sm">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-500">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}</div></div>`).join(''); }
-      function refreshSellTab() { document.getElementById('sell-guest-box').classList.toggle('hidden', Boolean(state.user)); document.getElementById('sell-workspace').classList.toggle('hidden', !state.user); }
+      async function loadBuyerRequests() {
+        const { data } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(30));
+        const box = document.getElementById('requests-list');
+        if (box) box.innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border"><strong class="text-sm">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-500">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}</div></div>`).join('');
+      }
+      function refreshSellTab() {
+        document.getElementById('sell-guest-box')?.classList.toggle('hidden', Boolean(state.user));
+        document.getElementById('sell-workspace')?.classList.toggle('hidden', !state.user);
+      }
       function refreshAccountTab() {
-        document.getElementById('auth-box').classList.toggle('hidden', Boolean(state.user));
-        document.getElementById('profile-box').classList.toggle('hidden', !state.user);
+        document.getElementById('auth-box')?.classList.toggle('hidden', Boolean(state.user));
+        document.getElementById('profile-box')?.classList.toggle('hidden', !state.user);
         if (!state.user) return;
         const p = state.profile || {};
         document.getElementById('prof-display-name').textContent = p.full_name || state.user.email;
@@ -1305,13 +1377,20 @@
         document.getElementById('p-district').value = p.district || '';
         document.getElementById('p-upi').value = p.upi_id || '';
         const isAdm = p.role === 'admin';
-        document.getElementById('admin-panel').classList.toggle('hidden', !isAdm);
+        document.getElementById('admin-panel')?.classList.toggle('hidden', !isAdm);
         if (isAdm) loadV5AdminQueues();
       }
 
       document.addEventListener('click', async (e) => {
+        if (e.target?.classList?.contains('modal-backdrop') && e.target.id) {
+          if (e.target.id === 'voice-modal') stopVoiceListening();
+          closeModal(e.target.id);
+          return;
+        }
         const el = e.target.closest('[data-action]'); if (!el) return;
         const a = el.getAttribute('data-action');
+        if (a === 'install-app') { await triggerInstallApp(); return; }
+        if (a === 'share-app') { await shareKhedutSetuApp(); return; }
         if (a === 'nav-tab') switchTab(el.getAttribute('data-tab'));
         else if (a === 'set-lang') setLang(el.getAttribute('data-lang'));
         else if (a === 'reset-filters') { document.getElementById('search-input').value = ''; document.getElementById('district-filter').value = ''; state.selectedCategory = null; renderCategories(); loadProducts(); }
@@ -1333,7 +1412,26 @@
         else if (a === 'open-product-modal') { if (!state.user) switchTab('account'); else openModal('add-product-modal'); }
         else if (a === 'select-cat') { const id = el.getAttribute('data-id'); state.selectedCategory = isValidUUID(id) ? id : null; renderCategories(); loadProducts(); }
         else if (a === 'auth-mode') { const m = el.getAttribute('data-mode'); document.getElementById('login-form').classList.toggle('hidden', m !== 'login'); document.getElementById('register-form').classList.toggle('hidden', m === 'login'); }
-        else if (a === 'google-login') await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
+        else if (a === 'google-login') {
+          if (!checkRateLimit('google_oauth', 2000)) return;
+          if (!navigator.onLine) {
+            showToast(state.lang === 'en' ? 'Internet connection required for Google Login.' : state.lang === 'hi' ? 'Google लॉगिन के लिए इंटरनेट ज़रूरी है।' : 'Google Login mate internet chalu hovu jaruri che.', 'error');
+            return;
+          }
+          const redirectUrl = window.location.origin + window.location.pathname;
+          const { data, error } = await withRetry(() => sb.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+              redirectTo: redirectUrl,
+              queryParams: { access_type: 'offline', prompt: 'select_account' }
+            }
+          }), 1, 500);
+          if (error) {
+            showToast('Google Login Error: ' + (error.message || 'Check Supabase Google OAuth & Redirect URL'), 'error');
+          } else if (data && data.url && window.top !== window.self) {
+            try { window.top.location.href = data.url; } catch { window.location.href = data.url; }
+          }
+        }
         else if (a === 'logout') { await sb.auth.signOut(); state.user = null; state.profile = null; switchTab('market'); }
         else if (a === 'admin-refresh') loadV5AdminQueues();
         else if (a === 'moderate-mandi') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('apmc_rates').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadApmcRates(); loadV5AdminQueues(); } }
@@ -1351,23 +1449,144 @@
       document.getElementById('transport-search')?.addEventListener('input', renderTransportList);
       document.getElementById('search-input')?.addEventListener('input', loadProducts);
       document.getElementById('district-filter')?.addEventListener('input', loadProducts);
-      document.getElementById('login-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const { error } = await sb.auth.signInWithPassword({ email: cleanText(document.getElementById('login-email').value, 120), password: document.getElementById('login-password').value }); if (error) showToast(error.message, 'error'); else switchTab('market'); });
-      document.getElementById('register-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const { error } = await sb.auth.signUp({ email: cleanText(document.getElementById('reg-email').value, 120), password: document.getElementById('reg-password').value, options: { data: { full_name: cleanText(document.getElementById('reg-name').value, 80), mobile_number: sanitizeIndianPhone(document.getElementById('reg-mobile').value), role: document.getElementById('reg-role').value } } }); if (error) showToast(error.message, 'error'); else showToast('OK'); });
-      document.getElementById('profile-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('profiles').update({ full_name: cleanText(document.getElementById('p-name').value, 80), mobile_number: sanitizeIndianPhone(document.getElementById('p-mobile').value) || null, village_city: cleanText(document.getElementById('p-village').value, 80) || null, district: cleanText(document.getElementById('p-district').value, 80) || null, upi_id: cleanText(document.getElementById('p-upi').value, 96) || null }).eq('id', state.user.id); if (!error) { showToast('OK'); const { data } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle(); state.profile = data; refreshAccountTab(); } });
-      document.getElementById('admin-apmc-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const { error } = await sb.from('apmc_rates').insert({ rate_category: document.getElementById('ap-cat').value, yard_name: cleanText(document.getElementById('ap-yard').value, 80), district: cleanText(document.getElementById('ap-dist').value, 60), crop_name_gu: cleanText(document.getElementById('ap-crop').value, 80), min_price: safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000), max_price: safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000), modal_price: safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000), unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)' }); if (!error) { e.target.reset(); showToast('OK'); loadApmcRates(); } });
-      document.getElementById('add-product-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const t = cleanText(document.getElementById('np-title-gu').value, 150); const { error } = await sb.from('products').insert({ seller_id: state.user.id, category_id: document.getElementById('np-cat').value, title_gu: t, title_hi: t, title_en: t, available_quantity: safePositiveNumber(document.getElementById('np-qty').value, 0.1, 1000000), unit: document.getElementById('np-unit').value, expected_price: safePositiveNumber(document.getElementById('np-price').value, 1, 10000000), price_unit: document.getElementById('np-unit').value, village: cleanText(document.getElementById('np-village').value, 80), district: cleanText(document.getElementById('np-district').value, 80), state: 'Gujarat' }); if (!error) { closeModal('add-product-modal'); showToast('OK'); loadProducts(); } });
-      document.getElementById('add-request-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('buyer_requests').insert({ buyer_id: state.user.id, product_required: cleanText(document.getElementById('nr-product').value, 150), required_quantity: safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000), unit: document.getElementById('nr-unit').value, delivery_location: cleanText(document.getElementById('nr-loc').value, 100), district: cleanText(document.getElementById('nr-district').value, 80), contact_number: sanitizeIndianPhone(document.getElementById('nr-phone').value), buyer_name: cleanText(state.profile?.full_name || state.user.email, 80) }); if (!error) { closeModal('add-request-modal'); loadBuyerRequests(); } });
-      document.getElementById('add-transport-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('transport_providers').insert({ provider_id: state.user.id, driver_name: cleanText(document.getElementById('tr-name').value, 80), vehicle_type: document.getElementById('tr-type').value, mobile_number: sanitizeIndianPhone(document.getElementById('tr-mobile').value), village: cleanText(document.getElementById('tr-village').value, 80), district: cleanText(document.getElementById('tr-district').value, 80) }); if (!error) { closeModal('add-transport-modal'); showToast('OK'); loadTransportList(); } });
+
+      document.getElementById('login-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const em = cleanText(document.getElementById('login-email').value, 120).toLowerCase();
+        const pw = document.getElementById('login-password').value;
+        if (!EMAIL_RE.test(em) || pw.length < 6) { showToast('Valid email & password required.', 'error'); return; }
+        const { error } = await sb.auth.signInWithPassword({ email: em, password: pw });
+        if (error) showToast(error.message, 'error'); else switchTab('market');
+      });
+
+      document.getElementById('register-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const em = cleanText(document.getElementById('reg-email').value, 120).toLowerCase();
+        const pw = document.getElementById('reg-password').value;
+        const nm = cleanText(document.getElementById('reg-name').value, 80);
+        const mb = sanitizeIndianPhone(document.getElementById('reg-mobile').value);
+        if (!EMAIL_RE.test(em) || pw.length < 8 || nm.length < 2 || !mb) { showToast('Please fill valid details.', 'error'); return; }
+        const { error } = await sb.auth.signUp({ email: em, password: pw, options: { data: { full_name: nm, mobile_number: mb, role: document.getElementById('reg-role').value } } });
+        if (error) showToast(error.message, 'error'); else showToast('OK');
+      });
+
+      document.getElementById('profile-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault(); if (!state.user) return;
+        const upi = cleanText(document.getElementById('p-upi').value, 96).toLowerCase();
+        if (upi && !UPI_RE.test(upi)) { showToast('Invalid UPI ID.', 'error'); return; }
+        const { error } = await sb.from('profiles').update({
+          full_name: cleanText(document.getElementById('p-name').value, 80),
+          mobile_number: sanitizeIndianPhone(document.getElementById('p-mobile').value) || null,
+          village_city: cleanText(document.getElementById('p-village').value, 80) || null,
+          district: cleanText(document.getElementById('p-district').value, 80) || null,
+          upi_id: upi || null
+        }).eq('id', state.user.id);
+        if (!error) { showToast('OK'); const { data } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle(); state.profile = data; refreshAccountTab(); }
+      });
+
+      document.getElementById('admin-apmc-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const minP = safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000);
+        const maxP = safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000);
+        const modP = safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000);
+        if (minP === null || maxP === null || modP === null || maxP < minP) { showToast('Invalid rates.', 'error'); return; }
+        const { error } = await sb.from('apmc_rates').insert({
+          rate_category: document.getElementById('ap-cat').value,
+          yard_name: cleanText(document.getElementById('ap-yard').value, 80),
+          district: cleanText(document.getElementById('ap-dist').value, 60),
+          crop_name_gu: cleanText(document.getElementById('ap-crop').value, 80),
+          min_price: minP, max_price: maxP, modal_price: modP,
+          unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)'
+        });
+        if (!error) { e.target.reset(); showToast('OK'); loadApmcRates(); }
+      });
+
+      document.getElementById('add-product-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault(); if (!state.user) return;
+        const t = cleanText(document.getElementById('np-title-gu').value, 150);
+        const q = safePositiveNumber(document.getElementById('np-qty').value, 0.1, 1000000);
+        const pr = safePositiveNumber(document.getElementById('np-price').value, 1, 10000000);
+        if (!t || !q || !pr) return;
+        const { error } = await sb.from('products').insert({
+          seller_id: state.user.id, category_id: document.getElementById('np-cat').value,
+          title_gu: t, title_hi: t, title_en: t, available_quantity: q,
+          unit: document.getElementById('np-unit').value, expected_price: pr, price_unit: document.getElementById('np-unit').value,
+          village: cleanText(document.getElementById('np-village').value, 80), district: cleanText(document.getElementById('np-district').value, 80), state: 'Gujarat'
+        });
+        if (!error) { closeModal('add-product-modal'); showToast('OK'); loadProducts(); }
+      });
+
+      document.getElementById('add-request-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault(); if (!state.user) return;
+        const ph = sanitizeIndianPhone(document.getElementById('nr-phone').value);
+        if (!ph) { showToast('Invalid mobile.', 'error'); return; }
+        const { error } = await sb.from('buyer_requests').insert({
+          buyer_id: state.user.id, product_required: cleanText(document.getElementById('nr-product').value, 150),
+          required_quantity: safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000),
+          unit: document.getElementById('nr-unit').value, delivery_location: cleanText(document.getElementById('nr-loc').value, 100),
+          district: cleanText(document.getElementById('nr-district').value, 80), contact_number: ph,
+          buyer_name: cleanText(state.profile?.full_name || state.user.email, 80)
+        });
+        if (!error) { closeModal('add-request-modal'); loadBuyerRequests(); }
+      });
+
+      document.getElementById('add-transport-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault(); if (!state.user) return;
+        const ph = sanitizeIndianPhone(document.getElementById('tr-mobile').value);
+        if (!ph) { showToast('Invalid mobile.', 'error'); return; }
+        const { error } = await sb.from('transport_providers').insert({
+          provider_id: state.user.id, driver_name: cleanText(document.getElementById('tr-name').value, 80),
+          vehicle_type: document.getElementById('tr-type').value, mobile_number: ph,
+          village: cleanText(document.getElementById('tr-village').value, 80), district: cleanText(document.getElementById('tr-district').value, 80)
+        });
+        if (!error) { closeModal('add-transport-modal'); showToast('OK'); loadTransportList(); }
+      });
+
+      function syncOnline() {
+        document.getElementById('offline-banner')?.classList.toggle('hidden', navigator.onLine);
+        if (navigator.onLine) loadProducts().catch(() => {});
+      }
+      window.addEventListener('online', syncOnline);
+      window.addEventListener('offline', syncOnline);
+      window.addEventListener('error', (ev) => { ev.preventDefault(); });
+      window.addEventListener('unhandledrejection', (ev) => { ev.preventDefault(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { stopVoiceListening(); CONFIG.ALLOWED_MODALS.forEach(closeModal); } });
 
       async function initApp() {
-        syncOnlineStatus();
+        syncOnline();
         setLang(state.lang);
-        sb.auth.onAuthStateChange(async (_ev, newSession) => {
+        async function syncUserProfile(userObj) {
+          if (!userObj) { state.profile = null; return; }
+          let { data: prof } = await withRetry(() => sb.from('profiles').select('*').eq('id', userObj.id).maybeSingle());
+          if (!prof) {
+            const meta = userObj.user_metadata || {};
+            const fallbackName = cleanText(meta.full_name || meta.name || (userObj.email ? userObj.email.split('@')[0] : 'Farmer'), 80) || 'Farmer';
+            await withRetry(() => sb.from('profiles').upsert({
+              id: userObj.id,
+              full_name: fallbackName,
+              role: 'seller'
+            }, { onConflict: 'id', ignoreDuplicates: true }));
+            const retryProf = await withRetry(() => sb.from('profiles').select('*').eq('id', userObj.id).maybeSingle());
+            prof = retryProf.data || { id: userObj.id, full_name: fallbackName, role: 'seller' };
+          }
+          state.profile = prof;
+        }
+
+        function cleanOAuthUrlFragment() {
+          try {
+            if (/[?#].*(access_token|refresh_token|code=|error_description=)/.test(window.location.href)) {
+              const cleanUrl = window.location.origin + window.location.pathname;
+              window.history.replaceState({}, document.title, cleanUrl);
+            }
+          } catch {}
+        }
+
+        sb.auth.onAuthStateChange(async (ev, newSession) => {
           state.user = newSession?.user || null;
-          state.profile = null;
-          if (state.user) {
-            const { data: prof } = await withRetry(() => sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle());
-            state.profile = prof;
+          await syncUserProfile(state.user);
+          if (ev === 'SIGNED_IN' && state.user) {
+            cleanOAuthUrlFragment();
+            showToast(state.lang === 'en' ? 'Signed in successfully!' : state.lang === 'hi' ? 'सफलतापूर्वक लॉगिन हुआ!' : 'Google Login safal thayu!');
           }
           refreshAccountTab();
           if (state.tab === 'sell') refreshSellTab();
@@ -1375,7 +1594,10 @@
         await loadCategories();
         const { data: { session } } = await sb.auth.getSession();
         state.user = session?.user || null;
-        if (state.user) { const { data: prof } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle(); state.profile = prof; }
+        if (state.user) {
+          const { data: prof } = await withRetry(() => sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle());
+          state.profile = prof;
+        }
         refreshAccountTab();
         await loadProducts();
         refreshIcons();
