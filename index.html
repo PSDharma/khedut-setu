@@ -737,6 +737,77 @@
       }
 
 
+
+      // ==================== ROCK-SOLID PWA INSTALL & ICON ENGINE ====================
+      (function ensurePwaInstallability() {
+        try {
+          const baseHref = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+          const svgIcon192 = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">' +
+            '<rect width="192" height="192" rx="42" fill="#15803d"/>' +
+            '<circle cx="96" cy="96" r="68" fill="#166534"/>' +
+            '<text x="96" y="122" font-size="84" text-anchor="middle" font-family="sans-serif">🌾</text>' +
+            '</svg>'
+          );
+
+          const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+          if (appleIcon) {
+            const testImg = new Image();
+            testImg.onerror = () => { appleIcon.href = svgIcon192; };
+            testImg.src = './icon-192.png';
+          }
+
+          const manifestLink = document.querySelector('link[rel="manifest"]');
+          fetch('./manifest.json', { cache: 'no-store' })
+            .then((r) => {
+              if (!r.ok) throw new Error('manifest missing');
+              return r.json();
+            })
+            .catch(() => {
+              const dynManifest = {
+                name: 'KHEDUT SETU AI — ખેડૂત સેતુ',
+                short_name: 'Khedut Setu',
+                description: 'દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને AI કૃષિ બજાર',
+                start_url: baseHref,
+                scope: baseHref,
+                display: 'standalone',
+                orientation: 'portrait',
+                background_color: '#f6f8f5',
+                theme_color: '#15803d',
+                icons: [
+                  { src: svgIcon192, sizes: '192x192', type: 'image/svg+xml', purpose: 'any maskable' },
+                  { src: svgIcon192, sizes: '512x512', type: 'image/svg+xml', purpose: 'any maskable' }
+                ]
+              };
+              const blob = new Blob([JSON.stringify(dynManifest)], { type: 'application/manifest+json' });
+              const blobUrl = URL.createObjectURL(blob);
+              if (manifestLink) manifestLink.href = blobUrl;
+              else {
+                const l = document.createElement('link');
+                l.rel = 'manifest';
+                l.href = blobUrl;
+                document.head.appendChild(l);
+              }
+            });
+
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {
+              const swCode = `
+                self.addEventListener('install', (e) => { self.skipWaiting(); });
+                self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); });
+                self.addEventListener('fetch', (event) => {
+                  if (event.request.method !== 'GET') return;
+                  event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+                });
+              `;
+              const swBlob = new Blob([swCode], { type: 'application/javascript' });
+              const swUrl = URL.createObjectURL(swBlob);
+              navigator.serviceWorker.register(swUrl, { scope: baseHref }).catch(() => {});
+            });
+          }
+        } catch {}
+      })();
+
       let deferredInstallPrompt = null;
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
@@ -783,6 +854,48 @@
           }
         } catch {}
         window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
+      }
+
+
+      async function deleteRecordWithRetry(table, id, refreshFn) {
+        if (!requireAdminWrite('Delete') || state.tab !== 'account') {
+          showToast(state.lang === 'en' ? 'Available only in Admin Panel.' : state.lang === 'hi' ? 'यह सुविधा केवल Admin Panel में उपलब्ध है।' : 'Aa vyavastha fakt Admin Panel ma j upalabdh che.', 'error');
+          return;
+        }
+        if (!isValidUUID(id)) {
+          showToast('Invalid record ID.', 'error');
+          return;
+        }
+        if (!checkRateLimit('del_' + table + '_' + id, 1200)) return;
+        const { error } = await withRetry(() => sb.from(table).delete().eq('id', id));
+        if (error) {
+          showToast(error.message || 'Delete failed.', 'error');
+        } else {
+          showToast(state.lang === 'en' ? 'Deleted successfully!' : state.lang === 'hi' ? 'सफलतापूर्वक डिलीट हो गया!' : 'Safaltapurvak delete thai gayu!');
+          if (typeof refreshFn === 'function') await refreshFn();
+          await loadV5AdminQueues();
+        }
+      }
+
+      
+      // ==================== STRICT ADMIN-ONLY DATABASE WRITE GUARD ====================
+      function isStrictAdminReady() {
+        return Boolean(state.user && isValidUUID(state.user.id) && state.profile && state.profile.role === 'admin');
+      }
+
+      function requireAdminWrite(actionLabel = 'Database operation') {
+        if (!isStrictAdminReady()) {
+          showToast(
+            state.lang === 'en'
+              ? `${actionLabel} is restricted to Admin only.`
+              : state.lang === 'hi'
+                ? `${actionLabel} केवल Admin के लिए ही अनुमति है।`
+                : `${actionLabel} fakt Admin panel mathi j thai shake che.`,
+            'error'
+          );
+          return false;
+        }
+        return true;
       }
 
       // Self-Healing Retry, Offline Cache & Rate Limiting
@@ -1211,7 +1324,7 @@
       }
 
       async function handleMandiRateSubmit(e) {
-        e.preventDefault(); if (!state.user || !checkRateLimit('mandi_sub', 2000)) return;
+        e.preventDefault(); if (!requireAdminWrite('Mandi rate update') || !checkRateLimit('mandi_sub', 2000)) return;
         const editId = document.getElementById('mr-edit-id').value;
         const minP = safePositiveNumber(document.getElementById('mr-min').value, 0, 1000000);
         const modP = safePositiveNumber(document.getElementById('mr-modal').value, 0, 1000000);
@@ -1272,7 +1385,7 @@
         openModal('agri-input-modal');
       }
       async function handleAgriInputSubmit(e) {
-        e.preventDefault(); if (!state.user || !checkRateLimit('input_sub', 2000)) return;
+        e.preventDefault(); if (!requireAdminWrite('Agri input update') || !checkRateLimit('input_sub', 2000)) return;
         const editId = document.getElementById('ain-edit-id').value;
         const price = safePositiveNumber(document.getElementById('ain-price').value, 0, 10000000);
         const ph = sanitizeIndianPhone(document.getElementById('ain-mobile').value);
@@ -1313,8 +1426,8 @@
           withRetry(() => sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)),
           withRetry(() => sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25))
         ]);
-        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${r.modal_price}</div><div class="flex gap-1"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-bold">Reject</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
-        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${it.price}</div><div class="flex gap-1"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-bold">Reject</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${r.modal_price}</div><div class="flex gap-1"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️ Delete</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${it.price}</div><div class="flex gap-1"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️ Delete</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
       }
 
       async function loadCategories() {
@@ -1434,8 +1547,10 @@
         }
         else if (a === 'logout') { await sb.auth.signOut(); state.user = null; state.profile = null; switchTab('market'); }
         else if (a === 'admin-refresh') loadV5AdminQueues();
-        else if (a === 'moderate-mandi') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('apmc_rates').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadApmcRates(); loadV5AdminQueues(); } }
-        else if (a === 'moderate-input') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('agri_inputs').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadAgriInputs(); loadV5AdminQueues(); } }
+        else if (a === 'moderate-mandi') { if (!requireAdminWrite('Approval')) return; const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await withRetry(() => sb.from('apmc_rates').update({ approval_status: el.getAttribute('data-st') }).eq('id', id)); await loadApmcRates(); await loadV5AdminQueues(); } }
+        else if (a === 'moderate-input') { if (!requireAdminWrite('Approval')) return; const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await withRetry(() => sb.from('agri_inputs').update({ approval_status: el.getAttribute('data-st') }).eq('id', id)); await loadAgriInputs(); await loadV5AdminQueues(); } }
+        else if (a === 'delete-mandi-rate') { await deleteRecordWithRetry('apmc_rates', el.getAttribute('data-id'), loadApmcRates); }
+        else if (a === 'delete-agri-input') { await deleteRecordWithRetry('agri_inputs', el.getAttribute('data-id'), loadAgriInputs); }
         else if (a === 'open-voice') { openModal('voice-modal'); startVoiceListening(); }
         else if (a === 'toggle-voice-listen') startVoiceListening();
         else if (a === 'voice-example') processVoiceCommand(el.getAttribute('data-text'));
@@ -1485,7 +1600,7 @@
       });
 
       document.getElementById('admin-apmc-form')?.addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault(); if (!requireAdminWrite('Admin rate publish')) return;
         const minP = safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000);
         const maxP = safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000);
         const modP = safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000);
