@@ -7,8 +7,8 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU AI v5.0 — ખેડૂત સેતુ | સ્માર્ટ AI કૃષિ બજાર</title>
-  <meta name="description" content="KHEDUT SETU AI v5.0 — મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ મંડી ભાવ, એડમિન મંજૂરી, દવા-બિયારણ-યંત્ર ભાવ અને AI સલાહ." />
+  <title>KHEDUT SETU AI v5.2 PRO — ખેડૂત સેતુ | સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v5.2 PRO — મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ મંડી ભાવ, એડમિન મંજૂરી, દવા-બિયારણ-યંત્ર ભાવ અને AI સલાહ." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -73,7 +73,7 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v5.0</span>
+            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v5.2 PRO</span>
           </h1>
           <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline"></p>
         </div>
@@ -129,7 +129,7 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
-              <span>✨ KHEDUT SETU v5.0</span>
+              <span>✨ KHEDUT SETU v5.2 PRO</span>
               <span>•</span>
               <span data-i18n="ai_badge_sub"></span>
             </div>
@@ -654,6 +654,222 @@
         setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3500);
       }
 
+      // ==================== PRO SELF-HEALING & SECURITY ENGINE v5.2 ====================
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      const UPI_RE = /^[a-z0-9._-]{2,64}@[a-z0-9.-]{2,32}$/i;
+      const cooldownMap = new Map();
+
+      function checkRateLimit(key, waitMs = 1500) {
+        const now = Date.now();
+        const prev = cooldownMap.get(key) || 0;
+        if (now - prev < waitMs) return false;
+        cooldownMap.set(key, now);
+        return true;
+      }
+
+      // Local cache for offline / self-healing fallback
+      function saveCache(key, data) {
+        try { localStorage.setItem('ks_cache_' + key, JSON.stringify({ ts: Date.now(), data })); } catch {}
+      }
+      function loadCache(key) {
+        try {
+          const raw = localStorage.getItem('ks_cache_' + key);
+          if (!raw) return null;
+          return JSON.parse(raw).data ?? null;
+        } catch { return null; }
+      }
+
+      // Self-healing async query wrapper with automatic retry (up to 2 retries)
+      async function withRetry(fn, retries = 2, delayMs = 600) {
+        let lastErr = null;
+        for (let i = 0; i <= retries; i++) {
+          try {
+            const res = await fn();
+            if (res && res.error) {
+              const msg = String(res.error.message || '');
+              if (/Failed to fetch|NetworkError|timeout|502|503|504/i.test(msg) && i < retries) {
+                await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
+                continue;
+              }
+            }
+            return res;
+          } catch (err) {
+            lastErr = err;
+            if (i < retries) await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
+          }
+        }
+        return { data: null, error: lastErr || new Error('Network error') };
+      }
+
+      // Global Self-Healing Error Boundaries (Zero unhandled crash)
+      let healCount = 0;
+      window.addEventListener('error', (ev) => {
+        ev.preventDefault();
+        if (++healCount <= 3) {
+          try { refreshIcons(); } catch {}
+        }
+      });
+      window.addEventListener('unhandledrejection', (ev) => {
+        ev.preventDefault();
+        if (!navigator.onLine) {
+          document.getElementById('offline-banner')?.classList.remove('hidden');
+        }
+      });
+
+      // Online / Offline Auto-Recovery
+      function syncOnlineStatus() {
+        const isOnline = navigator.onLine;
+        document.getElementById('offline-banner')?.classList.toggle('hidden', isOnline);
+        if (isOnline) {
+          loadProducts().catch(() => {});
+          if (state.tab === 'yard') {
+            loadApmcRates().catch(() => {});
+            loadAgriInputs().catch(() => {});
+          }
+        }
+      }
+      window.addEventListener('online', syncOnlineStatus);
+      window.addEventListener('offline', syncOnlineStatus);
+
+      // Register Service Worker safely for smooth PWA performance
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
+        });
+      }
+
+      // Escape key & backdrop click to close modals cleanly
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          stopVoiceListening();
+          CONFIG.ALLOWED_MODALS.forEach(closeModal);
+        }
+      });
+      document.addEventListener('click', (e) => {
+        if (e.target && e.target.classList && e.target.classList.contains('modal-backdrop') && e.target.id) {
+          if (e.target.id === 'voice-modal') stopVoiceListening();
+          closeModal(e.target.id);
+        }
+      });
+
+
+
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+      let recognition = null;
+
+      function speakText(text) {
+        try {
+          if (!('speechSynthesis' in window)) return;
+          window.speechSynthesis.cancel();
+          const utter = new SpeechSynthesisUtterance(cleanText(text, 260));
+          utter.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
+          utter.rate = 0.96;
+          window.speechSynthesis.speak(utter);
+        } catch {}
+      }
+
+      function stopVoiceListening() {
+        state.isListening = false;
+        const btn = document.getElementById('voice-mic-trigger');
+        if (btn) { btn.classList.remove('voice-pulse', 'bg-red-600'); btn.classList.add('bg-farm-700'); }
+        try { if (recognition) recognition.stop(); } catch {}
+      }
+
+      function processVoiceCommand(rawSpoken) {
+        const spoken = cleanText(rawSpoken, 100);
+        if (!spoken) return;
+        const low = spoken.toLowerCase();
+        closeModal('voice-modal');
+
+        if (/ai|સલાહ|ડૉક્ટર|advisor|doctor|सलाह/.test(low)) {
+          switchTab('ai_advisor');
+          showToast(state.lang === 'en' ? 'Opened AI Advisor' : state.lang === 'hi' ? 'AI सलाहकार खोला' : 'AI સલાહકાર ખોલ્યો');
+          return;
+        }
+        if (/દવા|બિયારણ|ખાતર|સાધન|યંત્ર|input|seed|pesticide|दवा|बीज|यंत्र/.test(low)) {
+          switchTab('yard'); switchYardSubtab('inputs');
+          showToast(state.lang === 'en' ? 'Opened Agri Inputs & Machinery' : state.lang === 'hi' ? 'कृषि सामग्री खोली' : 'દવા, બિયારણ અને યંત્ર ખોલ્યા');
+          return;
+        }
+        if (/ટેમ્પો|ટ્રેક્ટર|વાહન|tempo|tractor|ट्रैक्टर/.test(low)) {
+          switchTab('yard'); switchYardSubtab('transport');
+          showToast(state.lang === 'en' ? 'Opened Transport' : state.lang === 'hi' ? 'वाहन सेवा खोली' : 'ટેમ્પો-ટ્રેક્ટર સેવા ખોલી');
+          return;
+        }
+        if (/મંડી|શાકભાજી|ફળ|ફૂલ|કઠોળ|અનાજ|apmc|yard|mandi|ભાવ|भाव/.test(low)) {
+          switchTab('yard'); switchYardSubtab('apmc');
+          if (/શાકભાજી|veg|सब्ज़ी/.test(low)) state.mandiCatFilter = 'vegetables';
+          else if (/ફળ|fruit|फल/.test(low)) state.mandiCatFilter = 'fruits';
+          else if (/ફૂલ|flower|फूल/.test(low)) state.mandiCatFilter = 'flowers';
+          else if (/કઠોળ|pulse|दलहन/.test(low)) state.mandiCatFilter = 'pulses';
+          else if (/અનાજ|grain|अनाज/.test(low)) state.mandiCatFilter = 'grains';
+          renderApmcRates();
+          return;
+        }
+        if (/નવી ઉપજ|ઉપજ મૂકો|વેચાણ|sell|post crop|नई उपज/.test(low)) {
+          switchTab('sell');
+          return;
+        }
+        if (/માંગ|request|मांग/.test(low)) {
+          switchTab('requests');
+          return;
+        }
+        if (/ખાતું|account|खाता/.test(low)) {
+          switchTab('account');
+          return;
+        }
+
+        const cleaned = spoken.replace(/(શોધો|બતાવો|ખોલો|search|find|show|खोजो|दिखाओ)/gi, '').trim();
+        switchTab('market');
+        const sIn = document.getElementById('search-input');
+        if (sIn) sIn.value = cleaned || spoken;
+        loadProducts();
+      }
+
+      function startVoiceListening() {
+        const statusEl = document.getElementById('voice-status');
+        const trEl = document.getElementById('voice-transcript');
+        if (!SpeechRec) {
+          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Voice API not supported in this browser.' : state.lang === 'hi' ? 'इस ब्राउज़र में वॉइस उपलब्ध नहीं है।' : 'આ બ્રાઉઝરમાં વૉઇસ સપોર્ટ નથી — Google Chrome વાપરો.';
+          return;
+        }
+        if (state.isListening) { stopVoiceListening(); return; }
+        try {
+          recognition = new SpeechRec();
+          recognition.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
+          recognition.interimResults = true;
+          recognition.maxAlternatives = 1;
+          state.isListening = true;
+          const btn = document.getElementById('voice-mic-trigger');
+          if (btn) { btn.classList.add('voice-pulse', 'bg-red-600'); btn.classList.remove('bg-farm-700'); }
+          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Listening... speak now 🎙️' : state.lang === 'hi' ? 'सुन रहे हैं... अब बोलें 🎙️' : 'સાંભળી રહ્યા છીએ... હવે બોલો 🎙️';
+          if (trEl) trEl.textContent = '';
+
+          let finalTxt = '';
+          recognition.onresult = (ev) => {
+            let interim = '';
+            for (let i = ev.resultIndex; i < ev.results.length; i++) {
+              const txt = ev.results[i][0].transcript;
+              if (ev.results[i].isFinal) finalTxt += txt;
+              else interim += txt;
+            }
+            if (trEl) trEl.textContent = `"${(finalTxt || interim).trim()}"`;
+            if (finalTxt.trim()) {
+              stopVoiceListening();
+              processVoiceCommand(finalTxt.trim());
+            }
+          };
+          recognition.onerror = () => {
+            stopVoiceListening();
+            if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Mic error or permission denied.' : state.lang === 'hi' ? 'माइक अनुमति या त्रुटि — फिर प्रयास करें।' : 'માઇક પરવાનગી કે અવાજમાં તકલીફ — ફરી પ્રયાસ કરો.';
+          };
+          recognition.onend = () => { if (state.isListening) stopVoiceListening(); };
+          recognition.start();
+        } catch {
+          stopVoiceListening();
+        }
+      }
+
       const savedLang = localStorage.getItem('ks_lang');
       const state = {
         lang: CONFIG.ALLOWED_LANGS.includes(savedLang) ? savedLang : 'gu',
@@ -911,8 +1127,9 @@
       }
 
       async function loadApmcRates() {
-        const { data } = await sb.from('apmc_rates').select('*').order('rate_date', { ascending: false }).order('created_at', { ascending: false }).limit(100);
-        state.apmcRates = Array.isArray(data) ? data : [];
+        const { data } = await withRetry(() => sb.from('apmc_rates').select('*').order('rate_date', { ascending: false }).order('created_at', { ascending: false }).limit(100));
+        if (Array.isArray(data)) { state.apmcRates = data; saveCache('apmc', data); }
+        else { state.apmcRates = loadCache('apmc') || []; }
         renderApmcRates();
       }
       function renderApmcRates() {
@@ -950,7 +1167,7 @@
       }
 
       async function handleMandiRateSubmit(e) {
-        e.preventDefault(); if (!state.user) return;
+        e.preventDefault(); if (!state.user || !checkRateLimit('mandi_sub', 2000)) return;
         const editId = document.getElementById('mr-edit-id').value;
         const payload = {
           rate_category: document.getElementById('mr-cat').value,
@@ -971,8 +1188,9 @@
 
       async function loadAgriInputs() {
         renderChips();
-        const { data } = await sb.from('agri_inputs').select('*').order('created_at', { ascending: false }).limit(80);
-        state.agriInputs = Array.isArray(data) ? data : [];
+        const { data } = await withRetry(() => sb.from('agri_inputs').select('*').order('created_at', { ascending: false }).limit(80));
+        if (Array.isArray(data)) { state.agriInputs = data; saveCache('inputs', data); }
+        else { state.agriInputs = loadCache('inputs') || []; }
         renderAgriInputs();
       }
       function renderAgriInputs() {
@@ -1008,7 +1226,7 @@
         openModal('agri-input-modal');
       }
       async function handleAgriInputSubmit(e) {
-        e.preventDefault(); if (!state.user) return;
+        e.preventDefault(); if (!state.user || !checkRateLimit('input_sub', 2000)) return;
         const editId = document.getElementById('ain-edit-id').value;
         const payload = {
           supplier_id: state.user.id, input_type: document.getElementById('ain-type').value,
@@ -1053,9 +1271,10 @@
         if (isValidUUID(state.selectedCategory)) q = q.eq('category_id', state.selectedCategory);
         const dist = cleanText(document.getElementById('district-filter')?.value, 60).replace(/[%_]/g, '');
         if (dist) q = q.ilike('district', `%${dist}%`);
-        const { data } = await q;
+        const { data } = await withRetry(() => q);
+        if (Array.isArray(data)) saveCache('products', data);
         const term = cleanText(document.getElementById('search-input')?.value, 80).toLowerCase();
-        let list = Array.isArray(data) ? data : [];
+        let list = Array.isArray(data) ? data : (loadCache('products') || []);
         if (term) list = list.filter((p) => (p.title_gu || '').toLowerCase().includes(term) || (p.village || '').toLowerCase().includes(term) || (p.district || '').toLowerCase().includes(term));
         state.products = list;
         document.getElementById('ai-pulse-summary').textContent = `${list.length} active items`;
@@ -1119,8 +1338,10 @@
         else if (a === 'admin-refresh') loadV5AdminQueues();
         else if (a === 'moderate-mandi') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('apmc_rates').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadApmcRates(); loadV5AdminQueues(); } }
         else if (a === 'moderate-input') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('agri_inputs').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadAgriInputs(); loadV5AdminQueues(); } }
-        else if (a === 'open-voice') openModal('voice-modal');
-        else if (a === 'close-modal') closeModal(el.getAttribute('data-modal'));
+        else if (a === 'open-voice') { openModal('voice-modal'); startVoiceListening(); }
+        else if (a === 'toggle-voice-listen') startVoiceListening();
+        else if (a === 'voice-example') processVoiceCommand(el.getAttribute('data-text'));
+        else if (a === 'close-modal') { if (el.getAttribute('data-modal') === 'voice-modal') stopVoiceListening(); closeModal(el.getAttribute('data-modal')); }
       });
 
       document.getElementById('mandi-rate-form')?.addEventListener('submit', handleMandiRateSubmit);
@@ -1139,7 +1360,18 @@
       document.getElementById('add-transport-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('transport_providers').insert({ provider_id: state.user.id, driver_name: cleanText(document.getElementById('tr-name').value, 80), vehicle_type: document.getElementById('tr-type').value, mobile_number: sanitizeIndianPhone(document.getElementById('tr-mobile').value), village: cleanText(document.getElementById('tr-village').value, 80), district: cleanText(document.getElementById('tr-district').value, 80) }); if (!error) { closeModal('add-transport-modal'); showToast('OK'); loadTransportList(); } });
 
       async function initApp() {
+        syncOnlineStatus();
         setLang(state.lang);
+        sb.auth.onAuthStateChange(async (_ev, newSession) => {
+          state.user = newSession?.user || null;
+          state.profile = null;
+          if (state.user) {
+            const { data: prof } = await withRetry(() => sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle());
+            state.profile = prof;
+          }
+          refreshAccountTab();
+          if (state.tab === 'sell') refreshSellTab();
+        });
         await loadCategories();
         const { data: { session } } = await sb.auth.getSession();
         state.user = session?.user || null;
