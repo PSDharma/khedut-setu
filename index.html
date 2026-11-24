@@ -7,8 +7,8 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU AI v4.2 — ખેડૂત સેતુ | સ્માર્ટ AI કૃષિ બજાર</title>
-  <meta name="description" content="KHEDUT SETU AI v4.2 — AI ભાવ સલાહકાર, પાક રોગ માર્ગદર્શન, વૉઇસ AI, સુરક્ષિત UPI ચૂકવણી અને APMC માર્કેટ યાર્ડ ભાવ." />
+  <title>KHEDUT SETU AI v5.0 — ખેડૂત સેતુ | સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v5.0 — મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ મંડી ભાવ, એડમિન મંજૂરી, દવા-બિયારણ-યંત્ર ભાવ અને AI સલાહ." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,7 +59,6 @@
     @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55); } 70% { box-shadow: 0 0 0 16px rgba(22, 163, 74, 0); } 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); } }
     .animate-fade { animation: fadeIn 0.2s ease-out; }
     .voice-pulse { animation: pulseRing 1.4s infinite; }
-    #upi-qr-box svg { width: 196px; height: 196px; margin: 0 auto; display: block; border-radius: 12px; }
   </style>
 </head>
 <body class="text-slate-800 antialiased">
@@ -74,7 +73,7 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v4.2</span>
+            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v5.0</span>
           </h1>
           <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline"></p>
         </div>
@@ -86,22 +85,10 @@
         <button type="button" data-action="nav-tab" data-tab="yard" data-nav="yard" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_yard"></button>
         <button type="button" data-action="nav-tab" data-tab="sell" data-nav="sell" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_sell"></button>
         <button type="button" data-action="nav-tab" data-tab="requests" data-nav="requests" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_requests"></button>
-        <button type="button" data-action="nav-tab" data-tab="alerts" data-nav="alerts" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition relative">
-          <span data-i18n="nav_alerts"></span>
-          <span id="desk-badge" class="hidden ml-1 bg-harvest-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
-        </button>
         <button type="button" data-action="nav-tab" data-tab="account" data-nav="account" class="nav-desk px-3 py-1.5 rounded-lg hover:bg-white/10 transition" data-i18n="nav_account"></button>
       </nav>
 
       <div class="flex items-center gap-1.5 shrink-0">
-        <button type="button" data-action="nav-tab" data-tab="alerts" aria-label="Notifications" class="md:hidden relative p-2 rounded-lg bg-white/10 hover:bg-white/20 transition">
-          <i data-lucide="bell" class="w-4 h-4"></i>
-          <span id="mob-badge" class="hidden absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[9px] font-bold px-1.5 rounded-full">0</span>
-        </button>
-        <button type="button" id="header-install-btn" data-action="install-app" class="hidden bg-harvest-500 hover:bg-harvest-600 text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg shadow-sm flex items-center gap-1 transition">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i>
-          <span data-i18n="install_short"></span>
-        </button>
         <div class="flex items-center gap-0.5 bg-farm-900/60 p-1 rounded-lg border border-white/15 text-[11px] font-semibold">
           <button type="button" data-action="set-lang" data-lang="gu" id="lang-gu" class="lang-btn px-1.5 py-1 rounded-md transition">ગુ</button>
           <button type="button" data-action="set-lang" data-lang="hi" id="lang-hi" class="lang-btn px-1.5 py-1 rounded-md transition">हिं</button>
@@ -110,24 +97,6 @@
       </div>
     </div>
   </header>
-
-  <div id="pwa-install-banner" class="hidden bg-farm-50 border-b border-farm-200 px-3.5 py-2.5">
-    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2.5">
-      <div class="flex items-center gap-2.5 min-w-0">
-        <img src="./icon-192.png" alt="KHEDUT SETU" class="w-9 h-9 rounded-xl shadow-sm shrink-0" />
-        <div class="min-w-0">
-          <div class="text-xs sm:text-sm font-bold text-farm-900 truncate" data-i18n="install_banner_title"></div>
-          <div class="text-[11px] text-farm-700 truncate" data-i18n="install_banner_sub"></div>
-        </div>
-      </div>
-      <div class="flex items-center gap-1.5 shrink-0">
-        <button type="button" data-action="install-app" class="bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm transition" data-i18n="btn_install_app"></button>
-        <button type="button" data-action="dismiss-install" class="p-1.5 text-slate-400 hover:text-slate-600" aria-label="Close"><i data-lucide="x" class="w-4 h-4"></i></button>
-      </div>
-    </div>
-  </div>
-
-  <div id="announcement-banner" class="hidden bg-harvest-50 border-b border-amber-200 text-amber-900 text-xs sm:text-sm px-4 py-2 text-center font-medium"></div>
 
   <main class="max-w-6xl mx-auto px-3.5 py-4">
 
@@ -154,14 +123,13 @@
           </div>
         </div>
         <div id="categories-strip" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1"></div>
-        <div id="subcategories-strip" class="hidden flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 border-t border-slate-100"></div>
       </div>
 
-      <div id="ai-market-pulse" class="bg-gradient-to-r from-emerald-900 via-farm-800 to-farm-700 rounded-2xl p-4 text-white space-y-3 shadow-sm">
+      <div class="bg-gradient-to-r from-emerald-900 via-farm-800 to-farm-700 rounded-2xl p-4 text-white space-y-3 shadow-sm">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
-              <span>✨ KHEDUT SETU AI</span>
+              <span>✨ KHEDUT SETU v5.0</span>
               <span>•</span>
               <span data-i18n="ai_badge_sub"></span>
             </div>
@@ -169,16 +137,14 @@
             <p id="ai-pulse-summary" class="text-xs sm:text-sm text-farm-100"></p>
           </div>
           <div class="grid grid-cols-3 sm:flex gap-2 w-full sm:w-auto shrink-0">
-            <button type="button" data-action="nav-tab" data-tab="sell" class="bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
-              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+            <button type="button" data-action="nav-tab" data-tab="yard" class="bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
+              <span data-i18n="btn_daily_rates"></span>
+            </button>
+            <button type="button" data-action="nav-tab" data-tab="sell" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
               <span data-i18n="btn_post_crop"></span>
             </button>
             <button type="button" data-action="nav-tab" data-tab="ai_advisor" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
               <span data-i18n="btn_ai_doc_short"></span>
-            </button>
-            <button type="button" data-action="open-voice" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
-              <i data-lucide="mic" class="w-3.5 h-3.5"></i>
-              <span data-i18n="btn_voice"></span>
             </button>
           </div>
         </div>
@@ -263,7 +229,7 @@
       </div>
     </section>
 
-    <!-- TAB 3: APMC & TRANSPORT -->
+    <!-- TAB 3: MANDI RATES, AGRI INPUTS/MACHINERY & TRANSPORT -->
     <section id="tab-yard" class="tab-view hidden space-y-4 animate-fade">
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
@@ -271,14 +237,20 @@
             <h2 class="text-lg font-bold text-slate-900" data-i18n="yard_hub_title"></h2>
             <p class="text-xs text-slate-500" data-i18n="yard_hub_sub"></p>
           </div>
-          <div class="flex gap-2 bg-slate-100 p-1 rounded-xl w-full sm:w-fit">
-            <button type="button" data-action="yard-subtab" data-subtab="apmc" id="subtab-apmc" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-bold bg-farm-700 text-white transition" data-i18n="tab_apmc"></button>
-            <button type="button" data-action="yard-subtab" data-subtab="transport" id="subtab-transport" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_transport"></button>
+          <div class="flex gap-1.5 bg-slate-100 p-1 rounded-xl w-full sm:w-fit overflow-x-auto no-scrollbar">
+            <button type="button" data-action="yard-subtab" data-subtab="apmc" id="subtab-apmc" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold bg-farm-700 text-white transition" data-i18n="tab_apmc"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="inputs" id="subtab-inputs" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_inputs"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="transport" id="subtab-transport" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_transport"></button>
           </div>
         </div>
       </div>
 
+      <!-- Subtab A: Daily Mandi Rates (Veg, Fruits, Flowers, Kathol, Anaj) + Daily Update & Admin Approval -->
       <div id="apmc-panel" class="space-y-3">
+        <div class="bg-white rounded-2xl p-3 border border-slate-200 flex flex-wrap items-center justify-between gap-2">
+          <div id="mandi-cat-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar"></div>
+          <button type="button" data-action="open-mandi-rate-modal" class="px-3.5 py-2 rounded-xl bg-harvest-500 hover:bg-harvest-600 text-white text-xs font-bold shrink-0 shadow-sm" data-i18n="btn_add_update_mandi"></button>
+        </div>
         <div class="flex flex-col sm:flex-row gap-2">
           <input id="apmc-search" type="text" maxlength="60" data-i18n-placeholder="apmc_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
           <button type="button" data-action="refresh-apmc" class="px-4 py-2.5 bg-farm-700 text-white text-xs font-bold rounded-xl" data-i18n="refresh"></button>
@@ -286,6 +258,23 @@
         <div id="apmc-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
 
+      <!-- Subtab B: Dava, Biyaran, Khatar, Sadhano & Yantro -->
+      <div id="inputs-panel" class="hidden space-y-3">
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base" data-i18n="inputs_heading"></h3>
+            <p class="text-xs text-slate-500" data-i18n="inputs_sub"></p>
+          </div>
+          <button type="button" data-action="open-agri-input-modal" class="px-3.5 py-2 rounded-xl bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold shadow-sm" data-i18n="btn_add_update_input"></button>
+        </div>
+        <div id="agri-input-type-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar"></div>
+        <div class="flex gap-2">
+          <input id="agri-input-search" type="text" maxlength="60" data-i18n-placeholder="input_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
+        </div>
+        <div id="agri-inputs-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- Subtab C: Local Transport -->
       <div id="transport-panel" class="hidden space-y-3">
         <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center justify-between">
           <input id="transport-search" type="text" maxlength="60" data-i18n-placeholder="tr_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
@@ -318,7 +307,6 @@
         <p class="text-sm text-slate-500 max-w-md mx-auto" data-i18n="sell_login_sub"></p>
         <button type="button" data-action="nav-tab" data-tab="account" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow transition" data-i18n="btn_go_login"></button>
       </div>
-
       <div id="sell-workspace" class="hidden space-y-4">
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -330,38 +318,11 @@
             <span data-i18n="btn_add_product"></span>
           </button>
         </div>
-
-        <div class="flex gap-1.5 bg-white p-1.5 rounded-xl border border-slate-200 overflow-x-auto no-scrollbar">
-          <button type="button" data-action="seller-subtab" data-subtab="listings" id="subtab-listings" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-semibold transition bg-farm-700 text-white" data-i18n="my_listings"></button>
-          <button type="button" data-action="seller-subtab" data-subtab="inquiries" id="subtab-inquiries" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-semibold transition text-slate-600 hover:bg-slate-100" data-i18n="received_inquiries"></button>
-          <button type="button" data-action="seller-subtab" data-subtab="payments" id="subtab-seller-payments" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-semibold transition text-slate-600 hover:bg-slate-100" data-i18n="tab_seller_pay"></button>
-        </div>
-
         <div id="my-listings-container" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
-        <div id="my-inquiries-container" class="hidden space-y-3"></div>
-        <div id="seller-payments-container" class="hidden space-y-3"></div>
       </div>
     </section>
 
-    <!-- TAB 6: ALERTS -->
-    <section id="tab-alerts" class="tab-view hidden space-y-4 animate-fade">
-      <div id="alerts-guest-box" class="hidden bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 space-y-3">
-        <div class="text-3xl">🔔</div>
-        <h2 class="font-bold text-slate-900" data-i18n="alerts_login"></h2>
-        <button type="button" data-action="nav-tab" data-tab="account" class="bg-farm-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl" data-i18n="btn_go_login"></button>
-      </div>
-
-      <div id="alerts-workspace" class="hidden space-y-4">
-        <div class="flex gap-2 bg-white p-1.5 rounded-xl border border-slate-200 w-full sm:w-fit">
-          <button type="button" data-action="alert-subtab" data-subtab="notifications" id="subtab-notifs" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-farm-700 text-white" data-i18n="tab_notifs"></button>
-          <button type="button" data-action="alert-subtab" data-subtab="favorites" id="subtab-favs" class="flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-100" data-i18n="tab_favs"></button>
-        </div>
-        <div id="notifications-list" class="space-y-2.5"></div>
-        <div id="favorites-list" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
-      </div>
-    </section>
-
-    <!-- TAB 7: ACCOUNT & ADMIN -->
+    <!-- TAB 6: ACCOUNT & ADMIN -->
     <section id="tab-account" class="tab-view hidden space-y-4 animate-fade">
       <div id="auth-box" class="max-w-md mx-auto bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
         <div class="text-center">
@@ -369,216 +330,100 @@
           <h2 class="text-xl font-bold text-slate-900">KHEDUT SETU AI</h2>
           <p class="text-xs text-slate-500 mt-0.5" data-i18n="auth_sub"></p>
         </div>
-
         <button type="button" data-action="google-login" class="w-full bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold py-2.5 px-4 rounded-xl shadow-sm transition text-sm flex items-center justify-center gap-2">
           <span class="text-base font-extrabold text-blue-600">G</span>
           <span data-i18n="btn_google_login"></span>
         </button>
-
-        <div class="flex items-center gap-2 text-[11px] text-slate-400">
-          <div class="flex-1 h-px bg-slate-200"></div>
-          <span data-i18n="or_email"></span>
-          <div class="flex-1 h-px bg-slate-200"></div>
-        </div>
-
         <div class="grid grid-cols-2 gap-1.5 bg-slate-100 p-1 rounded-xl text-sm font-semibold">
-          <button type="button" data-action="auth-mode" data-mode="login" id="auth-tab-login" class="py-2 rounded-lg bg-white text-farm-800 shadow-sm" data-i18n="login"></button>
-          <button type="button" data-action="auth-mode" data-mode="register" id="auth-tab-register" class="py-2 rounded-lg text-slate-600" data-i18n="register"></button>
+          <button type="button" data-action="auth-mode" data-mode="login" class="py-2 rounded-lg bg-white text-farm-800 shadow-sm" data-i18n="login"></button>
+          <button type="button" data-action="auth-mode" data-mode="register" class="py-2 rounded-lg text-slate-600" data-i18n="register"></button>
         </div>
-
         <form id="login-form" class="space-y-3" novalidate>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="email"></label>
-            <input id="login-email" type="email" required maxlength="120" autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="name@example.com" />
+            <input id="login-email" type="email" required maxlength="120" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" placeholder="name@example.com" />
           </div>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="password"></label>
-            <input id="login-password" type="password" required minlength="6" maxlength="72" autocomplete="current-password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="••••••••" />
+            <input id="login-password" type="password" required minlength="6" maxlength="72" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" placeholder="••••••••" />
           </div>
-          <button type="submit" id="login-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="login"></button>
-          <button type="button" data-action="forgot-password" class="w-full text-xs text-farm-700 font-semibold hover:underline pt-1" data-i18n="forgot_pwd"></button>
+          <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="login"></button>
         </form>
-
         <form id="register-form" class="hidden space-y-3" novalidate>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name"></label>
-            <input id="reg-name" type="text" required minlength="2" maxlength="80" autocomplete="name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
-          </div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name"></label><input id="reg-name" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div class="grid grid-cols-2 gap-2.5">
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label>
-              <input id="reg-mobile" type="tel" required maxlength="15" autocomplete="tel" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="9876543210" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="role_label"></label>
-              <select id="reg-role" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:ring-2 focus:ring-farm-600 focus:outline-none"></select>
-            </div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="reg-mobile" type="tel" required maxlength="15" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="role_label"></label><select id="reg-role" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
           </div>
-          <div class="grid grid-cols-2 gap-2.5">
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village"></label>
-              <input id="reg-village" type="text" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district"></label>
-              <input id="reg-district" type="text" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
-            </div>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="email"></label>
-            <input id="reg-email" type="email" required maxlength="120" autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="name@example.com" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="password_8"></label>
-            <input id="reg-password" type="password" required minlength="8" maxlength="72" autocomplete="new-password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" placeholder="••••••••" />
-          </div>
-          <button type="submit" id="reg-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="create_account"></button>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="email"></label><input id="reg-email" type="email" required maxlength="120" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="password_8"></label><input id="reg-password" type="password" required minlength="8" maxlength="72" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="create_account"></button>
         </form>
       </div>
 
       <div id="profile-box" class="hidden space-y-4 max-w-3xl mx-auto">
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-farm-100 text-farm-800 font-bold text-lg flex items-center justify-center" id="prof-avatar">K</div>
-            <div>
-              <div class="flex items-center gap-2 flex-wrap">
-                <h2 class="font-bold text-slate-900" id="prof-display-name">User</h2>
-                <span id="prof-role-badge" class="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full bg-farm-100 text-farm-800">seller</span>
-                <span id="prof-verified-badge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700" data-i18n="verified_badge"></span>
-              </div>
-              <p class="text-xs text-slate-500" id="prof-display-email"></p>
-            </div>
+          <div>
+            <h2 class="font-bold text-slate-900" id="prof-display-name">User</h2>
+            <p class="text-xs text-slate-500" id="prof-display-email"></p>
           </div>
-          <button type="button" data-action="logout" class="px-3.5 py-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 font-semibold text-xs flex items-center gap-1.5 transition">
-            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
-            <span data-i18n="logout"></span>
-          </button>
+          <button type="button" data-action="logout" class="px-3.5 py-2 rounded-xl bg-red-50 text-red-700 font-semibold text-xs" data-i18n="logout"></button>
         </div>
 
         <form id="profile-form" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3.5">
           <h3 class="font-bold text-slate-900 text-base border-b border-slate-100 pb-2" data-i18n="profile_settings"></h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name_lbl"></label>
-              <input id="p-name" type="text" required minlength="2" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="business_name"></label>
-              <input id="p-business" type="text" maxlength="100" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile_lbl"></label>
-              <input id="p-mobile" type="tel" maxlength="15" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village"></label>
-              <input id="p-village" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district"></label>
-              <input id="p-district" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="state"></label>
-              <input id="p-state" type="text" maxlength="60" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="pincode"></label>
-              <input id="p-pin" type="text" maxlength="6" inputmode="numeric" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            </div>
-            <div class="bg-emerald-50/70 p-2.5 rounded-xl border border-emerald-200">
-              <label class="block text-xs font-bold text-emerald-900 mb-1" data-i18n="upi_id_lbl"></label>
-              <input id="p-upi" type="text" maxlength="96" placeholder="9876543210@ybl" class="w-full px-3 py-2 rounded-lg border border-emerald-300 bg-white text-sm" />
-            </div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="full_name_lbl"></label><input id="p-name" type="text" required minlength="2" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile_lbl"></label><input id="p-mobile" type="tel" maxlength="15" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village"></label><input id="p-village" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district"></label><input id="p-district" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="upi_id_lbl"></label><input id="p-upi" type="text" maxlength="96" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
           </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
-            <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
-              <input id="p-phone-ok" type="checkbox" class="w-4 h-4 accent-farm-700 rounded" />
-              <span data-i18n="allow_phone"></span>
-            </label>
-            <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer">
-              <input id="p-wa-ok" type="checkbox" class="w-4 h-4 accent-farm-700 rounded" />
-              <span data-i18n="allow_wa"></span>
-            </label>
-            <label class="flex items-center gap-2 text-xs font-bold text-emerald-800 cursor-pointer">
-              <input id="p-upi-ok" type="checkbox" class="w-4 h-4 accent-emerald-700 rounded" />
-              <span data-i18n="allow_upi"></span>
-            </label>
-          </div>
-
-          <button type="submit" id="profile-save-btn" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition" data-i18n="save_profile"></button>
+          <button type="submit" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm" data-i18n="save_profile"></button>
         </form>
 
-        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-            <div>
-              <h3 class="font-bold text-slate-900 text-base" data-i18n="my_pay_heading"></h3>
-              <p class="text-xs text-slate-500" data-i18n="my_pay_sub"></p>
-            </div>
-            <button type="button" data-action="refresh-payments" class="text-xs font-semibold text-farm-700 hover:underline" data-i18n="refresh"></button>
-          </div>
-          <div id="my-payments-list" class="space-y-2.5"></div>
-        </div>
-
+        <!-- ADMIN PANEL: APPROVE/REJECT PENDING MANDI RATES & AGRI INPUTS -->
         <div id="admin-panel" class="hidden bg-white rounded-2xl p-5 shadow-sm border-2 border-amber-300 space-y-5">
           <div class="flex items-center justify-between border-b border-amber-100 pb-3">
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🛡️</span>
-              <div>
-                <h3 class="font-bold text-slate-900" data-i18n="admin_heading"></h3>
-                <p class="text-xs text-slate-500" data-i18n="admin_sub"></p>
-              </div>
+            <div>
+              <h3 class="font-bold text-slate-900" data-i18n="admin_heading"></h3>
+              <p class="text-xs text-slate-500" data-i18n="admin_sub"></p>
             </div>
             <button type="button" data-action="admin-refresh" class="text-xs font-semibold text-farm-700 hover:underline" data-i18n="refresh"></button>
           </div>
 
-          <div>
-            <h4 class="font-bold text-sm text-slate-800 mb-2" data-i18n="admin_pending_title"></h4>
-            <div id="admin-pending-list" class="space-y-2.5"></div>
+          <div class="space-y-2">
+            <h4 class="font-bold text-sm text-slate-800" data-i18n="admin_pending_mandi"></h4>
+            <div id="admin-pending-mandi-list" class="space-y-2"></div>
+          </div>
+
+          <div class="space-y-2 pt-3 border-t border-slate-100">
+            <h4 class="font-bold text-sm text-slate-800" data-i18n="admin_pending_inputs"></h4>
+            <div id="admin-pending-inputs-list" class="space-y-2"></div>
           </div>
 
           <form id="admin-apmc-form" class="pt-3 border-t border-slate-100 space-y-2.5">
             <h4 class="font-bold text-sm text-slate-800" data-i18n="admin_apmc_title"></h4>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <select id="ap-cat" class="px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">
+                <option value="vegetables">🥬 શાકભાજી</option>
+                <option value="fruits">🍎 ફળો</option>
+                <option value="flowers">🌸 ફૂલો</option>
+                <option value="pulses">🫘 કઠોળ</option>
+                <option value="grains">🌾 અનાજ</option>
+              </select>
               <input id="ap-yard" type="text" required data-i18n-placeholder="ap_yard_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
               <input id="ap-dist" type="text" required data-i18n-placeholder="ap_dist_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
               <input id="ap-crop" type="text" required data-i18n-placeholder="ap_crop_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
-              <input id="ap-min" type="number" required min="1" data-i18n-placeholder="ap_min_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
-              <input id="ap-max" type="number" required min="1" data-i18n-placeholder="ap_max_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
-              <input id="ap-modal" type="number" required min="1" data-i18n-placeholder="ap_modal_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-min" type="number" required min="0" data-i18n-placeholder="ap_min_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-max" type="number" required min="0" data-i18n-placeholder="ap_max_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-modal" type="number" required min="0" data-i18n-placeholder="ap_modal_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
             </div>
             <div class="flex flex-wrap gap-2 items-center">
-              <input id="ap-unit" type="text" value="20 kg" class="w-40 px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-unit" type="text" value="20 kg (મણ)" class="w-40 px-3 py-2 rounded-xl border border-slate-300 text-xs" />
               <button type="submit" class="bg-farm-700 hover:bg-farm-800 text-white font-bold text-xs px-4 py-2 rounded-xl" data-i18n="ap_publish_btn"></button>
             </div>
           </form>
-
-          <div class="pt-3 border-t border-slate-100 space-y-2.5">
-            <h4 class="font-bold text-sm text-slate-800" data-i18n="bc_title_lbl"></h4>
-            <input id="bc-title" type="text" maxlength="120" data-i18n-placeholder="bc_sub_ph" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
-            <textarea id="bc-body" rows="2" maxlength="500" data-i18n-placeholder="bc_body_ph" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm"></textarea>
-            <div class="flex flex-wrap gap-2">
-              <button type="button" data-action="admin-broadcast" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition" data-i18n="bc_send_btn"></button>
-              <button type="button" data-action="admin-expiring" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-xl transition" data-i18n="bc_exp_btn"></button>
-            </div>
-          </div>
-        </div>
-
-        <div id="account-install-card" class="bg-white rounded-2xl p-4 shadow-sm border border-farm-200 flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <img src="./icon-192.png" alt="App Icon" class="w-10 h-10 rounded-xl shadow-sm" />
-            <div>
-              <h4 class="font-bold text-slate-900 text-sm" data-i18n="install_banner_title"></h4>
-              <p class="text-xs text-slate-500" data-i18n="install_banner_sub"></p>
-            </div>
-          </div>
-          <button type="button" data-action="install-app" class="shrink-0 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition" data-i18n="btn_install_app"></button>
-        </div>
-
-        <div id="support-card" class="bg-farm-50 rounded-2xl p-4 border border-farm-200 text-xs text-farm-900 flex flex-wrap items-center justify-between gap-2">
-          <span data-i18n="footer_brand"></span>
-          <span id="support-contact-text" class="font-medium"></span>
         </div>
       </div>
     </section>
@@ -600,15 +445,15 @@
         <i data-lucide="sparkles" class="w-5 h-5"></i>
         <span class="text-[10px] font-semibold" data-i18n="nav_ai_short"></span>
       </button>
-      <button type="button" data-action="nav-tab" data-tab="sell" data-mnav="sell" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
-        <div class="w-10 h-10 -mt-4 rounded-full bg-farm-700 text-white flex items-center justify-center shadow-md border-2 border-white">
-          <i data-lucide="plus" class="w-5 h-5"></i>
-        </div>
-        <span class="text-[10px] font-semibold" data-i18n="nav_sell"></span>
-      </button>
       <button type="button" data-action="nav-tab" data-tab="yard" data-mnav="yard" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
-        <i data-lucide="trending-up" class="w-5 h-5"></i>
+        <div class="w-10 h-10 -mt-4 rounded-full bg-farm-700 text-white flex items-center justify-center shadow-md border-2 border-white">
+          <i data-lucide="trending-up" class="w-5 h-5"></i>
+        </div>
         <span class="text-[10px] font-semibold" data-i18n="nav_yard_short"></span>
+      </button>
+      <button type="button" data-action="nav-tab" data-tab="sell" data-mnav="sell" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
+        <i data-lucide="plus-circle" class="w-5 h-5"></i>
+        <span class="text-[10px] font-semibold" data-i18n="nav_sell"></span>
       </button>
       <button type="button" data-action="nav-tab" data-tab="account" data-mnav="account" class="mnav-btn flex flex-col items-center justify-center gap-0.5 text-slate-500">
         <i data-lucide="user" class="w-5 h-5"></i>
@@ -626,35 +471,86 @@
       </div>
       <div class="p-5 text-center space-y-4">
         <button type="button" id="voice-mic-trigger" data-action="toggle-voice-listen" class="w-20 h-20 mx-auto rounded-full bg-farm-700 text-white flex items-center justify-center shadow-lg transition"><i data-lucide="mic" class="w-9 h-9"></i></button>
-        <div>
-          <p id="voice-status" class="text-sm font-bold text-farm-800" data-i18n="voice_prompt"></p>
-          <p id="voice-transcript" class="text-xs text-slate-500 mt-1 min-h-[20px]"></p>
-        </div>
-        <div class="bg-slate-50 rounded-2xl p-3 text-left space-y-1.5">
-          <div class="text-[11px] font-bold text-slate-500" data-i18n="voice_hints_lbl"></div>
-          <div id="voice-hints-chips" class="flex flex-wrap gap-1.5 text-[11px]"></div>
-        </div>
+        <p id="voice-status" class="text-sm font-bold text-farm-800" data-i18n="voice_prompt"></p>
+        <p id="voice-transcript" class="text-xs text-slate-500 min-h-[20px]"></p>
       </div>
     </div>
   </div>
 
-  <div id="upi-payment-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+  <div id="mandi-rate-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
-        <h3 class="font-bold text-slate-900 text-base" data-i18n="upi_modal_title"></h3>
-        <button type="button" data-action="close-modal" data-modal="upi-payment-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="mr_modal_title"></h3>
+        <button type="button" data-action="close-modal" data-modal="mandi-rate-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <div id="upi-modal-body" class="p-4 space-y-4"></div>
+      <form id="mandi-rate-form" class="p-4 space-y-3">
+        <input id="mr-edit-id" type="hidden" value="" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mr_cat_lbl"></label>
+            <select id="mr-cat" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="vegetables">🥬 શાકભાજી / Vegetables</option>
+              <option value="fruits">🍎 ફળો / Fruits</option>
+              <option value="flowers">🌸 ફૂલો / Flowers</option>
+              <option value="pulses">🫘 કઠોળ / Pulses</option>
+              <option value="grains">🌾 અનાજ / Grains</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mr_crop_lbl"></label>
+            <input id="mr-crop" type="text" required minlength="2" maxlength="100" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mr_yard_lbl"></label><input id="mr-yard" type="text" required minlength="2" maxlength="90" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="mr-dist" type="text" required minlength="2" maxlength="70" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="apmc_min"></label><input id="mr-min" type="number" step="any" min="0" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="apmc_modal"></label><input id="mr-modal" type="number" step="any" min="0" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="apmc_max"></label><input id="mr-max" type="number" step="any" min="0" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+        </div>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="unit"></label><input id="mr-unit" type="text" value="20 kg (મણ)" required maxlength="35" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+        <p class="text-[11px] text-amber-800 bg-amber-50 p-2.5 rounded-xl border border-amber-200" data-i18n="mr_approval_note"></p>
+        <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow text-sm" data-i18n="mr_submit_btn"></button>
+      </form>
     </div>
   </div>
 
-  <div id="receipt-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
-      <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between bg-farm-800 text-white">
-        <h3 class="font-bold text-base" data-i18n="receipt_title"></h3>
-        <button type="button" data-action="close-modal" data-modal="receipt-modal" class="p-1.5 rounded-full bg-white/15 text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+  <div id="agri-input-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
+      <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="ain_modal_title"></h3>
+        <button type="button" data-action="close-modal" data-modal="agri-input-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <div id="receipt-body" class="p-4 space-y-3 text-sm"></div>
+      <form id="agri-input-form" class="p-4 space-y-3">
+        <input id="ain-edit-id" type="hidden" value="" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ain_type_lbl"></label>
+            <select id="ain-type" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
+              <option value="dava">🧪 દવા / Pesticides</option>
+              <option value="biyaran">🌱 બિયારણ / Seeds</option>
+              <option value="khatar">🌿 ખાતર / Fertilizer</option>
+              <option value="sadhano">🛠️ સાધનો / Tools</option>
+              <option value="yantro">⚙️ યંત્રો / Machinery</option>
+            </select>
+          </div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ain_name_lbl"></label><input id="ain-name" type="text" required minlength="2" maxlength="120" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ain_brand_lbl"></label><input id="ain-brand" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="price"></label><input id="ain-price" type="number" step="any" min="0" required class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="unit"></label><input id="ain-unit" type="text" value="1 Unit / Pack" required maxlength="35" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village_req"></label><input id="ain-village" type="text" required maxlength="70" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="ain-district" type="text" required maxlength="70" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="ain-mobile" type="tel" required maxlength="15" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+        </div>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ain_note_lbl"></label><input id="ain-note" type="text" maxlength="160" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+        <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow text-sm" data-i18n="mr_submit_btn"></button>
+      </form>
     </div>
   </div>
 
@@ -667,98 +563,37 @@
       <form id="add-transport-form" class="p-4 space-y-3">
         <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_driver_lbl"></label><input id="tr-name" type="text" required minlength="2" maxlength="80" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         <div class="grid grid-cols-2 gap-2.5">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_type_lbl"></label><select id="tr-type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"><option value="Tempo / Chhota Hathi">Tempo / Chhota Hathi</option><option value="Tractor Trolley">Tractor Trolley</option><option value="Pickup Bolero">Pickup Bolero</option><option value="Mini Truck">Mini Truck</option></select></div>
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_cap_lbl"></label><input id="tr-cap" type="text" maxlength="60" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_type_lbl"></label><select id="tr-type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"><option value="Tempo / Chhota Hathi">Tempo / Chhota Hathi</option><option value="Tractor Trolley">Tractor Trolley</option><option value="Pickup Bolero">Pickup Bolero</option></select></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="tr-mobile" type="tel" required maxlength="15" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
         <div class="grid grid-cols-2 gap-2.5">
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village_req"></label><input id="tr-village" type="text" required maxlength="80" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="tr-district" type="text" required maxlength="80" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="tr-mobile" type="tel" required maxlength="15" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" placeholder="9876543210" /></div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_rate_lbl"></label><input id="tr-rate" type="text" maxlength="100" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        <button type="submit" id="tr-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow text-sm" data-i18n="tr_submit_btn"></button>
+        <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow text-sm" data-i18n="tr_submit_btn"></button>
       </form>
-    </div>
-  </div>
-
-  <div id="reset-password-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
-      <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-        <h3 class="font-bold text-slate-900 text-base" data-i18n="rp_title"></h3>
-        <button type="button" data-action="close-modal" data-modal="reset-password-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-      </div>
-      <form id="reset-password-form" class="p-4 space-y-3">
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="rp_new_lbl"></label><input id="rp-new-password" type="password" required minlength="8" maxlength="72" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="rp_conf_lbl"></label><input id="rp-confirm-password" type="password" required minlength="8" maxlength="72" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        <button type="submit" id="rp-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm" data-i18n="rp_btn"></button>
-      </form>
-    </div>
-  </div>
-
-  <div id="install-guide-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
-      <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-        <h3 class="font-bold text-slate-900 text-base" data-i18n="install_banner_title"></h3>
-        <button type="button" data-action="close-modal" data-modal="install-guide-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-      </div>
-      <div id="install-guide-body" class="p-4 space-y-3 text-sm text-slate-700"></div>
-    </div>
-  </div>
-
-  <div id="product-detail-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="bg-white w-full sm:max-w-xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
-      <div class="sticky top-0 bg-white/95 backdrop-blur px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10 gap-2">
-        <h3 id="dm-title" class="font-bold text-slate-900 text-base truncate flex-1"></h3>
-        <button type="button" data-action="speak-product" class="px-2.5 py-1.5 rounded-lg bg-farm-100 text-farm-800 text-xs font-bold flex items-center gap-1 shrink-0"><i data-lucide="volume-2" class="w-3.5 h-3.5"></i><span data-i18n="btn_listen"></span></button>
-        <button type="button" data-action="close-modal" data-modal="product-detail-modal" class="p-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0"><i data-lucide="x" class="w-5 h-5"></i></button>
-      </div>
-      <div id="dm-body" class="p-4 space-y-4"></div>
     </div>
   </div>
 
   <div id="add-product-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-xl max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
       <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
-        <h3 id="product-modal-heading" class="font-bold text-slate-900 text-base" data-i18n="modal_add_product"></h3>
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="modal_add_product"></h3>
         <button type="button" data-action="close-modal" data-modal="add-product-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
-      <form id="add-product-form" class="p-4 space-y-3.5">
-        <input id="np-edit-id" type="hidden" value="" />
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="category"></label><select id="np-cat" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="subcategory"></label><select id="np-subcat" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
-        </div>
+      <form id="add-product-form" class="p-4 space-y-3">
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="category"></label><select id="np-cat" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
         <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="crop_title_gu"></label><input id="np-title-gu" type="text" required minlength="2" maxlength="150" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="crop_title_en"></label><input id="np-title-en" type="text" maxlength="150" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quantity"></label><input id="np-qty" type="number" step="any" min="0.1" max="1000000" required placeholder="50" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quantity"></label><input id="np-qty" type="number" step="any" min="0.1" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="unit"></label><select id="np-unit" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
         </div>
         <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="price"></label>
-            <div class="flex gap-1.5">
-              <input id="np-price" type="number" step="any" min="1" max="10000000" required placeholder="2400" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" />
-              <button type="button" data-action="ai-suggest-price-form" class="px-2.5 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-bold shrink-0">✨ AI</button>
-            </div>
-          </div>
-          <div class="flex items-end pb-2"><label class="flex items-center gap-2 text-xs font-semibold text-slate-700 cursor-pointer"><input id="np-neg" type="checkbox" checked class="w-4 h-4 accent-farm-700" /><span data-i18n="negotiable"></span></label></div>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="price"></label><input id="np-price" type="number" step="any" min="1" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village_req"></label><input id="np-village" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="np-district" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="state_req"></label><input id="np-state" type="text" value="Gujarat" required maxlength="60" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quality"></label><input id="np-quality" type="text" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        </div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="description"></label><textarea id="np-desc" rows="2" maxlength="1500" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm"></textarea></div>
-        <div class="bg-farm-50 border border-dashed border-farm-500 rounded-xl p-3 space-y-1.5">
-          <label class="block text-xs font-bold text-farm-900" data-i18n="photo_upload_lbl"></label>
-          <p class="text-[11px] text-farm-700" data-i18n="photo_scan_note"></p>
-          <input id="np-photo" type="file" multiple accept="image/jpeg,image/png,image/webp" class="w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-farm-700 file:text-white file:font-semibold" />
-        </div>
-        <button type="submit" id="np-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_product"></button>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="np-district" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+        <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_product"></button>
       </form>
     </div>
   </div>
@@ -770,26 +605,17 @@
         <button type="button" data-action="close-modal" data-modal="add-request-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
       </div>
       <form id="add-request-form" class="p-4 space-y-3">
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="category_opt"></label><select id="nr-cat" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
         <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="req_product"></label><input id="nr-product" type="text" required minlength="2" maxlength="150" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quantity"></label><input id="nr-qty" type="number" step="any" min="0.1" max="1000000" required placeholder="100" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quantity"></label><input id="nr-qty" type="number" step="any" min="0.1" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="unit"></label><select id="nr-unit" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="target_price"></label><input id="nr-price" type="number" step="any" min="0" max="10000000" placeholder="2200" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="delivery_date"></label><input id="nr-date" type="date" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
         <div class="grid grid-cols-2 gap-3">
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="delivery_loc"></label><input id="nr-loc" type="text" required minlength="2" maxlength="100" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="nr-district" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="contact_pref"></label><select id="nr-pref" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="nr-phone" type="tel" required maxlength="15" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        </div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quality_req"></label><textarea id="nr-notes" rows="2" maxlength="800" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm"></textarea></div>
-        <button type="submit" id="nr-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_req"></button>
+        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="nr-phone" type="tel" required maxlength="15" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+        <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_req"></button>
       </form>
     </div>
   </div>
@@ -801,14 +627,10 @@
       const CONFIG = Object.freeze({
         SUPABASE_URL: 'https://oqldgdnqypykbddwtwvq.supabase.co',
         SUPABASE_KEY: 'sb_publishable_91m3LPrT1FwtGqBzkHWHxg_BesbqDTX',
-        MAX_UPLOAD_BYTES: 5 * 1024 * 1024,
-        MAX_PHOTOS: 4,
-        MAX_IMG_DIMENSION: 1280,
-        IMG_QUALITY: 0.82,
         ALLOWED_UNITS: Object.freeze(['kg', 'quintal', 'ton', 'mann', 'bag', 'bundle', 'piece']),
-        ALLOWED_TABS: Object.freeze(['market', 'ai_advisor', 'yard', 'requests', 'sell', 'alerts', 'account']),
+        ALLOWED_TABS: Object.freeze(['market', 'ai_advisor', 'yard', 'requests', 'sell', 'account']),
         ALLOWED_LANGS: Object.freeze(['gu', 'hi', 'en']),
-        ALLOWED_MODALS: Object.freeze(['voice-modal', 'upi-payment-modal', 'receipt-modal', 'add-transport-modal', 'reset-password-modal', 'install-guide-modal', 'product-detail-modal', 'add-product-modal', 'add-request-modal'])
+        ALLOWED_MODALS: Object.freeze(['voice-modal', 'mandi-rate-modal', 'agri-input-modal', 'add-transport-modal', 'add-product-modal', 'add-request-modal'])
       });
 
       if (!window.supabase || typeof window.supabase.createClient !== 'function') return;
@@ -831,254 +653,167 @@
         el.textContent = String(msg ?? ''); c.appendChild(el);
         setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3500);
       }
-      window.addEventListener('error', (e) => e.preventDefault());
-      window.addEventListener('unhandledrejection', (e) => e.preventDefault());
-      function updateOnlineBanner() { document.getElementById('offline-banner')?.classList.toggle('hidden', navigator.onLine); }
-      window.addEventListener('online', () => { updateOnlineBanner(); loadProducts(); });
-      window.addEventListener('offline', updateOnlineBanner);
-
-      let deferredInstallPrompt = null;
-      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-      if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {}));
-      window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredInstallPrompt = e; if (!isStandalone) document.getElementById('header-install-btn')?.classList.remove('hidden'); });
 
       const savedLang = localStorage.getItem('ks_lang');
       const state = {
         lang: CONFIG.ALLOWED_LANGS.includes(savedLang) ? savedLang : 'gu',
         tab: 'market', aiSubtab: 'price',
+        mandiCatFilter: 'all', agriInputTypeFilter: 'all',
         user: null, profile: null, categories: [],
-        selectedCategory: null, selectedSubcategory: null,
-        products: [], apmcRates: [], transportList: [], favorites: new Set(),
-        activeProductDetail: null, isListening: false,
+        selectedCategory: null, products: [], apmcRates: [], agriInputs: [], transportList: []
       };
 
       const L = {
         gu: {
-          tagline: 'સીધું ખેતરથી બજાર • AI સ્માર્ટ કૃષિ', offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે.', install_short: 'ઇન્સ્ટોલ',
-          install_banner_title: 'KHEDUT SETU AI એપ ઇન્સ્ટોલ કરો', install_banner_sub: 'ફોનમાં અસલી એપ જેમ વાપરો', btn_install_app: 'ઇન્સ્ટોલ કરો',
-          nav_market: 'બજાર', nav_ai: '✨ AI સલાહકાર', nav_ai_short: 'AI સલાહ', nav_yard: 'યાર્ડ & વાહન', nav_yard_short: 'યાર્ડ ભાવ',
-          nav_requests: 'ખરીદી માંગ', nav_sell: 'વેચાણ', nav_alerts: 'સૂચના', nav_account: 'ખાતું',
-          search_placeholder: 'બોલીને અથવા લખીને પાક, ગામ, જિલ્લો શોધો...', district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
-          ai_badge_sub: 'ભવિષ્યલક્ષી સ્માર્ટ કૃષિ બજાર', hero_title: 'સીધી ખેતી ઉપજ વેચો અને ખરીદો — AI સલાહ સાથે',
-          btn_post_crop: 'ઉપજ મૂકો', btn_ai_doc_short: '✨ AI ડૉક્ટર', btn_voice: 'બોલીને શોધો', btn_voice_float: 'AI બોલો',
+          tagline: 'દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ', offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે.',
+          nav_market: 'બજાર', nav_ai: '✨ AI સલાહકાર', nav_ai_short: 'AI સલાહ', nav_yard: 'મંડી & સાધન', nav_yard_short: 'મંડી ભાવ',
+          nav_requests: 'ખરીદી માંગ', nav_sell: 'વેચાણ', nav_account: 'ખાતું',
+          search_placeholder: 'પાક, શાકભાજી, ફળ, ફૂલ, કઠોળ, ગામ કે જિલ્લો શોધો...', district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
+          ai_badge_sub: 'એડમિન મંજૂરી સાથે દૈનિક અપડેટ', hero_title: 'મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ અને કૃષિ સામગ્રી',
+          btn_daily_rates: '📊 દૈનિક મંડી ભાવ', btn_post_crop: 'ઉપજ મૂકો', btn_ai_doc_short: '✨ AI ડૉક્ટર', btn_voice_float: 'AI બોલો',
           latest_listings: 'તાજેતરની ઉપજ', refresh: 'રિફ્રેશ', all_categories: 'બધી કેટેગરી',
-          no_products: 'હાલ કોઈ ઉપજ ઉપલબ્ધ નથી.', sold_badge: '✓ વેચાઈ ગયું',
-          ai_fair: '✨ AI વાજબી ભાવ', ai_market: '✨ AI બજાર સ્તર', ai_prem: '✨ AI પ્રીમિયમ ભાવ',
-          ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ માંગ મેચિંગ',
+          no_products: 'હાલ કોઈ ઉપજ ઉપલબ્ધ નથી.',
+          ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ મેચિંગ',
           aisub_price_btn: '💰 AI ભાવ અંદાજ', aisub_doctor_btn: '🩺 પાક ડૉક્ટર', aisub_match_btn: '🎯 સ્માર્ટ મેચ',
           ai_price_heading: '💰 AI સ્માર્ટ ભાવ અંદાજ', ai_select_crop: 'પાક પસંદ કરો', ai_qty_label: 'જથ્થો (મણ / 20 kg)',
-          quality: 'ગુણવત્તા', ai_calc_price_btn: '✨ AI ભાવ ગણતરી કરો', ai_est_total: 'અંદાજિત કુલ મૂલ્ય',
-          ai_sug_mann: 'AI ભાવ (20 kg / મણ)', ai_sug_qtl: 'AI ભાવ (100 kg / ક્વિન્ટલ)',
-          ai_sell_tip_lbl: '💡 AI સલાહ', ai_post_with_price: '+ આ ભાવ સાથે ઉપજ મૂકો',
-          ai_doc_heading: '🩺 AI પાક ડૉક્ટર', ai_doc_crop_lbl: 'પાકનો પ્રકાર', ai_doc_sym_lbl: 'પાન કે છોડમાં શું દેખાય છે?',
-          ai_doc_extra_ph: 'વધારાના લક્ષણો લખો...', ai_doc_btn: '🩺 AI નિદાન જુઓ', ai_doc_cause: 'સંભવિત કારણ',
-          ai_doc_note: '⚠️ AI નોંધ: પ્રાથમિક માર્ગદર્શન; નિષ્ણાતની સલાહ લો.',
-          ai_match_heading: '🎯 AI સ્માર્ટ મેચિંગ', ai_match_sub: 'માંગ અને ઉપજ વચ્ચે સુસંગતતા', ai_match_refresh: '↻ તાજા કરો', ai_match_empty: 'હાલ કોઈ માંગ નથી.',
-          yard_hub_title: 'માર્કેટ યાર્ડ ભાવ અને સ્થાનિક વાહન', yard_hub_sub: 'APMC ભાવ અને ટેમ્પો-ટ્રેક્ટર',
-          tab_apmc: '📊 APMC ભાવ', tab_transport: '🚜 ટેમ્પો / ટ્રેક્ટર',
-          apmc_search_ph: 'યાર્ડ, જિલ્લો કે પાક શોધો...', tr_search_ph: 'ગામ, જિલ્લો કે વાહન શોધો...', btn_add_vehicle: '+ વાહન ઉમેરો',
+          quality: 'ગુણવત્તા', ai_calc_price_btn: '✨ AI ભાવ ગણતરી કરો', ai_doc_heading: '🩺 AI પાક ડૉક્ટર',
+          ai_doc_crop_lbl: 'પાકનો પ્રકાર', ai_doc_sym_lbl: 'લક્ષણ પસંદ કરો', ai_doc_extra_ph: 'વધારાના લક્ષણો...',
+          ai_doc_btn: '🩺 AI નિદાન જુઓ', ai_match_heading: '🎯 AI સ્માર્ટ મેચિંગ', ai_match_sub: 'માંગ અને ઉપજ મેચિંગ', ai_match_refresh: '↻ તાજા કરો',
+          yard_hub_title: 'દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને વાહન', yard_hub_sub: 'નજીકની મંડીના ભાવ અપડેટ (Admin મંજૂરી સાથે) અને કૃષિ સામગ્રી',
+          tab_apmc: '📊 મંડી ભાવ (શાકભાજી/ફળ/ફૂલ/કઠોળ/અનાજ)', tab_inputs: '🧪 દવા, બિયારણ, સાધન & યંત્ર', tab_transport: '🚜 ટેમ્પો / ટ્રેક્ટર',
+          btn_add_update_mandi: '+ મંડી ભાવ મૂકો / અપડેટ', apmc_search_ph: 'મંડી, જિલ્લો, શાકભાજી, ફળ, ફૂલ, કઠોળ કે અનાજ શોધો...',
           apmc_min: 'નીચો', apmc_modal: 'સરેરાશ', apmc_max: 'ઊંચો',
-          tr_call: '📞 કૉલ', tr_wa: '💬 WhatsApp', tr_login_num: 'નંબર જોવા લૉગિન કરો',
+          inputs_heading: '🧪 કૃષિ દવા, બિયારણ, ખાતર, સાધનો અને યંત્રો', inputs_sub: 'દૈનિક ભાવ અપડેટ અને Admin મંજૂરી સાથે ઉપલબ્ધ સામગ્રી',
+          btn_add_update_input: '+ દવા / બિયારણ / યંત્ર ભાવ મૂકો', input_search_ph: 'દવા, બિયારણ, સાધન કે યંત્ર શોધો...',
+          tr_search_ph: 'ગામ, જિલ્લો કે વાહન શોધો...', btn_add_vehicle: '+ વાહન ઉમેરો', tr_call: '📞 કૉલ', tr_wa: '💬 WhatsApp', tr_login_num: 'નંબર જોવા લૉગિન કરો',
           req_title: 'ખરીદારોની માંગ', req_sub: 'ખરીદારોને કઈ ઉપજ જોઈએ છે તે જુઓ.', btn_add_req: 'નવી માંગ મૂકો',
-          sell_login_title: 'વેચાણ માટે લૉગિન કરો', sell_login_sub: '૪ ફોટા સાથે ઉપજ મૂકો.', btn_go_login: 'લૉગિન / નવું ખાતું',
-          seller_hub: 'ખેડૂત વેચાણ ડેશબોર્ડ', seller_hub_sub: 'ઉપજ મૂકો અને ચકાસો', btn_add_product: 'નવી ઉપજ મૂકો',
-          my_listings: 'મારી ઉપજ', received_inquiries: 'આવેલી પૂછપરછ', tab_seller_pay: '💳 આવેલી ચૂકવણી',
-          alerts_login: 'સૂચનાઓ જોવા લૉગિન કરો', tab_notifs: 'સૂચનાઓ', tab_favs: 'પસંદ કરેલ',
-          auth_sub: 'લૉગિન કરો અથવા નવું ખાતું બનાવો', btn_google_login: 'Google થી લૉગિન', or_email: 'અથવા ઈમેલથી',
-          login: 'લૉગિન', register: 'નવું ખાતું', email: 'ઈમેલ', password: 'પાસવર્ડ', password_8: 'પાસવર્ડ (8+ અક્ષર) *',
-          forgot_pwd: 'પાસવર્ડ ભૂલી ગયા?', full_name: 'પૂરું નામ *', full_name_lbl: 'પૂરું નામ',
-          mobile: 'મોબાઇલ નંબર *', mobile_lbl: 'મોબાઇલ નંબર', role_label: 'તમે કોણ છો? *',
-          role_seller: 'ખેડૂત / વેચનાર', role_buyer: 'ખરીદાર', village: 'ગામ / શહેર', village_req: 'ગામ *',
-          district: 'જિલ્લો', district_req: 'જિલ્લો *', state: 'રાજ્ય', state_req: 'રાજ્ય *', pincode: 'પિન કોડ',
-          create_account: 'નવું ખાતું બનાવો', logout: 'લૉગઆઉટ', verified_badge: '✓ પ્રમાણિત',
-          profile_settings: 'પ્રોફાઇલ અને UPI વિગતો', business_name: 'ફાર્મ / દુકાનનું નામ', upi_id_lbl: '💳 UPI ID',
-          allow_phone: 'ફોન કૉલ ચાલુ', allow_wa: 'WhatsApp ચાલુ', allow_upi: '🔒 UPI સ્વીકારો', save_profile: 'સેવ કરો',
-          my_pay_heading: '🧾 મારી ચૂકવણી અને રસીદ', my_pay_sub: 'UPI વ્યવહાર',
-          admin_heading: 'Admin Panel', admin_sub: 'મંજૂરી અને APMC ભાવ', admin_pending_title: 'બાકી ઉપજ',
-          admin_apmc_title: '📊 APMC ભાવ ઉમેરો', ap_yard_ph: 'યાર્ડ', ap_dist_ph: 'જિલ્લો', ap_crop_ph: 'પાક',
-          ap_min_ph: 'નીચો ભાવ', ap_max_ph: 'ઊંચો ભાવ', ap_modal_ph: 'સરેરાશ ભાવ', ap_publish_btn: 'લાઇવ કરો',
-          bc_title_lbl: '📢 બધાને સૂચના મોકલો', bc_sub_ph: 'શીર્ષક', bc_body_ph: 'સંદેશો...', bc_send_btn: 'મોકલો', bc_exp_btn: 'Expiring Alerts',
-          footer_brand: '✨ KHEDUT SETU AI v4.2', voice_modal_title: '🎙️ AI વૉઇસ', voice_prompt: 'માઇક દબાવીને બોલો',
-          voice_listening: 'સાંભળી રહ્યા છીએ... 🎙️', voice_hints_lbl: 'આવું બોલો:', upi_modal_title: '🔒 UPI ચૂકવણી',
-          receipt_title: '🧾 ડિજિટલ રસીદ', tr_modal_title: '🚜 વાહન સેવા ઉમેરો', tr_driver_lbl: 'ડ્રાઇવરનું નામ *',
-          tr_type_lbl: 'વાહન પ્રકાર *', tr_cap_lbl: 'ક્ષમતા', tr_rate_lbl: 'ભાડું', tr_submit_btn: 'ઉમેરો',
-          rp_title: '🔑 નવો પાસવર્ડ', rp_new_lbl: 'નવો પાસવર્ડ *', rp_conf_lbl: 'ફરી લખો *', rp_btn: 'અપડેટ કરો',
-          btn_listen: 'સાંભળો', modal_add_product: 'નવી ઉપજ મૂકો', category: 'કેટેગરી *', category_opt: 'કેટેગરી',
-          subcategory: 'પેટા-કેટેગરી', crop_title_gu: 'ઉપજનું નામ *', crop_title_en: 'અંગ્રેજી નામ',
-          quantity: 'જથ્થો *', unit: 'એકમ *', price: 'ભાવ (₹) *', negotiable: 'વાતચીત શક્ય',
-          description: 'વિગત', photo_upload_lbl: '📸 ફોટા (મહત્તમ ૪)', photo_scan_note: '🔒 સુરક્ષિત સ્કેન થશે.',
-          submit_product: 'સબમિટ કરો', modal_add_req: 'નવી માંગ મૂકો', req_product: 'કઈ ઉપજ જોઈએ? *',
-          target_price: 'ભાવ (₹)', delivery_date: 'તારીખ', delivery_loc: 'સ્થળ *', contact_pref: 'સંપર્ક',
-          quality_req: 'ગુણવત્તા', submit_req: 'માંગ મૂકો'
+          sell_login_title: 'વેચાણ માટે લૉગિન કરો', sell_login_sub: 'સીધી ઉપજ વેચો.', btn_go_login: 'લૉગિન / નવું ખાતું',
+          seller_hub: 'ખેડૂત વેચાણ ડેશબોર્ડ', seller_hub_sub: 'ઉપજ મૂકો', btn_add_product: 'નવી ઉપજ મૂકો',
+          auth_sub: 'લૉગિન કરો અથવા નવું ખાતું બનાવો', btn_google_login: 'Google થી લૉગિન', login: 'લૉગિન', register: 'નવું ખાતું',
+          email: 'ઈમેલ', password: 'પાસવર્ડ', password_8: 'પાસવર્ડ (8+ અક્ષર) *', full_name: 'પૂરું નામ *', full_name_lbl: 'પૂરું નામ',
+          mobile: 'મોબાઇલ નંબર *', mobile_lbl: 'મોબાઇલ નંબર', role_label: 'તમે કોણ છો? *', role_seller: 'ખેડૂત / વેચનાર', role_buyer: 'ખરીદાર',
+          village: 'ગામ / શહેર', village_req: 'ગામ *', district: 'જિલ્લો', district_req: 'જિલ્લો *', upi_id_lbl: '💳 UPI ID',
+          create_account: 'નવું ખાતું બનાવો', logout: 'લૉગઆઉટ', profile_settings: 'પ્રોફાઇલ વિગતો', save_profile: 'સેવ કરો',
+          admin_heading: 'Admin Panel — મંજૂરી કેન્દ્ર', admin_sub: 'મંડી ભાવ અને દવા-બિયારણ-યંત્ર મંજૂરી',
+          admin_pending_mandi: '📊 મંજૂરી માટે બાકી મંડી ભાવ', admin_pending_inputs: '🧪 મંજૂરી માટે બાકી દવા / બિયારણ / યંત્ર',
+          admin_apmc_title: '📊 Admin સીધો મંડી ભાવ ઉમેરો', ap_yard_ph: 'મંડી', ap_dist_ph: 'જિલ્લો', ap_crop_ph: 'પાક/વસ્તુ',
+          ap_min_ph: 'નીચો', ap_max_ph: 'ઊંચો', ap_modal_ph: 'સરેરાશ', ap_publish_btn: 'લાઇવ કરો',
+          voice_modal_title: '🎙️ AI વૉઇસ', voice_prompt: 'માઇક દબાવીને બોલો',
+          mr_modal_title: '📊 દૈનિક મંડી ભાવ મૂકો / અપડેટ કરો', mr_cat_lbl: 'વર્ગ (શાકભાજી/ફળ/ફૂલ/કઠોળ/અનાજ) *',
+          mr_crop_lbl: 'પાક / વસ્તુનું નામ *', mr_yard_lbl: 'નજીકની મંડી / APMC *',
+          mr_approval_note: '🛡️ Admin Approval: તમે મૂકેલા કે અપડેટ કરેલા ભાવ એડમિન મંજૂરી પછી લાઇવ દેખાશે.',
+          mr_submit_btn: 'મંજૂરી માટે મોકલો', ain_modal_title: '🧪 દવા, બિયારણ, સાધન કે યંત્ર ભાવ મૂકો / અપડેટ',
+          ain_type_lbl: 'પ્રકાર *', ain_name_lbl: 'વસ્તુ / યંત્રનું નામ *', ain_brand_lbl: 'બ્રાન્ડ / કંપની', ain_note_lbl: 'સ્ટોક / વિગત',
+          tr_modal_title: '🚜 વાહન સેવા ઉમેરો', tr_driver_lbl: 'ડ્રાઇવરનું નામ *', tr_type_lbl: 'વાહન પ્રકાર *', tr_submit_btn: 'ઉમેરો',
+          modal_add_product: 'નવી ઉપજ મૂકો', category: 'કેટેગરી *', crop_title_gu: 'ઉપજનું નામ *', quantity: 'જથ્થો *', unit: 'એકમ *', price: 'ભાવ (₹) *', submit_product: 'સબમિટ કરો',
+          modal_add_req: 'નવી માંગ મૂકો', req_product: 'કઈ ઉપજ જોઈએ? *', delivery_loc: 'સ્થળ *', submit_req: 'માંગ મૂકો'
         },
         hi: {
-          tagline: 'सीधे खेत से बाज़ार • AI स्मार्ट कृषि', offline_msg: '⚠️ इंटरनेट बंद है।', install_short: 'इंस्टॉल',
-          install_banner_title: 'KHEDUT SETU AI ऐप इंस्टॉल करें', install_banner_sub: 'फ़ोन में ऐप की तरह चलाएं', btn_install_app: 'इंस्टॉल करें',
-          nav_market: 'बाज़ार', nav_ai: '✨ AI सलाहकार', nav_ai_short: 'AI सलाह', nav_yard: 'मंडी & वाहन', nav_yard_short: 'मंडी भाव',
-          nav_requests: 'खरीद मांग', nav_sell: 'बेचें', nav_alerts: 'सूचना', nav_account: 'खाता',
-          search_placeholder: 'बोलकर या लिखकर फसल, गांव, जिला खोजें...', district_placeholder: 'जिला (जैसे आनंद)',
-          ai_badge_sub: 'भविष्यमुखी स्मार्ट कृषि बाज़ार', hero_title: 'सीधे कृषि उपज बेचें और खरीदें — AI सलाह के साथ',
-          btn_post_crop: 'उपज डालें', btn_ai_doc_short: '✨ AI डॉक्टर', btn_voice: 'बोलकर खोजें', btn_voice_float: 'AI बोलें',
-          latest_listings: 'ताज़ा उपज', refresh: 'रिफ्रेश', all_categories: 'सभी श्रेणियां',
-          no_products: 'अभी कोई उपज उपलब्ध नहीं है।', sold_badge: '✓ बिक गया',
-          ai_fair: '✨ AI उचित भाव', ai_market: '✨ AI बाज़ार स्तर', ai_prem: '✨ AI प्रीमियम भाव',
-          ai_hub_title: '✨ KHEDUT SETU AI सलाहकार', ai_hub_sub: 'भाव अनुमान, फसल डॉक्टर और स्मार्ट मैचिंग',
+          tagline: 'दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि', offline_msg: '⚠️ इंटरनेट बंद है।',
+          nav_market: 'बाज़ार', nav_ai: '✨ AI सलाहकार', nav_ai_short: 'AI सलाह', nav_yard: 'मंडी & सामग्री', nav_yard_short: 'मंडी भाव',
+          nav_requests: 'खरीद मांग', nav_sell: 'बेचें', nav_account: 'खाता',
+          search_placeholder: 'सब्ज़ी, फल, फूल, दलहन, अनाज, गांव या जिला खोजें...', district_placeholder: 'जिला (जैसे आनंद)',
+          ai_badge_sub: 'एडमिन स्वीकृति के साथ दैनिक अपडेट', hero_title: 'मौसमी सब्ज़ी, फल, फूल, दलहन, अनाज और कृषि सामग्री',
+          btn_daily_rates: '📊 दैनिक मंडी भाव', btn_post_crop: 'उपज डालें', btn_ai_doc_short: '✨ AI डॉक्टर', btn_voice_float: 'AI बोलें',
+          latest_listings: 'ताज़ा उपज', refresh: 'रिफ्रेश', all_categories: 'सभी श्रेणियां', no_products: 'कोई उपज नहीं है।',
+          ai_hub_title: '✨ KHEDUT SETU AI सलाहकार', ai_hub_sub: 'भाव अनुमान, फसल डॉक्टर और मैचिंग',
           aisub_price_btn: '💰 AI भाव अनुमान', aisub_doctor_btn: '🩺 फसल डॉक्टर', aisub_match_btn: '🎯 स्मार्ट मैच',
           ai_price_heading: '💰 AI स्मार्ट भाव अनुमान', ai_select_crop: 'फसल चुनें', ai_qty_label: 'मात्रा (मण / 20 kg)',
-          quality: 'गुणवत्ता', ai_calc_price_btn: '✨ AI भाव गणना करें', ai_est_total: 'अनुमानित कुल मूल्य',
-          ai_sug_mann: 'AI भाव (20 kg / मण)', ai_sug_qtl: 'AI भाव (100 kg / क्विंटल)',
-          ai_sell_tip_lbl: '💡 AI सलाह', ai_post_with_price: '+ इस भाव से उपज डालें',
-          ai_doc_heading: '🩺 AI फसल डॉक्टर', ai_doc_crop_lbl: 'फसल का प्रकार', ai_doc_sym_lbl: 'क्या लक्षण दिख रहे हैं?',
-          ai_doc_extra_ph: 'अतिरिक्त लक्षण लिखें...', ai_doc_btn: '🩺 AI निदान देखें', ai_doc_cause: 'संभावित कारण',
-          ai_doc_note: '⚠️ AI नोट: प्राथमिक मार्गदर्शन; विशेषज्ञ से सलाह लें।',
-          ai_match_heading: '🎯 AI स्मार्ट मैचिंग', ai_match_sub: 'मांग और उपज का मिलान', ai_match_refresh: '↻ ताज़ा करें', ai_match_empty: 'अभी कोई मांग नहीं है।',
-          yard_hub_title: 'मंडी भाव और स्थानीय वाहन', yard_hub_sub: 'APMC भाव और टेम्पो-ट्रैक्टर',
-          tab_apmc: '📊 APMC भाव', tab_transport: '🚜 टेम्पो / ट्रैक्टर',
-          apmc_search_ph: 'मंडी, जिला या फसल खोजें...', tr_search_ph: 'गांव, जिला या वाहन खोजें...', btn_add_vehicle: '+ वाहन जोड़ें',
+          quality: 'गुणवत्ता', ai_calc_price_btn: '✨ AI भाव गणना करें', ai_doc_heading: '🩺 AI फसल डॉक्टर',
+          ai_doc_crop_lbl: 'फसल का प्रकार', ai_doc_sym_lbl: 'लक्षण चुनें', ai_doc_extra_ph: 'अतिरिक्त लक्षण...',
+          ai_doc_btn: '🩺 AI निदान देखें', ai_match_heading: '🎯 AI स्मार्ट मैचिंग', ai_match_sub: 'मांग और उपज मिलान', ai_match_refresh: '↻ ताज़ा करें',
+          yard_hub_title: 'दैनिक मंडी भाव, दवा-बीज-यंत्र और वाहन', yard_hub_sub: 'नज़दीकी मंडी भाव अपडेट (Admin स्वीकृति के साथ) और कृषि सामग्री',
+          tab_apmc: '📊 मंडी भाव (सब्ज़ी/फल/फूल/दलहन/अनाज)', tab_inputs: '🧪 दवा, बीज, साधन & यंत्र', tab_transport: '🚜 टेम्पो / ट्रैक्टर',
+          btn_add_update_mandi: '+ मंडी भाव डालें / अपडेट', apmc_search_ph: 'मंडी, जिला या उपज खोजें...',
           apmc_min: 'न्यूनतम', apmc_modal: 'औसत', apmc_max: 'अधिकतम',
-          tr_call: '📞 कॉल', tr_wa: '💬 WhatsApp', tr_login_num: 'नंबर के लिए लॉगिन करें',
-          req_title: 'खरीदारों की मांग', req_sub: 'खरीदारों की मांग देखें या डालें।', btn_add_req: 'नई मांग डालें',
-          sell_login_title: 'बिक्री के लिए लॉगिन करें', sell_login_sub: '4 फोटो के साथ उपज डालें।', btn_go_login: 'लॉगिन / नया खाता',
-          seller_hub: 'किसान बिक्री डैशबोर्ड', seller_hub_sub: 'उपज डालें और जांचें', btn_add_product: 'नई उपज डालें',
-          my_listings: 'मेरी उपज', received_inquiries: 'आई हुई पूछताछ', tab_seller_pay: '💳 आया हुआ भुगतान',
-          alerts_login: 'सूचनाएं देखने के लिए लॉगिन करें', tab_notifs: 'सूचनाएं', tab_favs: 'पसंदीदा',
-          auth_sub: 'लॉगिन करें या नया खाता बनाएं', btn_google_login: 'Google से लॉगिन', or_email: 'या ईमेल से',
-          login: 'लॉगिन', register: 'नया खाता', email: 'ईमेल', password: 'पासवर्ड', password_8: 'पासवर्ड (8+ अक्षर) *',
-          forgot_pwd: 'पासवर्ड भूल गए?', full_name: 'पूरा नाम *', full_name_lbl: 'पूरा नाम',
-          mobile: 'मोबाइल नंबर *', mobile_lbl: 'मोबाइल नंबर', role_label: 'आप कौन हैं? *',
-          role_seller: 'किसान / विक्रेता', role_buyer: 'खरीदार', village: 'गांव / शहर', village_req: 'गांव *',
-          district: 'जिला', district_req: 'जिला *', state: 'राज्य', state_req: 'राज्य *', pincode: 'पिन कोड',
-          create_account: 'नया खाता बनाएं', logout: 'लॉगआउट', verified_badge: '✓ प्रमाणित',
-          profile_settings: 'प्रोफ़ाइल और UPI विवरण', business_name: 'फार्म / दुकान का नाम', upi_id_lbl: '💳 UPI ID',
-          allow_phone: 'कॉल चालू', allow_wa: 'WhatsApp चालू', allow_upi: '🔒 UPI स्वीकारें', save_profile: 'सेव करें',
-          my_pay_heading: '🧾 मेरा भुगतान और रसीद', my_pay_sub: 'UPI लेनदेन',
-          admin_heading: 'Admin Panel', admin_sub: 'स्वीकृति और APMC भाव', admin_pending_title: 'लंबित उपज',
-          admin_apmc_title: '📊 APMC भाव जोड़ें', ap_yard_ph: 'मंडी', ap_dist_ph: 'जिला', ap_crop_ph: 'फसल',
-          ap_min_ph: 'न्यूनतम भाव', ap_max_ph: 'अधिकतम भाव', ap_modal_ph: 'औसत भाव', ap_publish_btn: 'लाइव करें',
-          bc_title_lbl: '📢 सभी को सूचना भेजें', bc_sub_ph: 'शीर्षक', bc_body_ph: 'संदेश...', bc_send_btn: 'भेजें', bc_exp_btn: 'Expiring Alerts',
-          footer_brand: '✨ KHEDUT SETU AI v4.2', voice_modal_title: '🎙️ AI वॉइस', voice_prompt: 'माइक दबाकर बोलें',
-          voice_listening: 'सुन रहे हैं... 🎙️', voice_hints_lbl: 'ऐसा बोलें:', upi_modal_title: '🔒 UPI भुगतान',
-          receipt_title: '🧾 डिजिटल रसीद', tr_modal_title: '🚜 वाहन सेवा जोड़ें', tr_driver_lbl: 'ड्राइवर का नाम *',
-          tr_type_lbl: 'वाहन प्रकार *', tr_cap_lbl: 'क्षमता', tr_rate_lbl: 'किराया', tr_submit_btn: 'जोड़ें',
-          rp_title: '🔑 नया पासवर्ड', rp_new_lbl: 'नया पासवर्ड *', rp_conf_lbl: 'दोबारा लिखें *', rp_btn: 'अपडेट करें',
-          btn_listen: 'सुनें', modal_add_product: 'नई उपज डालें', category: 'श्रेणी *', category_opt: 'श्रेणी',
-          subcategory: 'उप-श्रेणी', crop_title_gu: 'उपज का नाम *', crop_title_en: 'अंग्रेज़ी नाम',
-          quantity: 'मात्रा *', unit: 'इकाई *', price: 'भाव (₹) *', negotiable: 'बातचीत संभव',
-          description: 'विवरण', photo_upload_lbl: '📸 फोटो (अधिकतम 4)', photo_scan_note: '🔒 सुरक्षित स्कैन होगा।',
-          submit_product: 'सबमिट करें', modal_add_req: 'नई मांग डालें', req_product: 'कौन सी उपज चाहिए? *',
-          target_price: 'भाव (₹)', delivery_date: 'तारीख', delivery_loc: 'स्थान *', contact_pref: 'संपर्क',
-          quality_req: 'गुणवत्ता', submit_req: 'मांग डालें'
+          inputs_heading: '🧪 कृषि दवा, बीज, खाद, साधन और यंत्र', inputs_sub: 'दैनिक भाव अपडेट और Admin स्वीकृति के साथ उपलब्ध सामग्री',
+          btn_add_update_input: '+ दवा / बीज / यंत्र भाव डालें', input_search_ph: 'दवा, बीज, साधन या यंत्र खोजें...',
+          tr_search_ph: 'गांव, जिला या वाहन खोजें...', btn_add_vehicle: '+ वाहन जोड़ें', tr_call: '📞 कॉल', tr_wa: '💬 WhatsApp', tr_login_num: 'नंबर के लिए लॉगिन करें',
+          req_title: 'खरीदारों की मांग', req_sub: 'खरीदारों की मांग देखें।', btn_add_req: 'नई मांग डालें',
+          sell_login_title: 'बिक्री के लिए लॉगिन करें', sell_login_sub: 'सीधी उपज बेचें।', btn_go_login: 'लॉगिन / नया खाता',
+          seller_hub: 'किसान बिक्री डैशबोर्ड', seller_hub_sub: 'उपज डालें', btn_add_product: 'नई उपज डालें',
+          auth_sub: 'लॉगिन करें या नया खाता बनाएं', btn_google_login: 'Google से लॉगिन', login: 'लॉगिन', register: 'नया खाता',
+          email: 'ईमेल', password: 'पासवर्ड', password_8: 'पासवर्ड (8+ अक्षर) *', full_name: 'पूरा नाम *', full_name_lbl: 'पूरा नाम',
+          mobile: 'मोबाइल नंबर *', mobile_lbl: 'मोबाइल नंबर', role_label: 'भूमिका *', role_seller: 'किसान / विक्रेता', role_buyer: 'खरीदार',
+          village: 'गांव / शहर', village_req: 'गांव *', district: 'जिला', district_req: 'जिला *', upi_id_lbl: '💳 UPI ID',
+          create_account: 'नया खाता बनाएं', logout: 'लॉगआउट', profile_settings: 'प्रोफ़ाइल विवरण', save_profile: 'सेव करें',
+          admin_heading: 'Admin Panel — स्वीकृति केंद्र', admin_sub: 'मंडी भाव और दवा-बीज-यंत्र स्वीकृति',
+          admin_pending_mandi: '📊 स्वीकृति के लिए लंबित मंडी भाव', admin_pending_inputs: '🧪 स्वीकृति के लिए लंबित दवा / बीज / यंत्र',
+          admin_apmc_title: '📊 Admin सीधा मंडी भाव जोड़ें', ap_yard_ph: 'मंडी', ap_dist_ph: 'जिला', ap_crop_ph: 'उपज',
+          ap_min_ph: 'न्यूनतम', ap_max_ph: 'अधिकतम', ap_modal_ph: 'औसत', ap_publish_btn: 'लाइव करें',
+          voice_modal_title: '🎙️ AI वॉइस', voice_prompt: 'माइक दबाकर बोलें',
+          mr_modal_title: '📊 दैनिक मंडी भाव डालें / अपडेट करें', mr_cat_lbl: 'वर्ग (सब्ज़ी/फल/फूल/दलहन/अनाज) *',
+          mr_crop_lbl: 'उपज / वस्तु का नाम *', mr_yard_lbl: 'नज़दीकी मंडी / APMC *',
+          mr_approval_note: '🛡️ Admin Approval: एडमिन स्वीकृति के बाद भाव लाइव दिखेंगे।',
+          mr_submit_btn: 'स्वीकृति के लिए भेजें', ain_modal_title: '🧪 दवा, बीज, साधन या यंत्र भाव डालें / अपडेट',
+          ain_type_lbl: 'प्रकार *', ain_name_lbl: 'वस्तु / यंत्र का नाम *', ain_brand_lbl: 'ब्रांड / कंपनी', ain_note_lbl: 'स्टॉक / विवरण',
+          tr_modal_title: '🚜 वाहन सेवा जोड़ें', tr_driver_lbl: 'ड्राइवर का नाम *', tr_type_lbl: 'वाहन प्रकार *', tr_submit_btn: 'जोड़ें',
+          modal_add_product: 'नई उपज डालें', category: 'श्रेणी *', crop_title_gu: 'उपज का नाम *', quantity: 'मात्रा *', unit: 'इकाई *', price: 'भाव (₹) *', submit_product: 'सबमिट करें',
+          modal_add_req: 'नई मांग डालें', req_product: 'उपज *', delivery_loc: 'स्थान *', submit_req: 'मांग डालें'
         },
         en: {
-          tagline: 'Direct Farm to Market • Smart AI Agri', offline_msg: '⚠️ You are offline.', install_short: 'Install',
-          install_banner_title: 'Install KHEDUT SETU AI App', install_banner_sub: 'Fast app experience on phone', btn_install_app: 'Install App',
-          nav_market: 'Market', nav_ai: '✨ AI Advisor', nav_ai_short: 'AI Help', nav_yard: 'APMC & Transport', nav_yard_short: 'APMC',
-          nav_requests: 'Requests', nav_sell: 'Sell', nav_alerts: 'Alerts', nav_account: 'Account',
-          search_placeholder: 'Speak or type crop, village or district...', district_placeholder: 'District (e.g. Anand)',
-          ai_badge_sub: 'Future-Ready Smart Agri Market', hero_title: 'Buy & Sell Farm Produce Directly — With AI Insights',
-          btn_post_crop: 'Post Crop', btn_ai_doc_short: '✨ AI Doctor', btn_voice: 'Voice AI', btn_voice_float: 'AI Voice',
-          latest_listings: 'Latest Produce', refresh: 'Refresh', all_categories: 'All Categories',
-          no_products: 'No approved listings yet.', sold_badge: '✓ SOLD',
-          ai_fair: '✨ AI Fair Price', ai_market: '✨ AI Market Rate', ai_prem: '✨ AI Premium',
-          ai_hub_title: '✨ KHEDUT SETU AI Advisor', ai_hub_sub: 'Price forecast, crop doctor & smart matching',
+          tagline: 'Daily Mandi Rates • Agri Inputs & Machinery • AI', offline_msg: '⚠️ You are offline.',
+          nav_market: 'Market', nav_ai: '✨ AI Advisor', nav_ai_short: 'AI Help', nav_yard: 'Mandi & Inputs', nav_yard_short: 'Mandi Rates',
+          nav_requests: 'Requests', nav_sell: 'Sell', nav_account: 'Account',
+          search_placeholder: 'Search veg, fruits, flowers, pulses, grains, village or district...', district_placeholder: 'District (e.g. Anand)',
+          ai_badge_sub: 'Daily Updates with Admin Approval', hero_title: 'Seasonal Veg, Fruits, Flowers, Pulses, Grains & Agri Inputs',
+          btn_daily_rates: '📊 Daily Mandi Rates', btn_post_crop: 'Post Crop', btn_ai_doc_short: '✨ AI Doctor', btn_voice_float: 'AI Voice',
+          latest_listings: 'Latest Produce', refresh: 'Refresh', all_categories: 'All Categories', no_products: 'No produce found.',
+          ai_hub_title: '✨ KHEDUT SETU AI Advisor', ai_hub_sub: 'Price forecast, crop doctor & demand matching',
           aisub_price_btn: '💰 AI Price Forecast', aisub_doctor_btn: '🩺 Crop Doctor', aisub_match_btn: '🎯 Smart Match',
           ai_price_heading: '💰 AI Smart Price Estimator', ai_select_crop: 'Select Crop', ai_qty_label: 'Quantity (Mann / 20 kg)',
-          quality: 'Quality', ai_calc_price_btn: '✨ Calculate AI Price', ai_est_total: 'Estimated Total Value',
-          ai_sug_mann: 'AI Price (20 kg / Mann)', ai_sug_qtl: 'AI Price (100 kg / Quintal)',
-          ai_sell_tip_lbl: '💡 AI Tip', ai_post_with_price: '+ Post with AI Price',
-          ai_doc_heading: '🩺 AI Crop Doctor', ai_doc_crop_lbl: 'Crop Type', ai_doc_sym_lbl: 'What symptoms do you see?',
-          ai_doc_extra_ph: 'Add extra symptoms...', ai_doc_btn: '🩺 Diagnose with AI', ai_doc_cause: 'Possible Cause',
-          ai_doc_note: '⚠️ AI Note: Preliminary guidance only; consult an expert.',
-          ai_match_heading: '🎯 AI Smart Matching', ai_match_sub: 'Matches demand with produce', ai_match_refresh: '↻ Refresh', ai_match_empty: 'No requests yet.',
-          yard_hub_title: 'APMC Market Rates & Local Transport', yard_hub_sub: 'Mandi rates & tempo-tractor',
-          tab_apmc: '📊 APMC Rates', tab_transport: '🚜 Tempo / Tractor',
-          apmc_search_ph: 'Search yard, district or crop...', tr_search_ph: 'Search village, district or vehicle...', btn_add_vehicle: '+ Add Vehicle',
+          quality: 'Quality', ai_calc_price_btn: '✨ Calculate AI Price', ai_doc_heading: '🩺 AI Crop Doctor',
+          ai_doc_crop_lbl: 'Crop Type', ai_doc_sym_lbl: 'Symptom', ai_doc_extra_ph: 'Extra notes...',
+          ai_doc_btn: '🩺 Diagnose with AI', ai_match_heading: '🎯 AI Smart Matching', ai_match_sub: 'Demand & produce matching', ai_match_refresh: '↻ Refresh',
+          yard_hub_title: 'Daily Mandi Rates, Agri Inputs & Machinery', yard_hub_sub: 'Nearby mandi rate updates (Admin approved) & farm inputs',
+          tab_apmc: '📊 Mandi Rates (Veg/Fruit/Flower/Pulse/Grain)', tab_inputs: '🧪 Pesticides, Seeds, Tools & Machinery', tab_transport: '🚜 Tempo / Tractor',
+          btn_add_update_mandi: '+ Submit / Update Rate', apmc_search_ph: 'Search mandi, district or crop...',
           apmc_min: 'Min', apmc_modal: 'Modal', apmc_max: 'Max',
-          tr_call: '📞 Call', tr_wa: '💬 WhatsApp', tr_login_num: 'Login to view number',
+          inputs_heading: '🧪 Agri Pesticides, Seeds, Fertilizer, Tools & Machinery', inputs_sub: 'Daily rate updates with Admin approval',
+          btn_add_update_input: '+ Add / Update Input Rate', input_search_ph: 'Search pesticide, seed, tool or machine...',
+          tr_search_ph: 'Search village, district or vehicle...', btn_add_vehicle: '+ Add Vehicle', tr_call: '📞 Call', tr_wa: '💬 WhatsApp', tr_login_num: 'Login to view number',
           req_title: 'Buyer Requirements', req_sub: 'See or post buyer requirements.', btn_add_req: 'Post Requirement',
-          sell_login_title: 'Login to Sell Produce', sell_login_sub: 'Post up to 4 photos.', btn_go_login: 'Login / Register',
-          seller_hub: 'Seller Dashboard', seller_hub_sub: 'Manage listings', btn_add_product: 'Add New Crop',
-          my_listings: 'My Listings', received_inquiries: 'Inquiries', tab_seller_pay: '💳 Received UPI',
-          alerts_login: 'Login to view alerts', tab_notifs: 'Notifications', tab_favs: 'Saved',
-          auth_sub: 'Login or create a free account', btn_google_login: 'Continue with Google', or_email: 'or with email',
-          login: 'Login', register: 'Register', email: 'Email', password: 'Password', password_8: 'Password (8+ chars) *',
-          forgot_pwd: 'Forgot password?', full_name: 'Full Name *', full_name_lbl: 'Full Name',
-          mobile: 'Mobile Number *', mobile_lbl: 'Mobile Number', role_label: 'Role *',
-          role_seller: 'Farmer / Seller', role_buyer: 'Buyer', village: 'Village / City', village_req: 'Village *',
-          district: 'District', district_req: 'District *', state: 'State', state_req: 'State *', pincode: 'PIN Code',
-          create_account: 'Create Account', logout: 'Logout', verified_badge: '✓ Verified',
-          profile_settings: 'Profile & UPI Settings', business_name: 'Farm / Business Name', upi_id_lbl: '💳 UPI ID',
-          allow_phone: 'Allow calls', allow_wa: 'Allow WhatsApp', allow_upi: '🔒 Accept UPI', save_profile: 'Save Profile',
-          my_pay_heading: '🧾 My Payments & Receipts', my_pay_sub: 'UPI transactions',
-          admin_heading: 'Admin Panel', admin_sub: 'Moderation & APMC rates', admin_pending_title: 'Pending Listings',
-          admin_apmc_title: '📊 Add APMC Rate', ap_yard_ph: 'Yard', ap_dist_ph: 'District', ap_crop_ph: 'Crop',
-          ap_min_ph: 'Min Price', ap_max_ph: 'Max Price', ap_modal_ph: 'Modal Price', ap_publish_btn: 'Publish',
-          bc_title_lbl: '📢 Broadcast', bc_sub_ph: 'Title', bc_body_ph: 'Message...', bc_send_btn: 'Send', bc_exp_btn: 'Expiring Alerts',
-          footer_brand: '✨ KHEDUT SETU AI v4.2', voice_modal_title: '🎙️ AI Voice', voice_prompt: 'Tap mic and speak',
-          voice_listening: 'Listening... 🎙️', voice_hints_lbl: 'Try saying:', upi_modal_title: '🔒 UPI Payment',
-          receipt_title: '🧾 Digital Receipt', tr_modal_title: '🚜 Add Transport', tr_driver_lbl: 'Driver Name *',
-          tr_type_lbl: 'Vehicle Type *', tr_cap_lbl: 'Capacity', tr_rate_lbl: 'Rate', tr_submit_btn: 'Add',
-          rp_title: '🔑 Reset Password', rp_new_lbl: 'New Password *', rp_conf_lbl: 'Confirm Password *', rp_btn: 'Update',
-          btn_listen: 'Listen', modal_add_product: 'Add Produce', category: 'Category *', category_opt: 'Category',
-          subcategory: 'Subcategory', crop_title_gu: 'Produce Title *', crop_title_en: 'English Title',
-          quantity: 'Quantity *', unit: 'Unit *', price: 'Price (₹) *', negotiable: 'Negotiable',
-          description: 'Description', photo_upload_lbl: '📸 Photos (Max 4)', photo_scan_note: '🔒 Safely scanned.',
-          submit_product: 'Submit', modal_add_req: 'Post Requirement', req_product: 'Produce Required *',
-          target_price: 'Target Price (₹)', delivery_date: 'Date', delivery_loc: 'Location *', contact_pref: 'Contact',
-          quality_req: 'Quality', submit_req: 'Post Requirement'
+          sell_login_title: 'Login to Sell Produce', sell_login_sub: 'Sell directly.', btn_go_login: 'Login / Register',
+          seller_hub: 'Seller Dashboard', seller_hub_sub: 'Post produce', btn_add_product: 'Add New Crop',
+          auth_sub: 'Login or create an account', btn_google_login: 'Continue with Google', login: 'Login', register: 'Register',
+          email: 'Email', password: 'Password', password_8: 'Password (8+ chars) *', full_name: 'Full Name *', full_name_lbl: 'Full Name',
+          mobile: 'Mobile Number *', mobile_lbl: 'Mobile Number', role_label: 'Role *', role_seller: 'Farmer / Seller', role_buyer: 'Buyer',
+          village: 'Village / City', village_req: 'Village *', district: 'District', district_req: 'District *', upi_id_lbl: '💳 UPI ID',
+          create_account: 'Create Account', logout: 'Logout', profile_settings: 'Profile Settings', save_profile: 'Save Profile',
+          admin_heading: 'Admin Panel — Approval Center', admin_sub: 'Approve mandi rates & agri inputs',
+          admin_pending_mandi: '📊 Pending Mandi Rates', admin_pending_inputs: '🧪 Pending Pesticides / Seeds / Machinery',
+          admin_apmc_title: '📊 Admin Direct Mandi Rate', ap_yard_ph: 'Mandi', ap_dist_ph: 'District', ap_crop_ph: 'Crop/Item',
+          ap_min_ph: 'Min', ap_max_ph: 'Max', ap_modal_ph: 'Modal', ap_publish_btn: 'Publish',
+          voice_modal_title: '🎙️ AI Voice', voice_prompt: 'Tap mic and speak',
+          mr_modal_title: '📊 Submit / Update Daily Mandi Rate', mr_cat_lbl: 'Category (Veg/Fruit/Flower/Pulse/Grain) *',
+          mr_crop_lbl: 'Crop / Item Name *', mr_yard_lbl: 'Nearby Mandi / APMC *',
+          mr_approval_note: '🛡️ Admin Approval: Submitted or updated rates go live after Admin approval.',
+          mr_submit_btn: 'Submit for Approval', ain_modal_title: '🧪 Add / Update Pesticide, Seed, Tool or Machinery Rate',
+          ain_type_lbl: 'Type *', ain_name_lbl: 'Item / Machine Name *', ain_brand_lbl: 'Brand / Company', ain_note_lbl: 'Stock / Notes',
+          tr_modal_title: '🚜 Add Transport', tr_driver_lbl: 'Driver Name *', tr_type_lbl: 'Vehicle Type *', tr_submit_btn: 'Add',
+          modal_add_product: 'Add Produce', category: 'Category *', crop_title_gu: 'Produce Title *', quantity: 'Quantity *', unit: 'Unit *', price: 'Price (₹) *', submit_product: 'Submit',
+          modal_add_req: 'Post Requirement', req_product: 'Produce Required *', delivery_loc: 'Location *', submit_req: 'Post Requirement'
         }
+      };
+
+      const MANDI_CAT_CHIPS = {
+        gu: { all: 'બધું', vegetables: '🥬 શાકભાજી', fruits: '🍎 ફળો', flowers: '🌸 ફૂલો', pulses: '🫘 કઠોળ', grains: '🌾 અનાજ' },
+        hi: { all: 'सभी', vegetables: '🥬 सब्ज़ी', fruits: '🍎 फल', flowers: '🌸 फूल', pulses: '🫘 दलहन', grains: '🌾 अनाज' },
+        en: { all: 'All', vegetables: '🥬 Veg', fruits: '🍎 Fruits', flowers: '🌸 Flowers', pulses: '🫘 Pulses', grains: '🌾 Grains' }
+      };
+
+      const AGRI_TYPE_CHIPS = {
+        gu: { all: 'બધું', dava: '🧪 દવા', biyaran: '🌱 બિયારણ', khatar: '🌿 ખાતર', sadhano: '🛠️ સાધનો', yantro: '⚙️ યંત્રો' },
+        hi: { all: 'सभी', dava: '🧪 दवा', biyaran: '🌱 बीज', khatar: '🌿 खाद', sadhano: '🛠️ साधन', yantro: '⚙️ यंत्र' },
+        en: { all: 'All', dava: '🧪 Pesticides', biyaran: '🌱 Seeds', khatar: '🌿 Fertilizer', sadhano: '🛠️ Tools', yantro: '⚙️ Machinery' }
       };
 
       const AI_CROPS = {
-        paddy: { gu: 'ડાંગર (ગુજરાત-૧૭)', hi: 'धान (गुजरात-17)', en: 'Paddy (Gujarat-17)', mann: 470, qtl: 2350 },
-        wheat: { gu: 'ઘઉં (ટુકડા)', hi: 'गेहूं (टुकड़ा)', en: 'Wheat (Tukda)', mann: 555, qtl: 2775 },
+        paddy: { gu: 'ડાંગર', hi: 'धान', en: 'Paddy', mann: 470, qtl: 2350 },
+        wheat: { gu: 'ઘઉં', hi: 'गेहूं', en: 'Wheat', mann: 555, qtl: 2775 },
         bajra: { gu: 'બાજરી', hi: 'बाजरा', en: 'Bajra', mann: 480, qtl: 2400 },
-        cumin: { gu: 'જીરું', hi: 'जीरा', en: 'Cumin', mann: 4800, qtl: 24000 },
-        groundnut: { gu: 'મગફળી', hi: 'मूंगफली', en: 'Groundnut', mann: 1210, qtl: 6050 },
-        cotton: { gu: 'કપાસ', hi: 'कपास', en: 'Cotton', mann: 1510, qtl: 7550 },
-        fodder: { gu: 'ઘાસચારો', hi: 'चारा', en: 'Fodder', mann: 180, qtl: 900 }
-      };
-
-      const AI_ADVICE = {
-        gu: {
-          sell: 'બજારમાં માંગ સારી છે; સૂકો માલ હોય તો વેચાણ લાભદાયી છે.',
-          hold: 'ભેજ વધુ હોય તો પહેલા સુકવીને પછી વેચો.',
-          quals: [['prime', 'Grade A+ (ઉત્તમ)'], ['standard', 'Standard'], ['moisture', 'થોડો ભેજ']],
-          docDef: 'ડાંગર / ઘઉં',
-          syms: [['yellow', 'પાન પીળા પડવા'], ['spots', 'ડાઘ કે ફૂગ'], ['pests', 'જીવાત / ઈયળ'], ['water', 'સિંચાઈ / ભેજ']],
-          plans: {
-            yellow: ['નાઇટ્રોજન કે ભેજની સમસ્યા', ['પાણી નિકાલ કરો.', 'સંતુલિત ખાતર આપો.']],
-            spots: ['ફૂગજન્ય રોગ', ['વધુ પાણી ટાળો.', 'યોગ્ય ફૂગનાશક વાપરો.']],
-            pests: ['જીવાતનો ઉપદ્રવ', ['લીમડા આધારિત ઉપાય કરો.', 'નિષ્ણાતની સલાહ લો.']],
-            water: ['ભેજની અછત', ['સવાર કે સાંજે સિંચાઈ કરો.']]
-          }
-        },
-        hi: {
-          sell: 'मांग अच्छी है; सूखा माल हो तो बिक्री लाभदायक है।',
-          hold: 'नमी अधिक हो तो सुखाकर बेचें।',
-          quals: [['prime', 'Grade A+ (उत्तम)'], ['standard', 'Standard'], ['moisture', 'हल्की नमी']],
-          docDef: 'धान / गेहूं',
-          syms: [['yellow', 'पत्ते पीले पड़ना'], ['spots', 'धब्बे या फफूंदी'], ['pests', 'कीट / सुंडी'], ['water', 'सिंचाई / नमी']],
-          plans: {
-            yellow: ['नाइट्रोजन या नमी की समस्या', ['जल निकासी करें।', 'संतुलित खाद दें।']],
-            spots: ['फफूंदी रोग', ['अधिक पानी से बचें।', 'उचित उपचार करें।']],
-            pests: ['कीट प्रकोप', ['नीम आधारित उपाय करें।', 'विशेषज्ञ सलाह लें।']],
-            water: ['नमी की कमी', ['सुबह या शाम सिंचाई करें।']]
-          }
-        },
-        en: {
-          sell: 'Demand is steady; dry produce gets better value.',
-          hold: 'Dry first if moisture is high.',
-          quals: [['prime', 'Grade A+ (Prime)'], ['standard', 'Standard'], ['moisture', 'Slight Moisture']],
-          docDef: 'Paddy / Wheat',
-          syms: [['yellow', 'Leaf yellowing'], ['spots', 'Spots or fungus'], ['pests', 'Pests / insects'], ['water', 'Irrigation / moisture']],
-          plans: {
-            yellow: ['Nitrogen or root moisture stress', ['Drain excess water.', 'Apply balanced nutrients.']],
-            spots: ['Fungal leaf spot', ['Avoid over-watering.', 'Use recommended fungicide.']],
-            pests: ['Pest infestation', ['Use neem control.', 'Consult agronomist.']],
-            water: ['Moisture deficit', ['Irrigate morning/evening.']]
-          }
-        }
+        pulses: { gu: 'કઠોળ (મગ/તુવેર)', hi: 'दलहन (मूंग/तुअर)', en: 'Pulses (Moong/Tuver)', mann: 1560, qtl: 7800 },
+        veg: { gu: 'શાકભાજી', hi: 'सब्ज़ी', en: 'Vegetables', mann: 350, qtl: 1750 }
       };
 
       const UNIT_LABELS = {
@@ -1087,37 +822,30 @@
         en: { kg: 'kg', quintal: 'quintal', ton: 'ton', mann: 'mann', bag: 'bag', bundle: 'bundle', piece: 'piece' }
       };
 
-      const CAT_EMOJI = Object.freeze({ grains: '🌾', 'straw-animal-feed': '🌿', pulses: '🫘', oilseeds: '🌻', 'fruits-vegetables': '🥬', 'fertilizers-seeds': '🌱', 'agricultural-equipment': '🚜' });
-
       function tr(k) { return (L[state.lang] && L[state.lang][k]) || L.gu[k] || k; }
-      function cropLabel(k) { return (AI_CROPS[k] && AI_CROPS[k][state.lang]) || AI_CROPS.paddy[state.lang]; }
       function pickLangField(o, b) { return o ? (o[`${b}_${state.lang}`] || o[`${b}_gu`] || o[`${b}_en`] || o[`${b}_hi`] || '') : ''; }
 
-      function populateLocalizedFormSelects() {
+      function populateSelects() {
         const aiCrop = document.getElementById('ai-crop-select');
-        if (aiCrop) { const prev = aiCrop.value || 'paddy'; aiCrop.innerHTML = Object.keys(AI_CROPS).map((k) => `<option value="${k}">${escapeHtml(cropLabel(k))}</option>`).join(''); aiCrop.value = prev; }
+        if (aiCrop) { const prev = aiCrop.value || 'paddy'; aiCrop.innerHTML = Object.keys(AI_CROPS).map((k) => `<option value="${k}">${escapeHtml(AI_CROPS[k][state.lang])}</option>`).join(''); aiCrop.value = prev; }
         const aiQual = document.getElementById('ai-qual-select');
-        if (aiQual) { const prev = aiQual.value || 'standard'; aiQual.innerHTML = AI_ADVICE[state.lang].quals.map(([v, lbl]) => `<option value="${v}">${escapeHtml(lbl)}</option>`).join(''); aiQual.value = prev; }
+        if (aiQual) { const prev = aiQual.value || 'standard'; aiQual.innerHTML = [['prime', 'A+'], ['standard', 'Standard'], ['moisture', 'Moisture']].map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join(''); aiQual.value = prev; }
         const docSym = document.getElementById('doc-symptom');
-        if (docSym) { const prev = docSym.value || 'yellow'; docSym.innerHTML = AI_ADVICE[state.lang].syms.map(([v, lbl]) => `<option value="${v}">${escapeHtml(lbl)}</option>`).join(''); docSym.value = prev; }
-        const docCrop = document.getElementById('doc-crop');
-        if (docCrop && (!docCrop.value || Object.values(AI_ADVICE).some((x) => x.docDef === docCrop.value))) docCrop.value = AI_ADVICE[state.lang].docDef;
+        if (docSym) { const prev = docSym.value || 'yellow'; docSym.innerHTML = [['yellow', 'Yellowing'], ['spots', 'Spots/Fungus'], ['pests', 'Pests']].map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join(''); docSym.value = prev; }
         const uMap = UNIT_LABELS[state.lang] || UNIT_LABELS.gu;
-        ['np-unit', 'nr-unit'].forEach((id) => {
-          const sel = document.getElementById(id); if (!sel) return;
-          const prev = sel.value || 'quintal';
-          sel.innerHTML = CONFIG.ALLOWED_UNITS.map((u) => `<option value="${u}">${escapeHtml(uMap[u] || u)}</option>`).join('');
-          sel.value = CONFIG.ALLOWED_UNITS.includes(prev) ? prev : 'quintal';
-        });
-        const regRole = document.getElementById('reg-role');
-        if (regRole) { const prev = regRole.value || 'seller'; regRole.innerHTML = `<option value="seller">${escapeHtml(tr('role_seller'))}</option><option value="buyer">${escapeHtml(tr('role_buyer'))}</option>`; regRole.value = prev; }
-        const nrPref = document.getElementById('nr-pref');
-        if (nrPref) { const prev = nrPref.value || 'whatsapp'; nrPref.innerHTML = `<option value="whatsapp">WhatsApp</option><option value="phone">${escapeHtml(state.lang === 'en' ? 'Phone Call' : state.lang === 'hi' ? 'फ़ोन कॉल' : 'ફોન કૉલ')}</option>`; nrPref.value = prev; }
-        const hintsBox = document.getElementById('voice-hints-chips');
-        if (hintsBox) {
-          const chips = state.lang === 'en' ? ['Paddy', 'AI Advisor', 'APMC Rates', 'Post Crop', 'Tempo Tractor', 'Requests'] : state.lang === 'hi' ? ['धान', 'AI सलाहकार', 'APMC भाव', 'नई उपज', 'टेम्पो ट्रैक्टर', 'खरीद मांग'] : ['ડાંગર', 'AI સલાહકાર', 'માર્કેટ યાર્ડ ભાવ', 'નવી ઉપજ મૂકો', 'ટેમ્પો ટ્રેક્ટર', 'ખરીદી માંગ'];
-          hintsBox.innerHTML = chips.map((c) => `<button type="button" data-action="voice-example" data-text="${escapeHtml(c)}" class="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700 font-semibold">"${escapeHtml(c)}"</button>`).join('');
-        }
+        ['np-unit', 'nr-unit'].forEach((id) => { const s = document.getElementById(id); if (s) s.innerHTML = CONFIG.ALLOWED_UNITS.map((u) => `<option value="${u}">${escapeHtml(uMap[u])}</option>`).join(''); });
+        const rr = document.getElementById('reg-role');
+        if (rr) rr.innerHTML = `<option value="seller">${escapeHtml(tr('role_seller'))}</option><option value="buyer">${escapeHtml(tr('role_buyer'))}</option>`;
+      }
+
+      function renderChips() {
+        const mMap = MANDI_CAT_CHIPS[state.lang] || MANDI_CAT_CHIPS.gu;
+        const mBox = document.getElementById('mandi-cat-chips');
+        if (mBox) mBox.innerHTML = Object.entries(mMap).map(([k, lbl]) => `<button type="button" data-action="set-mandi-cat" data-cat="${k}" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.mandiCatFilter === k ? 'bg-farm-700 text-white' : 'bg-slate-100 text-slate-700'}">${escapeHtml(lbl)}</button>`).join('');
+
+        const aMap = AGRI_TYPE_CHIPS[state.lang] || AGRI_TYPE_CHIPS.gu;
+        const aBox = document.getElementById('agri-input-type-chips');
+        if (aBox) aBox.innerHTML = Object.entries(aMap).map(([k, lbl]) => `<button type="button" data-action="set-agri-type" data-type="${k}" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.agriInputTypeFilter === k ? 'bg-emerald-700 text-white' : 'bg-white border border-slate-200 text-slate-700'}">${escapeHtml(lbl)}</button>`).join('');
       }
 
       function setLang(lang) {
@@ -1128,70 +856,25 @@
         if (act) act.className = 'lang-btn px-1.5 py-1 rounded-md transition bg-white text-farm-900 font-bold shadow-sm';
         document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = tr(el.getAttribute('data-i18n')); });
         document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => { el.placeholder = tr(el.getAttribute('data-i18n-placeholder')); });
-        populateLocalizedFormSelects();
-        renderCategories(); renderProducts(); renderApmcRates(); renderTransportList();
-        if (state.tab === 'ai_advisor') { runAiPriceEstimator(); runAiCropDoctor(); runAiSmartMatch(); }
+        populateSelects(); renderChips(); renderCategories(); renderProducts(); renderApmcRates(); renderAgriInputs(); renderTransportList();
       }
 
-      function detectCropKeyFromText(text) {
-        const s = String(text || '').toLowerCase();
-        if (/ઘઉં|wheat|ghau|गेहूं/.test(s)) return 'wheat';
-        if (/બાજરી|bajra|बाजरा/.test(s)) return 'bajra';
-        if (/જીરું|jeeru|cumin|जीरा/.test(s)) return 'cumin';
-        if (/મગફળી|groundnut|magfali|मूंगफली/.test(s)) return 'groundnut';
-        if (/કપાસ|cotton|kapas|कपास/.test(s)) return 'cotton';
-        if (/ઘાસ|પુળિયા|fodder|ghas|चारा/.test(s)) return 'fodder';
-        return 'paddy';
+      function switchTab(tab) {
+        if (!CONFIG.ALLOWED_TABS.includes(tab)) return; state.tab = tab;
+        document.querySelectorAll('.tab-view').forEach((s) => s.classList.add('hidden'));
+        document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
+        document.querySelectorAll('.nav-desk').forEach((b) => { const active = b.getAttribute('data-nav') === tab; b.className = `nav-desk px-3 py-1.5 rounded-lg transition ${active ? 'bg-white/20 text-white font-bold' : 'text-farm-100 hover:bg-white/10'}`; });
+        document.querySelectorAll('.mnav-btn').forEach((b) => { const active = b.getAttribute('data-mnav') === tab; b.classList.toggle('text-farm-700', active); b.classList.toggle('text-slate-500', !active); });
+        if (tab === 'market') loadProducts();
+        if (tab === 'ai_advisor') { runAiPrice(); runAiDoctor(); runAiMatch(); }
+        if (tab === 'yard') { loadApmcRates(); loadAgriInputs(); loadTransportList(); }
+        if (tab === 'requests') loadBuyerRequests();
+        if (tab === 'sell') refreshSellTab();
+        if (tab === 'account') refreshAccountTab();
+        window.scrollTo({ top: 0, behavior: 'smooth' }); refreshIcons();
       }
-
-      function computeFairPriceBadge(product) {
-        const key = detectCropKeyFromText(`${product.title_gu || ''} ${product.title_en || ''}`);
-        const base = AI_CROPS[key] || AI_CROPS.paddy;
-        const unit = String(product.unit || '').toLowerCase();
-        const price = Number(product.expected_price) || 0;
-        if (!price) return null;
-        let ref = base.mann;
-        if (unit.includes('quintal')) ref = base.qtl; else if (unit.includes('kg')) ref = Math.round(base.mann / 20); else if (unit.includes('ton')) ref = base.qtl * 10;
-        const ratio = price / ref;
-        if (ratio <= 1.08) return { text: tr('ai_fair'), cls: 'bg-emerald-100 text-emerald-800' };
-        if (ratio <= 1.25) return { text: tr('ai_market'), cls: 'bg-amber-100 text-amber-800' };
-        return { text: tr('ai_prem'), cls: 'bg-indigo-100 text-indigo-800' };
-      }
-
-      function runAiPriceEstimator() {
-        const cropKey = document.getElementById('ai-crop-select')?.value || 'paddy';
-        const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) || 50;
-        const qual = document.getElementById('ai-qual-select')?.value || 'standard';
-        const base = AI_CROPS[cropKey] || AI_CROPS.paddy;
-        const adv = AI_ADVICE[state.lang] || AI_ADVICE.gu;
-        const mult = qual === 'prime' ? 1.12 : qual === 'moisture' ? 0.90 : 1.0;
-        const estMann = Math.round(base.mann * mult); const estQtl = Math.round(base.qtl * mult); const estTotal = Math.round(qty * estMann);
-        const out = document.getElementById('ai-price-output'); if (!out) return;
-        out.innerHTML = `<div class="flex flex-wrap items-center justify-between gap-2"><strong class="text-farm-900 text-base">🌾 ${escapeHtml(cropLabel(cropKey))}</strong><span class="text-xs font-bold bg-farm-700 text-white px-3 py-1 rounded-full">${escapeHtml(tr('ai_est_total'))}: ₹${estTotal.toLocaleString('en-IN')}</span></div><div class="grid grid-cols-2 gap-2 pt-1"><div class="bg-white p-3 rounded-xl border border-farm-200"><div class="text-[11px] text-slate-500">${escapeHtml(tr('ai_sug_mann'))}</div><div class="text-lg font-extrabold text-farm-800">₹${estMann.toLocaleString('en-IN')}</div></div><div class="bg-white p-3 rounded-xl border border-farm-200"><div class="text-[11px] text-slate-500">${escapeHtml(tr('ai_sug_qtl'))}</div><div class="text-lg font-extrabold text-farm-800">₹${estQtl.toLocaleString('en-IN')}</div></div></div><p class="text-xs text-slate-700 leading-relaxed pt-1"><strong>${escapeHtml(tr('ai_sell_tip_lbl'))}:</strong> ${escapeHtml(qual === 'moisture' ? adv.hold : adv.sell)}</p><div class="pt-1"><button type="button" data-action="apply-ai-price-to-sell" data-price="${estQtl}" data-title="${escapeHtml(cropLabel(cropKey))}" class="px-4 py-2 rounded-xl bg-harvest-500 hover:bg-harvest-600 text-white text-xs font-bold shadow-sm">${escapeHtml(tr('ai_post_with_price'))}</button></div>`;
-      }
-
-      function applyAiPriceToSellModal(price, title) {
-        switchTab('sell'); if (!state.user) { switchTab('account'); return; }
-        openProductModal(null); document.getElementById('np-title-gu').value = title; document.getElementById('np-unit').value = 'quintal'; document.getElementById('np-price').value = String(price);
-      }
-
-      function runAiCropDoctor() {
-        const adv = AI_ADVICE[state.lang] || AI_ADVICE.gu;
-        const crop = cleanText(document.getElementById('doc-crop')?.value, 80) || adv.docDef;
-        const sym = document.getElementById('doc-symptom')?.value || 'yellow';
-        const extra = cleanText(document.getElementById('doc-extra')?.value, 300);
-        const [cause, steps] = adv.plans[sym] || adv.plans.yellow;
-        const out = document.getElementById('ai-doctor-output'); if (!out) return;
-        out.innerHTML = `<div class="font-bold text-emerald-950 text-base">🩺 ${escapeHtml(crop)}</div><div class="text-xs text-slate-700"><strong>${escapeHtml(tr('ai_doc_cause'))}:</strong> ${escapeHtml(cause)}</div>${extra ? `<div class="text-xs text-slate-600 bg-white/80 p-2 rounded-lg">${escapeHtml(extra)}</div>` : ''}<ul class="list-disc pl-5 text-xs text-slate-800 space-y-1">${steps.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ul><p class="text-[11px] text-emerald-900 bg-white/90 p-2 rounded-xl border border-emerald-200">${escapeHtml(tr('ai_doc_note'))}</p>`;
-      }
-
-      async function runAiSmartMatch() {
-        const box = document.getElementById('ai-match-output'); if (!box) return;
-        const { data: reqs } = await sb.from('public_buyer_requests').select('*').order('created_at', { ascending: false }).limit(20);
-        const list = Array.isArray(reqs) ? reqs : [];
-        if (!list.length) { box.innerHTML = `<div class="bg-slate-50 p-4 rounded-xl text-xs text-slate-600">${escapeHtml(tr('ai_match_empty'))}</div>`; return; }
-        box.innerHTML = list.map((r) => `<div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex items-center justify-between gap-2"><div><strong class="text-slate-900 text-sm">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-500">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)} • ${escapeHtml([r.delivery_location, r.district].filter(Boolean).join(', '))}</div></div><button type="button" data-action="nav-tab" data-tab="requests" class="px-3 py-1.5 rounded-xl bg-farm-700 text-white text-xs font-bold">${escapeHtml(tr('nav_requests'))}</button></div>`).join('');
-      }
+      function openModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { document.getElementById(id)?.classList.remove('hidden'); refreshIcons(); } }
+      function closeModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) document.getElementById(id)?.classList.add('hidden'); }
 
       function switchAiSubtab(w) {
         state.aiSubtab = w;
@@ -1199,160 +882,197 @@
         const b = { price: 'aisub-price', doctor: 'aisub-doctor', match: 'aisub-match' };
         Object.entries(p).forEach(([k, id]) => document.getElementById(id)?.classList.toggle('hidden', k !== w));
         Object.entries(b).forEach(([k, id]) => { const btn = document.getElementById(id); if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`; });
-        if (w === 'price') runAiPriceEstimator(); if (w === 'doctor') runAiCropDoctor(); if (w === 'match') runAiSmartMatch();
       }
-
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition || null;
-      let recognition = null;
-      function stopVoiceListening() { state.isListening = false; const btn = document.getElementById('voice-mic-trigger'); if (btn) { btn.classList.remove('voice-pulse', 'bg-red-600'); btn.classList.add('bg-farm-700'); } try { if (recognition) recognition.stop(); } catch {} }
-      function processVoiceCommand(rawSpoken) {
-        const spoken = cleanText(rawSpoken, 100); if (!spoken) return; const low = spoken.toLowerCase(); closeModal('voice-modal');
-        if (/ai|સલાહ|ડૉક્ટર|advisor|doctor|सलाह/.test(low)) { switchTab('ai_advisor'); return; }
-        if (/નવી ઉપજ|ઉપજ મૂકો|ફસલ|post crop|नई उपज/.test(low)) { switchTab('sell'); if (state.user) openProductModal(); return; }
-        if (/માંગ|request|मांग/.test(low)) { switchTab('requests'); return; }
-        if (/યાર્ડ|apmc|yard|ભાવ|भाव/.test(low)) { switchTab('yard'); switchYardSubtab('apmc'); return; }
-        if (/ટેમ્પો|ટ્રેક્ટર|tempo|tractor|ट्रैक्टर/.test(low)) { switchTab('yard'); switchYardSubtab('transport'); return; }
-        if (/ખાતું|account|खाता/.test(low)) { switchTab('account'); return; }
-        switchTab('market'); const sIn = document.getElementById('search-input'); if (sIn) sIn.value = spoken; loadProducts();
+      function runAiPrice() {
+        const c = AI_CROPS[document.getElementById('ai-crop-select')?.value || 'paddy'] || AI_CROPS.paddy;
+        const q = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) || 50;
+        const out = document.getElementById('ai-price-output');
+        if (out) out.innerHTML = `<strong>${escapeHtml(c[state.lang])}</strong> • ₹${c.mann}/20kg • ₹${c.qtl}/100kg • Total: <strong>₹${(q * c.mann).toLocaleString('en-IN')}</strong>`;
       }
-      function startVoiceListening() {
-        if (!SpeechRec) return;
-        if (state.isListening) { stopVoiceListening(); return; }
-        try {
-          recognition = new SpeechRec(); recognition.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
-          state.isListening = true; const btn = document.getElementById('voice-mic-trigger'); if (btn) { btn.classList.add('voice-pulse', 'bg-red-600'); btn.classList.remove('bg-farm-700'); }
-          document.getElementById('voice-status').textContent = tr('voice_listening');
-          let finalTxt = '';
-          recognition.onresult = (ev) => { for (let i = ev.resultIndex; i < ev.results.length; i++) if (ev.results[i].isFinal) finalTxt += ev.results[i][0].transcript; document.getElementById('voice-transcript').textContent = finalTxt; if (finalTxt.trim()) { stopVoiceListening(); processVoiceCommand(finalTxt.trim()); } };
-          recognition.onerror = () => stopVoiceListening(); recognition.onend = () => { if (state.isListening) stopVoiceListening(); }; recognition.start();
-        } catch { stopVoiceListening(); }
+      function runAiDoctor() {
+        const crop = cleanText(document.getElementById('doc-crop')?.value, 80) || 'Crop';
+        const out = document.getElementById('ai-doctor-output');
+        if (out) out.innerHTML = `<strong>🩺 ${escapeHtml(crop)}</strong> — Avoid waterlogging, use balanced nutrition, consult local agriculture officer if severe.`;
       }
-
-      function switchTab(tab) {
-        if (!CONFIG.ALLOWED_TABS.includes(tab)) return; state.tab = tab;
-        document.querySelectorAll('.tab-view').forEach((s) => s.classList.add('hidden'));
-        document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
-        document.querySelectorAll('.nav-desk').forEach((b) => { const active = b.getAttribute('data-nav') === tab; b.className = `nav-desk px-3 py-1.5 rounded-lg transition relative ${active ? 'bg-white/20 text-white font-bold' : 'text-farm-100 hover:bg-white/10'}`; });
-        document.querySelectorAll('.mnav-btn').forEach((b) => { const active = b.getAttribute('data-mnav') === tab; b.classList.toggle('text-farm-700', active); b.classList.toggle('text-slate-500', !active); });
-        if (tab === 'market') loadProducts(); if (tab === 'ai_advisor') switchAiSubtab(state.aiSubtab); if (tab === 'yard') { loadApmcRates(); loadTransportList(); }
-        if (tab === 'requests') loadBuyerRequests(); if (tab === 'sell') refreshSellTab(); if (tab === 'alerts') refreshAlertsTab(); if (tab === 'account') refreshAccountTab();
-        window.scrollTo({ top: 0, behavior: 'smooth' }); refreshIcons();
-      }
-      function openModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { document.getElementById(id)?.classList.remove('hidden'); refreshIcons(); } }
-      function closeModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { if (id === 'voice-modal') stopVoiceListening(); document.getElementById(id)?.classList.add('hidden'); } }
-
-      async function loadCategories() { const { data } = await sb.from('categories').select('id, parent_id, slug, name_gu, name_hi, name_en, sort_order').eq('is_active', true).order('sort_order', { ascending: true }); state.categories = Array.isArray(data) ? data : []; renderCategories(); populateCategoryDropdowns(); }
-      function renderCategories() {
-        const mainCats = state.categories.filter((c) => !c.parent_id); const strip = document.getElementById('categories-strip'); if (!strip) return;
-        let html = `<button type="button" data-action="select-cat" data-id="" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border transition ${!state.selectedCategory ? 'bg-farm-700 text-white border-farm-700 shadow-sm' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">🌾 ${escapeHtml(tr('all_categories'))}</button>`;
-        mainCats.forEach((c) => { const active = state.selectedCategory === c.id; html += `<button type="button" data-action="select-cat" data-id="${escapeHtml(c.id)}" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border transition ${active ? 'bg-farm-700 text-white border-farm-700 shadow-sm' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}">${CAT_EMOJI[c.slug] || '🌱'} ${escapeHtml(pickLangField(c, 'name'))}</button>`; });
-        strip.innerHTML = html;
-      }
-      function populateCategoryDropdowns() {
-        const mainCats = state.categories.filter((c) => !c.parent_id);
-        const opts = mainCats.map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(pickLangField(c, 'name'))}</option>`).join('');
-        const npCat = document.getElementById('np-cat'); const nrCat = document.getElementById('nr-cat');
-        if (npCat) npCat.innerHTML = `<option value="">--</option>` + opts;
-        if (nrCat) nrCat.innerHTML = `<option value="">--</option>` + opts;
-      }
-
-      let searchTimer = null;
-      function debouncedLoadProducts() { clearTimeout(searchTimer); searchTimer = setTimeout(loadProducts, 300); }
-      function resetFilters() { document.getElementById('search-input').value = ''; document.getElementById('district-filter').value = ''; state.selectedCategory = null; renderCategories(); loadProducts(); }
-
-      async function loadProducts() {
-        let q = sb.from('products').select('*').eq('status', 'approved').is('deleted_at', null).order('is_featured', { ascending: false }).order('created_at', { ascending: false }).limit(60);
-        if (isValidUUID(state.selectedCategory)) q = q.eq('category_id', state.selectedCategory);
-        const dist = cleanText(document.getElementById('district-filter')?.value, 60).replace(/[%_]/g, '');
-        if (dist) q = q.ilike('district', `%${dist}%`);
-        const { data } = await q;
-        const term = cleanText(document.getElementById('search-input')?.value, 80).toLowerCase();
-        let list = Array.isArray(data) ? data : [];
-        if (term) list = list.filter((p) => (p.title_gu || '').toLowerCase().includes(term) || (p.title_hi || '').toLowerCase().includes(term) || (p.title_en || '').toLowerCase().includes(term) || (p.village || '').toLowerCase().includes(term) || (p.district || '').toLowerCase().includes(term));
-        state.products = list;
-        const pulseEl = document.getElementById('ai-pulse-summary');
-        if (pulseEl) {
-          const cnt = list.filter((x) => !x.is_sold).length;
-          pulseEl.textContent = state.lang === 'en' ? `${cnt} active items • AI insights & UPI ready.` : state.lang === 'hi' ? `${cnt} सक्रिय उपज उपलब्ध • AI सलाह और UPI चालू।` : `${cnt} સક્રિય ઉપજ ઉપલબ્ધ • AI સલાહ અને UPI ચાલુ।`;
-        }
-        renderProducts();
-      }
-
-      function renderProducts() {
-        const grid = document.getElementById('products-grid'); const countEl = document.getElementById('products-count'); if (!grid) return;
-        if (countEl) countEl.textContent = String(state.products.length);
-        if (!state.products.length) { grid.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border border-slate-200"><p class="text-sm text-slate-600">${escapeHtml(tr('no_products'))}</p></div>`; return; }
-        grid.innerHTML = state.products.map((p) => {
-          const title = pickLangField(p, 'title') || 'Crop';
-          const imgs = Array.isArray(p.image_paths) ? p.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
-          const aiBadge = !p.is_sold ? computeFairPriceBadge(p) : null;
-          return `<article data-action="open-product" data-id="${escapeHtml(p.id)}" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 cursor-pointer flex flex-col"><div class="relative h-44 bg-farm-50 flex items-center justify-center overflow-hidden">${imgs[0] ? `<img src="${escapeHtml(imgs[0])}" alt="${escapeHtml(title)}" class="w-full h-full object-cover" loading="lazy" referrerpolicy="no-referrer" />` : `<div class="text-5xl">🌾</div>`}${p.is_sold ? `<span class="absolute top-2.5 left-2.5 bg-red-600 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">${escapeHtml(tr('sold_badge'))}</span>` : aiBadge ? `<span class="absolute top-2.5 left-2.5 ${aiBadge.cls} text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">${escapeHtml(aiBadge.text)}</span>` : ''}</div><div class="p-3.5 space-y-2"><h4 class="font-bold text-slate-900 text-sm line-clamp-2">${escapeHtml(title)}</h4><p class="text-xs text-slate-500">📍 ${escapeHtml([p.village, p.district].filter(Boolean).join(', '))}</p><div class="pt-2 border-t border-slate-100 flex items-end justify-between"><div class="text-lg font-extrabold text-farm-800">₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} <span class="text-xs font-medium text-slate-500">/ ${escapeHtml(p.unit)}</span></div><div class="text-xs font-semibold text-slate-600">${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)}</div></div></div></article>`;
-        }).join('');
-        refreshIcons();
+      async function runAiMatch() {
+        const box = document.getElementById('ai-match-output'); if (!box) return;
+        const { data } = await sb.from('public_buyer_requests').select('*').limit(15);
+        box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}) • ${escapeHtml(r.district || '')}</div>`).join('') || '<div class="text-xs text-slate-500">-</div>';
       }
 
       function switchYardSubtab(w) {
-        const isA = w === 'apmc';
-        document.getElementById('apmc-panel').classList.toggle('hidden', !isA); document.getElementById('transport-panel').classList.toggle('hidden', isA);
-        document.getElementById('subtab-apmc').className = `flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-bold transition ${isA ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
-        document.getElementById('subtab-transport').className = `flex-1 sm:flex-none px-4 py-2 rounded-lg text-xs font-bold transition ${!isA ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
+        document.getElementById('apmc-panel')?.classList.toggle('hidden', w !== 'apmc');
+        document.getElementById('inputs-panel')?.classList.toggle('hidden', w !== 'inputs');
+        document.getElementById('transport-panel')?.classList.toggle('hidden', w !== 'transport');
+        ['apmc', 'inputs', 'transport'].forEach((k) => {
+          const btn = document.getElementById(`subtab-${k}`);
+          if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
+        });
       }
-      async function loadApmcRates() { const { data } = await sb.from('apmc_rates').select('*').order('rate_date', { ascending: false }).limit(80); state.apmcRates = Array.isArray(data) ? data : []; renderApmcRates(); }
+
+      async function loadApmcRates() {
+        const { data } = await sb.from('apmc_rates').select('*').order('rate_date', { ascending: false }).order('created_at', { ascending: false }).limit(100);
+        state.apmcRates = Array.isArray(data) ? data : [];
+        renderApmcRates();
+      }
       function renderApmcRates() {
+        renderChips();
         const box = document.getElementById('apmc-list'); if (!box) return;
         const term = cleanText(document.getElementById('apmc-search')?.value, 60).toLowerCase();
-        const list = term ? state.apmcRates.filter((r) => (r.yard_name || '').toLowerCase().includes(term) || (r.district || '').toLowerCase().includes(term) || (r.crop_name_gu || '').toLowerCase().includes(term) || (r.crop_name_en || '').toLowerCase().includes(term)) : state.apmcRates;
+        const list = state.apmcRates.filter((r) => {
+          const catOk = state.mandiCatFilter === 'all' || (r.rate_category || 'grains') === state.mandiCatFilter;
+          const termOk = !term || (r.yard_name || '').toLowerCase().includes(term) || (r.district || '').toLowerCase().includes(term) || (r.crop_name_gu || '').toLowerCase().includes(term) || (r.crop_name_en || '').toLowerCase().includes(term);
+          return catOk && termOk;
+        });
+        if (!list.length) { box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border border-slate-200">${escapeHtml(tr('no_products'))}</div>`; return; }
         box.innerHTML = list.map((r) => {
-          const cKey = detectCropKeyFromText(`${r.crop_name_gu || ''} ${r.crop_name_en || ''}`);
-          const dCrop = state.lang === 'en' && r.crop_name_en ? r.crop_name_en : (state.lang === 'hi' ? cropLabel(cKey) : r.crop_name_gu);
-          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><h4 class="font-bold text-slate-900 text-base">${escapeHtml(dCrop)}</h4><div class="text-xs text-slate-500">📍 ${escapeHtml(r.yard_name)} (${escapeHtml(r.district)}) • ${escapeHtml(r.rate_date)}</div></div><span class="text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-1 rounded-full">${escapeHtml(r.unit)}</span></div><div class="grid grid-cols-3 gap-2 text-center pt-1"><div class="bg-slate-50 p-2 rounded-xl"><div class="text-[10px] text-slate-500">${escapeHtml(tr('apmc_min'))}</div><div class="font-bold text-slate-800 text-sm">₹${Number(r.min_price).toLocaleString('en-IN')}</div></div><div class="bg-farm-50 p-2 rounded-xl border border-farm-200"><div class="text-[10px] text-farm-700 font-semibold">${escapeHtml(tr('apmc_modal'))}</div><div class="font-extrabold text-farm-800 text-sm">₹${Number(r.modal_price).toLocaleString('en-IN')}</div></div><div class="bg-amber-50 p-2 rounded-xl"><div class="text-[10px] text-amber-700">${escapeHtml(tr('apmc_max'))}</div><div class="font-bold text-amber-800 text-sm">₹${Number(r.max_price).toLocaleString('en-IN')}</div></div></div></div>`;
+          const canUpdate = state.user && (r.submitted_by === state.user.id || state.profile?.role === 'admin');
+          const pendingBadge = r.approval_status === 'pending' ? `<span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">⏳ Pending Admin</span>` : '';
+          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><div class="flex items-center gap-1.5 flex-wrap"><h4 class="font-bold text-slate-900 text-base">${escapeHtml(state.lang === 'en' && r.crop_name_en ? r.crop_name_en : r.crop_name_gu)}</h4>${pendingBadge}</div><div class="text-xs text-slate-500">📍 ${escapeHtml(r.yard_name)} (${escapeHtml(r.district)}) • ${escapeHtml(r.rate_date)}</div></div><span class="text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-1 rounded-full">${escapeHtml(r.unit)}</span></div><div class="grid grid-cols-3 gap-2 text-center pt-1"><div class="bg-slate-50 p-2 rounded-xl"><div class="text-[10px] text-slate-500">${escapeHtml(tr('apmc_min'))}</div><div class="font-bold text-sm">₹${Number(r.min_price).toLocaleString('en-IN')}</div></div><div class="bg-farm-50 p-2 rounded-xl border border-farm-200"><div class="text-[10px] text-farm-700 font-semibold">${escapeHtml(tr('apmc_modal'))}</div><div class="font-extrabold text-farm-800 text-sm">₹${Number(r.modal_price).toLocaleString('en-IN')}</div></div><div class="bg-amber-50 p-2 rounded-xl"><div class="text-[10px] text-amber-700">${escapeHtml(tr('apmc_max'))}</div><div class="font-bold text-amber-800 text-sm">₹${Number(r.max_price).toLocaleString('en-IN')}</div></div></div>${canUpdate ? `<div class="pt-1.5 border-t border-slate-100 flex justify-end"><button type="button" data-action="edit-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">✏️ Daily Rate Update</button></div>` : ''}</div>`;
         }).join('');
+      }
+
+      function openMandiRateModal(row = null) {
+        if (!state.user) { switchTab('account'); return; }
+        document.getElementById('mandi-rate-form').reset();
+        document.getElementById('mr-edit-id').value = row?.id || '';
+        if (row) {
+          document.getElementById('mr-cat').value = row.rate_category || 'vegetables';
+          document.getElementById('mr-crop').value = row.crop_name_gu || '';
+          document.getElementById('mr-yard').value = row.yard_name || '';
+          document.getElementById('mr-dist').value = row.district || '';
+          document.getElementById('mr-min').value = row.min_price ?? '';
+          document.getElementById('mr-modal').value = row.modal_price ?? '';
+          document.getElementById('mr-max').value = row.max_price ?? '';
+          document.getElementById('mr-unit').value = row.unit || '20 kg (મણ)';
+        }
+        openModal('mandi-rate-modal');
+      }
+
+      async function handleMandiRateSubmit(e) {
+        e.preventDefault(); if (!state.user) return;
+        const editId = document.getElementById('mr-edit-id').value;
+        const payload = {
+          rate_category: document.getElementById('mr-cat').value,
+          crop_name_gu: cleanText(document.getElementById('mr-crop').value, 100),
+          crop_name_en: cleanText(document.getElementById('mr-crop').value, 100),
+          yard_name: cleanText(document.getElementById('mr-yard').value, 90),
+          district: cleanText(document.getElementById('mr-dist').value, 70),
+          min_price: safePositiveNumber(document.getElementById('mr-min').value, 0, 1000000),
+          modal_price: safePositiveNumber(document.getElementById('mr-modal').value, 0, 1000000),
+          max_price: safePositiveNumber(document.getElementById('mr-max').value, 0, 1000000),
+          unit: cleanText(document.getElementById('mr-unit').value, 35) || '20 kg (મણ)',
+          rate_date: new Date().toISOString().split('T')[0],
+          submitted_by: state.user.id
+        };
+        const res = isValidUUID(editId) ? await sb.from('apmc_rates').update(payload).eq('id', editId) : await sb.from('apmc_rates').insert(payload);
+        if (res.error) showToast(res.error.message, 'error'); else { closeModal('mandi-rate-modal'); showToast('OK'); loadApmcRates(); loadV5AdminQueues(); }
+      }
+
+      async function loadAgriInputs() {
+        renderChips();
+        const { data } = await sb.from('agri_inputs').select('*').order('created_at', { ascending: false }).limit(80);
+        state.agriInputs = Array.isArray(data) ? data : [];
+        renderAgriInputs();
+      }
+      function renderAgriInputs() {
+        renderChips();
+        const box = document.getElementById('agri-inputs-list'); if (!box) return;
+        const term = cleanText(document.getElementById('agri-input-search')?.value, 60).toLowerCase();
+        const list = state.agriInputs.filter((x) => {
+          const tOk = state.agriInputTypeFilter === 'all' || x.input_type === state.agriInputTypeFilter;
+          const sOk = !term || (x.item_name_gu || '').toLowerCase().includes(term) || (x.brand_name || '').toLowerCase().includes(term) || (x.district || '').toLowerCase().includes(term);
+          return tOk && sOk;
+        });
+        box.innerHTML = list.map((it) => {
+          const ph = sanitizeIndianPhone(it.contact_number); const wa = ph ? `91${ph}` : '';
+          const canEdit = state.user && (it.supplier_id === state.user.id || state.profile?.role === 'admin');
+          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><span class="text-[10px] font-bold bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full uppercase">${escapeHtml(it.input_type)}</span>${it.approval_status === 'pending' ? `<span class="ml-1 text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">⏳ Pending</span>` : ''}<h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(it.item_name_gu)}</h4><div class="text-xs text-slate-500">${it.brand_name ? `${escapeHtml(it.brand_name)} • ` : ''}📍 ${escapeHtml([it.village, it.district].filter(Boolean).join(', '))}</div></div><div class="text-right"><div class="text-base font-extrabold text-farm-800">₹${Number(it.price).toLocaleString('en-IN')}</div><div class="text-[11px] text-slate-500">/ ${escapeHtml(it.unit)}</div></div></div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="flex-1 bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}${canEdit ? `<button type="button" data-action="edit-agri-input" data-id="${escapeHtml(it.id)}" class="px-3 py-2 rounded-xl bg-amber-100 text-amber-900 text-xs font-bold">✏️ Update</button>` : ''}</div></div>`;
+        }).join('');
+      }
+      function openAgriInputModal(it = null) {
+        if (!state.user) { switchTab('account'); return; }
+        document.getElementById('agri-input-form').reset();
+        document.getElementById('ain-edit-id').value = it?.id || '';
+        if (it) {
+          document.getElementById('ain-type').value = it.input_type || 'dava';
+          document.getElementById('ain-name').value = it.item_name_gu || '';
+          document.getElementById('ain-brand').value = it.brand_name || '';
+          document.getElementById('ain-price').value = it.price ?? '';
+          document.getElementById('ain-unit').value = it.unit || '1 Unit / Pack';
+          document.getElementById('ain-village').value = it.village || '';
+          document.getElementById('ain-district').value = it.district || '';
+          document.getElementById('ain-mobile').value = it.contact_number || '';
+          document.getElementById('ain-note').value = it.stock_note || '';
+        }
+        openModal('agri-input-modal');
+      }
+      async function handleAgriInputSubmit(e) {
+        e.preventDefault(); if (!state.user) return;
+        const editId = document.getElementById('ain-edit-id').value;
+        const payload = {
+          supplier_id: state.user.id, input_type: document.getElementById('ain-type').value,
+          item_name_gu: cleanText(document.getElementById('ain-name').value, 120), item_name_en: cleanText(document.getElementById('ain-name').value, 120),
+          brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null, price: safePositiveNumber(document.getElementById('ain-price').value, 0, 10000000),
+          unit: cleanText(document.getElementById('ain-unit').value, 35) || '1 Unit', village: cleanText(document.getElementById('ain-village').value, 70),
+          district: cleanText(document.getElementById('ain-district').value, 70), contact_number: sanitizeIndianPhone(document.getElementById('ain-mobile').value),
+          stock_note: cleanText(document.getElementById('ain-note').value, 160) || null
+        };
+        const res = isValidUUID(editId) ? await sb.from('agri_inputs').update(payload).eq('id', editId) : await sb.from('agri_inputs').insert(payload);
+        if (res.error) showToast(res.error.message, 'error'); else { closeModal('agri-input-modal'); showToast('OK'); loadAgriInputs(); loadV5AdminQueues(); }
       }
 
       async function loadTransportList() { const { data } = await sb.from('transport_providers').select('*').eq('is_available', true).limit(60); state.transportList = Array.isArray(data) ? data : []; renderTransportList(); }
       function renderTransportList() {
         const box = document.getElementById('transport-list'); if (!box) return;
         const term = cleanText(document.getElementById('transport-search')?.value, 60).toLowerCase();
-        const list = term ? state.transportList.filter((tr) => (tr.village || '').toLowerCase().includes(term) || (tr.district || '').toLowerCase().includes(term) || (tr.driver_name || '').toLowerCase().includes(term)) : state.transportList;
+        const list = term ? state.transportList.filter((t) => (t.village || '').toLowerCase().includes(term) || (t.district || '').toLowerCase().includes(term) || (t.driver_name || '').toLowerCase().includes(term)) : state.transportList;
         box.innerHTML = list.map((item) => {
           const ph = sanitizeIndianPhone(item.mobile_number); const wa = ph ? `91${ph}` : '';
           return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full">🚜 ${escapeHtml(item.vehicle_type)}</span><h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(item.driver_name)}</h4><div class="text-xs text-slate-500">📍 ${escapeHtml([item.village, item.district].filter(Boolean).join(', '))}</div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="w-full bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}</div></div>`;
         }).join('');
       }
 
-      async function openProductDetail(id) {
-        if (!isValidUUID(id)) return; const p = state.products.find((x) => x.id === id); if (!p) return;
-        const title = pickLangField(p, 'title') || 'Crop';
-        document.getElementById('dm-title').textContent = title;
-        document.getElementById('dm-body').innerHTML = `<div class="bg-farm-50 p-3.5 rounded-2xl"><div class="text-2xl font-extrabold text-farm-800">₹${(Number(p.expected_price) || 0).toLocaleString('en-IN')} / ${escapeHtml(p.unit)}</div><div class="text-xs text-farm-700 mt-1">${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)} • ${escapeHtml([p.village, p.district].filter(Boolean).join(', '))}</div></div>`;
-        openModal('product-detail-modal');
+      async function loadV5AdminQueues() {
+        if (state.profile?.role !== 'admin') return;
+        const mBox = document.getElementById('admin-pending-mandi-list');
+        const iBox = document.getElementById('admin-pending-inputs-list');
+        const [mRes, iRes] = await Promise.all([
+          sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25),
+          sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)
+        ]);
+        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${r.modal_price}</div><div class="flex gap-1"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-bold">Reject</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${it.price}</div><div class="flex gap-1"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-red-600 text-white font-bold">Reject</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
       }
 
-      function openProductModal() { if (!state.user) { switchTab('account'); return; } document.getElementById('add-product-form').reset(); populateLocalizedFormSelects(); openModal('add-product-modal'); }
-      async function handleCreateProduct(e) {
-        e.preventDefault(); if (!state.user) return;
-        const { error } = await sb.from('products').insert({
-          seller_id: state.user.id, category_id: document.getElementById('np-cat').value,
-          title_gu: cleanText(document.getElementById('np-title-gu').value, 150), title_hi: cleanText(document.getElementById('np-title-gu').value, 150), title_en: cleanText(document.getElementById('np-title-en').value || document.getElementById('np-title-gu').value, 150),
-          available_quantity: safePositiveNumber(document.getElementById('np-qty').value, 0.1, 1000000), unit: document.getElementById('np-unit').value,
-          expected_price: safePositiveNumber(document.getElementById('np-price').value, 1, 10000000), price_unit: document.getElementById('np-unit').value,
-          village: cleanText(document.getElementById('np-village').value, 80), district: cleanText(document.getElementById('np-district').value, 80), state: cleanText(document.getElementById('np-state').value, 60) || 'Gujarat'
-        });
-        if (error) showToast(error.message, 'error'); else { closeModal('add-product-modal'); showToast('OK'); loadProducts(); }
+      async function loadCategories() { const { data } = await sb.from('categories').select('id, parent_id, slug, name_gu, name_hi, name_en').eq('is_active', true).order('sort_order', { ascending: true }); state.categories = Array.isArray(data) ? data : []; renderCategories(); const np = document.getElementById('np-cat'); if (np) np.innerHTML = state.categories.filter((c) => !c.parent_id).map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(pickLangField(c, 'name'))}</option>`).join(''); }
+      function renderCategories() { const s = document.getElementById('categories-strip'); if (!s) return; s.innerHTML = `<button type="button" data-action="select-cat" data-id="" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border ${!state.selectedCategory ? 'bg-farm-700 text-white border-farm-700' : 'bg-slate-50 text-slate-700'}">🌾 ${escapeHtml(tr('all_categories'))}</button>` + state.categories.filter((c) => !c.parent_id).map((c) => `<button type="button" data-action="select-cat" data-id="${escapeHtml(c.id)}" class="shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold border ${state.selectedCategory === c.id ? 'bg-farm-700 text-white border-farm-700' : 'bg-slate-50 text-slate-700'}">${escapeHtml(pickLangField(c, 'name'))}</button>`).join(''); }
+
+      async function loadProducts() {
+        let q = sb.from('products').select('*').eq('status', 'approved').is('deleted_at', null).order('created_at', { ascending: false }).limit(60);
+        if (isValidUUID(state.selectedCategory)) q = q.eq('category_id', state.selectedCategory);
+        const dist = cleanText(document.getElementById('district-filter')?.value, 60).replace(/[%_]/g, '');
+        if (dist) q = q.ilike('district', `%${dist}%`);
+        const { data } = await q;
+        const term = cleanText(document.getElementById('search-input')?.value, 80).toLowerCase();
+        let list = Array.isArray(data) ? data : [];
+        if (term) list = list.filter((p) => (p.title_gu || '').toLowerCase().includes(term) || (p.village || '').toLowerCase().includes(term) || (p.district || '').toLowerCase().includes(term));
+        state.products = list;
+        document.getElementById('ai-pulse-summary').textContent = `${list.length} active items`;
+        renderProducts();
+      }
+      function renderProducts() {
+        const g = document.getElementById('products-grid'); const c = document.getElementById('products-count'); if (!g) return;
+        if (c) c.textContent = String(state.products.length);
+        if (!state.products.length) { g.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border text-sm text-slate-500">${escapeHtml(tr('no_products'))}</div>`; return; }
+        g.innerHTML = state.products.map((p) => {
+          const imgs = Array.isArray(p.image_paths) ? p.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
+          return `<article class="bg-white rounded-2xl overflow-hidden shadow-sm border"><div class="h-40 bg-farm-50 flex items-center justify-center overflow-hidden">${imgs[0] ? `<img src="${escapeHtml(imgs[0])}" class="w-full h-full object-cover" loading="lazy" />` : '<span class="text-4xl">🌾</span>'}</div><div class="p-3.5 space-y-1.5"><h4 class="font-bold text-sm text-slate-900">${escapeHtml(pickLangField(p, 'title'))}</h4><p class="text-xs text-slate-500">📍 ${escapeHtml([p.village, p.district].filter(Boolean).join(', '))}</p><div class="text-base font-extrabold text-farm-800">₹${Number(p.expected_price || 0).toLocaleString('en-IN')} / ${escapeHtml(p.unit)}</div></div></article>`;
+        }).join('');
       }
 
-      async function loadBuyerRequests() { const { data } = await sb.from('public_buyer_requests').select('*').limit(40); document.getElementById('requests-list').innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200"><strong class="text-sm">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-500 mt-1">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)} • ${escapeHtml([r.delivery_location, r.district].filter(Boolean).join(', '))}</div></div>`).join(''); }
-      function openRequestModal() { if (!state.user) { switchTab('account'); return; } populateLocalizedFormSelects(); openModal('add-request-modal'); }
-      async function handleCreateRequest(e) { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('buyer_requests').insert({ buyer_id: state.user.id, product_required: cleanText(document.getElementById('nr-product').value, 150), required_quantity: safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000), unit: document.getElementById('nr-unit').value, delivery_location: cleanText(document.getElementById('nr-loc').value, 100), district: cleanText(document.getElementById('nr-district').value, 80), contact_number: sanitizeIndianPhone(document.getElementById('nr-phone').value), buyer_name: cleanText(state.profile?.full_name || state.user.email, 80) }); if (!error) { closeModal('add-request-modal'); loadBuyerRequests(); } }
-
-      async function refreshSellTab() { document.getElementById('sell-guest-box').classList.toggle('hidden', Boolean(state.user)); document.getElementById('sell-workspace').classList.toggle('hidden', !state.user); }
-      async function refreshAlertsTab() { document.getElementById('alerts-guest-box').classList.toggle('hidden', Boolean(state.user)); document.getElementById('alerts-workspace').classList.toggle('hidden', !state.user); }
-      function setAuthMode(m) { document.getElementById('login-form').classList.toggle('hidden', m !== 'login'); document.getElementById('register-form').classList.toggle('hidden', m === 'login'); }
-      async function handleGoogleLogin() { await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } }); }
-      async function handleLogin(e) { e.preventDefault(); const { error } = await sb.auth.signInWithPassword({ email: cleanText(document.getElementById('login-email').value, 120), password: document.getElementById('login-password').value }); if (error) showToast(error.message, 'error'); else switchTab('market'); }
-      async function handleRegister(e) { e.preventDefault(); const { error } = await sb.auth.signUp({ email: cleanText(document.getElementById('reg-email').value, 120), password: document.getElementById('reg-password').value, options: { data: { full_name: cleanText(document.getElementById('reg-name').value, 80), mobile_number: sanitizeIndianPhone(document.getElementById('reg-mobile').value), role: document.getElementById('reg-role').value } } }); if (error) showToast(error.message, 'error'); else showToast('OK'); }
-      async function handleLogout() { await sb.auth.signOut(); switchTab('market'); }
-
+      async function loadBuyerRequests() { const { data } = await sb.from('public_buyer_requests').select('*').limit(30); document.getElementById('requests-list').innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border"><strong class="text-sm">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-500">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}</div></div>`).join(''); }
+      function refreshSellTab() { document.getElementById('sell-guest-box').classList.toggle('hidden', Boolean(state.user)); document.getElementById('sell-workspace').classList.toggle('hidden', !state.user); }
       function refreshAccountTab() {
         document.getElementById('auth-box').classList.toggle('hidden', Boolean(state.user));
         document.getElementById('profile-box').classList.toggle('hidden', !state.user);
@@ -1361,85 +1081,64 @@
         document.getElementById('prof-display-name').textContent = p.full_name || state.user.email;
         document.getElementById('prof-display-email').textContent = state.user.email;
         document.getElementById('p-name').value = p.full_name || '';
-        document.getElementById('p-business').value = p.business_name || '';
         document.getElementById('p-mobile').value = p.mobile_number || '';
         document.getElementById('p-village').value = p.village_city || '';
         document.getElementById('p-district').value = p.district || '';
-        document.getElementById('p-state').value = p.state || 'Gujarat';
-        document.getElementById('p-pin').value = p.pin_code || '';
         document.getElementById('p-upi').value = p.upi_id || '';
-        document.getElementById('p-phone-ok').checked = Boolean(p.allow_phone_contact);
-        document.getElementById('p-wa-ok').checked = Boolean(p.allow_whatsapp_contact);
-        document.getElementById('p-upi-ok').checked = Boolean(p.allow_upi_payment);
-        document.getElementById('admin-panel').classList.toggle('hidden', p.role !== 'admin');
+        const isAdm = p.role === 'admin';
+        document.getElementById('admin-panel').classList.toggle('hidden', !isAdm);
+        if (isAdm) loadV5AdminQueues();
       }
 
-      async function handleProfileSave(e) {
-        e.preventDefault(); if (!state.user) return;
-        const { error } = await sb.from('profiles').update({
-          full_name: cleanText(document.getElementById('p-name').value, 80),
-          business_name: cleanText(document.getElementById('p-business').value, 100) || null,
-          mobile_number: sanitizeIndianPhone(document.getElementById('p-mobile').value) || null,
-          village_city: cleanText(document.getElementById('p-village').value, 80) || null,
-          district: cleanText(document.getElementById('p-district').value, 80) || null,
-          state: cleanText(document.getElementById('p-state').value, 60) || 'Gujarat',
-          pin_code: document.getElementById('p-pin').value.trim() || null,
-          upi_id: cleanText(document.getElementById('p-upi').value, 96).toLowerCase() || null,
-          allow_phone_contact: Boolean(document.getElementById('p-phone-ok').checked),
-          allow_whatsapp_contact: Boolean(document.getElementById('p-wa-ok').checked),
-          allow_upi_payment: Boolean(document.getElementById('p-upi-ok').checked)
-        }).eq('id', state.user.id);
-        if (error) showToast(error.message, 'error'); else { showToast('OK'); const { data } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle(); state.profile = data; refreshAccountTab(); }
-      }
-
-      async function handleAdminAddApmc(e) {
-        e.preventDefault();
-        const { error } = await sb.from('apmc_rates').insert({ yard_name: cleanText(document.getElementById('ap-yard').value, 80), district: cleanText(document.getElementById('ap-dist').value, 60), crop_name_gu: cleanText(document.getElementById('ap-crop').value, 80), min_price: safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000), max_price: safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000), modal_price: safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000), unit: cleanText(document.getElementById('ap-unit').value, 40) || '20 kg' });
-        if (!error) { e.target.reset(); showToast('OK'); loadApmcRates(); }
-      }
-
-      document.addEventListener('click', (e) => {
+      document.addEventListener('click', async (e) => {
         const el = e.target.closest('[data-action]'); if (!el) return;
         const a = el.getAttribute('data-action');
         if (a === 'nav-tab') switchTab(el.getAttribute('data-tab'));
         else if (a === 'set-lang') setLang(el.getAttribute('data-lang'));
-        else if (a === 'reset-filters') resetFilters();
+        else if (a === 'reset-filters') { document.getElementById('search-input').value = ''; document.getElementById('district-filter').value = ''; state.selectedCategory = null; renderCategories(); loadProducts(); }
         else if (a === 'refresh-products') loadProducts();
         else if (a === 'refresh-apmc') loadApmcRates();
         else if (a === 'yard-subtab') switchYardSubtab(el.getAttribute('data-subtab'));
         else if (a === 'ai-subtab') switchAiSubtab(el.getAttribute('data-subtab'));
-        else if (a === 'run-ai-price') runAiPriceEstimator();
-        else if (a === 'run-ai-doctor') runAiCropDoctor();
-        else if (a === 'run-ai-match') runAiSmartMatch();
-        else if (a === 'ai-suggest-price-form') { const k = detectCropKeyFromText(document.getElementById('np-title-gu')?.value || ''); document.getElementById('np-price').value = String((AI_CROPS[k] || AI_CROPS.paddy).qtl); }
-        else if (a === 'apply-ai-price-to-sell') applyAiPriceToSellModal(el.getAttribute('data-price'), el.getAttribute('data-title'));
-        else if (a === 'open-voice') { openModal('voice-modal'); startVoiceListening(); }
-        else if (a === 'toggle-voice-listen') startVoiceListening();
-        else if (a === 'voice-example') processVoiceCommand(el.getAttribute('data-text'));
+        else if (a === 'run-ai-price') runAiPrice();
+        else if (a === 'run-ai-doctor') runAiDoctor();
+        else if (a === 'run-ai-match') runAiMatch();
+        else if (a === 'set-mandi-cat') { state.mandiCatFilter = el.getAttribute('data-cat') || 'all'; renderApmcRates(); }
+        else if (a === 'set-agri-type') { state.agriInputTypeFilter = el.getAttribute('data-type') || 'all'; renderAgriInputs(); }
+        else if (a === 'open-mandi-rate-modal') openMandiRateModal(null);
+        else if (a === 'edit-mandi-rate') { const r = state.apmcRates.find((x) => x.id === el.getAttribute('data-id')); if (r) openMandiRateModal(r); }
+        else if (a === 'open-agri-input-modal') openAgriInputModal(null);
+        else if (a === 'edit-agri-input') { const it = state.agriInputs.find((x) => x.id === el.getAttribute('data-id')); if (it) openAgriInputModal(it); }
+        else if (a === 'open-transport-modal') { if (!state.user) switchTab('account'); else openModal('add-transport-modal'); }
+        else if (a === 'open-request-modal') { if (!state.user) switchTab('account'); else openModal('add-request-modal'); }
+        else if (a === 'open-product-modal') { if (!state.user) switchTab('account'); else openModal('add-product-modal'); }
         else if (a === 'select-cat') { const id = el.getAttribute('data-id'); state.selectedCategory = isValidUUID(id) ? id : null; renderCategories(); loadProducts(); }
-        else if (a === 'open-product') openProductDetail(el.getAttribute('data-id'));
-        else if (a === 'open-transport-modal') { if (!state.user) switchTab('account'); else { populateLocalizedFormSelects(); openModal('add-transport-modal'); } }
-        else if (a === 'open-request-modal') openRequestModal();
-        else if (a === 'open-product-modal') openProductModal();
-        else if (a === 'auth-mode') setAuthMode(el.getAttribute('data-mode'));
-        else if (a === 'google-login') handleGoogleLogin();
-        else if (a === 'logout') handleLogout();
+        else if (a === 'auth-mode') { const m = el.getAttribute('data-mode'); document.getElementById('login-form').classList.toggle('hidden', m !== 'login'); document.getElementById('register-form').classList.toggle('hidden', m === 'login'); }
+        else if (a === 'google-login') await sb.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
+        else if (a === 'logout') { await sb.auth.signOut(); state.user = null; state.profile = null; switchTab('market'); }
+        else if (a === 'admin-refresh') loadV5AdminQueues();
+        else if (a === 'moderate-mandi') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('apmc_rates').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadApmcRates(); loadV5AdminQueues(); } }
+        else if (a === 'moderate-input') { const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await sb.from('agri_inputs').update({ approval_status: el.getAttribute('data-st') }).eq('id', id); loadAgriInputs(); loadV5AdminQueues(); } }
+        else if (a === 'open-voice') openModal('voice-modal');
         else if (a === 'close-modal') closeModal(el.getAttribute('data-modal'));
       });
 
-      document.getElementById('search-input')?.addEventListener('input', debouncedLoadProducts);
-      document.getElementById('district-filter')?.addEventListener('input', debouncedLoadProducts);
+      document.getElementById('mandi-rate-form')?.addEventListener('submit', handleMandiRateSubmit);
+      document.getElementById('agri-input-form')?.addEventListener('submit', handleAgriInputSubmit);
       document.getElementById('apmc-search')?.addEventListener('input', renderApmcRates);
+      document.getElementById('agri-input-search')?.addEventListener('input', renderAgriInputs);
       document.getElementById('transport-search')?.addEventListener('input', renderTransportList);
-      document.getElementById('login-form')?.addEventListener('submit', handleLogin);
-      document.getElementById('register-form')?.addEventListener('submit', handleRegister);
-      document.getElementById('profile-form')?.addEventListener('submit', handleProfileSave);
-      document.getElementById('add-product-form')?.addEventListener('submit', handleCreateProduct);
-      document.getElementById('add-request-form')?.addEventListener('submit', handleCreateRequest);
-      document.getElementById('admin-apmc-form')?.addEventListener('submit', handleAdminAddApmc);
+      document.getElementById('search-input')?.addEventListener('input', loadProducts);
+      document.getElementById('district-filter')?.addEventListener('input', loadProducts);
+      document.getElementById('login-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const { error } = await sb.auth.signInWithPassword({ email: cleanText(document.getElementById('login-email').value, 120), password: document.getElementById('login-password').value }); if (error) showToast(error.message, 'error'); else switchTab('market'); });
+      document.getElementById('register-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const { error } = await sb.auth.signUp({ email: cleanText(document.getElementById('reg-email').value, 120), password: document.getElementById('reg-password').value, options: { data: { full_name: cleanText(document.getElementById('reg-name').value, 80), mobile_number: sanitizeIndianPhone(document.getElementById('reg-mobile').value), role: document.getElementById('reg-role').value } } }); if (error) showToast(error.message, 'error'); else showToast('OK'); });
+      document.getElementById('profile-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('profiles').update({ full_name: cleanText(document.getElementById('p-name').value, 80), mobile_number: sanitizeIndianPhone(document.getElementById('p-mobile').value) || null, village_city: cleanText(document.getElementById('p-village').value, 80) || null, district: cleanText(document.getElementById('p-district').value, 80) || null, upi_id: cleanText(document.getElementById('p-upi').value, 96) || null }).eq('id', state.user.id); if (!error) { showToast('OK'); const { data } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle(); state.profile = data; refreshAccountTab(); } });
+      document.getElementById('admin-apmc-form')?.addEventListener('submit', async (e) => { e.preventDefault(); const { error } = await sb.from('apmc_rates').insert({ rate_category: document.getElementById('ap-cat').value, yard_name: cleanText(document.getElementById('ap-yard').value, 80), district: cleanText(document.getElementById('ap-dist').value, 60), crop_name_gu: cleanText(document.getElementById('ap-crop').value, 80), min_price: safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000), max_price: safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000), modal_price: safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000), unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)' }); if (!error) { e.target.reset(); showToast('OK'); loadApmcRates(); } });
+      document.getElementById('add-product-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const t = cleanText(document.getElementById('np-title-gu').value, 150); const { error } = await sb.from('products').insert({ seller_id: state.user.id, category_id: document.getElementById('np-cat').value, title_gu: t, title_hi: t, title_en: t, available_quantity: safePositiveNumber(document.getElementById('np-qty').value, 0.1, 1000000), unit: document.getElementById('np-unit').value, expected_price: safePositiveNumber(document.getElementById('np-price').value, 1, 10000000), price_unit: document.getElementById('np-unit').value, village: cleanText(document.getElementById('np-village').value, 80), district: cleanText(document.getElementById('np-district').value, 80), state: 'Gujarat' }); if (!error) { closeModal('add-product-modal'); showToast('OK'); loadProducts(); } });
+      document.getElementById('add-request-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('buyer_requests').insert({ buyer_id: state.user.id, product_required: cleanText(document.getElementById('nr-product').value, 150), required_quantity: safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000), unit: document.getElementById('nr-unit').value, delivery_location: cleanText(document.getElementById('nr-loc').value, 100), district: cleanText(document.getElementById('nr-district').value, 80), contact_number: sanitizeIndianPhone(document.getElementById('nr-phone').value), buyer_name: cleanText(state.profile?.full_name || state.user.email, 80) }); if (!error) { closeModal('add-request-modal'); loadBuyerRequests(); } });
+      document.getElementById('add-transport-form')?.addEventListener('submit', async (e) => { e.preventDefault(); if (!state.user) return; const { error } = await sb.from('transport_providers').insert({ provider_id: state.user.id, driver_name: cleanText(document.getElementById('tr-name').value, 80), vehicle_type: document.getElementById('tr-type').value, mobile_number: sanitizeIndianPhone(document.getElementById('tr-mobile').value), village: cleanText(document.getElementById('tr-village').value, 80), district: cleanText(document.getElementById('tr-district').value, 80) }); if (!error) { closeModal('add-transport-modal'); showToast('OK'); loadTransportList(); } });
 
       async function initApp() {
-        updateOnlineBanner();
         setLang(state.lang);
         await loadCategories();
         const { data: { session } } = await sb.auth.getSession();
