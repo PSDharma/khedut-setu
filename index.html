@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; manifest-src 'self' blob:; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU AI v5.2 PRO — ખેડૂત સેતુ | સ્માર્ટ AI કૃષિ બજાર</title>
-  <meta name="description" content="KHEDUT SETU AI v5.2 PRO — મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ મંડી ભાવ, એડમિન મંજૂરી, દવા-બિયારણ-યંત્ર ભાવ અને AI સલાહ." />
+  <title>KHEDUT SETU AI v5.3 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v5.3 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,13 +52,20 @@
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .modal-backdrop { background: rgba(15, 23, 42, 0.62); backdrop-filter: blur(3px); }
+    .modal-backdrop { background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(3px); }
     .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes pulseRing { 0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55); } 70% { box-shadow: 0 0 0 16px rgba(22, 163, 74, 0); } 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); } }
     .animate-fade { animation: fadeIn 0.2s ease-out; }
     .voice-pulse { animation: pulseRing 1.4s infinite; }
   </style>
+  <script>
+    window.__ksInstallPrompt = null;
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      window.__ksInstallPrompt = e;
+    });
+  </script>
 </head>
 <body class="text-slate-800 antialiased">
 
@@ -72,7 +79,7 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v5.2 PRO</span>
+            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v5.3 PRO</span>
           </h1>
           <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline"></p>
         </div>
@@ -118,13 +125,16 @@
             <input id="search-input" type="text" maxlength="80" autocomplete="off"
               class="w-full pl-10 pr-12 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white"
               data-i18n-placeholder="search_placeholder" />
-            <button type="button" data-action="open-voice" class="absolute right-2 w-8 h-8 rounded-lg bg-farm-100 hover:bg-farm-200 text-farm-800 flex items-center justify-center transition">
+            <button type="button" data-action="open-voice" aria-label="Voice Search" class="absolute right-2 w-8 h-8 rounded-lg bg-farm-100 hover:bg-farm-200 text-farm-800 flex items-center justify-center transition">
               <i data-lucide="mic" class="w-4 h-4"></i>
             </button>
           </div>
           <div class="flex gap-2">
+            <select id="state-filter" aria-label="State Filter"
+              class="sm:w-40 px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white">
+            </select>
             <input id="district-filter" type="text" maxlength="60" autocomplete="off"
-              class="flex-1 sm:w-44 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white"
+              class="flex-1 sm:w-40 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-farm-600 focus:bg-white"
               data-i18n-placeholder="district_placeholder" />
             <button type="button" data-action="reset-filters" title="Reset" class="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition">
               <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
@@ -138,7 +148,7 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
-              <span>✨ KHEDUT SETU v5.2 PRO</span>
+              <span>✨ KHEDUT SETU v5.3 PRO</span>
               <span>•</span>
               <span data-i18n="ai_badge_sub"></span>
             </div>
@@ -193,7 +203,7 @@
       <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
     </section>
 
-    <!-- TAB 2: AI ADVISOR -->
+    <!-- TAB 2: AI ADVISOR (SERVER-SIDE EDGE FUNCTION — ZERO CLIENT API KEY) -->
     <section id="tab-ai_advisor" class="tab-view hidden space-y-4 animate-fade">
       <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2">
@@ -325,7 +335,7 @@
       <div id="requests-list" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
     </section>
 
-    <!-- TAB 5: SELL -->
+    <!-- TAB 5: SELL (WITH MY LISTINGS MANAGEMENT) -->
     <section id="tab-sell" class="tab-view hidden space-y-4 animate-fade">
       <div id="sell-guest-box" class="hidden bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 space-y-3">
         <div class="w-14 h-14 mx-auto rounded-2xl bg-farm-50 text-farm-700 flex items-center justify-center text-3xl">🚜</div>
@@ -339,16 +349,19 @@
             <h2 class="text-lg font-bold text-slate-900" data-i18n="seller_hub"></h2>
             <p class="text-xs text-slate-500" data-i18n="seller_hub_sub"></p>
           </div>
-          <button type="button" data-action="open-product-modal" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
-            <i data-lucide="plus-circle" class="w-4 h-4"></i>
-            <span data-i18n="btn_add_product"></span>
-          </button>
+          <div class="flex gap-2">
+            <button type="button" data-action="refresh-my-listings" class="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs" data-i18n="refresh"></button>
+            <button type="button" data-action="open-product-modal" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span data-i18n="btn_add_product"></span>
+            </button>
+          </div>
         </div>
         <div id="my-listings-container" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
       </div>
     </section>
 
-    <!-- TAB 6: ACCOUNT & ADMIN -->
+    <!-- TAB 6: ACCOUNT & STRICT ADMIN CONTROL CENTER -->
     <section id="tab-account" class="tab-view hidden space-y-4 animate-fade">
       <div id="auth-box" class="max-w-md mx-auto bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
         <div class="text-center">
@@ -361,8 +374,8 @@
           <span data-i18n="btn_google_login"></span>
         </button>
         <div class="grid grid-cols-2 gap-1.5 bg-slate-100 p-1 rounded-xl text-sm font-semibold">
-          <button type="button" data-action="auth-mode" data-mode="login" class="py-2 rounded-lg bg-white text-farm-800 shadow-sm" data-i18n="login"></button>
-          <button type="button" data-action="auth-mode" data-mode="register" class="py-2 rounded-lg text-slate-600" data-i18n="register"></button>
+          <button type="button" data-action="auth-mode" data-mode="login" id="auth-tab-login" class="py-2 rounded-lg bg-white text-farm-800 shadow-sm" data-i18n="login"></button>
+          <button type="button" data-action="auth-mode" data-mode="register" id="auth-tab-register" class="py-2 rounded-lg text-slate-600" data-i18n="register"></button>
         </div>
         <form id="login-form" class="space-y-3" novalidate>
           <div>
@@ -403,11 +416,17 @@
             <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile_lbl"></label><input id="p-mobile" type="tel" maxlength="15" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
             <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village"></label><input id="p-village" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
             <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district"></label><input id="p-district" type="text" maxlength="80" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
-            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="upi_id_lbl"></label><input id="p-upi" type="text" maxlength="96" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="state_lbl"></label><select id="p-state" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="upi_id_lbl"></label><input id="p-upi" type="text" maxlength="96" placeholder="name@upi" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
           </div>
+          <label class="flex items-center gap-2 text-xs text-slate-700 font-medium cursor-pointer">
+            <input id="p-allow-upi" type="checkbox" class="rounded text-farm-700 focus:ring-farm-600" />
+            <span data-i18n="allow_upi_lbl"></span>
+          </label>
           <button type="submit" class="bg-farm-700 hover:bg-farm-800 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm" data-i18n="save_profile"></button>
         </form>
 
+        <!-- STRICT ADMIN-ONLY CONTROL CENTER -->
         <div id="admin-panel" class="hidden bg-white rounded-2xl p-5 shadow-sm border-2 border-amber-300 space-y-5">
           <div class="flex items-center justify-between border-b border-amber-100 pb-3">
             <div>
@@ -440,15 +459,35 @@
               <input id="ap-yard" type="text" required data-i18n-placeholder="ap_yard_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
               <input id="ap-dist" type="text" required data-i18n-placeholder="ap_dist_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
               <input id="ap-crop" type="text" required data-i18n-placeholder="ap_crop_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
-              <input id="ap-min" type="number" required min="0" data-i18n-placeholder="ap_min_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
-              <input id="ap-max" type="number" required min="0" data-i18n-placeholder="ap_max_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
-              <input id="ap-modal" type="number" required min="0" data-i18n-placeholder="ap_modal_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-min" type="number" step="any" required min="0" data-i18n-placeholder="ap_min_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-max" type="number" step="any" required min="0" data-i18n-placeholder="ap_max_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
+              <input id="ap-modal" type="number" step="any" required min="0" data-i18n-placeholder="ap_modal_ph" class="px-3 py-2 rounded-xl border border-slate-300 text-xs" />
             </div>
             <div class="flex flex-wrap gap-2 items-center">
               <input id="ap-unit" type="text" value="20 kg (મણ)" class="w-40 px-3 py-2 rounded-xl border border-slate-300 text-xs" />
               <button type="submit" class="bg-farm-700 hover:bg-farm-800 text-white font-bold text-xs px-4 py-2 rounded-xl" data-i18n="ap_publish_btn"></button>
             </div>
           </form>
+
+          <!-- ADMIN-ONLY LIVE RECORDS MANAGER & DELETE -->
+          <div class="pt-4 border-t-2 border-dashed border-red-200 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h4 class="font-bold text-sm text-red-700" data-i18n="admin_live_manage_title"></h4>
+              <button type="button" data-action="admin-load-live" class="px-3 py-1.5 rounded-lg bg-red-700 hover:bg-red-800 text-white text-xs font-bold" data-i18n="admin_load_live_btn"></button>
+            </div>
+            <div class="space-y-2">
+              <div class="text-xs font-bold text-slate-700" data-i18n="admin_live_mandi_lbl"></div>
+              <div id="admin-live-mandi-list" class="space-y-1.5 text-xs text-slate-500"></div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-xs font-bold text-slate-700" data-i18n="admin_live_inputs_lbl"></div>
+              <div id="admin-live-inputs-list" class="space-y-1.5 text-xs text-slate-500"></div>
+            </div>
+            <div class="space-y-2">
+              <div class="text-xs font-bold text-slate-700" data-i18n="admin_live_products_lbl"></div>
+              <div id="admin-live-products-list" class="space-y-1.5 text-xs text-slate-500"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -488,7 +527,7 @@
   </nav>
 
   <!-- MODALS -->
-    <div id="install-guide-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+  <div id="install-guide-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
     <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
         <h3 class="font-bold text-slate-900 text-base" data-i18n="install_modal_title"></h3>
@@ -498,7 +537,7 @@
         <div class="flex items-center gap-3 bg-farm-50 p-3 rounded-2xl border border-farm-200">
           <div class="w-12 h-12 rounded-2xl bg-farm-700 text-white flex items-center justify-center text-2xl font-bold shrink-0">🌾</div>
           <div>
-            <div class="font-bold text-slate-900">KHEDUT SETU AI v5.2 PRO</div>
+            <div class="font-bold text-slate-900">KHEDUT SETU AI v5.3 PRO</div>
             <div class="text-xs text-slate-600" data-i18n="install_modal_sub"></div>
           </div>
         </div>
@@ -511,6 +550,16 @@
           <button type="button" data-action="close-modal" data-modal="install-guide-modal" class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">OK</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="product-detail-modal" class="hidden fixed inset-0 z-50 modal-backdrop flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-fade">
+      <div class="sticky top-0 bg-white px-4 py-3 border-b border-slate-100 flex items-center justify-between z-10">
+        <h3 class="font-bold text-slate-900 text-base" data-i18n="pd_modal_title"></h3>
+        <button type="button" data-action="close-modal" data-modal="product-detail-modal" class="p-1.5 rounded-full bg-slate-100 text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div id="product-detail-body" class="p-4 space-y-3 text-sm"></div>
     </div>
   </div>
 
@@ -620,7 +669,7 @@
       <form id="add-transport-form" class="p-4 space-y-3">
         <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_driver_lbl"></label><input id="tr-name" type="text" required minlength="2" maxlength="80" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         <div class="grid grid-cols-2 gap-2.5">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_type_lbl"></label><select id="tr-type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"><option value="Tempo / Chhota Hathi">Tempo / Chhota Hathi</option><option value="Tractor Trolley">Tractor Trolley</option><option value="Pickup Bolero">Pickup Bolero</option></select></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_type_lbl"></label><select id="tr-type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"><option value="Tempo / Chhota Hathi">Tempo / Chhota Hathi</option><option value="Tractor Trolley">Tractor Trolley</option><option value="Pickup Bolero">Pickup Bolero</option><option value="Eicher / Mini Truck">Eicher / Mini Truck</option></select></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="tr-mobile" type="tel" required maxlength="15" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
         <div class="grid grid-cols-2 gap-2.5">
@@ -649,8 +698,16 @@
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="price"></label><input id="np-price" type="number" step="any" min="1" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="village_req"></label><input id="np-village" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
-        <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="np-district" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
-        <button type="submit" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_product"></button>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="district_req"></label><input id="np-district" type="text" required minlength="2" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="state_lbl"></label><select id="np-state" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="np_photo_lbl"></label>
+          <input id="np-image" type="file" accept="image/jpeg,image/png,image/webp" class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-farm-100 file:text-farm-800 hover:file:bg-farm-200" />
+          <p class="text-[11px] text-slate-400 mt-1" data-i18n="np_photo_hint"></p>
+        </div>
+        <button type="submit" id="np-submit-btn" class="w-full bg-farm-700 hover:bg-farm-800 text-white font-bold py-3 rounded-xl shadow transition text-sm" data-i18n="submit_product"></button>
       </form>
     </div>
   </div>
@@ -681,14 +738,35 @@
     (() => {
       'use strict';
 
+      // Anti-Clickjacking Frame Guard
+      if (window.top !== window.self) {
+        try { window.top.location = window.self.location; } catch {}
+      }
+
+      // Immutable Frozen Configuration (Tamper-Resistant)
       const CONFIG = Object.freeze({
         SUPABASE_URL: 'https://oqldgdnqypykbddwtwvq.supabase.co',
         SUPABASE_KEY: 'sb_publishable_91m3LPrT1FwtGqBzkHWHxg_BesbqDTX',
-        ALLOWED_UNITS: Object.freeze(['kg', 'quintal', 'ton', 'mann', 'bag', 'bundle', 'piece']),
+        AI_EDGE_FUNCTION: 'khedut-ai-advisor',
+        // Exact PostgreSQL quantity_unit enum values
+        ALLOWED_UNITS: Object.freeze(['kg', 'quintal', 'ton', 'bag', 'bundle', 'bale']),
         ALLOWED_TABS: Object.freeze(['market', 'ai_advisor', 'yard', 'requests', 'sell', 'account']),
         ALLOWED_LANGS: Object.freeze(['gu', 'hi', 'en']),
-        ALLOWED_MODALS: Object.freeze(['install-guide-modal', 'voice-modal', 'mandi-rate-modal', 'agri-input-modal', 'add-transport-modal', 'add-product-modal', 'add-request-modal'])
+        ALLOWED_MODALS: Object.freeze([
+          'install-guide-modal', 'product-detail-modal', 'voice-modal',
+          'mandi-rate-modal', 'agri-input-modal', 'add-transport-modal',
+          'add-product-modal', 'add-request-modal'
+        ]),
+        MAX_UPLOAD_BYTES: 2 * 1024 * 1024 // 2 MB strict cap
       });
+
+      const INDIA_STATES = Object.freeze([
+        'Gujarat', 'Maharashtra', 'Rajasthan', 'Madhya Pradesh', 'Punjab',
+        'Haryana', 'Uttar Pradesh', 'Karnataka', 'Tamil Nadu', 'Andhra Pradesh',
+        'Telangana', 'Bihar', 'West Bengal', 'Odisha', 'Chhattisgarh',
+        'Jharkhand', 'Assam', 'Kerala', 'Himachal Pradesh', 'Uttarakhand',
+        'Goa', 'Delhi', 'Jammu & Kashmir', 'Ladakh', 'Other UT'
+      ]);
 
       if (!window.supabase || typeof window.supabase.createClient !== 'function') return;
       const sb = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY, {
@@ -701,24 +779,33 @@
       const STORAGE_PREFIX = `${CONFIG.SUPABASE_URL}/storage/v1/object/public/product-images/`;
 
       function isValidUUID(v) { return typeof v === 'string' && UUID_RE.test(v); }
+
       function escapeHtml(s) {
         return String(s ?? '').replace(/[&<>"'`]/g, (c) => ({
           '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '`': '&#96;'
         }[c]));
       }
+
       function cleanText(v, m = 200) {
-        return String(v ?? '').replace(/[\u0000-\u001F\u007F-\u009F\u200B-\u200D\uFEFF]/g, '').replace(/[<>]/g, '').trim().slice(0, m);
+        return String(v ?? '')
+          .replace(/[\u0000-\u001F\u007F-\u009F\u200B-\u200D\uFEFF]/g, '')
+          .replace(/[<>]/g, '')
+          .trim()
+          .slice(0, m);
       }
+
       function sanitizeIndianPhone(r) {
         const d = String(r ?? '').replace(/[^0-9]/g, '');
         if (d.length === 10 && /^[6-9]/.test(d)) return d;
         if (d.length === 12 && d.startsWith('91') && /^[6-9]/.test(d.slice(2))) return d.slice(2);
         return '';
       }
+
       function safePositiveNumber(r, min = 0.01, max = 100000000) {
         const n = Number(r);
         return (!Number.isFinite(n) || n < min || n > max) ? null : Math.round(n * 100) / 100;
       }
+
       function getSafeImgUrl(p) {
         if (!p || typeof p !== 'string') return null;
         if (p.startsWith('https://')) return p.startsWith(STORAGE_PREFIX) ? p : null;
@@ -726,48 +813,141 @@
         const { data } = sb.storage.from('product-images').getPublicUrl(p);
         return (data?.publicUrl || '').startsWith(STORAGE_PREFIX) ? data.publicUrl : null;
       }
+
+      // Prototype-Pollution Safe JSON Parser
+      function safeJsonParse(raw) {
+        if (typeof raw !== 'string' || raw.length > 500000) return null;
+        return JSON.parse(raw, (key, val) => {
+          if (key === '__proto__' || key === 'constructor' || key === 'prototype') return undefined;
+          return val;
+        });
+      }
+
+      // Anti-Virus / Magic-Byte Verification + Canvas Sanitization for Uploaded Images
+      async function sanitizeAndVerifyImage(file) {
+        if (!file || !(file instanceof File)) return null;
+        if (file.size <= 0 || file.size > CONFIG.MAX_UPLOAD_BYTES) {
+          throw new Error(state.lang === 'en' ? 'Image must be under 2 MB.' : state.lang === 'hi' ? 'फोटो 2 MB से कम होना चाहिए।' : 'ફોટો 2 MB થી ઓછો હોવો જોઈએ.');
+        }
+        const allowedMimes = new Set(['image/jpeg', 'image/png', 'image/webp']);
+        if (!allowedMimes.has(file.type)) {
+          throw new Error(state.lang === 'en' ? 'Only JPG, PNG, or WEBP images allowed.' : state.lang === 'hi' ? 'केवल JPG, PNG या WEBP फोटो ही मान्य हैं।' : 'ફક્ત JPG, PNG અથવા WEBP ફોટો જ માન્ય છે.');
+        }
+
+        // Inspect raw magic bytes to reject disguised executables/HTML/scripts
+        const headerBuf = await file.slice(0, 12).arrayBuffer();
+        const bytes = new Uint8Array(headerBuf);
+        const isJpeg = bytes[0] === 0xFF && bytes[1] === 0xD8 && bytes[2] === 0xFF;
+        const isPng = bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4E && bytes[3] === 0x47;
+        const isWebp = bytes[0] === 0x52 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x46 &&
+                       bytes[8] === 0x57 && bytes[9] === 0x45 && bytes[10] === 0x42 && bytes[11] === 0x50;
+
+        if (!isJpeg && !isPng && !isWebp) {
+          throw new Error(state.lang === 'en' ? 'Invalid or corrupted image signature blocked.' : state.lang === 'hi' ? 'अमान्य या असुरक्षित फ़ाइल ब्लॉक की गई।' : 'અમાન્ય અથવા અસુરક્ષિત ફાઇલ બ્લોક કરવામાં આવી છે.');
+        }
+
+        // Re-encode via Canvas to strip any hidden EXIF/polyglot payloads
+        const imgUrl = URL.createObjectURL(file);
+        try {
+          const img = await new Promise((resolve, reject) => {
+            const el = new Image();
+            el.onload = () => resolve(el);
+            el.onerror = () => reject(new Error('Image decode failed'));
+            el.src = imgUrl;
+          });
+          const maxDim = 1080;
+          let w = img.naturalWidth || 800;
+          let h = img.naturalHeight || 600;
+          if (w > maxDim || h > maxDim) {
+            if (w >= h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+            else { w = Math.round((w * maxDim) / h); h = maxDim; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          const cleanBlob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', 0.84));
+          if (!cleanBlob) throw new Error('Image sanitization failed');
+          return cleanBlob;
+        } finally {
+          URL.revokeObjectURL(imgUrl);
+        }
+      }
+
       function refreshIcons() { try { if (window.lucide?.createIcons) window.lucide.createIcons(); } catch {} }
 
       function showToast(msg, type = 'success') {
         const c = document.getElementById('toast-container'); if (!c) return;
         const el = document.createElement('div');
         el.className = `${type === 'error' ? 'bg-red-600' : 'bg-farm-700'} text-white text-xs sm:text-sm font-semibold px-4 py-3 rounded-xl shadow-lg pointer-events-auto animate-fade`;
-        el.textContent = String(msg ?? ''); c.appendChild(el);
+        el.textContent = String(msg ?? '');
+        c.appendChild(el);
         setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 250); }, 3500);
       }
 
-
-
-      // ==================== ROCK-SOLID PWA INSTALL & ICON ENGINE ====================
-      (function ensurePwaInstallability() {
+      // ==================== PWA INSTALL & SERVICE WORKER ENGINE ====================
+      function generatePngIconDataUrl(size) {
         try {
-          const baseHref = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
-          const svgIcon192 = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">' +
-            '<rect width="192" height="192" rx="42" fill="#15803d"/>' +
-            '<circle cx="96" cy="96" r="68" fill="#166534"/>' +
-            '<text x="96" y="122" font-size="84" text-anchor="middle" font-family="sans-serif">🌾</text>' +
-            '</svg>'
-          );
+          const canvas = document.createElement('canvas');
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return '';
+          const r = Math.round(size * 0.22);
+          ctx.fillStyle = '#15803d';
+          ctx.beginPath();
+          ctx.moveTo(r, 0);
+          ctx.lineTo(size - r, 0);
+          ctx.quadraticCurveTo(size, 0, size, r);
+          ctx.lineTo(size, size - r);
+          ctx.quadraticCurveTo(size, size, size - r, size);
+          ctx.lineTo(r, size);
+          ctx.quadraticCurveTo(0, size, 0, size - r);
+          ctx.lineTo(0, r);
+          ctx.quadraticCurveTo(0, 0, r, 0);
+          ctx.closePath();
+          ctx.fill();
 
-          const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
-          if (appleIcon) {
-            const testImg = new Image();
-            testImg.onerror = () => { appleIcon.href = svgIcon192; };
-            testImg.src = './icon-192.png';
+          ctx.fillStyle = '#166534';
+          ctx.beginPath();
+          ctx.arc(size / 2, size / 2, size * 0.36, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.font = `${Math.round(size * 0.46)}px sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('🌾', size / 2, size * 0.53);
+          return canvas.toDataURL('image/png');
+        } catch {
+          return '';
+        }
+      }
+
+      (async function initPwaEngine() {
+        try {
+          if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+            navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
           }
 
-          const manifestLink = document.querySelector('link[rel="manifest"]');
-          fetch('./manifest.json', { cache: 'no-store' })
-            .then((r) => {
-              if (!r.ok) throw new Error('manifest missing');
-              return r.json();
-            })
-            .catch(() => {
-              const dynManifest = {
-                name: 'KHEDUT SETU AI — ખેડૂત સેતુ',
-                short_name: 'Khedut Setu',
-                description: 'દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને AI કૃષિ બજાર',
+          // Verify icon-192.png & icon-512.png exist; if missing (404), synthesize real PNG icons for Chrome WebAPK install
+          const [i192Ok, i512Ok] = await Promise.all([
+            fetch('./icon-192.png', { method: 'HEAD', cache: 'no-store' }).then((r) => r.ok).catch(() => false),
+            fetch('./icon-512.png', { method: 'HEAD', cache: 'no-store' }).then((r) => r.ok).catch(() => false)
+          ]);
+
+          if (!i192Ok || !i512Ok) {
+            const png192 = generatePngIconDataUrl(192);
+            const png512 = generatePngIconDataUrl(512);
+            if (png192 && png512) {
+              const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+              if (appleIcon && !i192Ok) appleIcon.href = png192;
+              const baseHref = window.location.origin + window.location.pathname.replace(/[^/]*$/, '');
+              const fallbackManifest = {
+                id: window.location.pathname,
+                name: 'KHEDUT SETU — ખેડૂત સેતુ',
+                short_name: 'KHEDUT SETU',
+                description: 'All-India દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને AI કૃષિ બજાર',
                 start_url: baseHref,
                 scope: baseHref,
                 display: 'standalone',
@@ -775,66 +955,57 @@
                 background_color: '#f6f8f5',
                 theme_color: '#15803d',
                 icons: [
-                  { src: svgIcon192, sizes: '192x192', type: 'image/svg+xml', purpose: 'any maskable' },
-                  { src: svgIcon192, sizes: '512x512', type: 'image/svg+xml', purpose: 'any maskable' }
+                  { src: png192, sizes: '192x192', type: 'image/png', purpose: 'any' },
+                  { src: png192, sizes: '192x192', type: 'image/png', purpose: 'maskable' },
+                  { src: png512, sizes: '512x512', type: 'image/png', purpose: 'any' },
+                  { src: png512, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
                 ]
               };
-              const blob = new Blob([JSON.stringify(dynManifest)], { type: 'application/manifest+json' });
-              const blobUrl = URL.createObjectURL(blob);
-              if (manifestLink) manifestLink.href = blobUrl;
-              else {
-                const l = document.createElement('link');
-                l.rel = 'manifest';
-                l.href = blobUrl;
-                document.head.appendChild(l);
-              }
-            });
-
-          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {
-              const swCode = `
-                self.addEventListener('install', (e) => { self.skipWaiting(); });
-                self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); });
-                self.addEventListener('fetch', (event) => {
-                  if (event.request.method !== 'GET') return;
-                  event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
-                });
-              `;
-              const swBlob = new Blob([swCode], { type: 'application/javascript' });
-              const swUrl = URL.createObjectURL(swBlob);
-              navigator.serviceWorker.register(swUrl, { scope: baseHref }).catch(() => {});
-            });
+              const blob = new Blob([JSON.stringify(fallbackManifest)], { type: 'application/manifest+json' });
+              const manifestUrl = URL.createObjectURL(blob);
+              const manifestLink = document.querySelector('link[rel="manifest"]');
+              if (manifestLink) manifestLink.href = manifestUrl;
+            }
           }
         } catch {}
       })();
 
-      let deferredInstallPrompt = null;
+      let deferredInstallPrompt = window.__ksInstallPrompt || null;
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredInstallPrompt = e;
+        window.__ksInstallPrompt = e;
       });
       window.addEventListener('appinstalled', () => {
         deferredInstallPrompt = null;
-        showToast(state.lang === 'en' ? 'App installed!' : state.lang === 'hi' ? 'ऐप इंस्टॉल हो गया!' : 'KHEDUT SETU App Install thai gayi!');
+        window.__ksInstallPrompt = null;
+        showToast(tr('toast_installed'));
       });
 
       async function triggerInstallApp() {
+        const promptEvt = deferredInstallPrompt || window.__ksInstallPrompt;
         try {
-          if (deferredInstallPrompt && typeof deferredInstallPrompt.prompt === 'function') {
-            deferredInstallPrompt.prompt();
-            await deferredInstallPrompt.userChoice.catch(() => {});
+          if (promptEvt && typeof promptEvt.prompt === 'function') {
+            promptEvt.prompt();
+            await promptEvt.userChoice.catch(() => {});
             deferredInstallPrompt = null;
+            window.__ksInstallPrompt = null;
             return;
           }
         } catch {}
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        if (isStandalone) {
+          showToast(tr('toast_installed'));
+          return;
+        }
         openModal('install-guide-modal');
       }
 
       async function shareKhedutSetuApp() {
         const shareUrl = window.location.origin + window.location.pathname;
-        const shareTitle = 'KHEDUT SETU AI v5.2 PRO';
+        const shareTitle = 'KHEDUT SETU AI v5.3 PRO';
         const shareText = state.lang === 'en'
-          ? `Check out ${shareTitle} — Daily Mandi Rates, Agri Inputs & AI Advisor: ${shareUrl}`
+          ? `Check out ${shareTitle} — All-India Daily Mandi Rates, Agri Inputs & AI Advisor: ${shareUrl}`
           : state.lang === 'hi'
             ? `${shareTitle} — दैनिक मंडी भाव, कृषि सामग्री और AI सलाह: ${shareUrl}`
             : `${shareTitle} — દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને AI સલાહ: ${shareUrl}`;
@@ -849,48 +1020,26 @@
         try {
           if (navigator.clipboard && navigator.clipboard.writeText) {
             await navigator.clipboard.writeText(shareUrl);
-            showToast(state.lang === 'en' ? 'App link copied!' : state.lang === 'hi' ? 'ऐप लिंक कॉपी हो गया!' : 'App link copy thai gayi!');
+            showToast(tr('toast_copied'));
             return;
           }
         } catch {}
         window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, '_blank', 'noopener,noreferrer');
       }
 
-
-      async function deleteRecordWithRetry(table, id, refreshFn) {
-        if (!requireAdminWrite('Delete') || state.tab !== 'account') {
-          showToast(state.lang === 'en' ? 'Available only in Admin Panel.' : state.lang === 'hi' ? 'यह सुविधा केवल Admin Panel में उपलब्ध है।' : 'Aa vyavastha fakt Admin Panel ma j upalabdh che.', 'error');
-          return;
-        }
-        if (!isValidUUID(id)) {
-          showToast('Invalid record ID.', 'error');
-          return;
-        }
-        if (!checkRateLimit('del_' + table + '_' + id, 1200)) return;
-        const { error } = await withRetry(() => sb.from(table).delete().eq('id', id));
-        if (error) {
-          showToast(error.message || 'Delete failed.', 'error');
-        } else {
-          showToast(state.lang === 'en' ? 'Deleted successfully!' : state.lang === 'hi' ? 'सफलतापूर्वक डिलीट हो गया!' : 'Safaltapurvak delete thai gayu!');
-          if (typeof refreshFn === 'function') await refreshFn();
-          await loadV5AdminQueues();
-        }
-      }
-
-      
-      // ==================== STRICT ADMIN-ONLY DATABASE WRITE GUARD ====================
+      // ==================== STRICT ADMIN-ONLY GUARD & DELETE ====================
       function isStrictAdminReady() {
         return Boolean(state.user && isValidUUID(state.user.id) && state.profile && state.profile.role === 'admin');
       }
 
-      function requireAdminWrite(actionLabel = 'Database operation') {
+      function requireAdminWrite(actionLabel = 'Admin operation') {
         if (!isStrictAdminReady()) {
           showToast(
             state.lang === 'en'
               ? `${actionLabel} is restricted to Admin only.`
               : state.lang === 'hi'
                 ? `${actionLabel} केवल Admin के लिए ही अनुमति है।`
-                : `${actionLabel} fakt Admin panel mathi j thai shake che.`,
+                : `${actionLabel} ફક્ત Admin માટે જ ઉપલબ્ધ છે.`,
             'error'
           );
           return false;
@@ -898,7 +1047,37 @@
         return true;
       }
 
-      // Self-Healing Retry, Offline Cache & Rate Limiting
+      async function deleteRecordWithRetry(table, id, refreshFn) {
+        if (!requireAdminWrite('Delete') || state.tab !== 'account') return;
+        const allowedTables = new Set(['apmc_rates', 'agri_inputs', 'products']);
+        if (!allowedTables.has(table) || !isValidUUID(id)) {
+          showToast(tr('toast_invalid_id'), 'error');
+          return;
+        }
+        if (!checkRateLimit('del_' + table + '_' + id, 1200)) return;
+        const confirmMsg = state.lang === 'en'
+          ? 'Are you sure you want to permanently delete this record?'
+          : state.lang === 'hi'
+            ? 'क्या आप वाकई इस रिकॉर्ड को स्थायी रूप से डिलीट करना चाहते हैं?'
+            : 'શું તમે ખરેખર આ ડેટા કાયમ માટે ડિલીટ કરવા માંગો છો?';
+        if (!window.confirm(confirmMsg)) return;
+
+        const { data, error } = await withRetry(() => sb.from(table).delete().eq('id', id).select('id'));
+        if (error) {
+          showToast(error.message || tr('toast_del_fail'), 'error');
+          return;
+        }
+        if (!Array.isArray(data) || data.length === 0) {
+          showToast(tr('toast_rls_blocked'), 'error');
+          return;
+        }
+        showToast(tr('toast_deleted'));
+        if (typeof refreshFn === 'function') await refreshFn();
+        await loadV5AdminQueues();
+        await loadAdminLiveRecords();
+      }
+
+      // ==================== RETRY, CACHE, DEBOUNCE & RATE LIMITING ====================
       const cooldownMap = new Map();
       function checkRateLimit(key, waitMs = 1500) {
         const now = Date.now();
@@ -907,11 +1086,23 @@
         cooldownMap.set(key, now);
         return true;
       }
+      function debounce(fn, waitMs = 300) {
+        let timer = null;
+        return function (...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn.apply(this, args), waitMs);
+        };
+      }
+      let latestProductsReqId = 0;
       function saveCache(key, data) {
         try { localStorage.setItem('ks_cache_' + key, JSON.stringify({ ts: Date.now(), data })); } catch {}
       }
       function loadCache(key) {
-        try { const raw = localStorage.getItem('ks_cache_' + key); return raw ? (JSON.parse(raw).data ?? null) : null; } catch { return null; }
+        try {
+          const raw = localStorage.getItem('ks_cache_' + key);
+          const parsed = raw ? safeJsonParse(raw) : null;
+          return parsed ? (parsed.data ?? null) : null;
+        } catch { return null; }
       }
       async function withRetry(fn, retries = 2, delayMs = 600) {
         let lastErr = null;
@@ -937,17 +1128,19 @@
         tab: 'market', aiSubtab: 'price',
         mandiCatFilter: 'all', agriInputTypeFilter: 'all',
         user: null, profile: null, categories: [],
-        selectedCategory: null, products: [], apmcRates: [], agriInputs: [], transportList: [],
+        selectedCategory: null, products: [], myProducts: [], apmcRates: [], agriInputs: [], transportList: [],
         isListening: false
       };
 
-      const L = {
-        gu: {
-          tagline: 'દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ', offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે — સાચવેલો ડેટા ઉપલબ્ધ છે.',
+      const L = Object.freeze({
+        gu: Object.freeze({
+          tagline: 'All-India દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ',
+          offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે — સાચવેલો ડેટા ઉપલબ્ધ છે.',
           nav_market: 'બજાર', nav_ai: '✨ AI સલાહકાર', nav_ai_short: 'AI સલાહ', nav_yard: 'મંડી & સાધન', nav_yard_short: 'મંડી ભાવ',
           nav_requests: 'ખરીદી માંગ', nav_sell: 'વેચાણ', nav_account: 'ખાતું',
           search_placeholder: 'પાક, શાકભાજી, ફળ, ફૂલ, કઠોળ, ગામ કે જિલ્લો શોધો...', district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
-          ai_badge_sub: 'એડમિન મંજૂરી સાથે દૈનિક અપડેટ', hero_title: 'મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ અને કૃષિ સામગ્રી',
+          all_states: '🇮🇳 સમગ્ર ભારત (All States)', state_lbl: 'રાજ્ય (State) *',
+          ai_badge_sub: 'All-India એડમિન મંજૂરી સાથે દૈનિક અપડેટ', hero_title: 'મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ અને કૃષિ સામગ્રી',
           btn_daily_rates: '📊 દૈનિક મંડી ભાવ', btn_post_crop: 'ઉપજ મૂકો', btn_ai_doc_short: '✨ AI ડૉક્ટર', btn_voice_float: 'AI બોલો',
           btn_install: 'Install', btn_share: 'Share',
           pwa_card_title: '📱 ફોનમાં App Icon સાથે Install કરો અને ખેડૂતોને Share કરો',
@@ -955,14 +1148,19 @@
           install_modal_title: '📱 KHEDUT SETU App Install કરો', install_modal_sub: 'મોબાઇલ Home Screen પર App Icon ઉમેરો',
           install_step_android: 'Android Chrome: ઉપર જમણી બાજુ ⋮ (3 dots) → "Install app" અથવા "Add to Home screen" દબાવો.',
           install_step_ios: 'iPhone Safari: નીચે Share (↑) બટન → "Add to Home Screen" દબાવો.',
-          latest_listings: 'તાજેતરની ઉપજ', refresh: 'રિફ્રેશ', all_categories: 'બધી કેટેગરી',
-          no_products: 'હાલ કોઈ ઉપજ ઉપલબ્ધ નથી.',
-          ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ મેચિંગ',
+          latest_listings: 'તાજેતરની મંજૂર ઉપજ', refresh: 'રિફ્રેશ', all_categories: 'બધી કેટેગરી',
+          no_products: 'હાલ કોઈ માહિતી ઉપલબ્ધ નથી.', active_items_lbl: 'સક્રિય ઉપજ ઉપલબ્ધ છે',
+          btn_view_contact_upi: '📞 સંપર્ક & 💳 UPI વિગત', pd_modal_title: '🌾 ઉપજ વિગત, સંપર્ક અને Direct UPI',
+          ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'Server-Side AI ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ મેચિંગ',
           aisub_price_btn: '💰 AI ભાવ અંદાજ', aisub_doctor_btn: '🩺 પાક ડૉક્ટર', aisub_match_btn: '🎯 સ્માર્ટ મેચ',
           ai_price_heading: '💰 AI સ્માર્ટ ભાવ અંદાજ', ai_select_crop: 'પાક પસંદ કરો', ai_qty_label: 'જથ્થો (મણ / 20 kg)',
           quality: 'ગુણવત્તા', ai_calc_price_btn: '✨ AI ભાવ ગણતરી કરો', ai_doc_heading: '🩺 AI પાક ડૉક્ટર',
           ai_doc_crop_lbl: 'પાકનો પ્રકાર', ai_doc_sym_lbl: 'લક્ષણ પસંદ કરો', ai_doc_extra_ph: 'વધારાના લક્ષણો...',
           ai_doc_btn: '🩺 AI નિદાન જુઓ', ai_match_heading: '🎯 AI સ્માર્ટ મેચિંગ', ai_match_sub: 'માંગ અને ઉપજ મેચિંગ', ai_match_refresh: '↻ તાજા કરો',
+          ai_loading: '⏳ AI સર્વર પરથી સુરક્ષિત વિશ્લેષણ થઈ રહ્યું છે...',
+          ai_meta_source: '📌 સ્રોત (Source)', ai_meta_updated: '🕒 છેલ્લું અપડેટ',
+          ai_meta_confidence: '📊 વિશ્વસનીયતા (Confidence)', ai_meta_limitations: '⚠️ મર્યાદાઓ (Limitations)',
+          ai_meta_expert: '👨‍🌾 કૃષિ નિષ્ણાતની સલાહની નોંધ',
           yard_hub_title: 'દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને વાહન', yard_hub_sub: 'નજીકની મંડીના ભાવ અપડેટ (Admin મંજૂરી સાથે) અને કૃષિ સામગ્રી',
           tab_apmc: '📊 મંડી ભાવ (શાકભાજી/ફળ/ફૂલ/કઠોળ/અનાજ)', tab_inputs: '🧪 દવા, બિયારણ, સાધન & યંત્ર', tab_transport: '🚜 ટેમ્પો / ટ્રેક્ટર',
           btn_add_update_mandi: '+ મંડી ભાવ મૂકો / અપડેટ', apmc_search_ph: 'મંડી, જિલ્લો, શાકભાજી, ફળ, ફૂલ, કઠોળ કે અનાજ શોધો...',
@@ -972,16 +1170,22 @@
           tr_search_ph: 'ગામ, જિલ્લો કે વાહન શોધો...', btn_add_vehicle: '+ વાહન ઉમેરો', tr_call: '📞 કૉલ', tr_wa: '💬 WhatsApp', tr_login_num: 'નંબર જોવા લૉગિન કરો',
           req_title: 'ખરીદારોની માંગ', req_sub: 'ખરીદારોને કઈ ઉપજ જોઈએ છે તે જુઓ.', btn_add_req: 'નવી માંગ મૂકો',
           sell_login_title: 'વેચાણ માટે લૉગિન કરો', sell_login_sub: 'સીધી ઉપજ વેચો.', btn_go_login: 'લૉગિન / નવું ખાતું',
-          seller_hub: 'ખેડૂત વેચાણ ડેશબોર્ડ', seller_hub_sub: 'ઉપજ મૂકો', btn_add_product: 'નવી ઉપજ મૂકો',
+          seller_hub: 'ખેડૂત વેચાણ ડેશબોર્ડ', seller_hub_sub: 'તમારી મૂકેલી ઉપજ અને નવી ઉપજ ઉમેરો', btn_add_product: 'નવી ઉપજ મૂકો',
           auth_sub: 'લૉગિન કરો અથવા નવું ખાતું બનાવો', btn_google_login: 'Google થી લૉગિન', login: 'લૉગિન', register: 'નવું ખાતું',
           email: 'ઈમેલ', password: 'પાસવર્ડ', password_8: 'પાસવર્ડ (8+ અક્ષર) *', full_name: 'પૂરું નામ *', full_name_lbl: 'પૂરું નામ',
           mobile: 'મોબાઇલ નંબર *', mobile_lbl: 'મોબાઇલ નંબર', role_label: 'તમે કોણ છો? *', role_seller: 'ખેડૂત / વેચનાર', role_buyer: 'ખરીદાર',
           village: 'ગામ / શહેર', village_req: 'ગામ *', district: 'જિલ્લો', district_req: 'જિલ્લો *', upi_id_lbl: '💳 UPI ID',
+          allow_upi_lbl: 'ખરીદારોને મારો UPI ID બતાવો (Direct UPI Payment માટે)',
           create_account: 'નવું ખાતું બનાવો', logout: 'લૉગઆઉટ', profile_settings: 'પ્રોફાઇલ વિગતો', save_profile: 'સેવ કરો',
-          admin_heading: 'Admin Panel — મંજૂરી કેન્દ્ર', admin_sub: 'મંડી ભાવ અને દવા-બિયારણ-યંત્ર મંજૂરી',
+          admin_heading: 'Admin Panel — મંજૂરી & નિયંત્રણ કેન્દ્ર', admin_sub: 'મંડી ભાવ, કૃષિ સામગ્રી મંજૂરી અને લાઇવ ડેટા ડિલીટ (ફક્ત Admin)',
           admin_pending_mandi: '📊 મંજૂરી માટે બાકી મંડી ભાવ', admin_pending_inputs: '🧪 મંજૂરી માટે બાકી દવા / બિયારણ / યંત્ર',
           admin_apmc_title: '📊 Admin સીધો મંડી ભાવ ઉમેરો', ap_yard_ph: 'મંડી', ap_dist_ph: 'જિલ્લો', ap_crop_ph: 'પાક/વસ્તુ',
           ap_min_ph: 'નીચો', ap_max_ph: 'ઊંચો', ap_modal_ph: 'સરેરાશ', ap_publish_btn: 'લાઇવ કરો',
+          admin_live_manage_title: '🗑️ લાઇવ ડેટા મેનેજ & ડિલીટ (ફક્ત Admin)',
+          admin_load_live_btn: '🔄 લાઇવ લિસ્ટ લોડ કરો',
+          admin_live_mandi_lbl: '📊 લાઇવ મંડી ભાવ (apmc_rates)',
+          admin_live_inputs_lbl: '🧪 લાઇવ દવા / બિયારણ / યંત્ર (agri_inputs)',
+          admin_live_products_lbl: '🌾 લાઇવ ઉપજ (products)',
           voice_modal_title: '🎙️ AI વૉઇસ', voice_prompt: 'માઇક દબાવીને બોલો',
           mr_modal_title: '📊 દૈનિક મંડી ભાવ મૂકો / અપડેટ કરો', mr_cat_lbl: 'વર્ગ (શાકભાજી/ફળ/ફૂલ/કઠોળ/અનાજ) *',
           mr_crop_lbl: 'પાક / વસ્તુનું નામ *', mr_yard_lbl: 'નજીકની મંડી / APMC *',
@@ -990,14 +1194,21 @@
           ain_type_lbl: 'પ્રકાર *', ain_name_lbl: 'વસ્તુ / યંત્રનું નામ *', ain_brand_lbl: 'બ્રાન્ડ / કંપની', ain_note_lbl: 'સ્ટોક / વિગત',
           tr_modal_title: '🚜 વાહન સેવા ઉમેરો', tr_driver_lbl: 'ડ્રાઇવરનું નામ *', tr_type_lbl: 'વાહન પ્રકાર *', tr_submit_btn: 'ઉમેરો',
           modal_add_product: 'નવી ઉપજ મૂકો', category: 'કેટેગરી *', crop_title_gu: 'ઉપજનું નામ *', quantity: 'જથ્થો *', unit: 'એકમ *', price: 'ભાવ (₹) *', submit_product: 'સબમિટ કરો',
-          modal_add_req: 'નવી માંગ મૂકો', req_product: 'કઈ ઉપજ જોઈએ? *', delivery_loc: 'સ્થળ *', submit_req: 'માંગ મૂકો'
-        },
-        hi: {
-          tagline: 'दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि', offline_msg: '⚠️ इंटरनेट बंद है — सेव किया डेटा उपलब्ध है।',
+          np_photo_lbl: '📷 ઉપજનો ફોટો (વૈકલ્પિક, મહત્તમ 2 MB)', np_photo_hint: 'સુરક્ષા તપાસ (Anti-Virus Magic-Byte) સાથે ફક્ત JPG/PNG/WEBP અપલોડ થશે.',
+          modal_add_req: 'નવી માંગ મૂકો', req_product: 'કઈ ઉપજ જોઈએ? *', delivery_loc: 'સ્થળ *', submit_req: 'માંગ મૂકો',
+          toast_saved: '✅ સફળતાપૂર્વક સેવ થઈ ગયું!', toast_submitted_pending: '✅ સબમિટ થઈ ગયું! Admin મંજૂરી પછી લાઇવ દેખાશે.',
+          toast_deleted: '✅ ડેટા સફળતાપૂર્વક ડિલીટ થઈ ગયો!', toast_del_fail: '❌ ડિલીટ થઈ શક્યું નહીં.',
+          toast_rls_blocked: '🔒 પરમિશન નથી! ફક્ત Admin જ આ ક્રિયા કરી શકે છે.',
+          toast_invalid_id: 'અમાન્ય રેકોર્ડ ID.', toast_installed: 'KHEDUT SETU App Install થઈ ગઈ!', toast_copied: 'App લિંક કોપી થઈ ગઈ!'
+        }),
+        hi: Object.freeze({
+          tagline: 'All-India दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि',
+          offline_msg: '⚠️ इंटरनेट बंद है — सेव किया डेटा उपलब्ध है।',
           nav_market: 'बाज़ार', nav_ai: '✨ AI सलाहकार', nav_ai_short: 'AI सलाह', nav_yard: 'मंडी & सामग्री', nav_yard_short: 'मंडी भाव',
           nav_requests: 'खरीद मांग', nav_sell: 'बेचें', nav_account: 'खाता',
           search_placeholder: 'सब्ज़ी, फल, फूल, दलहन, अनाज, गांव या जिला खोजें...', district_placeholder: 'जिला (जैसे आनंद)',
-          ai_badge_sub: 'एडमिन स्वीकृति के साथ दैनिक अपडेट', hero_title: 'मौसमी सब्ज़ी, फल, फूल, दलहन, अनाज और कृषि सामग्री',
+          all_states: '🇮🇳 संपूर्ण भारत (All States)', state_lbl: 'राज्य (State) *',
+          ai_badge_sub: 'All-India एडमिन स्वीकृति के साथ दैनिक अपडेट', hero_title: 'मौसमी सब्ज़ी, फल, फूल, दलहन, अनाज और कृषि सामग्री',
           btn_daily_rates: '📊 दैनिक मंडी भाव', btn_post_crop: 'उपज डालें', btn_ai_doc_short: '✨ AI डॉक्टर', btn_voice_float: 'AI बोलें',
           btn_install: 'Install', btn_share: 'Share',
           pwa_card_title: '📱 फ़ोन में App Icon के साथ Install करें और Share करें',
@@ -1005,13 +1216,19 @@
           install_modal_title: '📱 KHEDUT SETU App Install करें', install_modal_sub: 'मोबाइल Home Screen पर App Icon जोड़ें',
           install_step_android: 'Android Chrome: ऊपर दाईं ओर ⋮ → "Install app" या "Add to Home screen" चुनें.',
           install_step_ios: 'iPhone Safari: नीचे Share (↑) → "Add to Home Screen" चुनें.',
-          latest_listings: 'ताज़ा उपज', refresh: 'रिफ्रेश', all_categories: 'सभी श्रेणियां', no_products: 'कोई उपज नहीं है।',
-          ai_hub_title: '✨ KHEDUT SETU AI सलाहकार', ai_hub_sub: 'भाव अनुमान, फसल डॉक्टर और मैचिंग',
+          latest_listings: 'ताज़ा स्वीकृत उपज', refresh: 'रिफ्रेश', all_categories: 'सभी श्रेणियां',
+          no_products: 'कोई जानकारी उपलब्ध नहीं है।', active_items_lbl: 'सक्रिय उपज उपलब्ध हैं',
+          btn_view_contact_upi: '📞 संपर्क & 💳 UPI विवरण', pd_modal_title: '🌾 उपज विवरण, संपर्क और Direct UPI',
+          ai_hub_title: '✨ KHEDUT SETU AI सलाहकार', ai_hub_sub: 'Server-Side AI भाव अनुमान, फसल डॉक्टर और मैचिंग',
           aisub_price_btn: '💰 AI भाव अनुमान', aisub_doctor_btn: '🩺 फसल डॉक्टर', aisub_match_btn: '🎯 स्मार्ट मैच',
           ai_price_heading: '💰 AI स्मार्ट भाव अनुमान', ai_select_crop: 'फसल चुनें', ai_qty_label: 'मात्रा (मण / 20 kg)',
           quality: 'गुणवत्ता', ai_calc_price_btn: '✨ AI भाव गणना करें', ai_doc_heading: '🩺 AI फसल डॉक्टर',
           ai_doc_crop_lbl: 'फसल का प्रकार', ai_doc_sym_lbl: 'लक्षण चुनें', ai_doc_extra_ph: 'अतिरिक्त लक्षण...',
           ai_doc_btn: '🩺 AI निदान देखें', ai_match_heading: '🎯 AI स्मार्ट मैचिंग', ai_match_sub: 'मांग और उपज मिलान', ai_match_refresh: '↻ ताज़ा करें',
+          ai_loading: '⏳ AI सर्वर से सुरक्षित विश्लेषण हो रहा है...',
+          ai_meta_source: '📌 स्रोत (Source)', ai_meta_updated: '🕒 अंतिम अपडेट',
+          ai_meta_confidence: '📊 विश्वसनीयता (Confidence)', ai_meta_limitations: '⚠️ सीमाएं (Limitations)',
+          ai_meta_expert: '👨‍🌾 कृषि विशेषज्ञ सलाह नोट',
           yard_hub_title: 'दैनिक मंडी भाव, दवा-बीज-यंत्र और वाहन', yard_hub_sub: 'नज़दीकी मंडी भाव अपडेट (Admin स्वीकृति के साथ) और कृषि सामग्री',
           tab_apmc: '📊 मंडी भाव (सब्ज़ी/फल/फूल/दलहन/अनाज)', tab_inputs: '🧪 दवा, बीज, साधन & यंत्र', tab_transport: '🚜 टेम्पो / ट्रैक्टर',
           btn_add_update_mandi: '+ मंडी भाव डालें / अपडेट', apmc_search_ph: 'मंडी, जिला या उपज खोजें...',
@@ -1021,16 +1238,22 @@
           tr_search_ph: 'गांव, जिला या वाहन खोजें...', btn_add_vehicle: '+ वाहन जोड़ें', tr_call: '📞 कॉल', tr_wa: '💬 WhatsApp', tr_login_num: 'नंबर के लिए लॉगिन करें',
           req_title: 'खरीदारों की मांग', req_sub: 'खरीदारों की मांग देखें।', btn_add_req: 'नई मांग डालें',
           sell_login_title: 'बिक्री के लिए लॉगिन करें', sell_login_sub: 'सीधी उपज बेचें।', btn_go_login: 'लॉगिन / नया खाता',
-          seller_hub: 'किसान बिक्री डैशबोर्ड', seller_hub_sub: 'उपज डालें', btn_add_product: 'नई उपज डालें',
+          seller_hub: 'किसान बिक्री डैशबोर्ड', seller_hub_sub: 'आपकी डाली गई उपज और नई उपज जोड़ें', btn_add_product: 'नई उपज डालें',
           auth_sub: 'लॉगिन करें या नया खाता बनाएं', btn_google_login: 'Google से लॉगिन', login: 'लॉगिन', register: 'नया खाता',
           email: 'ईमेल', password: 'पासवर्ड', password_8: 'पासवर्ड (8+ अक्षर) *', full_name: 'पूरा नाम *', full_name_lbl: 'पूरा नाम',
           mobile: 'मोबाइल नंबर *', mobile_lbl: 'मोबाइल नंबर', role_label: 'भूमिका *', role_seller: 'किसान / विक्रेता', role_buyer: 'खरीदार',
           village: 'गांव / शहर', village_req: 'गांव *', district: 'जिला', district_req: 'जिला *', upi_id_lbl: '💳 UPI ID',
+          allow_upi_lbl: 'खरीदारों को मेरा UPI ID दिखाएं (Direct UPI Payment के लिए)',
           create_account: 'नया खाता बनाएं', logout: 'लॉगआउट', profile_settings: 'प्रोफ़ाइल विवरण', save_profile: 'सेव करें',
-          admin_heading: 'Admin Panel — स्वीकृति केंद्र', admin_sub: 'मंडी भाव और दवा-बीज-यंत्र स्वीकृति',
+          admin_heading: 'Admin Panel — स्वीकृति & नियंत्रण केंद्र', admin_sub: 'मंडी भाव, कृषि सामग्री स्वीकृति और लाइव डेटा डिलीट (केवल Admin)',
           admin_pending_mandi: '📊 स्वीकृति के लिए लंबित मंडी भाव', admin_pending_inputs: '🧪 स्वीकृति के लिए लंबित दवा / बीज / यंत्र',
           admin_apmc_title: '📊 Admin सीधा मंडी भाव जोड़ें', ap_yard_ph: 'मंडी', ap_dist_ph: 'जिला', ap_crop_ph: 'उपज',
           ap_min_ph: 'न्यूनतम', ap_max_ph: 'अधिकतम', ap_modal_ph: 'औसत', ap_publish_btn: 'लाइव करें',
+          admin_live_manage_title: '🗑️ लाइव डेटा मैनेज & डिलीट (केवल Admin)',
+          admin_load_live_btn: '🔄 लाइव लिस्ट लोड करें',
+          admin_live_mandi_lbl: '📊 लाइव मंडी भाव (apmc_rates)',
+          admin_live_inputs_lbl: '🧪 लाइव दवा / बीज / यंत्र (agri_inputs)',
+          admin_live_products_lbl: '🌾 लाइव उपज (products)',
           voice_modal_title: '🎙️ AI वॉइस', voice_prompt: 'माइक दबाकर बोलें',
           mr_modal_title: '📊 दैनिक मंडी भाव डालें / अपडेट करें', mr_cat_lbl: 'वर्ग (सब्ज़ी/फल/फूल/दलहन/अनाज) *',
           mr_crop_lbl: 'उपज / वस्तु का नाम *', mr_yard_lbl: 'नज़दीकी मंडी / APMC *',
@@ -1039,14 +1262,21 @@
           ain_type_lbl: 'प्रकार *', ain_name_lbl: 'वस्तु / यंत्र का नाम *', ain_brand_lbl: 'ब्रांड / कंपनी', ain_note_lbl: 'स्टॉक / विवरण',
           tr_modal_title: '🚜 वाहन सेवा जोड़ें', tr_driver_lbl: 'ड्राइवर का नाम *', tr_type_lbl: 'वाहन प्रकार *', tr_submit_btn: 'जोड़ें',
           modal_add_product: 'नई उपज डालें', category: 'श्रेणी *', crop_title_gu: 'उपज का नाम *', quantity: 'मात्रा *', unit: 'इकाई *', price: 'भाव (₹) *', submit_product: 'सबमिट करें',
-          modal_add_req: 'नई मांग डालें', req_product: 'उपज *', delivery_loc: 'स्थान *', submit_req: 'मांग डालें'
-        },
-        en: {
-          tagline: 'Daily Mandi Rates • Agri Inputs & Machinery • AI', offline_msg: '⚠️ You are offline — cached data available.',
+          np_photo_lbl: '📷 उपज की फोटो (वैकल्पिक, अधिकतम 2 MB)', np_photo_hint: 'सुरक्षा जांच (Anti-Virus Magic-Byte) के साथ केवल JPG/PNG/WEBP अपलोड होगा।',
+          modal_add_req: 'नई मांग डालें', req_product: 'उपज *', delivery_loc: 'स्थान *', submit_req: 'मांग डालें',
+          toast_saved: '✅ सफलतापूर्वक सेव हो गया!', toast_submitted_pending: '✅ सबमिट हो गया! Admin स्वीकृति के बाद लाइव दिखेगा।',
+          toast_deleted: '✅ डेटा सफलतापूर्वक डिलीट हो गया!', toast_del_fail: '❌ डिलीट नहीं हो सका।',
+          toast_rls_blocked: '🔒 अनुमति नहीं है! केवल Admin ही यह कार्य कर सकता है।',
+          toast_invalid_id: 'अमान्य रिकॉर्ड ID.', toast_installed: 'KHEDUT SETU App Install हो गया!', toast_copied: 'App लिंक कॉपी हो गया!'
+        }),
+        en: Object.freeze({
+          tagline: 'All-India Daily Mandi Rates • Agri Inputs & Machinery • AI',
+          offline_msg: '⚠️ You are offline — cached data available.',
           nav_market: 'Market', nav_ai: '✨ AI Advisor', nav_ai_short: 'AI Help', nav_yard: 'Mandi & Inputs', nav_yard_short: 'Mandi Rates',
           nav_requests: 'Requests', nav_sell: 'Sell', nav_account: 'Account',
           search_placeholder: 'Search veg, fruits, flowers, pulses, grains, village or district...', district_placeholder: 'District (e.g. Anand)',
-          ai_badge_sub: 'Daily Updates with Admin Approval', hero_title: 'Seasonal Veg, Fruits, Flowers, Pulses, Grains & Agri Inputs',
+          all_states: '🇮🇳 All India (All States)', state_lbl: 'State / UT *',
+          ai_badge_sub: 'All-India Daily Updates with Admin Approval', hero_title: 'Seasonal Veg, Fruits, Flowers, Pulses, Grains & Agri Inputs',
           btn_daily_rates: '📊 Daily Mandi Rates', btn_post_crop: 'Post Crop', btn_ai_doc_short: '✨ AI Doctor', btn_voice_float: 'AI Voice',
           btn_install: 'Install', btn_share: 'Share',
           pwa_card_title: '📱 Install with App Icon & Share with Farmers',
@@ -1054,13 +1284,19 @@
           install_modal_title: '📱 Install KHEDUT SETU App', install_modal_sub: 'Add App Icon to your mobile Home Screen',
           install_step_android: 'Android Chrome: Tap ⋮ (menu) → "Install app" or "Add to Home screen".',
           install_step_ios: 'iPhone Safari: Tap Share (↑) → "Add to Home Screen".',
-          latest_listings: 'Latest Produce', refresh: 'Refresh', all_categories: 'All Categories', no_products: 'No produce found.',
-          ai_hub_title: '✨ KHEDUT SETU AI Advisor', ai_hub_sub: 'Price forecast, crop doctor & demand matching',
+          latest_listings: 'Latest Approved Produce', refresh: 'Refresh', all_categories: 'All Categories',
+          no_products: 'No records available right now.', active_items_lbl: 'active listings available',
+          btn_view_contact_upi: '📞 Contact & 💳 Direct UPI', pd_modal_title: '🌾 Listing Details, Seller Contact & Direct UPI',
+          ai_hub_title: '✨ KHEDUT SETU AI Advisor', ai_hub_sub: 'Server-Side AI Price Forecast, Crop Doctor & Demand Matching',
           aisub_price_btn: '💰 AI Price Forecast', aisub_doctor_btn: '🩺 Crop Doctor', aisub_match_btn: '🎯 Smart Match',
           ai_price_heading: '💰 AI Smart Price Estimator', ai_select_crop: 'Select Crop', ai_qty_label: 'Quantity (Mann / 20 kg)',
           quality: 'Quality', ai_calc_price_btn: '✨ Calculate AI Price', ai_doc_heading: '🩺 AI Crop Doctor',
           ai_doc_crop_lbl: 'Crop Type', ai_doc_sym_lbl: 'Symptom', ai_doc_extra_ph: 'Extra notes...',
           ai_doc_btn: '🩺 Diagnose with AI', ai_match_heading: '🎯 AI Smart Matching', ai_match_sub: 'Demand & produce matching', ai_match_refresh: '↻ Refresh',
+          ai_loading: '⏳ Analyzing securely via server-side AI Edge Function...',
+          ai_meta_source: '📌 Source', ai_meta_updated: '🕒 Last Updated',
+          ai_meta_confidence: '📊 Confidence', ai_meta_limitations: '⚠️ Limitations',
+          ai_meta_expert: '👨‍🌾 Agriculture Expert Advisory Note',
           yard_hub_title: 'Daily Mandi Rates, Agri Inputs & Machinery', yard_hub_sub: 'Nearby mandi rate updates (Admin approved) & farm inputs',
           tab_apmc: '📊 Mandi Rates (Veg/Fruit/Flower/Pulse/Grain)', tab_inputs: '🧪 Pesticides, Seeds, Tools & Machinery', tab_transport: '🚜 Tempo / Tractor',
           btn_add_update_mandi: '+ Submit / Update Rate', apmc_search_ph: 'Search mandi, district or crop...',
@@ -1070,16 +1306,22 @@
           tr_search_ph: 'Search village, district or vehicle...', btn_add_vehicle: '+ Add Vehicle', tr_call: '📞 Call', tr_wa: '💬 WhatsApp', tr_login_num: 'Login to view number',
           req_title: 'Buyer Requirements', req_sub: 'See or post buyer requirements.', btn_add_req: 'Post Requirement',
           sell_login_title: 'Login to Sell Produce', sell_login_sub: 'Sell directly.', btn_go_login: 'Login / Register',
-          seller_hub: 'Seller Dashboard', seller_hub_sub: 'Post produce', btn_add_product: 'Add New Crop',
+          seller_hub: 'Seller Dashboard', seller_hub_sub: 'Manage your listings or post new produce', btn_add_product: 'Add New Crop',
           auth_sub: 'Login or create an account', btn_google_login: 'Continue with Google', login: 'Login', register: 'Register',
           email: 'Email', password: 'Password', password_8: 'Password (8+ chars) *', full_name: 'Full Name *', full_name_lbl: 'Full Name',
           mobile: 'Mobile Number *', mobile_lbl: 'Mobile Number', role_label: 'Role *', role_seller: 'Farmer / Seller', role_buyer: 'Buyer',
           village: 'Village / City', village_req: 'Village *', district: 'District', district_req: 'District *', upi_id_lbl: '💳 UPI ID',
+          allow_upi_lbl: 'Show my UPI ID to buyers for Direct UPI Payment',
           create_account: 'Create Account', logout: 'Logout', profile_settings: 'Profile Settings', save_profile: 'Save Profile',
-          admin_heading: 'Admin Panel — Approval Center', admin_sub: 'Approve mandi rates & agri inputs',
+          admin_heading: 'Admin Panel — Approval & Control Center', admin_sub: 'Approve mandi rates, agri inputs & manage live records (Admin Only)',
           admin_pending_mandi: '📊 Pending Mandi Rates', admin_pending_inputs: '🧪 Pending Pesticides / Seeds / Machinery',
           admin_apmc_title: '📊 Admin Direct Mandi Rate', ap_yard_ph: 'Mandi', ap_dist_ph: 'District', ap_crop_ph: 'Crop/Item',
           ap_min_ph: 'Min', ap_max_ph: 'Max', ap_modal_ph: 'Modal', ap_publish_btn: 'Publish',
+          admin_live_manage_title: '🗑️ Manage & Delete Live Records (Admin Only)',
+          admin_load_live_btn: '🔄 Load Live Lists',
+          admin_live_mandi_lbl: '📊 Live Mandi Rates (apmc_rates)',
+          admin_live_inputs_lbl: '🧪 Live Agri Inputs (agri_inputs)',
+          admin_live_products_lbl: '🌾 Live Produce Listings (products)',
           voice_modal_title: '🎙️ AI Voice', voice_prompt: 'Tap mic and speak',
           mr_modal_title: '📊 Submit / Update Daily Mandi Rate', mr_cat_lbl: 'Category (Veg/Fruit/Flower/Pulse/Grain) *',
           mr_crop_lbl: 'Crop / Item Name *', mr_yard_lbl: 'Nearby Mandi / APMC *',
@@ -1088,50 +1330,99 @@
           ain_type_lbl: 'Type *', ain_name_lbl: 'Item / Machine Name *', ain_brand_lbl: 'Brand / Company', ain_note_lbl: 'Stock / Notes',
           tr_modal_title: '🚜 Add Transport', tr_driver_lbl: 'Driver Name *', tr_type_lbl: 'Vehicle Type *', tr_submit_btn: 'Add',
           modal_add_product: 'Add Produce', category: 'Category *', crop_title_gu: 'Produce Title *', quantity: 'Quantity *', unit: 'Unit *', price: 'Price (₹) *', submit_product: 'Submit',
-          modal_add_req: 'Post Requirement', req_product: 'Produce Required *', delivery_loc: 'Location *', submit_req: 'Post Requirement'
-        }
-      };
+          np_photo_lbl: '📷 Crop Photo (Optional, max 2 MB)', np_photo_hint: 'Protected by Anti-Virus magic-byte inspection (JPG/PNG/WEBP only).',
+          modal_add_req: 'Post Requirement', req_product: 'Produce Required *', delivery_loc: 'Location *', submit_req: 'Post Requirement',
+          toast_saved: '✅ Saved successfully!', toast_submitted_pending: '✅ Submitted! It will go live after Admin approval.',
+          toast_deleted: '✅ Record deleted permanently!', toast_del_fail: '❌ Delete failed.',
+          toast_rls_blocked: '🔒 Permission denied! Only Admin can perform this action.',
+          toast_invalid_id: 'Invalid record ID.', toast_installed: 'KHEDUT SETU App installed!', toast_copied: 'App link copied!'
+        })
+      });
 
-      const MANDI_CAT_CHIPS = {
-        gu: { all: 'બધું', vegetables: '🥬 શાકભાજી', fruits: '🍎 ફળો', flowers: '🌸 ફૂલો', pulses: '🫘 કઠોળ', grains: '🌾 અનાજ' },
-        hi: { all: 'सभी', vegetables: '🥬 सब्ज़ी', fruits: '🍎 फल', flowers: '🌸 फूल', pulses: '🫘 दलहन', grains: '🌾 अनाज' },
-        en: { all: 'All', vegetables: '🥬 Veg', fruits: '🍎 Fruits', flowers: '🌸 Flowers', pulses: '🫘 Pulses', grains: '🌾 Grains' }
-      };
+      const MANDI_CAT_CHIPS = Object.freeze({
+        gu: Object.freeze({ all: 'બધું', vegetables: '🥬 શાકભાજી', fruits: '🍎 ફળો', flowers: '🌸 ફૂલો', pulses: '🫘 કઠોળ', grains: '🌾 અનાજ' }),
+        hi: Object.freeze({ all: 'सभी', vegetables: '🥬 सब्ज़ी', fruits: '🍎 फल', flowers: '🌸 फूल', pulses: '🫘 दलहन', grains: '🌾 अनाज' }),
+        en: Object.freeze({ all: 'All', vegetables: '🥬 Veg', fruits: '🍎 Fruits', flowers: '🌸 Flowers', pulses: '🫘 Pulses', grains: '🌾 Grains' })
+      });
 
-      const AGRI_TYPE_CHIPS = {
-        gu: { all: 'બધું', dava: '🧪 દવા', biyaran: '🌱 બિયારણ', khatar: '🌿 ખાતર', sadhano: '🛠️ સાધનો', yantro: '⚙️ યંત્રો' },
-        hi: { all: 'सभी', dava: '🧪 दवा', biyaran: '🌱 बीज', khatar: '🌿 खाद', sadhano: '🛠️ साधन', yantro: '⚙️ यंत्र' },
-        en: { all: 'All', dava: '🧪 Pesticides', biyaran: '🌱 Seeds', khatar: '🌿 Fertilizer', sadhano: '🛠️ Tools', yantro: '⚙️ Machinery' }
-      };
+      const AGRI_TYPE_CHIPS = Object.freeze({
+        gu: Object.freeze({ all: 'બધું', dava: '🧪 દવા', biyaran: '🌱 બિયારણ', khatar: '🌿 ખાતર', sadhano: '🛠️ સાધનો', yantro: '⚙️ યંત્રો' }),
+        hi: Object.freeze({ all: 'सभी', dava: '🧪 दवा', biyaran: '🌱 बीज', khatar: '🌿 खाद', sadhano: '🛠️ साधन', yantro: '⚙️ यंत्र' }),
+        en: Object.freeze({ all: 'All', dava: '🧪 Pesticides', biyaran: '🌱 Seeds', khatar: '🌿 Fertilizer', sadhano: '🛠️ Tools', yantro: '⚙️ Machinery' })
+      });
 
-      const AI_CROPS = {
-        paddy: { gu: 'ડાંગર', hi: 'धान', en: 'Paddy', mann: 470, qtl: 2350 },
-        wheat: { gu: 'ઘઉં', hi: 'गेहूं', en: 'Wheat', mann: 555, qtl: 2775 },
-        bajra: { gu: 'બાજરી', hi: 'बाजरा', en: 'Bajra', mann: 480, qtl: 2400 },
-        pulses: { gu: 'કઠોળ (મગ/તુવેર)', hi: 'दलहन (मूंग/तुअर)', en: 'Pulses (Moong/Tuver)', mann: 1560, qtl: 7800 },
-        veg: { gu: 'શાકભાજી', hi: 'सब्ज़ी', en: 'Vegetables', mann: 350, qtl: 1750 }
-      };
+      const AI_CROPS = Object.freeze({
+        paddy: Object.freeze({ gu: 'ડાંગર', hi: 'धान', en: 'Paddy', mann: 470, qtl: 2350 }),
+        wheat: Object.freeze({ gu: 'ઘઉં', hi: 'गेहूं', en: 'Wheat', mann: 555, qtl: 2775 }),
+        bajra: Object.freeze({ gu: 'બાજરી', hi: 'बाजरा', en: 'Bajra', mann: 480, qtl: 2400 }),
+        pulses: Object.freeze({ gu: 'કઠોળ (મગ/તુવેર)', hi: 'दलहन (मूंग/तुअर)', en: 'Pulses (Moong/Tuver)', mann: 1560, qtl: 7800 }),
+        veg: Object.freeze({ gu: 'શાકભાજી', hi: 'सब्ज़ी', en: 'Vegetables', mann: 350, qtl: 1750 }),
+        cotton: Object.freeze({ gu: 'કપાસ', hi: 'कपास', en: 'Cotton', mann: 1480, qtl: 7400 }),
+        groundnut: Object.freeze({ gu: 'મગફળી', hi: 'मूंगफली', en: 'Groundnut', mann: 1250, qtl: 6250 })
+      });
 
-      const UNIT_LABELS = {
-        gu: { kg: 'કિલો (kg)', quintal: 'ક્વિન્ટલ (quintal)', ton: 'ટન (ton)', mann: 'મણ (mann)', bag: 'થેલી (bag)', bundle: 'પુળિયા (bundle)', piece: 'નંગ (piece)' },
-        hi: { kg: 'किलो (kg)', quintal: 'क्विंटल (quintal)', ton: 'टन (ton)', mann: 'मण (mann)', bag: 'बोरा (bag)', bundle: 'पूलिया (bundle)', piece: 'नग (piece)' },
-        en: { kg: 'kg', quintal: 'quintal', ton: 'ton', mann: 'mann', bag: 'bag', bundle: 'bundle', piece: 'piece' }
-      };
+      // Exact DB Enum quantity_unit labels
+      const UNIT_LABELS = Object.freeze({
+        gu: Object.freeze({ kg: 'કિલો (kg)', quintal: 'ક્વિન્ટલ / 5 મણ (quintal)', ton: 'ટન (ton)', bag: 'થેલી / બોરી (bag)', bundle: 'પુળિયા (bundle)', bale: 'ગાંસડી (bale)' }),
+        hi: Object.freeze({ kg: 'किलो (kg)', quintal: 'क्विंटल / 5 मण (quintal)', ton: 'टन (ton)', bag: 'बोरा (bag)', bundle: 'पूलिया (bundle)', bale: 'गांठ (bale)' }),
+        en: Object.freeze({ kg: 'kg', quintal: 'quintal (100 kg)', ton: 'ton', bag: 'bag', bundle: 'bundle', bale: 'bale' })
+      });
 
       function tr(k) { return (L[state.lang] && L[state.lang][k]) || L.gu[k] || k; }
       function pickLangField(o, b) { return o ? (o[`${b}_${state.lang}`] || o[`${b}_gu`] || o[`${b}_en`] || o[`${b}_hi`] || '') : ''; }
 
       function populateSelects() {
         const aiCrop = document.getElementById('ai-crop-select');
-        if (aiCrop) { const prev = aiCrop.value || 'paddy'; aiCrop.innerHTML = Object.keys(AI_CROPS).map((k) => `<option value="${k}">${escapeHtml(AI_CROPS[k][state.lang])}</option>`).join(''); aiCrop.value = prev; }
+        if (aiCrop) {
+          const prev = aiCrop.value || 'paddy';
+          aiCrop.innerHTML = Object.keys(AI_CROPS).map((k) => `<option value="${k}">${escapeHtml(AI_CROPS[k][state.lang])}</option>`).join('');
+          aiCrop.value = prev;
+        }
         const aiQual = document.getElementById('ai-qual-select');
-        if (aiQual) { const prev = aiQual.value || 'standard'; aiQual.innerHTML = [['prime', 'A+'], ['standard', 'Standard'], ['moisture', 'Moisture']].map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join(''); aiQual.value = prev; }
+        if (aiQual) {
+          const prev = aiQual.value || 'standard';
+          const qLabels = state.lang === 'gu'
+            ? [['prime', 'A+ (ઉત્તમ)'], ['standard', 'સામાન્ય (Standard)'], ['moisture', 'ભેજવાળો (Moisture)']]
+            : state.lang === 'hi'
+              ? [['prime', 'A+ (उत्तम)'], ['standard', 'सामान्य (Standard)'], ['moisture', 'नमी युक्त (Moisture)']]
+              : [['prime', 'A+ (Prime)'], ['standard', 'Standard'], ['moisture', 'High Moisture']];
+          aiQual.innerHTML = qLabels.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
+          aiQual.value = prev;
+        }
         const docSym = document.getElementById('doc-symptom');
-        if (docSym) { const prev = docSym.value || 'yellow'; docSym.innerHTML = [['yellow', 'Yellowing'], ['spots', 'Spots/Fungus'], ['pests', 'Pests']].map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join(''); docSym.value = prev; }
+        if (docSym) {
+          const prev = docSym.value || 'yellow';
+          const sLabels = state.lang === 'gu'
+            ? [['yellow', 'પાન પીળા પડવા (Yellowing)'], ['spots', 'ડાઘ / ફૂગ (Spots/Fungus)'], ['pests', 'જીવાત / ઈયળ (Pests)'], ['wilting', 'છોડ સુકાવો (Wilting)']]
+            : state.lang === 'hi'
+              ? [['yellow', 'पत्ते पीले पड़ना (Yellowing)'], ['spots', 'धब्बे / फफूंद (Spots/Fungus)'], ['pests', 'कीट / इल्ली (Pests)'], ['wilting', 'पौधा मुरझाना (Wilting)']]
+              : [['yellow', 'Leaf Yellowing'], ['spots', 'Leaf Spots / Fungus'], ['pests', 'Pests / Insects'], ['wilting', 'Plant Wilting']];
+          docSym.innerHTML = sLabels.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
+          docSym.value = prev;
+        }
         const uMap = UNIT_LABELS[state.lang] || UNIT_LABELS.gu;
-        ['np-unit', 'nr-unit'].forEach((id) => { const s = document.getElementById(id); if (s) s.innerHTML = CONFIG.ALLOWED_UNITS.map((u) => `<option value="${u}">${escapeHtml(uMap[u])}</option>`).join(''); });
+        ['np-unit', 'nr-unit'].forEach((id) => {
+          const s = document.getElementById(id);
+          if (s) s.innerHTML = CONFIG.ALLOWED_UNITS.map((u) => `<option value="${u}">${escapeHtml(uMap[u])}</option>`).join('');
+        });
         const rr = document.getElementById('reg-role');
         if (rr) rr.innerHTML = `<option value="seller">${escapeHtml(tr('role_seller'))}</option><option value="buyer">${escapeHtml(tr('role_buyer'))}</option>`;
+
+        const sf = document.getElementById('state-filter');
+        if (sf) {
+          const prevSt = sf.value || '';
+          sf.innerHTML = `<option value="">${escapeHtml(tr('all_states'))}</option>` +
+            INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('');
+          sf.value = prevSt;
+        }
+        ['p-state', 'np-state'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) {
+            const prev = el.value || 'Gujarat';
+            el.innerHTML = INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('');
+            el.value = prev;
+          }
+        });
       }
 
       function renderChips() {
@@ -1146,16 +1437,26 @@
 
       function setLang(lang) {
         if (!CONFIG.ALLOWED_LANGS.includes(lang)) return;
-        state.lang = lang; localStorage.setItem('ks_lang', lang); document.documentElement.lang = lang;
+        state.lang = lang;
+        localStorage.setItem('ks_lang', lang);
+        document.documentElement.lang = lang;
         document.querySelectorAll('.lang-btn').forEach((b) => { b.className = 'lang-btn px-1.5 py-1 rounded-md transition text-farm-100 hover:text-white'; });
         const act = document.getElementById(`lang-${lang}`);
         if (act) act.className = 'lang-btn px-1.5 py-1 rounded-md transition bg-white text-farm-900 font-bold shadow-sm';
         document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = tr(el.getAttribute('data-i18n')); });
         document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => { el.placeholder = tr(el.getAttribute('data-i18n-placeholder')); });
-        populateSelects(); renderChips(); renderCategories(); renderProducts(); renderApmcRates(); renderAgriInputs(); renderTransportList();
+        populateSelects();
+        renderChips();
+        renderCategories();
+        renderProducts();
+        renderApmcRates();
+        renderAgriInputs();
+        renderTransportList();
+        const pulse = document.getElementById('ai-pulse-summary');
+        if (pulse) pulse.textContent = `${state.products.length} ${tr('active_items_lbl')}`;
       }
 
-      // Voice Assistant Engine
+      // ==================== VOICE ASSISTANT ENGINE ====================
       const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition || null;
       let recognition = null;
 
@@ -1200,7 +1501,7 @@
         const statusEl = document.getElementById('voice-status');
         const trEl = document.getElementById('voice-transcript');
         if (!SpeechRec) {
-          if (statusEl) statusEl.textContent = 'Voice API not supported in this browser.';
+          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Voice API not supported in this browser.' : state.lang === 'hi' ? 'इस ब्राउज़र में वॉइस समर्थित नहीं है।' : 'આ બ્રાઉઝરમાં વૉઇસ સપોર્ટ ઉપલબ્ધ નથી.';
           return;
         }
         if (state.isListening) { stopVoiceListening(); return; }
@@ -1233,46 +1534,210 @@
       }
 
       function switchTab(tab) {
-        if (!CONFIG.ALLOWED_TABS.includes(tab)) return; state.tab = tab;
+        if (!CONFIG.ALLOWED_TABS.includes(tab)) return;
+        state.tab = tab;
         document.querySelectorAll('.tab-view').forEach((s) => s.classList.add('hidden'));
         document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
-        document.querySelectorAll('.nav-desk').forEach((b) => { const active = b.getAttribute('data-nav') === tab; b.className = `nav-desk px-3 py-1.5 rounded-lg transition ${active ? 'bg-white/20 text-white font-bold' : 'text-farm-100 hover:bg-white/10'}`; });
-        document.querySelectorAll('.mnav-btn').forEach((b) => { const active = b.getAttribute('data-mnav') === tab; b.classList.toggle('text-farm-700', active); b.classList.toggle('text-slate-500', !active); });
+        document.querySelectorAll('.nav-desk').forEach((b) => {
+          const active = b.getAttribute('data-nav') === tab;
+          b.className = `nav-desk px-3 py-1.5 rounded-lg transition ${active ? 'bg-white/20 text-white font-bold' : 'text-farm-100 hover:bg-white/10'}`;
+        });
+        document.querySelectorAll('.mnav-btn').forEach((b) => {
+          const active = b.getAttribute('data-mnav') === tab;
+          b.classList.toggle('text-farm-700', active);
+          b.classList.toggle('text-slate-500', !active);
+        });
         if (tab === 'market') loadProducts();
         if (tab === 'ai_advisor') { runAiPrice(); runAiDoctor(); runAiMatch(); }
         if (tab === 'yard') { loadApmcRates(); loadAgriInputs(); loadTransportList(); }
         if (tab === 'requests') loadBuyerRequests();
         if (tab === 'sell') refreshSellTab();
         if (tab === 'account') refreshAccountTab();
-        window.scrollTo({ top: 0, behavior: 'smooth' }); refreshIcons();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        refreshIcons();
       }
       function openModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { document.getElementById(id)?.classList.remove('hidden'); refreshIcons(); } }
       function closeModal(id) { if (CONFIG.ALLOWED_MODALS.includes(id)) { if (id === 'voice-modal') stopVoiceListening(); document.getElementById(id)?.classList.add('hidden'); } }
 
+      // ==================== SERVER-SIDE AI ADVISOR (EDGE FUNCTION) ====================
       function switchAiSubtab(w) {
         state.aiSubtab = w;
         const p = { price: 'ai-panel-price', doctor: 'ai-panel-doctor', match: 'ai-panel-match' };
         const b = { price: 'aisub-price', doctor: 'aisub-doctor', match: 'aisub-match' };
         Object.entries(p).forEach(([k, id]) => document.getElementById(id)?.classList.toggle('hidden', k !== w));
-        Object.entries(b).forEach(([k, id]) => { const btn = document.getElementById(id); if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`; });
+        Object.entries(b).forEach(([k, id]) => {
+          const btn = document.getElementById(id);
+          if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
+        });
       }
-      function runAiPrice() {
-        const c = AI_CROPS[document.getElementById('ai-crop-select')?.value || 'paddy'] || AI_CROPS.paddy;
-        const q = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) || 50;
+
+      function formatAiTimestamp(isoStr) {
+        try {
+          const d = isoStr ? new Date(isoStr) : new Date();
+          if (Number.isNaN(d.getTime())) return escapeHtml(String(isoStr));
+          return escapeHtml(d.toLocaleString(state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN', {
+            dateStyle: 'medium', timeStyle: 'short'
+          }));
+        } catch { return escapeHtml(String(isoStr || '')); }
+      }
+
+      function renderAiMetadataBlock(meta) {
+        const m = meta || {};
+        return `
+          <div class="mt-3 pt-3 border-t border-slate-200/80 space-y-1.5 text-xs text-slate-700 bg-white/90 rounded-xl p-3">
+            <div><strong>${escapeHtml(tr('ai_meta_source'))}:</strong> ${escapeHtml(m.source || '-')}</div>
+            <div><strong>${escapeHtml(tr('ai_meta_updated'))}:</strong> ${formatAiTimestamp(m.last_updated)}</div>
+            <div><strong>${escapeHtml(tr('ai_meta_confidence'))}:</strong> ${escapeHtml(m.confidence || '-')}</div>
+            <div><strong>${escapeHtml(tr('ai_meta_limitations'))}:</strong> ${escapeHtml(m.limitations || '-')}</div>
+            <div class="mt-2 p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-950">
+              <strong>${escapeHtml(tr('ai_meta_expert'))}:</strong> ${escapeHtml(m.expert_note || '-')}
+            </div>
+          </div>
+        `;
+      }
+
+      async function runAiPrice() {
         const out = document.getElementById('ai-price-output');
-        if (out) out.innerHTML = `<strong>${escapeHtml(c[state.lang])}</strong> • ₹${c.mann}/20kg • ₹${c.qtl}/100kg • Total: <strong>₹${(q * c.mann).toLocaleString('en-IN')}</strong>`;
+        if (!out) return;
+        if (!checkRateLimit('ai_price_call', 1200)) return;
+
+        const cropKey = document.getElementById('ai-crop-select')?.value || 'paddy';
+        const c = AI_CROPS[cropKey] || AI_CROPS.paddy;
+        const cropName = c[state.lang] || c.gu;
+        const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) || 50;
+        const quality = cleanText(document.getElementById('ai-qual-select')?.value, 30) || 'standard';
+        const district = cleanText(document.getElementById('district-filter')?.value, 60);
+
+        out.innerHTML = `<div class="text-xs font-semibold text-farm-800">${escapeHtml(tr('ai_loading'))}</div>`;
+
+        if (navigator.onLine) {
+          const { data, error } = await withRetry(() =>
+            sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+              body: { mode: 'price', lang: state.lang, cropName, qty, quality, district }
+            }), 1, 500
+          );
+
+          if (!error && data && data.ok) {
+            const perMann = safePositiveNumber(data.estimated_per_mann_inr, 1, 10000000);
+            const totalInr = safePositiveNumber(data.estimated_total_inr, 1, 1000000000);
+            out.innerHTML = `
+              <div class="space-y-1.5">
+                <div class="font-bold text-slate-900 text-sm">${escapeHtml(cropName)} (${qty} મણ / 20 kg)</div>
+                ${perMann ? `<div class="text-xs font-semibold text-farm-800">₹${perMann.toLocaleString('en-IN')} / 20kg ${totalInr ? `• Total: <strong>₹${totalInr.toLocaleString('en-IN')}</strong>` : ''}</div>` : ''}
+                <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(data.summary)}</p>
+              </div>
+              ${renderAiMetadataBlock(data.metadata)}
+            `;
+            return;
+          }
+        }
+
+        const localMatches = (state.apmcRates || []).filter((r) =>
+          `${r.crop_name_gu || ''} ${r.crop_name_en || ''}`.toLowerCase().includes((c.gu || '').toLowerCase())
+        );
+        const latestRate = localMatches[0];
+        const unitMannPrice = latestRate ? Number(latestRate.modal_price) : c.mann;
+        const fallbackMeta = {
+          source: latestRate
+            ? `Khedut Setu Approved APMC Record (${latestRate.yard_name})`
+            : 'Baseline Reference Table (Edge Function Offline)',
+          last_updated: latestRate ? latestRate.rate_date : new Date().toISOString(),
+          confidence: latestRate
+            ? 'Medium (Grounded in Approved Local APMC Data)'
+            : 'Low (Indicative Baseline Only — Verify at Local APMC)',
+          limitations: state.lang === 'en'
+            ? 'Actual mandi auction rates vary daily based on arrivals, moisture percentage, and lot grading.'
+            : state.lang === 'hi'
+              ? 'वास्तविक मंडी भाव दैनिक आवक, नमी और गुणवत्ता ग्रेडिंग के अनुसार बदलते रहते हैं।'
+              : 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
+          expert_note: state.lang === 'en'
+            ? 'Always confirm today’s official auction slip at your nearest APMC / e-NAM yard or consult an agriculture officer before selling.'
+            : state.lang === 'hi'
+              ? 'बिक्री से पहले नज़दीकी APMC / e-NAM मंडी या कृषि अधिकारी से आज के भाव की पुष्टि ज़रूर करें।'
+              : 'વેચાણ કરતા પહેલાં નજીકની APMC / e-NAM મંડી અથવા કૃષિ અધિકારી પાસે આજના ભાવની ખાતરી અવશ્ય કરો.'
+        };
+
+        out.innerHTML = `
+          <div><strong>${escapeHtml(cropName)}</strong> • ₹${unitMannPrice.toLocaleString('en-IN')}/20kg • Total: <strong>₹${(qty * unitMannPrice).toLocaleString('en-IN')}</strong></div>
+          ${renderAiMetadataBlock(fallbackMeta)}
+        `;
       }
-      function runAiDoctor() {
-        const crop = cleanText(document.getElementById('doc-crop')?.value, 80) || 'Crop';
+
+      async function runAiDoctor() {
         const out = document.getElementById('ai-doctor-output');
-        if (out) out.innerHTML = `<strong>🩺 ${escapeHtml(crop)}</strong> — Avoid waterlogging, use balanced nutrition, consult local agriculture officer if severe.`;
+        if (!out) return;
+        if (!checkRateLimit('ai_doctor_call', 1200)) return;
+
+        const crop = cleanText(document.getElementById('doc-crop')?.value, 80);
+        const symptom = cleanText(document.getElementById('doc-symptom')?.value, 80) || 'yellow';
+        const extra = cleanText(document.getElementById('doc-extra')?.value, 300);
+
+        if (!crop) {
+          const promptNote = state.lang === 'en'
+            ? 'Enter a crop name above and tap Diagnose.'
+            : state.lang === 'hi'
+              ? 'ऊपर फसल का नाम लिखें और निदान बटन दबाएं।'
+              : 'ઉપર પાકનું નામ લખો અને AI નિદાન બટન દબાવો.';
+          out.innerHTML = `<div class="text-xs text-slate-600">${escapeHtml(promptNote)}</div>`;
+          return;
+        }
+
+        out.innerHTML = `<div class="text-xs font-semibold text-emerald-800">${escapeHtml(tr('ai_loading'))}</div>`;
+
+        if (navigator.onLine) {
+          const { data, error } = await withRetry(() =>
+            sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+              body: { mode: 'doctor', lang: state.lang, crop, symptom, extra }
+            }), 1, 500
+          );
+
+          if (!error && data && data.ok) {
+            out.innerHTML = `
+              <div class="space-y-1.5">
+                <div class="font-bold text-slate-900 text-sm">🩺 ${escapeHtml(crop)}</div>
+                <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(data.summary)}</p>
+              </div>
+              ${renderAiMetadataBlock(data.metadata)}
+            `;
+            return;
+          }
+        }
+
+        const fallbackDocMeta = {
+          source: 'Preliminary Agronomy Screening Checklist (Server Offline)',
+          last_updated: new Date().toISOString(),
+          confidence: 'Low (Symptom-Only Screening — No Lab/Field Inspection)',
+          limitations: state.lang === 'en'
+            ? 'Text symptom notes alone cannot confirm exact fungal, viral, or soil micronutrient disorders.'
+            : state.lang === 'hi'
+              ? 'केवल लक्षण लिखने से सटीक रोग या पोषक तत्व की कमी की पुष्टि नहीं हो सकती।'
+              : 'ફક્ત લક્ષણો લખવાથી ચોક્કસ રોગ કે પોષક તત્વની ઉણપ નક્કી થઈ શકતી નથી.',
+          expert_note: state.lang === 'en'
+            ? 'Show an affected leaf/plant sample to your nearest Krishi Vigyan Kendra (KVK) or certified Agronomist before spraying any chemical pesticide.'
+            : state.lang === 'hi'
+              ? 'किसी भी दवा के छिड़काव से पहले प्रभावित पौधे का नमूना नज़दीकी कृषि विज्ञान केंद्र (KVK) या कृषि विशेषज्ञ को अवश्य दिखाएं।'
+              : 'કોઈ પણ દવાનો છંટકાવ કરતા પહેલાં અસરગ્રસ્ત પાન/છોડ નજીકના કૃષિ વિજ્ઞાન કેન્દ્ર (KVK) અથવા પ્રમાણિત કૃષિ નિષ્ણાતને અવશ્ય બતાવો.'
+        };
+
+        const offlineMsg = state.lang === 'en'
+          ? `Preliminary check for ${crop}: Inspect under-leaves for pests, avoid waterlogging, and maintain balanced nutrition.`
+          : state.lang === 'hi'
+            ? `${crop} के लिए प्राथमिक जांच: पत्तियों के निचले हिस्से में कीट जांचें, जलभराव रोकें और संतुलित पोषण दें।`
+            : `${crop} માટે પ્રાથમિક તપાસ: પાનની નીચેની બાજુએ જીવાત તપાસો, ખેતરમાં પાણી ભરાતું અટકાવો અને સંતુલિત ખાતર આપો.`;
+
+        out.innerHTML = `
+          <div><strong>🩺 ${escapeHtml(crop)}</strong> — ${escapeHtml(offlineMsg)}</div>
+          ${renderAiMetadataBlock(fallbackDocMeta)}
+        `;
       }
+
       async function runAiMatch() {
         const box = document.getElementById('ai-match-output'); if (!box) return;
         const { data } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(15));
-        box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}) • ${escapeHtml(r.district || '')}</div>`).join('') || '<div class="text-xs text-slate-500">-</div>';
+        box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}) • ${escapeHtml(r.district || '')}</div>`).join('') || `<div class="text-xs text-slate-500">${escapeHtml(tr('no_products'))}</div>`;
       }
 
+      // ==================== MANDI RATES, AGRI INPUTS & TRANSPORT ====================
       function switchYardSubtab(w) {
         document.getElementById('apmc-panel')?.classList.toggle('hidden', w !== 'apmc');
         document.getElementById('inputs-panel')?.classList.toggle('hidden', w !== 'inputs');
@@ -1290,17 +1755,17 @@
         renderApmcRates();
       }
       function renderApmcRates() {
-        renderChips();
         const box = document.getElementById('apmc-list'); if (!box) return;
         const term = cleanText(document.getElementById('apmc-search')?.value, 60).toLowerCase();
         const list = state.apmcRates.filter((r) => {
+          const visOk = r.approval_status === 'approved' || (state.user && r.submitted_by === state.user.id) || isStrictAdminReady();
           const catOk = state.mandiCatFilter === 'all' || (r.rate_category || 'grains') === state.mandiCatFilter;
           const termOk = !term || (r.yard_name || '').toLowerCase().includes(term) || (r.district || '').toLowerCase().includes(term) || (r.crop_name_gu || '').toLowerCase().includes(term) || (r.crop_name_en || '').toLowerCase().includes(term);
-          return catOk && termOk;
+          return visOk && catOk && termOk;
         });
         if (!list.length) { box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border border-slate-200">${escapeHtml(tr('no_products'))}</div>`; return; }
         box.innerHTML = list.map((r) => {
-          const canUpdate = state.user && (r.submitted_by === state.user.id || state.profile?.role === 'admin');
+          const canUpdate = state.user && (r.submitted_by === state.user.id || isStrictAdminReady());
           const pendingBadge = r.approval_status === 'pending' ? `<span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">⏳ Pending Admin</span>` : '';
           return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><div class="flex items-center gap-1.5 flex-wrap"><h4 class="font-bold text-slate-900 text-base">${escapeHtml(state.lang === 'en' && r.crop_name_en ? r.crop_name_en : r.crop_name_gu)}</h4>${pendingBadge}</div><div class="text-xs text-slate-500">📍 ${escapeHtml(r.yard_name)} (${escapeHtml(r.district)}) • ${escapeHtml(r.rate_date)}</div></div><span class="text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-1 rounded-full">${escapeHtml(r.unit)}</span></div><div class="grid grid-cols-3 gap-2 text-center pt-1"><div class="bg-slate-50 p-2 rounded-xl"><div class="text-[10px] text-slate-500">${escapeHtml(tr('apmc_min'))}</div><div class="font-bold text-sm">₹${Number(r.min_price).toLocaleString('en-IN')}</div></div><div class="bg-farm-50 p-2 rounded-xl border border-farm-200"><div class="text-[10px] text-farm-700 font-semibold">${escapeHtml(tr('apmc_modal'))}</div><div class="font-extrabold text-farm-800 text-sm">₹${Number(r.modal_price).toLocaleString('en-IN')}</div></div><div class="bg-amber-50 p-2 rounded-xl"><div class="text-[10px] text-amber-700">${escapeHtml(tr('apmc_max'))}</div><div class="font-bold text-amber-800 text-sm">₹${Number(r.max_price).toLocaleString('en-IN')}</div></div></div>${canUpdate ? `<div class="pt-1.5 border-t border-slate-100 flex justify-end"><button type="button" data-action="edit-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">✏️ Daily Rate Update</button></div>` : ''}</div>`;
         }).join('');
@@ -1324,12 +1789,18 @@
       }
 
       async function handleMandiRateSubmit(e) {
-        e.preventDefault(); if (!requireAdminWrite('Mandi rate update') || !checkRateLimit('mandi_sub', 2000)) return;
+        e.preventDefault();
+        if (!state.user) { switchTab('account'); return; }
+        if (!checkRateLimit('mandi_sub', 1800)) return;
         const editId = document.getElementById('mr-edit-id').value;
         const minP = safePositiveNumber(document.getElementById('mr-min').value, 0, 1000000);
         const modP = safePositiveNumber(document.getElementById('mr-modal').value, 0, 1000000);
         const maxP = safePositiveNumber(document.getElementById('mr-max').value, 0, 1000000);
-        if (minP === null || modP === null || maxP === null || maxP < minP) { showToast('Invalid prices.', 'error'); return; }
+        if (minP === null || modP === null || maxP === null || maxP < minP) {
+          showToast(state.lang === 'en' ? 'Invalid min/modal/max prices.' : state.lang === 'hi' ? 'अमान्य भाव।' : 'ભાવની રકમ બરાબર નથી.', 'error');
+          return;
+        }
+        const isAdm = isStrictAdminReady();
         const payload = {
           rate_category: document.getElementById('mr-cat').value,
           crop_name_gu: cleanText(document.getElementById('mr-crop').value, 100),
@@ -1339,10 +1810,19 @@
           min_price: minP, modal_price: modP, max_price: maxP,
           unit: cleanText(document.getElementById('mr-unit').value, 35) || '20 kg (મણ)',
           rate_date: new Date().toISOString().split('T')[0],
-          submitted_by: state.user.id
+          submitted_by: state.user.id,
+          approval_status: isAdm ? 'approved' : 'pending'
         };
-        const res = isValidUUID(editId) ? await sb.from('apmc_rates').update(payload).eq('id', editId) : await sb.from('apmc_rates').insert(payload);
-        if (res.error) showToast(res.error.message, 'error'); else { closeModal('mandi-rate-modal'); showToast('OK'); loadApmcRates(); loadV5AdminQueues(); }
+        const res = isValidUUID(editId)
+          ? await sb.from('apmc_rates').update(payload).eq('id', editId)
+          : await sb.from('apmc_rates').insert(payload);
+        if (res.error) showToast(res.error.message, 'error');
+        else {
+          closeModal('mandi-rate-modal');
+          showToast(isAdm ? tr('toast_saved') : tr('toast_submitted_pending'));
+          loadApmcRates();
+          if (isAdm) loadV5AdminQueues();
+        }
       }
 
       async function loadAgriInputs() {
@@ -1353,17 +1833,18 @@
         renderAgriInputs();
       }
       function renderAgriInputs() {
-        renderChips();
         const box = document.getElementById('agri-inputs-list'); if (!box) return;
         const term = cleanText(document.getElementById('agri-input-search')?.value, 60).toLowerCase();
         const list = state.agriInputs.filter((x) => {
+          const visOk = x.approval_status === 'approved' || (state.user && x.supplier_id === state.user.id) || isStrictAdminReady();
           const tOk = state.agriInputTypeFilter === 'all' || x.input_type === state.agriInputTypeFilter;
           const sOk = !term || (x.item_name_gu || '').toLowerCase().includes(term) || (x.brand_name || '').toLowerCase().includes(term) || (x.district || '').toLowerCase().includes(term);
-          return tOk && sOk;
+          return visOk && tOk && sOk;
         });
+        if (!list.length) { box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border border-slate-200">${escapeHtml(tr('no_products'))}</div>`; return; }
         box.innerHTML = list.map((it) => {
           const ph = sanitizeIndianPhone(it.contact_number); const wa = ph ? `91${ph}` : '';
-          const canEdit = state.user && (it.supplier_id === state.user.id || state.profile?.role === 'admin');
+          const canEdit = state.user && (it.supplier_id === state.user.id || isStrictAdminReady());
           return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><span class="text-[10px] font-bold bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full uppercase">${escapeHtml(it.input_type)}</span>${it.approval_status === 'pending' ? `<span class="ml-1 text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">⏳ Pending</span>` : ''}<h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(it.item_name_gu)}</h4><div class="text-xs text-slate-500">${it.brand_name ? `${escapeHtml(it.brand_name)} • ` : ''}📍 ${escapeHtml([it.village, it.district].filter(Boolean).join(', '))}</div></div><div class="text-right"><div class="text-base font-extrabold text-farm-800">₹${Number(it.price).toLocaleString('en-IN')}</div><div class="text-[11px] text-slate-500">/ ${escapeHtml(it.unit)}</div></div></div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="flex-1 bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}${canEdit ? `<button type="button" data-action="edit-agri-input" data-id="${escapeHtml(it.id)}" class="px-3 py-2 rounded-xl bg-amber-100 text-amber-900 text-xs font-bold">✏️ Update</button>` : ''}</div></div>`;
         }).join('');
       }
@@ -1385,25 +1866,45 @@
         openModal('agri-input-modal');
       }
       async function handleAgriInputSubmit(e) {
-        e.preventDefault(); if (!requireAdminWrite('Agri input update') || !checkRateLimit('input_sub', 2000)) return;
+        e.preventDefault();
+        if (!state.user) { switchTab('account'); return; }
+        if (!checkRateLimit('input_sub', 1800)) return;
         const editId = document.getElementById('ain-edit-id').value;
         const price = safePositiveNumber(document.getElementById('ain-price').value, 0, 10000000);
         const ph = sanitizeIndianPhone(document.getElementById('ain-mobile').value);
-        if (price === null || !ph) { showToast('Invalid price or phone.', 'error'); return; }
+        if (price === null || !ph) {
+          showToast(state.lang === 'en' ? 'Valid price & 10-digit mobile required.' : state.lang === 'hi' ? 'सही भाव और मोबाइल नंबर डालें।' : 'યોગ્ય ભાવ અને ૧૦ અંકનો મોબાઇલ નંબર નાખો.', 'error');
+          return;
+        }
+        const isAdm = isStrictAdminReady();
         const payload = {
-          supplier_id: state.user.id, input_type: document.getElementById('ain-type').value,
-          item_name_gu: cleanText(document.getElementById('ain-name').value, 120), item_name_en: cleanText(document.getElementById('ain-name').value, 120),
-          brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null, price,
-          unit: cleanText(document.getElementById('ain-unit').value, 35) || '1 Unit', village: cleanText(document.getElementById('ain-village').value, 70),
-          district: cleanText(document.getElementById('ain-district').value, 70), contact_number: ph,
-          stock_note: cleanText(document.getElementById('ain-note').value, 160) || null
+          supplier_id: state.user.id,
+          input_type: document.getElementById('ain-type').value,
+          item_name_gu: cleanText(document.getElementById('ain-name').value, 120),
+          item_name_en: cleanText(document.getElementById('ain-name').value, 120),
+          brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null,
+          price,
+          unit: cleanText(document.getElementById('ain-unit').value, 35) || '1 Unit',
+          village: cleanText(document.getElementById('ain-village').value, 70),
+          district: cleanText(document.getElementById('ain-district').value, 70),
+          contact_number: ph,
+          stock_note: cleanText(document.getElementById('ain-note').value, 160) || null,
+          approval_status: isAdm ? 'approved' : 'pending'
         };
-        const res = isValidUUID(editId) ? await sb.from('agri_inputs').update(payload).eq('id', editId) : await sb.from('agri_inputs').insert(payload);
-        if (res.error) showToast(res.error.message, 'error'); else { closeModal('agri-input-modal'); showToast('OK'); loadAgriInputs(); loadV5AdminQueues(); }
+        const res = isValidUUID(editId)
+          ? await sb.from('agri_inputs').update(payload).eq('id', editId)
+          : await sb.from('agri_inputs').insert(payload);
+        if (res.error) showToast(res.error.message, 'error');
+        else {
+          closeModal('agri-input-modal');
+          showToast(isAdm ? tr('toast_saved') : tr('toast_submitted_pending'));
+          loadAgriInputs();
+          if (isAdm) loadV5AdminQueues();
+        }
       }
 
       async function loadTransportList() {
-        const { data } = await withRetry(() => sb.from('transport_providers').select('*').eq('is_available', true).limit(60));
+        const { data } = await withRetry(() => sb.from('transport_providers').select('id, owner_id, driver_name, vehicle_type, mobile_number, village, district, is_available').eq('is_available', true).limit(60));
         if (Array.isArray(data)) { state.transportList = data; saveCache('transport', data); }
         else { state.transportList = loadCache('transport') || []; }
         renderTransportList();
@@ -1412,24 +1913,68 @@
         const box = document.getElementById('transport-list'); if (!box) return;
         const term = cleanText(document.getElementById('transport-search')?.value, 60).toLowerCase();
         const list = term ? state.transportList.filter((t) => (t.village || '').toLowerCase().includes(term) || (t.district || '').toLowerCase().includes(term) || (t.driver_name || '').toLowerCase().includes(term)) : state.transportList;
+        if (!list.length) { box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border border-slate-200">${escapeHtml(tr('no_products'))}</div>`; return; }
         box.innerHTML = list.map((item) => {
           const ph = sanitizeIndianPhone(item.mobile_number); const wa = ph ? `91${ph}` : '';
           return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full">🚜 ${escapeHtml(item.vehicle_type)}</span><h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(item.driver_name)}</h4><div class="text-xs text-slate-500">📍 ${escapeHtml([item.village, item.district].filter(Boolean).join(', '))}</div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="w-full bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}</div></div>`;
         }).join('');
       }
 
+      // ==================== ADMIN QUEUES & LIVE RECORDS DELETE ====================
       async function loadV5AdminQueues() {
-        if (state.profile?.role !== 'admin') return;
+        if (!isStrictAdminReady()) return;
         const mBox = document.getElementById('admin-pending-mandi-list');
         const iBox = document.getElementById('admin-pending-inputs-list');
         const [mRes, iRes] = await Promise.all([
           withRetry(() => sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)),
           withRetry(() => sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25))
         ]);
-        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${r.modal_price}</div><div class="flex gap-1"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️ Delete</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
-        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${it.price}</div><div class="flex gap-1"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️ Delete</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${Number(r.modal_price).toLocaleString('en-IN')}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${Number(it.price).toLocaleString('en-IN')}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
       }
 
+      async function loadAdminLiveRecords() {
+        if (!requireAdminWrite('Live records view')) return;
+        const mBox = document.getElementById('admin-live-mandi-list');
+        const iBox = document.getElementById('admin-live-inputs-list');
+        const pBox = document.getElementById('admin-live-products-list');
+        if (mBox) mBox.textContent = '...';
+        if (iBox) iBox.textContent = '...';
+        if (pBox) pBox.textContent = '...';
+
+        const [mRes, iRes, pRes] = await Promise.all([
+          withRetry(() => sb.from('apmc_rates').select('id, crop_name_gu, yard_name, district, modal_price, approval_status').order('created_at', { ascending: false }).limit(25)),
+          withRetry(() => sb.from('agri_inputs').select('id, item_name_gu, input_type, price, district, approval_status').order('created_at', { ascending: false }).limit(25)),
+          withRetry(() => sb.from('products').select('id, title_gu, expected_price, unit, district, state, status').is('deleted_at', null).order('created_at', { ascending: false }).limit(25))
+        ]);
+
+        if (mBox) {
+          mBox.innerHTML = (mRes.data || []).map((r) =>
+            `<div class="bg-slate-50 px-3 py-2 rounded-xl border flex items-center justify-between gap-2">
+              <span><strong>${escapeHtml(r.crop_name_gu)}</strong> — ${escapeHtml(r.yard_name)} (${escapeHtml(r.district || '')}) • ₹${Number(r.modal_price).toLocaleString('en-IN')}</span>
+              <button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">🗑️ Delete</button>
+            </div>`
+          ).join('') || '<div class="text-slate-400">-</div>';
+        }
+        if (iBox) {
+          iBox.innerHTML = (iRes.data || []).map((it) =>
+            `<div class="bg-slate-50 px-3 py-2 rounded-xl border flex items-center justify-between gap-2">
+              <span><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] • ₹${Number(it.price).toLocaleString('en-IN')}</span>
+              <button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">🗑️ Delete</button>
+            </div>`
+          ).join('') || '<div class="text-slate-400">-</div>';
+        }
+        if (pBox) {
+          pBox.innerHTML = (pRes.data || []).map((p) =>
+            `<div class="bg-slate-50 px-3 py-2 rounded-xl border flex items-center justify-between gap-2">
+              <span><strong>${escapeHtml(p.title_gu)}</strong> (${escapeHtml(p.district || '')}, ${escapeHtml(p.state || '')}) • ₹${Number(p.expected_price).toLocaleString('en-IN')}/${escapeHtml(p.unit)}</span>
+              <button type="button" data-action="delete-product-admin" data-id="${escapeHtml(p.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">🗑️ Delete</button>
+            </div>`
+          ).join('') || '<div class="text-slate-400">-</div>';
+        }
+      }
+
+      // ==================== PRODUCTS, SELLER DASHBOARD & DIRECT UPI ====================
       async function loadCategories() {
         const { data } = await withRetry(() => sb.from('categories').select('id, parent_id, slug, name_gu, name_hi, name_en').eq('is_active', true).order('sort_order', { ascending: true }));
         state.categories = Array.isArray(data) ? data : [];
@@ -1444,39 +1989,203 @@
       }
 
       async function loadProducts() {
-        let q = sb.from('products').select('*').eq('status', 'approved').is('deleted_at', null).order('created_at', { ascending: false }).limit(60);
+        const reqId = ++latestProductsReqId;
+        // Explicit safe columns (never expose raw contact_number in public list)
+        let q = sb.from('products')
+          .select('id, seller_id, category_id, reference_code, title_gu, title_hi, title_en, available_quantity, unit, expected_price, price_unit, village, district, state, image_paths, status, created_at')
+          .eq('status', 'approved')
+          .is('deleted_at', null)
+          .order('created_at', { ascending: false })
+          .limit(60);
         if (isValidUUID(state.selectedCategory)) q = q.eq('category_id', state.selectedCategory);
+        const stFilter = cleanText(document.getElementById('state-filter')?.value, 60);
+        if (stFilter) q = q.eq('state', stFilter);
         const dist = cleanText(document.getElementById('district-filter')?.value, 60).replace(/[%_]/g, '');
         if (dist) q = q.ilike('district', `%${dist}%`);
         const { data } = await withRetry(() => q);
+        if (reqId !== latestProductsReqId) return; // Ignore stale out-of-order response
         if (Array.isArray(data)) saveCache('products', data);
         const term = cleanText(document.getElementById('search-input')?.value, 80).toLowerCase();
         let list = Array.isArray(data) ? data : (loadCache('products') || []);
-        if (term) list = list.filter((p) => (p.title_gu || '').toLowerCase().includes(term) || (p.village || '').toLowerCase().includes(term) || (p.district || '').toLowerCase().includes(term));
+        if (term) list = list.filter((p) =>
+          (p.title_gu || '').toLowerCase().includes(term) ||
+          (p.title_hi || '').toLowerCase().includes(term) ||
+          (p.title_en || '').toLowerCase().includes(term) ||
+          (p.village || '').toLowerCase().includes(term) ||
+          (p.district || '').toLowerCase().includes(term) ||
+          (p.state || '').toLowerCase().includes(term)
+        );
         state.products = list;
         const pulse = document.getElementById('ai-pulse-summary');
-        if (pulse) pulse.textContent = `${list.length} active items`;
+        if (pulse) pulse.textContent = `${list.length} ${tr('active_items_lbl')}`;
         renderProducts();
       }
+
       function renderProducts() {
         const g = document.getElementById('products-grid'); const c = document.getElementById('products-count'); if (!g) return;
         if (c) c.textContent = String(state.products.length);
-        if (!state.products.length) { g.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border text-sm text-slate-500">${escapeHtml(tr('no_products'))}</div>`; return; }
+        if (!state.products.length) {
+          g.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-8 text-center border text-sm text-slate-500">${escapeHtml(tr('no_products'))}</div>`;
+          return;
+        }
         g.innerHTML = state.products.map((p) => {
           const imgs = Array.isArray(p.image_paths) ? p.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
-          return `<article class="bg-white rounded-2xl overflow-hidden shadow-sm border"><div class="h-40 bg-farm-50 flex items-center justify-center overflow-hidden">${imgs[0] ? `<img src="${escapeHtml(imgs[0])}" class="w-full h-full object-cover" loading="lazy" />` : '<span class="text-4xl">🌾</span>'}</div><div class="p-3.5 space-y-1.5"><h4 class="font-bold text-sm text-slate-900">${escapeHtml(pickLangField(p, 'title'))}</h4><p class="text-xs text-slate-500">📍 ${escapeHtml([p.village, p.district].filter(Boolean).join(', '))}</p><div class="text-base font-extrabold text-farm-800">₹${Number(p.expected_price || 0).toLocaleString('en-IN')} / ${escapeHtml(p.unit)}</div></div></article>`;
+          const loc = [p.village, p.district, p.state].filter(Boolean).join(', ');
+          return `
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
+              <div>
+                <div class="h-40 bg-farm-50 flex items-center justify-center overflow-hidden">
+                  ${imgs[0] ? `<img src="${escapeHtml(imgs[0])}" alt="${escapeHtml(pickLangField(p, 'title'))}" class="w-full h-full object-cover" loading="lazy" />` : '<span class="text-4xl">🌾</span>'}
+                </div>
+                <div class="p-3.5 space-y-1.5">
+                  <div class="flex items-start justify-between gap-2">
+                    <h4 class="font-bold text-sm text-slate-900">${escapeHtml(pickLangField(p, 'title'))}</h4>
+                    <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md shrink-0">${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)}</span>
+                  </div>
+                  <p class="text-xs text-slate-500">📍 ${escapeHtml(loc)}</p>
+                  <div class="text-base font-extrabold text-farm-800">₹${Number(p.expected_price || 0).toLocaleString('en-IN')} / ${escapeHtml(p.unit)}</div>
+                </div>
+              </div>
+              <div class="px-3.5 pb-3.5">
+                <button type="button" data-action="open-product-detail" data-id="${escapeHtml(p.id)}"
+                  class="w-full bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2.5 rounded-xl transition">
+                  ${escapeHtml(tr('btn_view_contact_upi'))}
+                </button>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      async function openProductDetailModal(productId) {
+        if (!isValidUUID(productId)) return;
+        const prod = state.products.find((x) => x.id === productId);
+        if (!prod) return;
+        const body = document.getElementById('product-detail-body');
+        if (!body) return;
+
+        const imgs = Array.isArray(prod.image_paths) ? prod.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
+        const loc = [prod.village, prod.district, prod.state].filter(Boolean).join(', ');
+        const loadingText = state.lang === 'en' ? 'Loading verified seller details...' : state.lang === 'hi' ? 'विक्रेता विवरण लोड हो रहा है...' : 'વેચનારની સુરક્ષિત વિગત લોડ થાય છે...';
+
+        body.innerHTML = `
+          ${imgs[0] ? `<img src="${escapeHtml(imgs[0])}" class="w-full h-48 object-cover rounded-2xl border" />` : ''}
+          <div>
+            <h4 class="font-bold text-lg text-slate-900">${escapeHtml(pickLangField(prod, 'title'))}</h4>
+            <p class="text-xs text-slate-500">📍 ${escapeHtml(loc)} • ${escapeHtml(prod.available_quantity)} ${escapeHtml(prod.unit)}</p>
+            <div class="text-lg font-extrabold text-farm-800 mt-1">₹${Number(prod.expected_price || 0).toLocaleString('en-IN')} / ${escapeHtml(prod.unit)}</div>
+          </div>
+          <div id="pd-rpc-box" class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-600">${escapeHtml(loadingText)}</div>
+        `;
+        openModal('product-detail-modal');
+
+        const rpcBox = document.getElementById('pd-rpc-box');
+        if (!rpcBox) return;
+
+        if (!state.user) {
+          rpcBox.innerHTML = `
+            <div class="space-y-2 text-center">
+              <p class="font-semibold text-slate-700">${escapeHtml(tr('tr_login_num'))}</p>
+              <button type="button" data-action="close-modal" data-modal="product-detail-modal" class="hidden"></button>
+              <button type="button" id="pd-go-login-btn" class="w-full bg-farm-700 text-white font-bold py-2.5 rounded-xl text-xs">${escapeHtml(tr('btn_go_login'))}</button>
+            </div>
+          `;
+          document.getElementById('pd-go-login-btn')?.addEventListener('click', () => {
+            closeModal('product-detail-modal');
+            switchTab('account');
+          });
+          return;
+        }
+
+        const [contactRes, payRes] = await Promise.all([
+          withRetry(() => sb.rpc('get_product_seller_contact', { p_product_id: productId })),
+          withRetry(() => sb.rpc('get_product_seller_payment_info', { p_product_id: productId }))
+        ]);
+
+        const contact = Array.isArray(contactRes.data) ? contactRes.data[0] : contactRes.data;
+        const payInfo = Array.isArray(payRes.data) ? payRes.data[0] : payRes.data;
+        const ph = sanitizeIndianPhone(contact?.contact_number);
+        const wa = ph ? `91${ph}` : '';
+        const safeUpi = (payInfo?.allow_upi_payment && UPI_RE.test(String(payInfo?.upi_id || ''))) ? String(payInfo.upi_id).trim() : '';
+        const sellerName = cleanText(payInfo?.seller_name || 'KHEDUT SETU Farmer', 60);
+        const upiDeepLink = safeUpi
+          ? `upi://pay?pa=${encodeURIComponent(safeUpi)}&pn=${encodeURIComponent(sellerName)}&cu=INR`
+          : '';
+
+        rpcBox.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="font-bold text-slate-800">👨‍🌾 ${escapeHtml(sellerName)}</div>
+            <div class="flex gap-2">
+              ${ph && contact?.allow_phone_contact ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white font-bold py-2.5 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a>` : ''}
+              ${wa && contact?.allow_whatsapp_contact ? `<a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : ''}
+            </div>
+            ${safeUpi ? `
+              <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-2">
+                <div class="text-xs font-bold text-amber-950">💳 Direct Seller UPI ID: <span class="font-mono select-all">${escapeHtml(safeUpi)}</span></div>
+                <a href="${escapeHtml(upiDeepLink)}" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 rounded-lg text-center text-xs">
+                  ⚡ Open UPI App to Pay Farmer
+                </a>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+
+      async function loadMyListings() {
+        const box = document.getElementById('my-listings-container');
+        if (!box || !state.user) return;
+        const { data } = await withRetry(() =>
+          sb.from('products')
+            .select('id, title_gu, available_quantity, unit, expected_price, village, district, state, status, created_at')
+            .eq('seller_id', state.user.id)
+            .is('deleted_at', null)
+            .order('created_at', { ascending: false })
+            .limit(40)
+        );
+        state.myProducts = Array.isArray(data) ? data : [];
+        if (!state.myProducts.length) {
+          box.innerHTML = `<div class="col-span-full bg-white rounded-2xl p-6 text-center border text-xs text-slate-500">${escapeHtml(tr('no_products'))}</div>`;
+          return;
+        }
+        box.innerHTML = state.myProducts.map((p) => {
+          const stColors = {
+            approved: 'bg-emerald-100 text-emerald-800',
+            pending: 'bg-amber-100 text-amber-800',
+            sold: 'bg-slate-200 text-slate-800',
+            rejected: 'bg-red-100 text-red-800'
+          };
+          const badgeClass = stColors[p.status] || 'bg-slate-100 text-slate-700';
+          return `
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${badgeClass}">${escapeHtml(p.status)}</span>
+                  <h4 class="font-bold text-slate-900 text-sm mt-1">${escapeHtml(p.title_gu)}</h4>
+                  <p class="text-xs text-slate-500">📍 ${escapeHtml([p.village, p.district, p.state].filter(Boolean).join(', '))}</p>
+                </div>
+                <div class="text-right font-extrabold text-farm-800 text-sm">₹${Number(p.expected_price).toLocaleString('en-IN')}/${escapeHtml(p.unit)}</div>
+              </div>
+              <div class="pt-2 border-t border-slate-100 flex gap-2">
+                ${p.status === 'approved' ? `<button type="button" data-action="mark-product-sold" data-id="${escapeHtml(p.id)}" class="flex-1 bg-slate-800 text-white text-xs font-bold py-1.5 rounded-lg">✅ Mark Sold</button>` : ''}
+                <button type="button" data-action="delete-my-product" data-id="${escapeHtml(p.id)}" class="px-3 py-1.5 rounded-lg bg-red-50 text-red-700 text-xs font-bold">🗑️ Delete</button>
+              </div>
+            </div>
+          `;
         }).join('');
       }
 
       async function loadBuyerRequests() {
         const { data } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(30));
         const box = document.getElementById('requests-list');
-        if (box) box.innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border"><strong class="text-sm">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-500">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}</div></div>`).join('');
+        if (box) box.innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border shadow-sm space-y-1"><strong class="text-sm text-slate-900">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-600">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)} • 📍 ${escapeHtml([r.delivery_location, r.district].filter(Boolean).join(', '))}</div></div>`).join('') || `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
       }
+
       function refreshSellTab() {
         document.getElementById('sell-guest-box')?.classList.toggle('hidden', Boolean(state.user));
         document.getElementById('sell-workspace')?.classList.toggle('hidden', !state.user);
+        if (state.user) loadMyListings();
       }
+
       function refreshAccountTab() {
         document.getElementById('auth-box')?.classList.toggle('hidden', Boolean(state.user));
         document.getElementById('profile-box')?.classList.toggle('hidden', !state.user);
@@ -1488,12 +2197,16 @@
         document.getElementById('p-mobile').value = p.mobile_number || '';
         document.getElementById('p-village').value = p.village_city || '';
         document.getElementById('p-district').value = p.district || '';
+        if (p.state) document.getElementById('p-state').value = p.state;
         document.getElementById('p-upi').value = p.upi_id || '';
-        const isAdm = p.role === 'admin';
+        const allowUpiEl = document.getElementById('p-allow-upi');
+        if (allowUpiEl) allowUpiEl.checked = Boolean(p.allow_upi_payment);
+        const isAdm = isStrictAdminReady();
         document.getElementById('admin-panel')?.classList.toggle('hidden', !isAdm);
         if (isAdm) loadV5AdminQueues();
       }
 
+      // ==================== UNIFIED EVENT DELEGATION ====================
       document.addEventListener('click', async (e) => {
         if (e.target?.classList?.contains('modal-backdrop') && e.target.id) {
           if (e.target.id === 'voice-modal') stopVoiceListening();
@@ -1506,16 +2219,24 @@
         if (a === 'share-app') { await shareKhedutSetuApp(); return; }
         if (a === 'nav-tab') switchTab(el.getAttribute('data-tab'));
         else if (a === 'set-lang') setLang(el.getAttribute('data-lang'));
-        else if (a === 'reset-filters') { document.getElementById('search-input').value = ''; document.getElementById('district-filter').value = ''; state.selectedCategory = null; renderCategories(); loadProducts(); }
+        else if (a === 'reset-filters') {
+          document.getElementById('search-input').value = '';
+          document.getElementById('district-filter').value = '';
+          document.getElementById('state-filter').value = '';
+          state.selectedCategory = null;
+          renderCategories();
+          loadProducts();
+        }
         else if (a === 'refresh-products') loadProducts();
+        else if (a === 'refresh-my-listings') loadMyListings();
         else if (a === 'refresh-apmc') loadApmcRates();
         else if (a === 'yard-subtab') switchYardSubtab(el.getAttribute('data-subtab'));
         else if (a === 'ai-subtab') switchAiSubtab(el.getAttribute('data-subtab'));
         else if (a === 'run-ai-price') runAiPrice();
         else if (a === 'run-ai-doctor') runAiDoctor();
         else if (a === 'run-ai-match') runAiMatch();
-        else if (a === 'set-mandi-cat') { state.mandiCatFilter = el.getAttribute('data-cat') || 'all'; renderApmcRates(); }
-        else if (a === 'set-agri-type') { state.agriInputTypeFilter = el.getAttribute('data-type') || 'all'; renderAgriInputs(); }
+        else if (a === 'set-mandi-cat') { state.mandiCatFilter = el.getAttribute('data-cat') || 'all'; renderChips(); renderApmcRates(); }
+        else if (a === 'set-agri-type') { state.agriInputTypeFilter = el.getAttribute('data-type') || 'all'; renderChips(); renderAgriInputs(); }
         else if (a === 'open-mandi-rate-modal') openMandiRateModal(null);
         else if (a === 'edit-mandi-rate') { const r = state.apmcRates.find((x) => x.id === el.getAttribute('data-id')); if (r) openMandiRateModal(r); }
         else if (a === 'open-agri-input-modal') openAgriInputModal(null);
@@ -1523,12 +2244,19 @@
         else if (a === 'open-transport-modal') { if (!state.user) switchTab('account'); else openModal('add-transport-modal'); }
         else if (a === 'open-request-modal') { if (!state.user) switchTab('account'); else openModal('add-request-modal'); }
         else if (a === 'open-product-modal') { if (!state.user) switchTab('account'); else openModal('add-product-modal'); }
+        else if (a === 'open-product-detail') await openProductDetailModal(el.getAttribute('data-id'));
         else if (a === 'select-cat') { const id = el.getAttribute('data-id'); state.selectedCategory = isValidUUID(id) ? id : null; renderCategories(); loadProducts(); }
-        else if (a === 'auth-mode') { const m = el.getAttribute('data-mode'); document.getElementById('login-form').classList.toggle('hidden', m !== 'login'); document.getElementById('register-form').classList.toggle('hidden', m === 'login'); }
+        else if (a === 'auth-mode') {
+          const m = el.getAttribute('data-mode');
+          document.getElementById('login-form').classList.toggle('hidden', m !== 'login');
+          document.getElementById('register-form').classList.toggle('hidden', m === 'login');
+          document.getElementById('auth-tab-login').className = m === 'login' ? 'py-2 rounded-lg bg-white text-farm-800 shadow-sm' : 'py-2 rounded-lg text-slate-600';
+          document.getElementById('auth-tab-register').className = m !== 'login' ? 'py-2 rounded-lg bg-white text-farm-800 shadow-sm' : 'py-2 rounded-lg text-slate-600';
+        }
         else if (a === 'google-login') {
           if (!checkRateLimit('google_oauth', 2000)) return;
           if (!navigator.onLine) {
-            showToast(state.lang === 'en' ? 'Internet connection required for Google Login.' : state.lang === 'hi' ? 'Google लॉगिन के लिए इंटरनेट ज़रूरी है।' : 'Google Login mate internet chalu hovu jaruri che.', 'error');
+            showToast(tr('offline_msg'), 'error');
             return;
           }
           const redirectUrl = window.location.origin + window.location.pathname;
@@ -1540,17 +2268,55 @@
             }
           }), 1, 500);
           if (error) {
-            showToast('Google Login Error: ' + (error.message || 'Check Supabase Google OAuth & Redirect URL'), 'error');
+            showToast('Google Login Error: ' + (error.message || 'Check Supabase Google OAuth'), 'error');
           } else if (data && data.url && window.top !== window.self) {
             try { window.top.location.href = data.url; } catch { window.location.href = data.url; }
           }
         }
         else if (a === 'logout') { await sb.auth.signOut(); state.user = null; state.profile = null; switchTab('market'); }
-        else if (a === 'admin-refresh') loadV5AdminQueues();
-        else if (a === 'moderate-mandi') { if (!requireAdminWrite('Approval')) return; const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await withRetry(() => sb.from('apmc_rates').update({ approval_status: el.getAttribute('data-st') }).eq('id', id)); await loadApmcRates(); await loadV5AdminQueues(); } }
-        else if (a === 'moderate-input') { if (!requireAdminWrite('Approval')) return; const id = el.getAttribute('data-id'); if (isValidUUID(id)) { await withRetry(() => sb.from('agri_inputs').update({ approval_status: el.getAttribute('data-st') }).eq('id', id)); await loadAgriInputs(); await loadV5AdminQueues(); } }
+        else if (a === 'admin-refresh') { await loadV5AdminQueues(); }
+        else if (a === 'admin-load-live') { await loadAdminLiveRecords(); }
+        else if (a === 'moderate-mandi') {
+          if (!requireAdminWrite('Approval')) return;
+          const id = el.getAttribute('data-id');
+          const st = el.getAttribute('data-st');
+          if (isValidUUID(id) && (st === 'approved' || st === 'rejected')) {
+            const { error } = await withRetry(() => sb.from('apmc_rates').update({ approval_status: st }).eq('id', id));
+            if (error) { showToast(error.message || tr('toast_rls_blocked'), 'error'); return; }
+            showToast(tr('toast_saved'));
+            await loadApmcRates();
+            await loadV5AdminQueues();
+          }
+        }
+        else if (a === 'moderate-input') {
+          if (!requireAdminWrite('Approval')) return;
+          const id = el.getAttribute('data-id');
+          const st = el.getAttribute('data-st');
+          if (isValidUUID(id) && (st === 'approved' || st === 'rejected')) {
+            const { error } = await withRetry(() => sb.from('agri_inputs').update({ approval_status: st }).eq('id', id));
+            if (error) { showToast(error.message || tr('toast_rls_blocked'), 'error'); return; }
+            showToast(tr('toast_saved'));
+            await loadAgriInputs();
+            await loadV5AdminQueues();
+          }
+        }
         else if (a === 'delete-mandi-rate') { await deleteRecordWithRetry('apmc_rates', el.getAttribute('data-id'), loadApmcRates); }
         else if (a === 'delete-agri-input') { await deleteRecordWithRetry('agri_inputs', el.getAttribute('data-id'), loadAgriInputs); }
+        else if (a === 'delete-product-admin') { await deleteRecordWithRetry('products', el.getAttribute('data-id'), loadProducts); }
+        else if (a === 'mark-product-sold') {
+          const id = el.getAttribute('data-id');
+          if (!state.user || !isValidUUID(id)) return;
+          const { error } = await sb.from('products').update({ status: 'sold' }).eq('id', id).eq('seller_id', state.user.id);
+          if (error) { showToast(error.message || tr('toast_del_fail'), 'error'); return; }
+          showToast(tr('toast_saved')); loadMyListings(); loadProducts();
+        }
+        else if (a === 'delete-my-product') {
+          const id = el.getAttribute('data-id');
+          if (!state.user || !isValidUUID(id)) return;
+          const { error } = await sb.from('products').delete().eq('id', id).eq('seller_id', state.user.id);
+          if (error) { showToast(error.message || tr('toast_del_fail'), 'error'); return; }
+          showToast(tr('toast_deleted')); loadMyListings(); loadProducts();
+        }
         else if (a === 'open-voice') { openModal('voice-modal'); startVoiceListening(); }
         else if (a === 'toggle-voice-listen') startVoiceListening();
         else if (a === 'voice-example') processVoiceCommand(el.getAttribute('data-text'));
@@ -1562,14 +2328,19 @@
       document.getElementById('apmc-search')?.addEventListener('input', renderApmcRates);
       document.getElementById('agri-input-search')?.addEventListener('input', renderAgriInputs);
       document.getElementById('transport-search')?.addEventListener('input', renderTransportList);
-      document.getElementById('search-input')?.addEventListener('input', loadProducts);
-      document.getElementById('district-filter')?.addEventListener('input', loadProducts);
+      const debouncedLoadProducts = debounce(loadProducts, 300);
+      document.getElementById('search-input')?.addEventListener('input', debouncedLoadProducts);
+      document.getElementById('district-filter')?.addEventListener('input', debouncedLoadProducts);
+      document.getElementById('state-filter')?.addEventListener('change', loadProducts);
 
       document.getElementById('login-form')?.addEventListener('submit', async (e) => {
         e.preventDefault();
         const em = cleanText(document.getElementById('login-email').value, 120).toLowerCase();
         const pw = document.getElementById('login-password').value;
-        if (!EMAIL_RE.test(em) || pw.length < 6) { showToast('Valid email & password required.', 'error'); return; }
+        if (!EMAIL_RE.test(em) || pw.length < 6) {
+          showToast(state.lang === 'en' ? 'Valid email & password required.' : state.lang === 'hi' ? 'सही ईमेल और पासवर्ड डालें।' : 'સાચો ઈમેલ અને પાસવર્ડ નાખો.', 'error');
+          return;
+        }
         const { error } = await sb.auth.signInWithPassword({ email: em, password: pw });
         if (error) showToast(error.message, 'error'); else switchTab('market');
       });
@@ -1580,23 +2351,42 @@
         const pw = document.getElementById('reg-password').value;
         const nm = cleanText(document.getElementById('reg-name').value, 80);
         const mb = sanitizeIndianPhone(document.getElementById('reg-mobile').value);
-        if (!EMAIL_RE.test(em) || pw.length < 8 || nm.length < 2 || !mb) { showToast('Please fill valid details.', 'error'); return; }
-        const { error } = await sb.auth.signUp({ email: em, password: pw, options: { data: { full_name: nm, mobile_number: mb, role: document.getElementById('reg-role').value } } });
-        if (error) showToast(error.message, 'error'); else showToast('OK');
+        if (!EMAIL_RE.test(em) || pw.length < 8 || nm.length < 2 || !mb) {
+          showToast(state.lang === 'en' ? 'Please fill valid details (8+ char password, 10-digit mobile).' : state.lang === 'hi' ? 'कृपया सभी सही विवरण भरें।' : 'કૃપા કરીને સાચી વિગતો ભરો.', 'error');
+          return;
+        }
+        const { error } = await sb.auth.signUp({
+          email: em,
+          password: pw,
+          options: { data: { full_name: nm, mobile_number: mb, role: document.getElementById('reg-role').value } }
+        });
+        if (error) showToast(error.message, 'error'); else showToast(tr('toast_saved'));
       });
 
       document.getElementById('profile-form')?.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!state.user) return;
         const upi = cleanText(document.getElementById('p-upi').value, 96).toLowerCase();
-        if (upi && !UPI_RE.test(upi)) { showToast('Invalid UPI ID.', 'error'); return; }
+        if (upi && !UPI_RE.test(upi)) {
+          showToast(state.lang === 'en' ? 'Invalid UPI ID format (e.g. name@oksbi).' : state.lang === 'hi' ? 'अमान्य UPI ID।' : 'UPI ID ફોર્મેટ બરાબર નથી (દા.ત. name@oksbi).', 'error');
+          return;
+        }
         const { error } = await sb.from('profiles').update({
           full_name: cleanText(document.getElementById('p-name').value, 80),
           mobile_number: sanitizeIndianPhone(document.getElementById('p-mobile').value) || null,
           village_city: cleanText(document.getElementById('p-village').value, 80) || null,
           district: cleanText(document.getElementById('p-district').value, 80) || null,
-          upi_id: upi || null
+          state: cleanText(document.getElementById('p-state').value, 60) || 'Gujarat',
+          upi_id: upi || null,
+          allow_upi_payment: Boolean(document.getElementById('p-allow-upi')?.checked)
         }).eq('id', state.user.id);
-        if (!error) { showToast('OK'); const { data } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle(); state.profile = data; refreshAccountTab(); }
+        if (error) {
+          showToast(error.message, 'error');
+        } else {
+          showToast(tr('toast_saved'));
+          const { data } = await sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle();
+          state.profile = data;
+          refreshAccountTab();
+        }
       });
 
       document.getElementById('admin-apmc-form')?.addEventListener('submit', async (e) => {
@@ -1604,57 +2394,131 @@
         const minP = safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000);
         const maxP = safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000);
         const modP = safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000);
-        if (minP === null || maxP === null || modP === null || maxP < minP) { showToast('Invalid rates.', 'error'); return; }
+        if (minP === null || maxP === null || modP === null || maxP < minP) {
+          showToast(state.lang === 'en' ? 'Invalid rates.' : state.lang === 'hi' ? 'अमान्य भाव।' : 'ભાવ બરાબર નથી.', 'error');
+          return;
+        }
+        const cropTxt = cleanText(document.getElementById('ap-crop').value, 80);
         const { error } = await sb.from('apmc_rates').insert({
           rate_category: document.getElementById('ap-cat').value,
           yard_name: cleanText(document.getElementById('ap-yard').value, 80),
           district: cleanText(document.getElementById('ap-dist').value, 60),
-          crop_name_gu: cleanText(document.getElementById('ap-crop').value, 80),
+          crop_name_gu: cropTxt,
+          crop_name_en: cropTxt,
           min_price: minP, max_price: maxP, modal_price: modP,
-          unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)'
+          unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)',
+          rate_date: new Date().toISOString().split('T')[0],
+          submitted_by: state.user.id,
+          approval_status: 'approved'
         });
-        if (!error) { e.target.reset(); showToast('OK'); loadApmcRates(); }
+        if (error) showToast(error.message, 'error');
+        else { e.target.reset(); showToast(tr('toast_saved')); loadApmcRates(); }
       });
 
       document.getElementById('add-product-form')?.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!state.user) return;
+        const submitBtn = document.getElementById('np-submit-btn');
+        const catId = document.getElementById('np-cat').value;
         const t = cleanText(document.getElementById('np-title-gu').value, 150);
         const q = safePositiveNumber(document.getElementById('np-qty').value, 0.1, 1000000);
         const pr = safePositiveNumber(document.getElementById('np-price').value, 1, 10000000);
-        if (!t || !q || !pr) return;
-        const { error } = await sb.from('products').insert({
-          seller_id: state.user.id, category_id: document.getElementById('np-cat').value,
-          title_gu: t, title_hi: t, title_en: t, available_quantity: q,
-          unit: document.getElementById('np-unit').value, expected_price: pr, price_unit: document.getElementById('np-unit').value,
-          village: cleanText(document.getElementById('np-village').value, 80), district: cleanText(document.getElementById('np-district').value, 80), state: 'Gujarat'
-        });
-        if (!error) { closeModal('add-product-modal'); showToast('OK'); loadProducts(); }
+        const unitVal = document.getElementById('np-unit').value;
+        if (!isValidUUID(catId)) {
+          showToast(state.lang === 'en' ? 'Please select a valid category.' : state.lang === 'hi' ? 'कृपया सही श्रेणी चुनें।' : 'કૃપા કરીને યોગ્ય કેટેગરી પસંદ કરો.', 'error');
+          return;
+        }
+        if (!t || !q || !pr || !CONFIG.ALLOWED_UNITS.includes(unitVal)) return;
+
+        let uploadedFilePath = '';
+        try {
+          if (submitBtn) submitBtn.disabled = true;
+          const imagePaths = [];
+          const fileInput = document.getElementById('np-image');
+          if (fileInput && fileInput.files && fileInput.files[0]) {
+            const cleanBlob = await sanitizeAndVerifyImage(fileInput.files[0]);
+            if (cleanBlob) {
+              const safeFileName = `${state.user.id}/${crypto.randomUUID()}.jpg`;
+              const upRes = await sb.storage.from('product-images').upload(safeFileName, cleanBlob, {
+                contentType: 'image/jpeg',
+                upsert: false
+              });
+              if (upRes.error) throw upRes.error;
+              uploadedFilePath = safeFileName;
+              imagePaths.push(safeFileName);
+            }
+          }
+
+          const { error } = await sb.from('products').insert({
+            seller_id: state.user.id,
+            category_id: catId,
+            title_gu: t, title_hi: t, title_en: t,
+            available_quantity: q,
+            unit: unitVal,
+            expected_price: pr,
+            price_unit: unitVal,
+            village: cleanText(document.getElementById('np-village').value, 80),
+            district: cleanText(document.getElementById('np-district').value, 80),
+            state: cleanText(document.getElementById('np-state').value, 60) || 'Gujarat',
+            image_paths: imagePaths
+          });
+          if (error) {
+            if (uploadedFilePath) {
+              await sb.storage.from('product-images').remove([uploadedFilePath]).catch(() => {});
+            }
+            throw error;
+          }
+          e.target.reset();
+          closeModal('add-product-modal');
+          showToast(tr('toast_submitted_pending'));
+          loadMyListings();
+          loadProducts();
+        } catch (err) {
+          showToast(err?.message || 'Error submitting listing', 'error');
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+        }
       });
 
       document.getElementById('add-request-form')?.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!state.user) return;
         const ph = sanitizeIndianPhone(document.getElementById('nr-phone').value);
-        if (!ph) { showToast('Invalid mobile.', 'error'); return; }
+        const unitVal = document.getElementById('nr-unit').value;
+        if (!ph || !CONFIG.ALLOWED_UNITS.includes(unitVal)) {
+          showToast(state.lang === 'en' ? 'Valid 10-digit mobile required.' : state.lang === 'hi' ? 'सही 10 अंकों का मोबाइल नंबर डालें।' : '૧૦ અંકનો સાચો મોબાઇલ નંબર નાખો.', 'error');
+          return;
+        }
         const { error } = await sb.from('buyer_requests').insert({
-          buyer_id: state.user.id, product_required: cleanText(document.getElementById('nr-product').value, 150),
+          buyer_id: state.user.id,
+          product_required: cleanText(document.getElementById('nr-product').value, 150),
           required_quantity: safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000),
-          unit: document.getElementById('nr-unit').value, delivery_location: cleanText(document.getElementById('nr-loc').value, 100),
-          district: cleanText(document.getElementById('nr-district').value, 80), contact_number: ph,
+          unit: unitVal,
+          delivery_location: cleanText(document.getElementById('nr-loc').value, 100),
+          district: cleanText(document.getElementById('nr-district').value, 80),
+          contact_number: ph,
           buyer_name: cleanText(state.profile?.full_name || state.user.email, 80)
         });
-        if (!error) { closeModal('add-request-modal'); loadBuyerRequests(); }
+        if (error) showToast(error.message, 'error');
+        else { e.target.reset(); closeModal('add-request-modal'); showToast(tr('toast_saved')); loadBuyerRequests(); }
       });
 
       document.getElementById('add-transport-form')?.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!state.user) return;
         const ph = sanitizeIndianPhone(document.getElementById('tr-mobile').value);
-        if (!ph) { showToast('Invalid mobile.', 'error'); return; }
+        if (!ph) {
+          showToast(state.lang === 'en' ? 'Valid 10-digit mobile required.' : state.lang === 'hi' ? 'सही मोबाइल नंबर डालें।' : 'સાચો મોબાઇલ નંબર નાખો.', 'error');
+          return;
+        }
+        // Uses exact RLS-enforced column name: owner_id
         const { error } = await sb.from('transport_providers').insert({
-          provider_id: state.user.id, driver_name: cleanText(document.getElementById('tr-name').value, 80),
-          vehicle_type: document.getElementById('tr-type').value, mobile_number: ph,
-          village: cleanText(document.getElementById('tr-village').value, 80), district: cleanText(document.getElementById('tr-district').value, 80)
+          owner_id: state.user.id,
+          driver_name: cleanText(document.getElementById('tr-name').value, 80),
+          vehicle_type: cleanText(document.getElementById('tr-type').value, 60),
+          mobile_number: ph,
+          village: cleanText(document.getElementById('tr-village').value, 80),
+          district: cleanText(document.getElementById('tr-district').value, 80)
         });
-        if (!error) { closeModal('add-transport-modal'); showToast('OK'); loadTransportList(); }
+        if (error) showToast(error.message, 'error');
+        else { e.target.reset(); closeModal('add-transport-modal'); showToast(tr('toast_saved')); loadTransportList(); }
       });
 
       function syncOnline() {
@@ -1663,13 +2527,12 @@
       }
       window.addEventListener('online', syncOnline);
       window.addEventListener('offline', syncOnline);
-      window.addEventListener('error', (ev) => { ev.preventDefault(); });
-      window.addEventListener('unhandledrejection', (ev) => { ev.preventDefault(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { stopVoiceListening(); CONFIG.ALLOWED_MODALS.forEach(closeModal); } });
 
       async function initApp() {
         syncOnline();
         setLang(state.lang);
+
         async function syncUserProfile(userObj) {
           if (!userObj) { state.profile = null; return; }
           let { data: prof } = await withRetry(() => sb.from('profiles').select('*').eq('id', userObj.id).maybeSingle());
@@ -1701,17 +2564,17 @@
           await syncUserProfile(state.user);
           if (ev === 'SIGNED_IN' && state.user) {
             cleanOAuthUrlFragment();
-            showToast(state.lang === 'en' ? 'Signed in successfully!' : state.lang === 'hi' ? 'सफलतापूर्वक लॉगिन हुआ!' : 'Google Login safal thayu!');
+            showToast(state.lang === 'en' ? 'Signed in successfully!' : state.lang === 'hi' ? 'सफलतापूर्वक लॉगिन हुआ!' : 'લૉગિન સફળ થયું!');
           }
           refreshAccountTab();
           if (state.tab === 'sell') refreshSellTab();
         });
+
         await loadCategories();
         const { data: { session } } = await sb.auth.getSession();
         state.user = session?.user || null;
         if (state.user) {
-          const { data: prof } = await withRetry(() => sb.from('profiles').select('*').eq('id', state.user.id).maybeSingle());
-          state.profile = prof;
+          await syncUserProfile(state.user);
         }
         refreshAccountTab();
         await loadProducts();
