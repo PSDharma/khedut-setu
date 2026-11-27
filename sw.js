@@ -1,67 +1,51 @@
-const CACHE_NAME = 'khedut-setu-v5.2.2';
-const APP_SHELL = [
-  './',
-  './index.html',
-  './manifest.json',
-  './icon-192.png',
-  './icon-512.png'
-];
+const CACHE_NAME = 'khedut-setu-v6.0.0-pro';
+const STATIC_ASSETS = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).catch(() => {})
-  );
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS)).catch(() => {})
+  );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    )
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
+  if (event.request.method !== 'GET') return;
+  const reqUrl = new URL(event.request.url);
+  if (reqUrl.origin !== self.location.origin) return;
 
-  const url = new URL(req.url);
-
-  // Never cache Supabase live API or Auth traffic in Service Worker
-  if (url.hostname.endsWith('supabase.co')) {
-    event.respondWith(fetch(req));
-    return;
-  }
-
-  // Network-first for HTML navigation so updates load immediately
-  if (req.mode === 'navigate' || url.pathname.endsWith('.html')) {
+  const isHtml = event.request.mode === 'navigate' || event.request.destination === 'document';
+  if (isHtml) {
     event.respondWith(
-      fetch(req)
+      fetch(event.request)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy)).catch(() => {});
-          return res;
-        })
-        .catch(() => caches.match('./index.html'))
-    );
-    return;
-  }
-
-  // Cache-first with network fallback for local static assets
-  if (url.origin === self.location.origin) {
-    event.respondWith(
-      caches.match(req).then((cached) => {
-        if (cached) return cached;
-        return fetch(req).then((res) => {
-          if (res && res.status === 200) {
+          if (res && res.ok) {
             const copy = res.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, copy)).catch(() => {});
+            caches.open(CACHE_NAME).then((c) => c.put(event.request, copy)).catch(() => {});
           }
           return res;
-        });
-      })
+        })
+        .catch(() => caches.match('./index.html').then((r) => r || caches.match('./')))
     );
+    return;
   }
+
+  event.respondWith(
+    caches.match(event.request).then((cached) =>
+      cached || fetch(event.request).then((res) => {
+        if (res && res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(event.request, copy)).catch(() => {});
+        }
+        return res;
+      })
+    )
+  );
 });

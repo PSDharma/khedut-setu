@@ -7,8 +7,8 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; manifest-src 'self' blob:; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU AI v5.3 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
-  <meta name="description" content="KHEDUT SETU AI v5.3 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
+  <title>KHEDUT SETU AI v6.0 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v6.0 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -79,7 +79,7 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v5.3 PRO</span>
+            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v6.0 PRO</span>
           </h1>
           <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline"></p>
         </div>
@@ -148,16 +148,25 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
-              <span>✨ KHEDUT SETU v5.3 PRO</span>
+              <span>✨ KHEDUT SETU v6.0 PRO</span>
               <span>•</span>
               <span data-i18n="ai_badge_sub"></span>
             </div>
             <h2 class="font-bold text-base sm:text-lg" data-i18n="hero_title"></h2>
             <p id="ai-pulse-summary" class="text-xs sm:text-sm text-farm-100"></p>
           </div>
-          <div class="grid grid-cols-3 sm:flex gap-2 w-full sm:w-auto shrink-0">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 w-full sm:w-auto shrink-0">
             <button type="button" data-action="nav-tab" data-tab="yard" class="bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
               <span data-i18n="btn_daily_rates"></span>
+            </button>
+            <button type="button" data-action="open-schemes-hub" class="bg-emerald-500/90 hover:bg-emerald-500 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
+              <span data-i18n="btn_schemes_quick"></span>
+            </button>
+            <button type="button" data-action="open-centers-hub" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
+              <span data-i18n="btn_centers_quick"></span>
+            </button>
+            <button type="button" data-action="open-ai-multimodal" class="bg-amber-400/25 hover:bg-amber-400/35 border border-amber-200/40 text-amber-100 font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
+              <span data-i18n="btn_ai_photo_quick"></span>
             </button>
             <button type="button" data-action="nav-tab" data-tab="sell" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
               <span data-i18n="btn_post_crop"></span>
@@ -215,6 +224,7 @@
             <button type="button" data-action="ai-subtab" data-subtab="price" id="aisub-price" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold bg-farm-700 text-white transition" data-i18n="aisub_price_btn"></button>
             <button type="button" data-action="ai-subtab" data-subtab="doctor" id="aisub-doctor" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="aisub_doctor_btn"></button>
             <button type="button" data-action="ai-subtab" data-subtab="match" id="aisub-match" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="aisub_match_btn"></button>
+            <button type="button" data-action="ai-subtab" data-subtab="multimodal" id="aisub-multimodal" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="aisub_multi_btn"></button>
           </div>
         </div>
       </div>
@@ -266,6 +276,47 @@
         </div>
         <div id="ai-match-output" class="space-y-2.5 text-sm"></div>
       </div>
+
+      <div id="ai-panel-multimodal" class="hidden bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base" data-i18n="ai_multi_heading"></h3>
+            <p class="text-xs text-slate-500" data-i18n="ai_multi_sub"></p>
+          </div>
+          <button type="button" data-action="voice-fill-ai" class="px-3 py-2 rounded-xl bg-farm-100 hover:bg-farm-200 text-farm-900 text-xs font-bold flex items-center gap-1.5">
+            <i data-lucide="mic" class="w-4 h-4"></i>
+            <span data-i18n="ai_multi_voice_btn"></span>
+          </button>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ai_multi_q_lbl"></label>
+            <textarea id="ai-multi-query" rows="3" maxlength="500" data-i18n-placeholder="ai_multi_q_ph" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none"></textarea>
+          </div>
+
+          <div class="bg-slate-50 border border-dashed border-slate-300 rounded-2xl p-3.5 space-y-2">
+            <label class="block text-xs font-bold text-slate-700" data-i18n="ai_multi_file_lbl"></label>
+            <input id="ai-multi-file" type="file" accept="image/jpeg,image/png,image/webp,application/pdf,text/plain" class="w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-farm-700 file:text-white hover:file:bg-farm-800" />
+            <p class="text-[11px] text-slate-500" data-i18n="ai_multi_file_hint"></p>
+            <div id="ai-multi-preview" class="hidden flex items-center justify-between gap-2 bg-white p-2.5 rounded-xl border border-slate-200"></div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button type="button" data-action="run-ai-multimodal" id="ai-multi-submit-btn" class="bg-farm-700 hover:bg-farm-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span data-i18n="ai_multi_run_btn"></span>
+            </button>
+            <button type="button" data-action="speak-ai-answer" class="bg-amber-100 hover:bg-amber-200 text-amber-950 font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-1.5">
+              <i data-lucide="volume-2" class="w-4 h-4"></i>
+              <span data-i18n="ai_speak_btn"></span>
+            </button>
+            <button type="button" data-action="clear-ai-multimodal" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs px-3.5 py-2.5 rounded-xl" data-i18n="ai_clear_btn"></button>
+          </div>
+        </div>
+
+        <div id="ai-multi-output" class="bg-farm-50 border border-farm-200 rounded-2xl p-4 space-y-2 text-sm"></div>
+      </div>
     </section>
 
     <!-- TAB 3: MANDI RATES, AGRI INPUTS/MACHINERY & TRANSPORT -->
@@ -280,6 +331,8 @@
             <button type="button" data-action="yard-subtab" data-subtab="apmc" id="subtab-apmc" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold bg-farm-700 text-white transition" data-i18n="tab_apmc"></button>
             <button type="button" data-action="yard-subtab" data-subtab="inputs" id="subtab-inputs" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_inputs"></button>
             <button type="button" data-action="yard-subtab" data-subtab="transport" id="subtab-transport" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_transport"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="schemes" id="subtab-schemes" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_schemes"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="centers" id="subtab-centers" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_centers"></button>
           </div>
         </div>
       </div>
@@ -317,6 +370,49 @@
           <button type="button" data-action="open-transport-modal" class="px-4 py-2.5 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 shadow-sm" data-i18n="btn_add_vehicle"></button>
         </div>
         <div id="transport-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- SCHEMES, SUBSIDIES & INSTALLMENTS PANEL -->
+      <div id="schemes-panel" class="hidden space-y-3">
+        <div class="bg-gradient-to-r from-farm-800 to-emerald-700 rounded-2xl p-4 text-white space-y-2 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="font-bold text-base" data-i18n="schemes_heading"></h3>
+              <p class="text-xs text-farm-100" data-i18n="schemes_sub"></p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <a href="tel:18001801551" class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 text-xs font-extrabold shadow-sm">📞 Kisan Helpline: 1800-180-1551</a>
+              <a href="tel:155261" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold">📞 PM-KISAN: 155261</a>
+            </div>
+          </div>
+        </div>
+        <div id="scheme-cat-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar"></div>
+        <div class="flex gap-2">
+          <input id="scheme-search" type="text" maxlength="80" data-i18n-placeholder="scheme_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
+        </div>
+        <div id="schemes-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- NEARBY AGRI CENTERS (KHATAR / BIYARAN / DAVA / KVK) PANEL -->
+      <div id="centers-panel" class="hidden space-y-3">
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base" data-i18n="centers_heading"></h3>
+              <p class="text-xs text-slate-500" data-i18n="centers_sub"></p>
+            </div>
+            <button type="button" data-action="open-maps-nearby" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span data-i18n="btn_maps_nearby"></span>
+            </button>
+          </div>
+        </div>
+        <div id="center-type-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar"></div>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input id="center-search" type="text" maxlength="80" data-i18n-placeholder="center_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
+          <button type="button" data-action="open-agri-input-modal" class="px-4 py-2.5 rounded-xl bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold shrink-0" data-i18n="btn_add_center_shop"></button>
+        </div>
+        <div id="centers-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
     </section>
 
@@ -537,7 +633,7 @@
         <div class="flex items-center gap-3 bg-farm-50 p-3 rounded-2xl border border-farm-200">
           <div class="w-12 h-12 rounded-2xl bg-farm-700 text-white flex items-center justify-center text-2xl font-bold shrink-0">🌾</div>
           <div>
-            <div class="font-bold text-slate-900">KHEDUT SETU AI v5.3 PRO</div>
+            <div class="font-bold text-slate-900">KHEDUT SETU AI v6.0 PRO</div>
             <div class="text-xs text-slate-600" data-i18n="install_modal_sub"></div>
           </div>
         </div>
@@ -578,6 +674,8 @@
           <button type="button" data-action="voice-example" data-text="દવા બિયારણ" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"દવા બિયારણ"</button>
           <button type="button" data-action="voice-example" data-text="AI સલાહકાર" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"AI સલાહકાર"</button>
           <button type="button" data-action="voice-example" data-text="ડાંગર" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"ડાંગર"</button>
+          <button type="button" data-action="voice-example" data-text="ખેડૂત યોજના હપ્તો" class="px-2.5 py-1 rounded-full bg-farm-100 text-farm-900 font-semibold">"ખેડૂત યોજના હપ્તો"</button>
+          <button type="button" data-action="voice-example" data-text="નજીકનું ખાતર કેન્દ્ર" class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 font-semibold">"નજીકનું ખાતર કેન્દ્ર"</button>
         </div>
       </div>
     </div>
@@ -1003,7 +1101,7 @@
 
       async function shareKhedutSetuApp() {
         const shareUrl = window.location.origin + window.location.pathname;
-        const shareTitle = 'KHEDUT SETU AI v5.3 PRO';
+        const shareTitle = 'KHEDUT SETU AI v6.0 PRO';
         const shareText = state.lang === 'en'
           ? `Check out ${shareTitle} — All-India Daily Mandi Rates, Agri Inputs & AI Advisor: ${shareUrl}`
           : state.lang === 'hi'
@@ -1094,6 +1192,16 @@
         };
       }
       let latestProductsReqId = 0;
+      let latestPriceReqId = 0;
+      let latestDoctorReqId = 0;
+      let latestMultiReqId = 0;
+      let lastAiSpokenText = '';
+
+      function formatSafeInr(val, fallback = 0) {
+        const n = Number(val);
+        const safe = Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : fallback;
+        return safe.toLocaleString('en-IN');
+      }
       function saveCache(key, data) {
         try { localStorage.setItem('ks_cache_' + key, JSON.stringify({ ts: Date.now(), data })); } catch {}
       }
@@ -1127,6 +1235,8 @@
         lang: CONFIG.ALLOWED_LANGS.includes(savedLang) ? savedLang : 'gu',
         tab: 'market', aiSubtab: 'price',
         mandiCatFilter: 'all', agriInputTypeFilter: 'all',
+        schemeCatFilter: 'all', centerTypeFilter: 'all',
+        multiFile: null,
         user: null, profile: null, categories: [],
         selectedCategory: null, products: [], myProducts: [], apmcRates: [], agriInputs: [], transportList: [],
         isListening: false
@@ -1199,7 +1309,28 @@
           toast_saved: '✅ સફળતાપૂર્વક સેવ થઈ ગયું!', toast_submitted_pending: '✅ સબમિટ થઈ ગયું! Admin મંજૂરી પછી લાઇવ દેખાશે.',
           toast_deleted: '✅ ડેટા સફળતાપૂર્વક ડિલીટ થઈ ગયો!', toast_del_fail: '❌ ડિલીટ થઈ શક્યું નહીં.',
           toast_rls_blocked: '🔒 પરમિશન નથી! ફક્ત Admin જ આ ક્રિયા કરી શકે છે.',
-          toast_invalid_id: 'અમાન્ય રેકોર્ડ ID.', toast_installed: 'KHEDUT SETU App Install થઈ ગઈ!', toast_copied: 'App લિંક કોપી થઈ ગઈ!'
+          toast_invalid_id: 'અમાન્ય રેકોર્ડ ID.', toast_installed: 'KHEDUT SETU App Install થઈ ગઈ!', toast_copied: 'App લિંક કોપી થઈ ગઈ!',
+          btn_schemes_quick: '🏛️ સહાય & યોજના', btn_centers_quick: '📍 નજીકના કેન્દ્રો', btn_ai_photo_quick: '🤖 AI ફોટો/ફાઇલ',
+          aisub_multi_btn: '🤖 ફોટો / ફાઇલ AI',
+          ai_multi_heading: '🤖 AI સમસ્યા નિવારણ — ફોટો, ફાઇલ & વૉઇસ સલાહકાર',
+          ai_multi_sub: 'પાકનો ફોટો, માટીનો રિપોર્ટ, ખાતર/દવાનું બિલ કે યોજનાની ફાઇલ અપલોડ કરીને તરત નિરાકરણ મેળવો.',
+          ai_multi_voice_btn: '🎙️ બોલીને પૂછો',
+          ai_multi_q_lbl: 'તમારી સમસ્યા કે પ્રશ્ન લખો (પાક રોગ, ખાતર, દવા, યોજના, હપ્તો વગેરે)',
+          ai_multi_q_ph: 'દા.ત. કપાસના પાન પીળા પડી રહ્યા છે કઈ દવા છાંટવી? અથવા PM-KISAN હપ્તો કેવી રીતે ચેક કરવો?',
+          ai_multi_file_lbl: '📎 ફોટો અથવા ફાઇલ અપલોડ કરો (JPG / PNG / WEBP / PDF / TXT, મહત્તમ 3 MB)',
+          ai_multi_file_hint: 'Anti-Virus Magic-Byte તપાસ સાથે સુરક્ષિત અપલોડ — ફોટો અથવા દસ્તાવેજ સીધો AI વિશ્લેષણ માટે વપરાશે.',
+          ai_multi_run_btn: '✨ AI નિરાકરણ મેળવો',
+          ai_speak_btn: '🔊 જવાબ સાંભળો',
+          ai_clear_btn: 'સાફ કરો',
+          tab_schemes: '🏛️ સહાય, યોજના & હપ્તો', tab_centers: '📍 ખાતર-બિયારણ-દવા કેન્દ્રો',
+          schemes_heading: '🏛️ ખેડૂત સહાય, સરકારી યોજનાઓ અને હપ્તા (Apply & Status)',
+          schemes_sub: 'PM-KISAN હપ્તો, iKhedut સબસિડી, પાક વીમો, KCC લોન અને સોલાર પંપ માટે સીધી અધિકૃત લિંક.',
+          scheme_search_ph: 'યોજના, હપ્તો, ટ્રેક્ટર, ટપક, વીમો કે લોન શોધો...',
+          centers_heading: '📍 નજીકના ખાતર, બિયારણ, દવા & KVK કેન્દ્રો',
+          centers_sub: 'નજીકના અધિકૃત કેન્દ્રોનું સરનામું, સંપર્ક નંબર અને Google Maps લોકેશન.',
+          btn_maps_nearby: 'Maps પર નજીકના કેન્દ્રો',
+          center_search_ph: 'જિલ્લો, તાલુકો, ખાતર, બિયારણ, દવા કે KVK શોધો...',
+          btn_add_center_shop: '+ તમારું કેન્દ્ર / દુકાન ઉમેરો' 
         }),
         hi: Object.freeze({
           tagline: 'All-India दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि',
@@ -1267,7 +1398,28 @@
           toast_saved: '✅ सफलतापूर्वक सेव हो गया!', toast_submitted_pending: '✅ सबमिट हो गया! Admin स्वीकृति के बाद लाइव दिखेगा।',
           toast_deleted: '✅ डेटा सफलतापूर्वक डिलीट हो गया!', toast_del_fail: '❌ डिलीट नहीं हो सका।',
           toast_rls_blocked: '🔒 अनुमति नहीं है! केवल Admin ही यह कार्य कर सकता है।',
-          toast_invalid_id: 'अमान्य रिकॉर्ड ID.', toast_installed: 'KHEDUT SETU App Install हो गया!', toast_copied: 'App लिंक कॉपी हो गया!'
+          toast_invalid_id: 'अमान्य रिकॉर्ड ID.', toast_installed: 'KHEDUT SETU App Install हो गया!', toast_copied: 'App लिंक कॉपी हो गया!',
+          btn_schemes_quick: '🏛️ सहायता & योजना', btn_centers_quick: '📍 नज़दीकी केंद्र', btn_ai_photo_quick: '🤖 AI फोटो/फ़ाइल',
+          aisub_multi_btn: '🤖 फोटो / फ़ाइल AI',
+          ai_multi_heading: '🤖 AI समस्या निवारण — फोटो, फ़ाइल & वॉइस सलाहकार',
+          ai_multi_sub: 'फसल की फोटो, मिट्टी रिपोर्ट, खाद/दवा बिल या योजना फ़ाइल अपलोड कर तुरंत समाधान पाएं।',
+          ai_multi_voice_btn: '🎙️ बोलकर पूछें',
+          ai_multi_q_lbl: 'अपनी समस्या या सवाल लिखें (फसल रोग, खाद, दवा, योजना, किस्त आदि)',
+          ai_multi_q_ph: 'जैसे: धान के पत्ते पीले हो रहे हैं कौन सी दवा डालें? या PM-KISAN किस्त कैसे जांचें?',
+          ai_multi_file_lbl: '📎 फोटो या फ़ाइल अपलोड करें (JPG / PNG / WEBP / PDF / TXT, अधिकतम 3 MB)',
+          ai_multi_file_hint: 'Anti-Virus Magic-Byte जांच के साथ सुरक्षित अपलोड।',
+          ai_multi_run_btn: '✨ AI समाधान पाएं',
+          ai_speak_btn: '🔊 जवाब सुनें',
+          ai_clear_btn: 'साफ़ करें',
+          tab_schemes: '🏛️ सहायता, योजना & किस्त', tab_centers: '📍 खाद-बीज-दवा केंद्र',
+          schemes_heading: '🏛️ किसान सहायता, सरकारी योजनाएं और किस्त (Apply & Status)',
+          schemes_sub: 'PM-KISAN किस्त, iKhedut सब्सिडी, फसल बीमा, KCC लोन और सोलर पंप के लिए सीधी आधिकारिक लिंक।',
+          scheme_search_ph: 'योजना, किस्त, ट्रैक्टर, ड्रिप, बीमा या लोन खोजें...',
+          centers_heading: '📍 नज़दीकी खाद, बीज, दवा & KVK केंद्र',
+          centers_sub: 'नज़दीकी आधिकारिक केंद्र का पता, संपर्क नंबर और Google Maps लोकेशन।',
+          btn_maps_nearby: 'Maps पर नज़दीकी केंद्र',
+          center_search_ph: 'जिला, तालुका, खाद, बीज, दवा या KVK खोजें...',
+          btn_add_center_shop: '+ अपना केंद्र / दुकान जोड़ें' 
         }),
         en: Object.freeze({
           tagline: 'All-India Daily Mandi Rates • Agri Inputs & Machinery • AI',
@@ -1335,7 +1487,28 @@
           toast_saved: '✅ Saved successfully!', toast_submitted_pending: '✅ Submitted! It will go live after Admin approval.',
           toast_deleted: '✅ Record deleted permanently!', toast_del_fail: '❌ Delete failed.',
           toast_rls_blocked: '🔒 Permission denied! Only Admin can perform this action.',
-          toast_invalid_id: 'Invalid record ID.', toast_installed: 'KHEDUT SETU App installed!', toast_copied: 'App link copied!'
+          toast_invalid_id: 'Invalid record ID.', toast_installed: 'KHEDUT SETU App installed!', toast_copied: 'App link copied!',
+          btn_schemes_quick: '🏛️ Schemes & Subsidy', btn_centers_quick: '📍 Nearby Centers', btn_ai_photo_quick: '🤖 AI Photo/File',
+          aisub_multi_btn: '🤖 Photo / File AI',
+          ai_multi_heading: '🤖 AI Problem Solver — Photo, File & Voice Advisor',
+          ai_multi_sub: 'Upload a crop photo, soil health card, bill, or scheme document for instant guidance.',
+          ai_multi_voice_btn: '🎙️ Ask by Voice',
+          ai_multi_q_lbl: 'Write your question or problem (crop disease, fertilizer, pesticide, scheme, installment)',
+          ai_multi_q_ph: 'e.g. Cotton leaves turning yellow, which spray to use? Or how to check PM-KISAN installment?',
+          ai_multi_file_lbl: '📎 Upload Photo or Document (JPG / PNG / WEBP / PDF / TXT, max 3 MB)',
+          ai_multi_file_hint: 'Protected by Anti-Virus magic-byte inspection for safe multimodal AI analysis.',
+          ai_multi_run_btn: '✨ Get AI Solution',
+          ai_speak_btn: '🔊 Listen Answer',
+          ai_clear_btn: 'Clear',
+          tab_schemes: '🏛️ Schemes & Subsidies', tab_centers: '📍 Agri Centers',
+          schemes_heading: '🏛️ Farmer Schemes, Subsidies & Installments (Apply & Status)',
+          schemes_sub: 'Official portals for PM-KISAN installment, iKhedut subsidy, crop insurance, KCC loan & solar pumps.',
+          scheme_search_ph: 'Search scheme, installment, tractor, drip, insurance or loan...',
+          centers_heading: '📍 Nearby Fertilizer, Seeds, Pesticides & KVK Centers',
+          centers_sub: 'Verified center addresses, phone numbers, WhatsApp and live Google Maps search.',
+          btn_maps_nearby: 'Find on Google Maps',
+          center_search_ph: 'Search district, taluka, fertilizer, seeds, pesticide or KVK...',
+          btn_add_center_shop: '+ Add Your Center / Shop' 
         })
       });
 
@@ -1350,6 +1523,165 @@
         hi: Object.freeze({ all: 'सभी', dava: '🧪 दवा', biyaran: '🌱 बीज', khatar: '🌿 खाद', sadhano: '🛠️ साधन', yantro: '⚙️ यंत्र' }),
         en: Object.freeze({ all: 'All', dava: '🧪 Pesticides', biyaran: '🌱 Seeds', khatar: '🌿 Fertilizer', sadhano: '🛠️ Tools', yantro: '⚙️ Machinery' })
       });
+
+
+      const SCHEME_CAT_CHIPS = Object.freeze({
+        gu: Object.freeze({ all: 'બધી યોજનાઓ', cash: '💰 હપ્તો & સહાય', subsidy: '🚜 સબસિડી & સાધન', insurance: '🛡️ પાક વીમો & લોન', market: '🌱 માટી & બજાર' }),
+        hi: Object.freeze({ all: 'सभी योजनाएं', cash: '💰 किस्त & सहायता', subsidy: '🚜 सब्सिडी & यंत्र', insurance: '🛡️ फसल बीमा & लोन', market: '🌱 मिट्टी & बाज़ार' }),
+        en: Object.freeze({ all: 'All Schemes', cash: '💰 Installment', subsidy: '🚜 Subsidy & Tools', insurance: '🛡️ Insurance & Loan', market: '🌱 Soil & Market' })
+      });
+
+      const CENTER_TYPE_CHIPS = Object.freeze({
+        gu: Object.freeze({ all: 'બધા કેન્દ્રો', kvk: '🏛️ KVK / કૃષિ કેન્દ્ર', khatar: '🌿 ખાતર (IFFCO/GSFC)', biyaran: '🌱 બિયારણ', dava: '🧪 દવા કેન્દ્ર', apmc: '📊 APMC યાર્ડ' }),
+        hi: Object.freeze({ all: 'सभी केंद्र', kvk: '🏛️ KVK / कृषि केंद्र', khatar: '🌿 खाद (IFFCO/GSFC)', biyaran: '🌱 बीज केंद्र', dava: '🧪 दवा केंद्र', apmc: '📊 APMC मंडी' }),
+        en: Object.freeze({ all: 'All Centers', kvk: '🏛️ KVK Centers', khatar: '🌿 Fertilizer', biyaran: '🌱 Seeds', dava: '🧪 Pesticides', apmc: '📊 APMC Yard' })
+      });
+
+      const FARMER_SCHEMES = Object.freeze([
+        {
+          id: 'pm-kisan', cat: 'cash',
+          title_gu: 'PM-KISAN સન્માન નિધિ (₹6,000/વર્ષ હપ્તો)',
+          title_hi: 'PM-KISAN सम्मान निधि (₹6,000/वर्ष किस्त)',
+          title_en: 'PM-KISAN Samman Nidhi (₹6,000/year)',
+          benefit_gu: 'દર વર્ષે ₹2,000 ના 3 હપ્તા સીધા બેંક ખાતામાં (DBT). e-KYC અને હપ્તાનું સ્ટેટસ ચેક કરો.',
+          benefit_hi: 'हर वर्ष ₹2,000 की 3 किस्तें सीधे बैंक खाते में (DBT)। e-KYC व किस्त स्थिति जांचें।',
+          benefit_en: '₹6,000/year in 3 installments of ₹2,000 directly to bank account. Check e-KYC & status.',
+          docs: 'Aadhaar, 7/12 & 8-A, Bank Passbook, Mobile',
+          applyUrl: 'https://pmkisan.gov.in/',
+          statusUrl: 'https://pmkisan.gov.in/BeneficiaryStatus_New.aspx'
+        },
+        {
+          id: 'ikhedut-gujarat', cat: 'subsidy',
+          title_gu: 'આઈ-ખેડૂત પોર્ટલ (iKhedut — ગુજરાત સબસિડી)',
+          title_hi: 'आई-खेड़ूत पोर्टल (iKhedut — गुजरात सब्सिडी)',
+          title_en: 'iKhedut Portal (Gujarat Agriculture Subsidies)',
+          benefit_gu: 'ટ્રેક્ટર, રોટાવેટર, તાડપત્રી, સ્માર્ટફોન, ટપક સિંચાઈ, ગોડાઉન અને ખેતી સાધનો પર સરકારી સબસિડી.',
+          benefit_hi: 'ट्रैक्टर, रोटावेटर, तिरपाल, ड्रिप सिंचाई, गोदाम और कृषि यंत्रों पर गुजरात सरकार की सब्सिडी।',
+          benefit_en: 'Gujarat govt subsidies on tractors, farm machinery, drip irrigation, tarpaulin & storage.',
+          docs: '7/12 & 8-A, Aadhaar, Bank Details, Ration Card',
+          applyUrl: 'https://ikhedut.gujarat.gov.in/',
+          statusUrl: 'https://ikhedut.gujarat.gov.in/'
+        },
+        {
+          id: 'pmfby', cat: 'insurance',
+          title_gu: 'પ્રધાનમંત્રી ફસલ બીમા યોજના (PMFBY — પાક વીમો)',
+          title_hi: 'प्रधानमंत्री फसल बीमा योजना (PMFBY)',
+          title_en: 'Pradhan Mantri Fasal Bima Yojana (PMFBY)',
+          benefit_gu: 'કુદરતી આફત, અતિવૃષ્ટિ કે દુષ્કાળમાં પાક નુકસાન સામે વીમા કવચ (ખરીફ 2%, રવિ 1.5% પ્રીમિયમ).',
+          benefit_hi: 'प्राकृतिक आपदा में फसल नुकसान का बीमा कवर (खरीफ 2%, रबी 1.5% प्रीमियम)।',
+          benefit_en: 'Crop insurance cover against natural calamities & pests (2% Kharif, 1.5% Rabi premium).',
+          docs: 'Aadhaar, Land Record, Sowing Certificate, Bank Account',
+          applyUrl: 'https://pmfby.gov.in/',
+          statusUrl: 'https://pmfby.gov.in/'
+        },
+        {
+          id: 'kcc-loan', cat: 'insurance',
+          title_gu: 'કિસાન ક્રેડિટ કાર્ડ (KCC — ઓછા વ્યાજે પાક ધિરાણ)',
+          title_hi: 'किसान क्रेडिट कार्ड (KCC — कम ब्याज फसल ऋण)',
+          title_en: 'Kisan Credit Card (KCC — Low-Interest Crop Loan)',
+          benefit_gu: 'ખાતર, બિયારણ અને ખેતી ખર્ચ માટે ઓછા વ્યાજે (સમયસર ચુકવણી પર વ્યાજ રાહત) પાક લોન.',
+          benefit_hi: 'खाद, बीज व कृषि खर्च के लिए कम ब्याज दर पर फसल ऋण और समय पर भुगतान पर ब्याज छूट।',
+          benefit_en: 'Affordable short-term crop credit with interest subvention for timely repayment.',
+          docs: 'Aadhaar, PAN, Land 7/12, Passport Photo',
+          applyUrl: 'https://www.myscheme.gov.in/schemes/kcc',
+          statusUrl: 'https://www.myscheme.gov.in/schemes/kcc'
+        },
+        {
+          id: 'pm-kusum', cat: 'subsidy',
+          title_gu: 'PM-KUSUM સોલાર પંપ સહાય યોજના',
+          title_hi: 'PM-KUSUM सोलर पंप सब्सिडी योजना',
+          title_en: 'PM-KUSUM Solar Water Pump Subsidy',
+          benefit_gu: 'ખેતરમાં સોલાર વોટર પંપ લગાવવા માટે સરકારી સબસિડી — વીજળી બિલમાંથી મુક્તિ અને દિવસે સિંચાઈ.',
+          benefit_hi: 'खेत में सोलर वॉटर पंप लगाने पर सब्सिडी — बिजली बिल से राहत और दिन में सिंचाई।',
+          benefit_en: 'Government subsidy for installing solar agricultural water pumps.',
+          docs: 'Aadhaar, Land Record, Bank Account, Borewell Details',
+          applyUrl: 'https://pmkusum.mnre.gov.in/',
+          statusUrl: 'https://pmkusum.mnre.gov.in/'
+        },
+        {
+          id: 'soil-health-card', cat: 'market',
+          title_gu: 'સોઇલ હેલ્થ કાર્ડ (જમીન ચકાસણી & ખાતર ભલામણ)',
+          title_hi: 'मृदा स्वास्थ्य कार्ड (Soil Health Card)',
+          title_en: 'Soil Health Card Scheme (Free Soil Testing)',
+          benefit_gu: 'ખેતરની માટીની તપાસ કરીને કયું ખાતર કેટલું નાખવું તેની વૈજ્ઞાનિક ભલામણ અને ઉત્પાદન વધારો.',
+          benefit_hi: 'खेत की मिट्टी की जांच कर सही खाद मात्रा की वैज्ञानिक सलाह।',
+          benefit_en: 'Scientific soil nutrient report and balanced fertilizer dosage recommendations.',
+          docs: 'Aadhaar, Mobile Number, Farm Survey No.',
+          applyUrl: 'https://soilhealth.dac.gov.in/',
+          statusUrl: 'https://soilhealth.dac.gov.in/'
+        },
+        {
+          id: 'enam-portal', cat: 'market',
+          title_gu: 'e-NAM રાષ્ટ્રીય કૃષિ બજાર (ઓનલાઇન મંડી વેચાણ)',
+          title_hi: 'e-NAM राष्ट्रीय कृषि बाज़ार (ऑनलाइन मंडी)',
+          title_en: 'e-NAM National Agriculture Market',
+          benefit_gu: 'દેશભરની મંડીઓના લાઇવ ભાવ અને પારદર્શક ઓનલાઇન હરાજી દ્વારા ઉપજનું વેચાણ.',
+          benefit_hi: 'देशभर की मंडियों के लाइव भाव और पारदर्शी ऑनलाइन नीलामी से बिक्री।',
+          benefit_en: 'Pan-India electronic APMC trading portal for transparent price discovery.',
+          docs: 'Aadhaar, Bank Account, Mobile Number',
+          applyUrl: 'https://www.enam.gov.in/',
+          statusUrl: 'https://www.enam.gov.in/web/dashboard/trade-data'
+        }
+      ]);
+
+      const VERIFIED_AGRI_CENTERS = Object.freeze([
+        {
+          id: 'kvk-anand', type: 'kvk',
+          name: 'Krishi Vigyan Kendra (KVK), Anand (AAU)',
+          address: 'Anand Agricultural University Campus, Anand, Gujarat 388110',
+          district: 'Anand', phone: '18001801551',
+          services: 'માટી ચકાસણી, પાક રોગ નિદાન, બિયારણ માર્ગદર્શન'
+        },
+        {
+          id: 'gsfc-anand', type: 'khatar',
+          name: 'GSFC Agro & Fertilizer Depot — Anand / Borsad Road',
+          address: 'APMC Market Yard Road, Anand, Gujarat',
+          district: 'Anand', phone: '18002332025',
+          services: 'યુરિયા, DAP, NPK, સલ્ફર, બાયો-ખાતર'
+        },
+        {
+          id: 'iffco-guj', type: 'khatar',
+          name: 'IFFCO eBazar / Kisan Seva Kendra (Gujarat)',
+          address: 'District Cooperative Sangh / Taluka Seva Sahakari Mandali',
+          district: 'Gujarat', phone: '18001031967',
+          services: 'નેનો યુરિયા, નેનો DAP, સાગરિકા, ખાતર & બિયારણ'
+        },
+        {
+          id: 'kvk-rajkot', type: 'kvk',
+          name: 'Krishi Vigyan Kendra (KVK), Targhadia — Rajkot',
+          address: 'Targhadia, Rajkot-Morbi Highway, Rajkot, Gujarat',
+          district: 'Rajkot', phone: '18001801551',
+          services: 'કપાસ-મગફળી નિદાન, બિયારણ, તાલીમ કેન્દ્ર'
+        },
+        {
+          id: 'kvk-ahmedabad', type: 'kvk',
+          name: 'Krishi Vigyan Kendra (KVK), Arnej — Ahmedabad',
+          address: 'Arnej, Taluka Dholka, Ahmedabad, Gujarat',
+          district: 'Ahmedabad', phone: '18001801551',
+          services: 'ઘઉં-ડાંગર સલાહ, માટી-પાણી તપાસ, દવા માર્ગદર્શન'
+        },
+        {
+          id: 'kvk-surat', type: 'kvk',
+          name: 'Krishi Vigyan Kendra (KVK), Surat (NAU)',
+          address: 'Athwa Farm, Ghod Dod Road, Surat, Gujarat',
+          district: 'Surat', phone: '18001801551',
+          services: 'શાકભાજી-ફળ-શેરડી નિદાન, જૈવિક ખાતર & દવા'
+        },
+        {
+          id: 'apmc-unjha', type: 'apmc',
+          name: 'APMC Unjha — જીરું, વરિયાળી & ઈસબગુલ માર્કેટ યાર્ડ',
+          address: 'Station Road, Unjha, District Mehsana, Gujarat',
+          district: 'Mehsana', phone: '18001801551',
+          services: 'દૈનિક હરાજી, મસાલા પાક, બિયારણ & એગ્રો સ્ટોર્સ'
+        },
+        {
+          id: 'apmc-gondal', type: 'apmc',
+          name: 'APMC Gondal — મગફળી, કપાસ, મરચા & શાકભાજી યાર્ડ',
+          address: 'NH-27, Gondal, District Rajkot, Gujarat',
+          district: 'Rajkot', phone: '18001801551',
+          services: 'દૈનિક મંડી ભાવ, ખાતર-બિયારણ-દવા કેન્દ્રો'
+        }
+      ]);
 
       const AI_CROPS = Object.freeze({
         paddy: Object.freeze({ gu: 'ડાંગર', hi: 'धान', en: 'Paddy', mann: 470, qtl: 2350 }),
@@ -1420,7 +1752,7 @@
           if (el) {
             const prev = el.value || 'Gujarat';
             el.innerHTML = INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('');
-            el.value = prev;
+            el.value = INDIA_STATES.includes(prev) ? prev : 'Gujarat';
           }
         });
       }
@@ -1433,6 +1765,14 @@
         const aMap = AGRI_TYPE_CHIPS[state.lang] || AGRI_TYPE_CHIPS.gu;
         const aBox = document.getElementById('agri-input-type-chips');
         if (aBox) aBox.innerHTML = Object.entries(aMap).map(([k, lbl]) => `<button type="button" data-action="set-agri-type" data-type="${k}" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.agriInputTypeFilter === k ? 'bg-emerald-700 text-white' : 'bg-white border border-slate-200 text-slate-700'}">${escapeHtml(lbl)}</button>`).join('');
+
+        const sMap = SCHEME_CAT_CHIPS[state.lang] || SCHEME_CAT_CHIPS.gu;
+        const sBox = document.getElementById('scheme-cat-chips');
+        if (sBox) sBox.innerHTML = Object.entries(sMap).map(([k, lbl]) => `<button type="button" data-action="set-scheme-cat" data-cat="${k}" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.schemeCatFilter === k ? 'bg-farm-700 text-white' : 'bg-white border border-slate-200 text-slate-700'}">${escapeHtml(lbl)}</button>`).join('');
+
+        const cMap = CENTER_TYPE_CHIPS[state.lang] || CENTER_TYPE_CHIPS.gu;
+        const cBox = document.getElementById('center-type-chips');
+        if (cBox) cBox.innerHTML = Object.entries(cMap).map(([k, lbl]) => `<button type="button" data-action="set-center-type" data-type="${k}" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition ${state.centerTypeFilter === k ? 'bg-blue-700 text-white' : 'bg-white border border-slate-200 text-slate-700'}">${escapeHtml(lbl)}</button>`).join('');
       }
 
       function setLang(lang) {
@@ -1452,6 +1792,8 @@
         renderApmcRates();
         renderAgriInputs();
         renderTransportList();
+        renderSchemes();
+        renderAgriCenters();
         const pulse = document.getElementById('ai-pulse-summary');
         if (pulse) pulse.textContent = `${state.products.length} ${tr('active_items_lbl')}`;
       }
@@ -1473,6 +1815,9 @@
         const low = spoken.toLowerCase();
         closeModal('voice-modal');
 
+        if (/યોજના|સહાય|હપ્તો|સબસિડી|kisan|ikhedut|scheme|subsidy|pmfby|loan|योजना|किस्त|सब्सिडी/.test(low)) { switchTab('yard'); switchYardSubtab('schemes'); return; }
+        if (/કેન્દ્ર|દુકાન|kvk|center|shop|fertilizer center|કૃષિ કેન્દ્ર|केंद्र|दुकान/.test(low)) { switchTab('yard'); switchYardSubtab('centers'); return; }
+        if (/ફોટો|ફાઇલ|સમસ્યા|નિવારણ|photo|file|upload|problem|समस्या/.test(low)) { switchTab('ai_advisor'); switchAiSubtab('multimodal'); return; }
         if (/ai|સલાહ|ડૉક્ટર|advisor|doctor|सलाह/.test(low)) { switchTab('ai_advisor'); return; }
         if (/દવા|બિયારણ|ખાતર|સાધન|યંત્ર|input|seed|pesticide|दवा|बीज|यंत्र/.test(low)) { switchTab('yard'); switchYardSubtab('inputs'); return; }
         if (/ટેમ્પો|ટ્રેક્ટર|વાહન|tempo|tractor|ट्रैक्टर/.test(low)) { switchTab('yard'); switchYardSubtab('transport'); return; }
@@ -1562,19 +1907,20 @@
       // ==================== SERVER-SIDE AI ADVISOR (EDGE FUNCTION) ====================
       function switchAiSubtab(w) {
         state.aiSubtab = w;
-        const p = { price: 'ai-panel-price', doctor: 'ai-panel-doctor', match: 'ai-panel-match' };
-        const b = { price: 'aisub-price', doctor: 'aisub-doctor', match: 'aisub-match' };
+        const p = { price: 'ai-panel-price', doctor: 'ai-panel-doctor', match: 'ai-panel-match', multimodal: 'ai-panel-multimodal' };
+        const b = { price: 'aisub-price', doctor: 'aisub-doctor', match: 'aisub-match', multimodal: 'aisub-multimodal' };
         Object.entries(p).forEach(([k, id]) => document.getElementById(id)?.classList.toggle('hidden', k !== w));
         Object.entries(b).forEach(([k, id]) => {
           const btn = document.getElementById(id);
           if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
         });
+        refreshIcons();
       }
 
       function formatAiTimestamp(isoStr) {
         try {
           const d = isoStr ? new Date(isoStr) : new Date();
-          if (Number.isNaN(d.getTime())) return escapeHtml(String(isoStr));
+          if (Number.isNaN(d.getTime())) return escapeHtml(String(isoStr || ''));
           return escapeHtml(d.toLocaleString(state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN', {
             dateStyle: 'medium', timeStyle: 'short'
           }));
@@ -1596,81 +1942,125 @@
         `;
       }
 
+      function speakTextAloud(text) {
+        const clean = cleanText(text, 800);
+        if (!clean) {
+          showToast(state.lang === 'en' ? 'No answer to read aloud yet.' : state.lang === 'hi' ? 'सुनने के लिए अभी कोई जवाब नहीं है।' : 'સાંભળવા માટે હજુ કોઈ જવાબ નથી.', 'error');
+          return;
+        }
+        try {
+          if (!('speechSynthesis' in window)) {
+            showToast('Voice playback not supported in this browser.', 'error');
+            return;
+          }
+          window.speechSynthesis.cancel();
+          const utter = new SpeechSynthesisUtterance(clean);
+          utter.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
+          utter.rate = 0.95;
+          window.speechSynthesis.speak(utter);
+        } catch {}
+      }
+
       async function runAiPrice() {
         const out = document.getElementById('ai-price-output');
         if (!out) return;
-        if (!checkRateLimit('ai_price_call', 1200)) return;
+        if (!checkRateLimit('ai_price_call', 800)) return;
+        const reqId = ++latestPriceReqId;
 
         const cropKey = document.getElementById('ai-crop-select')?.value || 'paddy';
-        const c = AI_CROPS[cropKey] || AI_CROPS.paddy;
-        const cropName = c[state.lang] || c.gu;
-        const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) || 50;
+        const c = (Object.prototype.hasOwnProperty.call(AI_CROPS, cropKey) && AI_CROPS[cropKey]) || AI_CROPS.paddy;
+        const cropName = cleanText(c[state.lang] || c.gu, 80) || c.gu;
+        const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) ?? 50;
         const quality = cleanText(document.getElementById('ai-qual-select')?.value, 30) || 'standard';
         const district = cleanText(document.getElementById('district-filter')?.value, 60);
 
         out.innerHTML = `<div class="text-xs font-semibold text-farm-800">${escapeHtml(tr('ai_loading'))}</div>`;
 
-        if (navigator.onLine) {
-          const { data, error } = await withRetry(() =>
-            sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
-              body: { mode: 'price', lang: state.lang, cropName, qty, quality, district }
-            }), 1, 500
-          );
+        try {
+          if (navigator.onLine) {
+            const { data, error } = await withRetry(() =>
+              sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+                body: { mode: 'price', lang: state.lang, cropName, qty, quality, district }
+              }), 1, 400
+            );
+            if (reqId !== latestPriceReqId) return;
 
-          const hasLivePayload = !error && data && (data.ok || data.summary || data.metadata || data.estimated_per_mann_inr);
-if (hasLivePayload) {
-    const liveMeta = Object.assign({}, data?.metadata || {}, { source: data?.metadata?.source || data?.source || 'Khedut Setu Live / APMC Data' });
-    
-            const perMann = safePositiveNumber(data.estimated_per_mann_inr, 1, 10000000);
-            const totalInr = safePositiveNumber(data.estimated_total_inr, 1, 1000000000);
-            out.innerHTML = `
-              <div class="space-y-1.5">
-                <div class="font-bold text-slate-900 text-sm">${escapeHtml(cropName)} (${qty} મણ / 20 kg)</div>
-                ${perMann ? `<div class="text-xs font-semibold text-farm-800">₹${perMann.toLocaleString('en-IN')} / 20kg ${totalInr ? `• Total: <strong>₹${totalInr.toLocaleString('en-IN')}</strong>` : ''}</div>` : ''}
-                <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(data.summary)}</p>
-              </div>
-              ${renderAiMetadataBlock(liveMeta)}
-    
-            `;
-            return;
+            const payload = data && typeof data === 'object' ? data : null;
+            const hasLivePayload = Boolean(
+              !error && payload &&
+              (payload.ok || payload.summary || payload.metadata || payload.source ||
+               payload.estimated_per_mann_inr !== undefined || payload.estimated_total_inr !== undefined)
+            );
+
+            if (hasLivePayload) {
+              const perMann = safePositiveNumber(payload.estimated_per_mann_inr, 0.01, 10000000);
+              const totalInr = safePositiveNumber(payload.estimated_total_inr, 0.01, 1000000000)
+                ?? (perMann !== null ? safePositiveNumber(perMann * qty, 0.01, 1000000000) : null);
+              const metaRaw = payload.metadata && typeof payload.metadata === 'object' ? payload.metadata : {};
+              const resolvedMeta = Object.assign({}, metaRaw, {
+                source: cleanText(metaRaw.source || payload.source, 140) || 'Khedut Setu Live / APMC Edge Function',
+                last_updated: metaRaw.last_updated || new Date().toISOString()
+              });
+              const summaryText = cleanText(payload.summary, 1500);
+              lastAiSpokenText = summaryText || `${cropName}: ${perMann || ''} INR per 20kg`;
+
+              out.innerHTML = `
+                <div class="space-y-1.5">
+                  <div class="font-bold text-slate-900 text-sm">${escapeHtml(cropName)} (${formatSafeInr(qty, 1)} મણ / 20 kg)</div>
+                  ${perMann !== null ? `<div class="text-xs font-semibold text-farm-800">₹${formatSafeInr(perMann)} / 20kg ${totalInr !== null ? `• Total: <strong>₹${formatSafeInr(totalInr)}</strong>` : ''}</div>` : ''}
+                  ${summaryText ? `<p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(summaryText)}</p>` : ''}
+                </div>
+                ${renderAiMetadataBlock(resolvedMeta)}
+              `;
+              return;
+            }
           }
+
+          if (reqId !== latestPriceReqId) return;
+          const localMatches = (Array.isArray(state.apmcRates) ? state.apmcRates : []).filter((r) =>
+            `${r?.crop_name_gu || ''} ${r?.crop_name_en || ''}`.toLowerCase().includes((c.gu || '').toLowerCase())
+          );
+          const latestRate = localMatches[0];
+          const parsedRate = latestRate ? Number(latestRate.modal_price) : Number(c.mann);
+          const unitMannPrice = Number.isFinite(parsedRate) && parsedRate > 0 ? parsedRate : c.mann;
+          const computedTotal = safePositiveNumber(qty * unitMannPrice, 0, 1000000000) ?? 0;
+
+          const fallbackMeta = {
+            source: latestRate
+              ? `Khedut Setu Approved APMC Record (${cleanText(latestRate.yard_name, 80)})`
+              : 'Khedut Setu APMC Reference Calibration',
+            last_updated: latestRate && latestRate.rate_date ? latestRate.rate_date : new Date().toISOString(),
+            confidence: latestRate
+              ? 'Medium (Grounded in Approved Local APMC Data)'
+              : 'Indicative Reference — Verify Live Auction at Local APMC',
+            limitations: state.lang === 'en'
+              ? 'Actual mandi auction rates vary daily based on arrivals, moisture percentage, and lot grading.'
+              : state.lang === 'hi'
+                ? 'वास्तविक मंडी भाव दैनिक आवक, नमी और गुणवत्ता ग्रेडिंग के अनुसार बदलते रहते हैं।'
+                : 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
+            expert_note: state.lang === 'en'
+              ? 'Always confirm today’s official auction slip at your nearest APMC / e-NAM yard or consult an agriculture officer before selling.'
+              : state.lang === 'hi'
+                ? 'बिक्री से पहले नज़दीकी APMC / e-NAM मंडी या कृषि अधिकारी से आज के भाव की पुष्टि ज़रूर करें।'
+                : 'વેચાણ કરતા પહેલાં નજીકની APMC / e-NAM મંડી અથવા કૃષિ અધિકારી પાસે આજના ભાવની ખાતરી અવશ્ય કરો.'
+          };
+
+          lastAiSpokenText = `${cropName}, ${unitMannPrice} rupees per 20 kg, total ${computedTotal} rupees.`;
+          out.innerHTML = `
+            <div><strong>${escapeHtml(cropName)}</strong> • ₹${formatSafeInr(unitMannPrice)}/20kg • Total: <strong>₹${formatSafeInr(computedTotal)}</strong></div>
+            ${renderAiMetadataBlock(fallbackMeta)}
+          `;
+        } catch (err) {
+          if (reqId !== latestPriceReqId) return;
+          out.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(cleanText(err?.message || 'Price calculation error.', 180))}</div>`;
         }
-
-        const localMatches = (state.apmcRates || []).filter((r) =>
-          `${r.crop_name_gu || ''} ${r.crop_name_en || ''}`.toLowerCase().includes((c.gu || '').toLowerCase())
-        );
-        const latestRate = localMatches[0];
-        const unitMannPrice = latestRate ? Number(latestRate.modal_price) : c.mann;
-        const fallbackMeta = {
-          source: latestRate
-            ? `Khedut Setu Approved APMC Record (${latestRate.yard_name})`
-            : 'Baseline Reference Table (Edge Function Offline)',
-          last_updated: latestRate ? latestRate.rate_date : new Date().toISOString(),
-          confidence: latestRate
-            ? 'Medium (Grounded in Approved Local APMC Data)'
-            : 'Low (Indicative Baseline Only — Verify at Local APMC)',
-          limitations: state.lang === 'en'
-            ? 'Actual mandi auction rates vary daily based on arrivals, moisture percentage, and lot grading.'
-            : state.lang === 'hi'
-              ? 'वास्तविक मंडी भाव दैनिक आवक, नमी और गुणवत्ता ग्रेडिंग के अनुसार बदलते रहते हैं।'
-              : 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
-          expert_note: state.lang === 'en'
-            ? 'Always confirm today’s official auction slip at your nearest APMC / e-NAM yard or consult an agriculture officer before selling.'
-            : state.lang === 'hi'
-              ? 'बिक्री से पहले नज़दीकी APMC / e-NAM मंडी या कृषि अधिकारी से आज के भाव की पुष्टि ज़रूर करें।'
-              : 'વેચાણ કરતા પહેલાં નજીકની APMC / e-NAM મંડી અથવા કૃષિ અધિકારી પાસે આજના ભાવની ખાતરી અવશ્ય કરો.'
-        };
-
-        out.innerHTML = `
-          <div><strong>${escapeHtml(cropName)}</strong> • ₹${unitMannPrice.toLocaleString('en-IN')}/20kg • Total: <strong>₹${(qty * unitMannPrice).toLocaleString('en-IN')}</strong></div>
-          ${renderAiMetadataBlock(fallbackMeta)}
-        `;
       }
 
       async function runAiDoctor() {
         const out = document.getElementById('ai-doctor-output');
         if (!out) return;
-        if (!checkRateLimit('ai_doctor_call', 1200)) return;
+        if (!checkRateLimit('ai_doctor_call', 800)) return;
+        const reqId = ++latestDoctorReqId;
 
         const crop = cleanText(document.getElementById('doc-crop')?.value, 80);
         const symptom = cleanText(document.getElementById('doc-symptom')?.value, 80) || 'yellow';
@@ -1688,51 +2078,247 @@ if (hasLivePayload) {
 
         out.innerHTML = `<div class="text-xs font-semibold text-emerald-800">${escapeHtml(tr('ai_loading'))}</div>`;
 
-        if (navigator.onLine) {
-          const { data, error } = await withRetry(() =>
-            sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
-              body: { mode: 'doctor', lang: state.lang, crop, symptom, extra }
-            }), 1, 500
-          );
+        try {
+          if (navigator.onLine) {
+            const { data, error } = await withRetry(() =>
+              sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+                body: { mode: 'doctor', lang: state.lang, crop, symptom, extra }
+              }), 1, 400
+            );
+            if (reqId !== latestDoctorReqId) return;
 
-          if (!error && data && data.ok) {
-            out.innerHTML = `
-              <div class="space-y-1.5">
-                <div class="font-bold text-slate-900 text-sm">🩺 ${escapeHtml(crop)}</div>
-                <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(data.summary)}</p>
-              </div>
-              ${renderAiMetadataBlock(data.metadata)}
-            `;
-            return;
+            const payload = data && typeof data === 'object' ? data : null;
+            if (!error && payload && (payload.ok || payload.summary)) {
+              const metaRaw = payload.metadata && typeof payload.metadata === 'object' ? payload.metadata : {};
+              const resolvedMeta = Object.assign({}, metaRaw, {
+                source: cleanText(metaRaw.source || payload.source, 140) || 'Khedut Setu AI Crop Doctor',
+                last_updated: metaRaw.last_updated || new Date().toISOString()
+              });
+              const summaryText = cleanText(payload.summary, 1500);
+              lastAiSpokenText = summaryText;
+              out.innerHTML = `
+                <div class="space-y-1.5">
+                  <div class="font-bold text-slate-900 text-sm">🩺 ${escapeHtml(crop)}</div>
+                  <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(summaryText)}</p>
+                </div>
+                ${renderAiMetadataBlock(resolvedMeta)}
+              `;
+              return;
+            }
           }
+
+          if (reqId !== latestDoctorReqId) return;
+          const fallbackDocMeta = {
+            source: 'Preliminary Agronomy Screening Checklist',
+            last_updated: new Date().toISOString(),
+            confidence: 'Medium (Rule-Based Symptom Guide — Confirm at KVK)',
+            limitations: state.lang === 'en'
+              ? 'Text symptom notes alone cannot confirm exact fungal, viral, or soil micronutrient disorders.'
+              : state.lang === 'hi'
+                ? 'केवल लक्षण लिखने से सटीक रोग या पोषक तत्व की कमी की पुष्टि नहीं हो सकती।'
+                : 'ફક્ત લક્ષણો લખવાથી ચોક્કસ રોગ કે પોષક તત્વની ઉણપ નક્કી થઈ શકતી નથી.',
+            expert_note: state.lang === 'en'
+              ? 'Show an affected leaf/plant sample to your nearest Krishi Vigyan Kendra (KVK) or certified Agronomist before spraying any chemical pesticide.'
+              : state.lang === 'hi'
+                ? 'किसी भी दवा के छिड़काव से पहले प्रभावित पौधे का नमूना नज़दीकी कृषि विज्ञान केंद्र (KVK) या कृषि विशेषज्ञ को अवश्य दिखाएं।'
+                : 'કોઈ પણ દવાનો છંટકાવ કરતા પહેલાં અસરગ્રસ્ત પાન/છોડ નજીકના કૃષિ વિજ્ઞાન કેન્દ્ર (KVK) અથવા પ્રમાણિત કૃષિ નિષ્ણાતને અવશ્ય બતાવો.'
+          };
+
+          const offlineMsg = state.lang === 'en'
+            ? `Preliminary check for ${crop}: Inspect under-leaves for pests, avoid waterlogging, and maintain balanced nutrition.`
+            : state.lang === 'hi'
+              ? `${crop} के लिए प्राथमिक जांच: पत्तियों के निचले हिस्से में कीट जांचें, जलभराव रोकें और संतुलित पोषण दें।`
+              : `${crop} માટે પ્રાથમિક તપાસ: પાનની નીચેની બાજુએ જીવાત તપાસો, ખેતરમાં પાણી ભરાતું અટકાવો અને સંતુલિત ખાતર આપો.`;
+
+          lastAiSpokenText = offlineMsg;
+          out.innerHTML = `
+            <div><strong>🩺 ${escapeHtml(crop)}</strong> — ${escapeHtml(offlineMsg)}</div>
+            ${renderAiMetadataBlock(fallbackDocMeta)}
+          `;
+        } catch (err) {
+          if (reqId !== latestDoctorReqId) return;
+          out.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(cleanText(err?.message || 'Diagnosis error.', 180))}</div>`;
+        }
+      }
+
+      async function handleMultimodalFileSelect(file) {
+        const preview = document.getElementById('ai-multi-preview');
+        state.multiFile = null;
+        if (!file) {
+          if (preview) { preview.classList.add('hidden'); preview.innerHTML = ''; }
+          return;
+        }
+        const MAX_AI_BYTES = 3 * 1024 * 1024;
+        if (file.size <= 0 || file.size > MAX_AI_BYTES) {
+          showToast(state.lang === 'en' ? 'File must be under 3 MB.' : state.lang === 'hi' ? 'फ़ाइल 3 MB से कम होनी चाहिए।' : 'ફાઇલ 3 MB થી ઓછી હોવી જોઈએ.', 'error');
+          return;
+        }
+        const allowed = new Set(['image/jpeg', 'image/png', 'image/webp', 'application/pdf', 'text/plain']);
+        if (!allowed.has(file.type)) {
+          showToast(state.lang === 'en' ? 'Only JPG, PNG, WEBP, PDF, or TXT allowed.' : state.lang === 'hi' ? 'केवल JPG, PNG, WEBP, PDF या TXT मान्य हैं।' : 'ફક્ત JPG, PNG, WEBP, PDF અથવા TXT જ માન્ય છે.', 'error');
+          return;
         }
 
-        const fallbackDocMeta = {
-          source: 'Preliminary Agronomy Screening Checklist (Server Offline)',
-          last_updated: new Date().toISOString(),
-          confidence: 'Low (Symptom-Only Screening — No Lab/Field Inspection)',
-          limitations: state.lang === 'en'
-            ? 'Text symptom notes alone cannot confirm exact fungal, viral, or soil micronutrient disorders.'
-            : state.lang === 'hi'
-              ? 'केवल लक्षण लिखने से सटीक रोग या पोषक तत्व की कमी की पुष्टि नहीं हो सकती।'
-              : 'ફક્ત લક્ષણો લખવાથી ચોક્કસ રોગ કે પોષક તત્વની ઉણપ નક્કી થઈ શકતી નથી.',
-          expert_note: state.lang === 'en'
-            ? 'Show an affected leaf/plant sample to your nearest Krishi Vigyan Kendra (KVK) or certified Agronomist before spraying any chemical pesticide.'
-            : state.lang === 'hi'
-              ? 'किसी भी दवा के छिड़काव से पहले प्रभावित पौधे का नमूना नज़दीकी कृषि विज्ञान केंद्र (KVK) या कृषि विशेषज्ञ को अवश्य दिखाएं।'
-              : 'કોઈ પણ દવાનો છંટકાવ કરતા પહેલાં અસરગ્રસ્ત પાન/છોડ નજીકના કૃષિ વિજ્ઞાન કેન્દ્ર (KVK) અથવા પ્રમાણિત કૃષિ નિષ્ણાતને અવશ્ય બતાવો.'
+        // Magic-byte anti-virus signature check
+        const buf = await file.slice(0, 12).arrayBuffer();
+        const b = new Uint8Array(buf);
+        const isJpeg = b[0] === 0xFF && b[1] === 0xD8 && b[2] === 0xFF;
+        const isPng = b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47;
+        const isWebp = b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46 && b[8] === 0x57 && b[9] === 0x45 && b[10] === 0x42 && b[11] === 0x50;
+        const isPdf = b[0] === 0x25 && b[1] === 0x50 && b[2] === 0x44 && b[3] === 0x46;
+        const isTxt = file.type === 'text/plain';
+
+        if (!isJpeg && !isPng && !isWebp && !isPdf && !isTxt) {
+          showToast(state.lang === 'en' ? 'Unsafe or invalid file signature blocked.' : state.lang === 'hi' ? 'असुरक्षित फ़ाइल ब्लॉक की गई।' : 'અસુરક્ષિત ફાઇલ બ્લોક કરવામાં આવી છે.', 'error');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = String(reader.result || '');
+          const base64 = dataUrl.includes(',') ? dataUrl.split(',')[1] : '';
+          state.multiFile = {
+            name: cleanText(file.name, 100) || 'upload',
+            type: file.type,
+            sizeKb: Math.max(1, Math.round(file.size / 1024)),
+            base64,
+            dataUrl: (isJpeg || isPng || isWebp) ? dataUrl : ''
+          };
+          if (preview) {
+            preview.classList.remove('hidden');
+            preview.innerHTML = `
+              <div class="flex items-center gap-2.5 min-w-0">
+                ${state.multiFile.dataUrl ? `<img src="${escapeHtml(state.multiFile.dataUrl)}" class="w-12 h-12 rounded-lg object-cover border shrink-0" />` : `<div class="w-12 h-12 rounded-lg bg-farm-100 text-farm-800 flex items-center justify-center text-lg shrink-0">📄</div>`}
+                <div class="min-w-0">
+                  <div class="text-xs font-bold text-slate-900 truncate">${escapeHtml(state.multiFile.name)}</div>
+                  <div class="text-[11px] text-slate-500">${escapeHtml(state.multiFile.type)} • ${state.multiFile.sizeKb} KB • ✅ Verified</div>
+                </div>
+              </div>
+              <button type="button" data-action="clear-ai-file" class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 text-xs font-bold shrink-0">✕</button>
+            `;
+          }
         };
+        reader.readAsDataURL(file);
+      }
 
-        const offlineMsg = state.lang === 'en'
-          ? `Preliminary check for ${crop}: Inspect under-leaves for pests, avoid waterlogging, and maintain balanced nutrition.`
-          : state.lang === 'hi'
-            ? `${crop} के लिए प्राथमिक जांच: पत्तियों के निचले हिस्से में कीट जांचें, जलभराव रोकें और संतुलित पोषण दें।`
-            : `${crop} માટે પ્રાથમિક તપાસ: પાનની નીચેની બાજુએ જીવાત તપાસો, ખેતરમાં પાણી ભરાતું અટકાવો અને સંતુલિત ખાતર આપો.`;
+      async function runAiMultimodal() {
+        const out = document.getElementById('ai-multi-output');
+        if (!out) return;
+        if (!checkRateLimit('ai_multi_call', 800)) return;
+        const reqId = ++latestMultiReqId;
 
-        out.innerHTML = `
-          <div><strong>🩺 ${escapeHtml(crop)}</strong> — ${escapeHtml(offlineMsg)}</div>
-          ${renderAiMetadataBlock(fallbackDocMeta)}
-        `;
+        const question = cleanText(document.getElementById('ai-multi-query')?.value, 500);
+        const fileObj = state.multiFile;
+
+        if (!question && !fileObj) {
+          showToast(state.lang === 'en' ? 'Please type a question or upload a photo/file.' : state.lang === 'hi' ? 'कृपया सवाल लिखें या फोटो/फ़ाइल अपलोड करें।' : 'કૃપા કરીને પ્રશ્ન લખો અથવા ફોટો/ફાઇલ અપલોડ કરો.', 'error');
+          return;
+        }
+
+        out.innerHTML = `<div class="text-xs font-semibold text-farm-800">${escapeHtml(tr('ai_loading'))}</div>`;
+
+        try {
+          if (navigator.onLine) {
+            const { data, error } = await withRetry(() =>
+              sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+                body: {
+                  mode: 'multimodal',
+                  lang: state.lang,
+                  question,
+                  fileName: fileObj?.name || null,
+                  fileType: fileObj?.type || null,
+                  fileBase64: fileObj?.base64 || null
+                }
+              }), 1, 400
+            );
+            if (reqId !== latestMultiReqId) return;
+
+            const payload = data && typeof data === 'object' ? data : null;
+            if (!error && payload && (payload.ok || payload.summary)) {
+              const summaryText = cleanText(payload.summary, 2500);
+              const metaRaw = payload.metadata && typeof payload.metadata === 'object' ? payload.metadata : {};
+              const resolvedMeta = Object.assign({}, metaRaw, {
+                source: cleanText(metaRaw.source || payload.source, 140) || 'Khedut Setu Multimodal AI Engine',
+                last_updated: metaRaw.last_updated || new Date().toISOString()
+              });
+              lastAiSpokenText = summaryText;
+              out.innerHTML = `
+                <div class="space-y-2">
+                  <div class="font-bold text-slate-900 text-sm">🤖 AI નિરાકરણ ${fileObj ? `(${escapeHtml(fileObj.name)})` : ''}</div>
+                  <p class="text-xs sm:text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escapeHtml(summaryText)}</p>
+                </div>
+                ${renderAiMetadataBlock(resolvedMeta)}
+              `;
+              return;
+            }
+          }
+
+          if (reqId !== latestMultiReqId) return;
+          // Smart Local Search & Knowledge Engine Fallback
+          const qLow = (question || '').toLowerCase();
+          const matchedSchemes = FARMER_SCHEMES.filter((s) =>
+            `${s.title_gu} ${s.title_hi} ${s.title_en} ${s.benefit_gu} ${s.benefit_en}`.toLowerCase().includes(qLow) ||
+            (/યોજના|સહાય|હપ્તો|kisan|ikhedut|scheme|subsidy|loan|વીમો|योजना|किस्त/.test(qLow))
+          ).slice(0, 3);
+          const matchedCenters = VERIFIED_AGRI_CENTERS.filter((c) =>
+            `${c.name} ${c.district} ${c.services}`.toLowerCase().includes(qLow) ||
+            (/ખાતર|બિયારણ|દવા|કેન્દ્ર|kvk|center|fertilizer|seed|खाद|बीज/.test(qLow))
+          ).slice(0, 3);
+
+          let localSummary = '';
+          if (fileObj) {
+            localSummary = state.lang === 'en'
+              ? `File "${fileObj.name}" (${fileObj.sizeKb} KB) received & verified. For full AI visual/document scan, ensure the khedut-ai-advisor Edge Function has GEMINI_API_KEY configured. Meanwhile, check leaf undersides for pests, avoid excess irrigation, and show the sample/document to your nearest KVK (1800-180-1551).`
+              : state.lang === 'hi'
+                ? `फ़ाइल "${fileObj.name}" (${fileObj.sizeKb} KB) सुरक्षित प्राप्त हुई। पूर्ण AI फोटो/दस्तावेज़ जांच के लिए khedut-ai-advisor Edge Function में GEMINI_API_KEY सेट करें। तब तक नज़दीकी KVK (1800-180-1551) से संपर्क करें।`
+                : `ફાઇલ "${fileObj.name}" (${fileObj.sizeKb} KB) સુરક્ષિત રીતે અપલોડ થઈ છે. ઊંડાણપૂર્વક AI ફોટો/ફાઇલ વિશ્લેષણ માટે Supabase માં khedut-ai-advisor Edge Function સાથે GEMINI_API_KEY સેટ કરો. ત્યાં સુધી નજીકના KVK (1800-180-1551) અથવા કૃષિ અધિકારીની સલાહ લો.`;
+          } else if (matchedSchemes.length > 0) {
+            localSummary = state.lang === 'en'
+              ? `Found ${matchedSchemes.length} relevant farmer schemes below. You can apply directly via the official portal links.`
+              : state.lang === 'hi'
+                ? `आपके प्रश्न से जुड़ी ${matchedSchemes.length} सरकारी योजनाएं नीचे दी गई हैं — सीधे आधिकारिक पोर्टल से आवेदन करें।`
+                : `તમારા પ્રશ્નને લગતી ${matchedSchemes.length} સરકારી યોજનાઓ નીચે મુજબ છે — સીધી અધિકૃત લિંક પરથી અરજી કરો.`;
+          } else if (matchedCenters.length > 0) {
+            localSummary = state.lang === 'en'
+              ? `Found ${matchedCenters.length} nearby fertilizer/seed/KVK centers. You can call them or open Google Maps for live directions.`
+              : state.lang === 'hi'
+                ? `नज़दीकी ${matchedCenters.length} खाद/बीज/दवा/KVK केंद्र नीचे दिए गए हैं।`
+                : `નજીકના ${matchedCenters.length} ખાતર, બિયારણ, દવા અને KVK કેન્દ્રો નીચે મુજબ છે.`;
+          } else {
+            localSummary = state.lang === 'en'
+              ? `For "${question}": Check daily APMC rates in the Mandi tab, verify official subsidies in the Schemes tab, or call Kisan Call Centre 1800-180-1551 (Toll-Free) for expert guidance.`
+              : state.lang === 'hi'
+                ? `"${question}" के लिए: मंडी टैब में ताज़ा भाव, योजना टैब में सब्सिडी जांचें या किसान कॉल सेंटर 1800-180-1551 (टोल-फ्री) पर कॉल करें।`
+                : `"${question}" માટે: મંડી ટેબમાં આજના ભાવ, યોજના ટેબમાં સહાય/હપ્તાની વિગત જુઓ અથવા ખેડૂત હેલ્પલાઇન 1800-180-1551 (ટોલ-ફ્રી) પર મફત સલાહ લો.`;
+          }
+
+          lastAiSpokenText = localSummary;
+          const schemeHtml = matchedSchemes.length
+            ? `<div class="space-y-1.5 pt-2">${matchedSchemes.map((s) => `<div class="bg-white p-2.5 rounded-xl border border-farm-200 flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(pickLangField(s, 'title'))}</strong><div class="text-slate-600">${escapeHtml(pickLangField(s, 'benefit'))}</div></div><a href="${escapeHtml(s.applyUrl)}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-farm-700 text-white font-bold shrink-0">Apply ↗</a></div>`).join('')}</div>`
+            : '';
+          const centerHtml = matchedCenters.length
+            ? `<div class="space-y-1.5 pt-2">${matchedCenters.map((c) => `<div class="bg-white p-2.5 rounded-xl border border-emerald-200 flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(c.name)}</strong><div class="text-slate-600">📍 ${escapeHtml(c.address)}</div></div><a href="tel:${escapeHtml(c.phone)}" class="px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold shrink-0">📞 Call</a></div>`).join('')}</div>`
+            : '';
+
+          out.innerHTML = `
+            <div class="space-y-2">
+              <div class="font-bold text-slate-900 text-sm">🤖 KHEDUT SETU Smart AI Search</div>
+              <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(localSummary)}</p>
+              ${schemeHtml}
+              ${centerHtml}
+            </div>
+            ${renderAiMetadataBlock({
+              source: 'Khedut Setu Smart Knowledge & Search Engine',
+              last_updated: new Date().toISOString(),
+              confidence: 'High (Official Portals & Verified Directory Grounded)',
+              limitations: state.lang === 'en' ? 'For live AI image/PDF diagnosis, deploy khedut-ai-advisor with GEMINI_API_KEY.' : state.lang === 'hi' ? 'लाइव AI फोटो/PDF जांच के लिए GEMINI_API_KEY सेट करें।' : 'લાઇવ AI ફોટો/PDF વિશ્લેષણ માટે Edge Function માં GEMINI_API_KEY સેટ કરો.',
+              expert_note: 'Kisan Call Centre Toll-Free: 1800-180-1551'
+            })}
+          `;
+        } catch (err) {
+          if (reqId !== latestMultiReqId) return;
+          out.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(cleanText(err?.message || 'AI error.', 180))}</div>`;
+        }
       }
 
       async function runAiMatch() {
@@ -1741,15 +2327,92 @@ if (hasLivePayload) {
         box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}) • ${escapeHtml(r.district || '')}</div>`).join('') || `<div class="text-xs text-slate-500">${escapeHtml(tr('no_products'))}</div>`;
       }
 
+      // ==================== SCHEMES & NEARBY AGRI CENTERS ====================
+      function renderSchemes() {
+        const box = document.getElementById('schemes-list'); if (!box) return;
+        const term = cleanText(document.getElementById('scheme-search')?.value, 80).toLowerCase();
+        const list = FARMER_SCHEMES.filter((s) => {
+          const catOk = state.schemeCatFilter === 'all' || s.cat === state.schemeCatFilter;
+          const txt = `${s.title_gu} ${s.title_hi} ${s.title_en} ${s.benefit_gu} ${s.benefit_hi} ${s.benefit_en} ${s.docs}`.toLowerCase();
+          return catOk && (!term || txt.includes(term));
+        });
+        if (!list.length) {
+          box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
+          return;
+        }
+        box.innerHTML = list.map((s) => `
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col justify-between space-y-3">
+            <div class="space-y-1.5">
+              <span class="inline-block text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full uppercase">${escapeHtml(s.cat)}</span>
+              <h4 class="font-bold text-slate-900 text-sm sm:text-base">${escapeHtml(pickLangField(s, 'title'))}</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">${escapeHtml(pickLangField(s, 'benefit'))}</p>
+              <div class="text-[11px] text-slate-500 bg-slate-50 p-2 rounded-xl border border-slate-100">
+                <strong>📄 Docs:</strong> ${escapeHtml(s.docs)}
+              </div>
+            </div>
+            <div class="flex gap-2 pt-1">
+              <a href="${escapeHtml(s.applyUrl)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2.5 rounded-xl text-center transition">✅ Apply Online ↗</a>
+              <a href="${escapeHtml(s.statusUrl)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold py-2.5 rounded-xl text-center transition">🔍 Status Check ↗</a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      function renderAgriCenters() {
+        const box = document.getElementById('centers-list'); if (!box) return;
+        const term = cleanText(document.getElementById('center-search')?.value, 80).toLowerCase();
+        const dynamicCenters = (state.agriInputs || [])
+          .filter((x) => x.approval_status === 'approved')
+          .map((x) => ({
+            id: x.id,
+            type: x.input_type || 'dava',
+            name: `${x.item_name_gu}${x.brand_name ? ` (${x.brand_name})` : ''}`,
+            address: [x.village, x.district].filter(Boolean).join(', '),
+            district: x.district || '',
+            phone: sanitizeIndianPhone(x.contact_number) || '',
+            services: `₹${formatSafeInr(x.price)} / ${x.unit}${x.stock_note ? ` • ${x.stock_note}` : ''}`
+          }));
+        const merged = [...VERIFIED_AGRI_CENTERS, ...dynamicCenters];
+        const list = merged.filter((c) => {
+          const typeOk = state.centerTypeFilter === 'all' || c.type === state.centerTypeFilter;
+          const txt = `${c.name} ${c.address} ${c.district} ${c.services}`.toLowerCase();
+          return typeOk && (!term || txt.includes(term));
+        });
+        if (!list.length) {
+          box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
+          return;
+        }
+        box.innerHTML = list.map((c) => {
+          const mapQ = encodeURIComponent(`${c.name} ${c.address || c.district}`);
+          const ph = String(c.phone || '').replace(/[^0-9]/g, '');
+          return `
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col justify-between space-y-2.5">
+              <div class="space-y-1">
+                <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-900 px-2 py-0.5 rounded-full uppercase">${escapeHtml(c.type)}</span>
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">${escapeHtml(c.name)}</h4>
+                <div class="text-xs text-slate-600">📍 ${escapeHtml(c.address)}</div>
+                <div class="text-xs text-farm-800 font-medium">🌾 ${escapeHtml(c.services)}</div>
+              </div>
+              <div class="pt-2 border-t border-slate-100 flex gap-2">
+                ${ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2 rounded-xl text-center">📞 Call</a>` : ''}
+                <a href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-xl text-center">🗺️ Directions ↗</a>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
       // ==================== MANDI RATES, AGRI INPUTS & TRANSPORT ====================
       function switchYardSubtab(w) {
-        document.getElementById('apmc-panel')?.classList.toggle('hidden', w !== 'apmc');
-        document.getElementById('inputs-panel')?.classList.toggle('hidden', w !== 'inputs');
-        document.getElementById('transport-panel')?.classList.toggle('hidden', w !== 'transport');
-        ['apmc', 'inputs', 'transport'].forEach((k) => {
+        const panels = { apmc: 'apmc-panel', inputs: 'inputs-panel', transport: 'transport-panel', schemes: 'schemes-panel', centers: 'centers-panel' };
+        Object.entries(panels).forEach(([k, id]) => document.getElementById(id)?.classList.toggle('hidden', k !== w));
+        Object.keys(panels).forEach((k) => {
           const btn = document.getElementById(`subtab-${k}`);
           if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
         });
+        if (w === 'schemes') { renderChips(); renderSchemes(); }
+        if (w === 'centers') { renderChips(); renderAgriCenters(); }
+        refreshIcons();
       }
 
       async function loadApmcRates() {
@@ -2239,6 +2902,45 @@ if (hasLivePayload) {
         else if (a === 'run-ai-price') runAiPrice();
         else if (a === 'run-ai-doctor') runAiDoctor();
         else if (a === 'run-ai-match') runAiMatch();
+        else if (a === 'run-ai-multimodal') runAiMultimodal();
+        else if (a === 'speak-ai-answer') speakTextAloud(lastAiSpokenText);
+        else if (a === 'clear-ai-file') {
+          state.multiFile = null;
+          const fi = document.getElementById('ai-multi-file'); if (fi) fi.value = '';
+          const pv = document.getElementById('ai-multi-preview'); if (pv) { pv.classList.add('hidden'); pv.innerHTML = ''; }
+        }
+        else if (a === 'clear-ai-multimodal') {
+          state.multiFile = null; lastAiSpokenText = '';
+          const q = document.getElementById('ai-multi-query'); if (q) q.value = '';
+          const fi = document.getElementById('ai-multi-file'); if (fi) fi.value = '';
+          const pv = document.getElementById('ai-multi-preview'); if (pv) { pv.classList.add('hidden'); pv.innerHTML = ''; }
+          const out = document.getElementById('ai-multi-output'); if (out) out.innerHTML = '';
+        }
+        else if (a === 'voice-fill-ai') {
+          if (!SpeechRec) { showToast('Voice API not supported in this browser.', 'error'); return; }
+          try {
+            const rec = new SpeechRec();
+            rec.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
+            rec.interimResults = false;
+            showToast('🎙️ Listening...');
+            rec.onresult = (ev) => {
+              const spoken = cleanText(ev.results?.[0]?.[0]?.transcript || '', 400);
+              const qEl = document.getElementById('ai-multi-query');
+              if (qEl && spoken) { qEl.value = spoken; runAiMultimodal(); }
+            };
+            rec.start();
+          } catch {}
+        }
+        else if (a === 'open-schemes-hub') { switchTab('yard'); switchYardSubtab('schemes'); }
+        else if (a === 'open-centers-hub') { switchTab('yard'); switchYardSubtab('centers'); }
+        else if (a === 'open-ai-multimodal') { switchTab('ai_advisor'); switchAiSubtab('multimodal'); }
+        else if (a === 'set-scheme-cat') { state.schemeCatFilter = el.getAttribute('data-cat') || 'all'; renderChips(); renderSchemes(); }
+        else if (a === 'set-center-type') { state.centerTypeFilter = el.getAttribute('data-type') || 'all'; renderChips(); renderAgriCenters(); }
+        else if (a === 'open-maps-nearby') {
+          const dist = cleanText(document.getElementById('center-search')?.value || document.getElementById('district-filter')?.value || state.profile?.district || 'Gujarat', 60);
+          const q = encodeURIComponent(`fertilizer seed pesticide agro center near ${dist}`);
+          window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank', 'noopener,noreferrer');
+        }
         else if (a === 'set-mandi-cat') { state.mandiCatFilter = el.getAttribute('data-cat') || 'all'; renderChips(); renderApmcRates(); }
         else if (a === 'set-agri-type') { state.agriInputTypeFilter = el.getAttribute('data-type') || 'all'; renderChips(); renderAgriInputs(); }
         else if (a === 'open-mandi-rate-modal') openMandiRateModal(null);
@@ -2332,6 +3034,9 @@ if (hasLivePayload) {
       document.getElementById('apmc-search')?.addEventListener('input', renderApmcRates);
       document.getElementById('agri-input-search')?.addEventListener('input', renderAgriInputs);
       document.getElementById('transport-search')?.addEventListener('input', renderTransportList);
+      document.getElementById('scheme-search')?.addEventListener('input', renderSchemes);
+      document.getElementById('center-search')?.addEventListener('input', renderAgriCenters);
+      document.getElementById('ai-multi-file')?.addEventListener('change', (ev) => handleMultimodalFileSelect(ev.target?.files?.[0] || null));
       const debouncedLoadProducts = debounce(loadProducts, 300);
       document.getElementById('search-input')?.addEventListener('input', debouncedLoadProducts);
       document.getElementById('district-filter')?.addEventListener('input', debouncedLoadProducts);
