@@ -1617,7 +1617,10 @@
             }), 1, 500
           );
 
-          if (!error && data && data.ok) {
+          const hasLivePayload = !error && data && (data.ok || data.summary || data.metadata || data.estimated_per_mann_inr);
+if (hasLivePayload) {
+    const liveMeta = Object.assign({}, data?.metadata || {}, { source: data?.metadata?.source || data?.source || 'Khedut Setu Live / APMC Data' });
+    
             const perMann = safePositiveNumber(data.estimated_per_mann_inr, 1, 10000000);
             const totalInr = safePositiveNumber(data.estimated_total_inr, 1, 1000000000);
             out.innerHTML = `
@@ -1626,7 +1629,8 @@
                 ${perMann ? `<div class="text-xs font-semibold text-farm-800">₹${perMann.toLocaleString('en-IN')} / 20kg ${totalInr ? `• Total: <strong>₹${totalInr.toLocaleString('en-IN')}</strong>` : ''}</div>` : ''}
                 <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(data.summary)}</p>
               </div>
-              ${renderAiMetadataBlock(data.metadata)}
+              ${renderAiMetadataBlock(liveMeta)}
+    
             `;
             return;
           }
