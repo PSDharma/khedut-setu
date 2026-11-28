@@ -1,7 +1,7 @@
-const STATIC_CACHE = 'khedut-setu-static-v7.3.0-pro';
-const CDN_CACHE = 'khedut-setu-cdn-v7.3.0-pro';
+const STATIC_CACHE = 'khedut-setu-static-v8.1.0-pro';
+const CDN_CACHE = 'khedut-setu-cdn-v8.1.0-pro';
 const MAX_CDN_ENTRIES = 60;
-const NAV_TIMEOUT_MS = 4000;
+const NAV_TIMEOUT_MS = 6500;
 
 const CORE_ASSETS = ['./', './index.html', './manifest.json', './icon-192.png'];
 
@@ -16,7 +16,8 @@ const ALLOWED_CDN_HOSTS = new Set([
 const NEVER_CACHE_HOSTS = [
   'supabase.co',
   'data.gov.in',
-  'generativelanguage.googleapis.com'
+  'generativelanguage.googleapis.com',
+  'api.open-meteo.com'
 ];
 
 function isSensitiveHost(hostname) {
@@ -54,7 +55,7 @@ self.addEventListener('install', (event) => {
       await Promise.allSettled(
         CORE_ASSETS.map(async (url) => {
           const res = await fetch(url, { cache: 'no-cache' });
-          if (res && res.ok) await cache.put(url, res.clone());
+          if (res && res.status === 200) await cache.put(url, res.clone());
         })
       );
     })
@@ -106,7 +107,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetchWithTimeout(req, NAV_TIMEOUT_MS)
         .then((res) => {
-          if (res && res.ok) {
+          if (res && res.status === 200) {
             const copy = res.clone();
             caches.open(STATIC_CACHE).then((c) => c.put('./index.html', copy)).catch(() => {});
           }
@@ -128,7 +129,7 @@ self.addEventListener('fetch', (event) => {
       const cached = await cache.match(req);
       const networkPromise = fetch(req)
         .then((res) => {
-          if (res && (res.ok || res.type === 'opaque')) {
+          if (res && (res.status === 200 || res.type === 'opaque')) {
             cache.put(req, res.clone()).catch(() => {});
             if (targetCache === CDN_CACHE) trimCache(CDN_CACHE, MAX_CDN_ENTRIES);
           }

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; manifest-src 'self' blob:; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co https://api.open-meteo.com; manifest-src 'self' blob:; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU AI v7.3 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
-  <meta name="description" content="KHEDUT SETU AI v7.3 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
+  <title>KHEDUT SETU AI v8.1 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v8.1 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -79,7 +79,7 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v7.3 PRO</span>
+            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v8.1 PRO</span>
           </h1>
           <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline"></p>
         </div>
@@ -148,24 +148,30 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
-              <span>✨ KHEDUT SETU v7.3 PRO</span>
+              <span>✨ KHEDUT SETU v8.1 PRO</span>
               <span>•</span>
               <span data-i18n="ai_badge_sub"></span>
             </div>
             <h2 class="font-bold text-base sm:text-lg" data-i18n="hero_title"></h2>
             <p id="ai-pulse-summary" class="text-xs sm:text-sm text-farm-100"></p>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 w-full sm:w-auto shrink-0">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full sm:w-auto shrink-0">
             <button type="button" data-action="nav-tab" data-tab="yard" class="bg-harvest-500 hover:bg-harvest-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
               <span data-i18n="btn_daily_rates"></span>
+            </button>
+            <button type="button" data-action="open-weather-hub" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
+              <span data-i18n="btn_weather_quick"></span>
             </button>
             <button type="button" data-action="open-schemes-hub" class="bg-emerald-500/90 hover:bg-emerald-500 text-white font-semibold text-xs px-3 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1">
               <span data-i18n="btn_schemes_quick"></span>
             </button>
+            <button type="button" data-action="open-tools-hub" class="bg-amber-400/25 hover:bg-amber-400/35 border border-amber-200/40 text-amber-100 font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
+              <span data-i18n="btn_tools_quick"></span>
+            </button>
             <button type="button" data-action="open-centers-hub" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
               <span data-i18n="btn_centers_quick"></span>
             </button>
-            <button type="button" data-action="open-ai-multimodal" class="bg-amber-400/25 hover:bg-amber-400/35 border border-amber-200/40 text-amber-100 font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
+            <button type="button" data-action="open-ai-multimodal" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
               <span data-i18n="btn_ai_photo_quick"></span>
             </button>
             <button type="button" data-action="nav-tab" data-tab="sell" class="bg-white/15 hover:bg-white/25 border border-white/25 text-white font-semibold text-xs px-3 py-2.5 rounded-xl transition flex items-center justify-center gap-1">
@@ -346,10 +352,12 @@
           </div>
           <div class="flex gap-1.5 bg-slate-100 p-1 rounded-xl w-full sm:w-fit overflow-x-auto no-scrollbar">
             <button type="button" data-action="yard-subtab" data-subtab="apmc" id="subtab-apmc" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold bg-farm-700 text-white transition" data-i18n="tab_apmc"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="weather" id="subtab-weather" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_weather"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="schemes" id="subtab-schemes" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_schemes"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="tools" id="subtab-tools" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_tools"></button>
+            <button type="button" data-action="yard-subtab" data-subtab="centers" id="subtab-centers" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_centers"></button>
             <button type="button" data-action="yard-subtab" data-subtab="inputs" id="subtab-inputs" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_inputs"></button>
             <button type="button" data-action="yard-subtab" data-subtab="transport" id="subtab-transport" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_transport"></button>
-            <button type="button" data-action="yard-subtab" data-subtab="schemes" id="subtab-schemes" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_schemes"></button>
-            <button type="button" data-action="yard-subtab" data-subtab="centers" id="subtab-centers" class="shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-600 hover:bg-white transition" data-i18n="tab_centers"></button>
           </div>
         </div>
       </div>
@@ -408,25 +416,107 @@
         <div id="transport-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
       </div>
 
-      <!-- SCHEMES, SUBSIDIES & INSTALLMENTS PANEL -->
+      <!-- LIVE WEATHER, 7-DAY FORECAST & SPRAY ADVISORY PANEL -->
+      <div id="weather-panel" class="hidden space-y-3">
+        <div class="bg-gradient-to-r from-sky-800 via-sky-700 to-teal-700 rounded-2xl p-4 text-white space-y-3 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="font-bold text-base" data-i18n="weather_heading"></h3>
+              <p class="text-xs text-sky-100" data-i18n="weather_sub"></p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <button type="button" data-action="weather-use-gps" class="px-3 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 text-xs font-extrabold shadow-sm" data-i18n="btn_weather_gps"></button>
+              <a href="https://mausam.imd.gov.in/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold" data-i18n="btn_imd_portal"></a>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <select id="weather-city-select" aria-label="Weather District" class="flex-1 px-3 py-2.5 rounded-xl bg-white text-slate-900 text-xs sm:text-sm font-bold focus:outline-none"></select>
+            <button type="button" id="weather-refresh-btn" data-action="refresh-weather" class="px-4 py-2.5 rounded-xl bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold shadow flex items-center justify-center gap-1.5">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              <span data-i18n="refresh"></span>
+            </button>
+          </div>
+        </div>
+        <div id="weather-current-card" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3"></div>
+        <div id="weather-advisory-box" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2.5">
+          <h4 class="font-bold text-slate-900 text-sm" data-i18n="weather_7day_title"></h4>
+          <div id="weather-7day-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2"></div>
+        </div>
+      </div>
+
+      <!-- SCHEMES, SUBSIDIES, LAND 7/12 & SELF-SERVICE HUB -->
       <div id="schemes-panel" class="hidden space-y-3">
-        <div class="bg-gradient-to-r from-farm-800 to-emerald-700 rounded-2xl p-4 text-white space-y-2 shadow-sm">
+        <div class="bg-gradient-to-r from-farm-800 to-emerald-700 rounded-2xl p-4 text-white space-y-3 shadow-sm">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
               <h3 class="font-bold text-base" data-i18n="schemes_heading"></h3>
               <p class="text-xs text-farm-100" data-i18n="schemes_sub"></p>
             </div>
-            <div class="flex flex-wrap gap-2">
-              <a href="tel:18001801551" class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 text-xs font-extrabold shadow-sm" data-i18n="kisan_helpline_btn"></a>
-              <a href="tel:155261" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold" data-i18n="pmkisan_helpline_btn"></a>
-            </div>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="tel:18001801551" class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 text-xs font-extrabold shadow-sm" data-i18n="kisan_helpline_btn"></a>
+            <a href="tel:155261" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold" data-i18n="pmkisan_helpline_btn"></a>
+            <a href="tel:14447" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold" data-i18n="pmfby_helpline_btn"></a>
+            <a href="tel:1962" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold" data-i18n="pashu_helpline_btn"></a>
+            <a href="https://anyror.gujarat.gov.in/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-emerald-400 text-slate-900 text-xs font-extrabold shadow-sm" data-i18n="btn_anyror_quick"></a>
           </div>
         </div>
+
+        <!-- INTERACTIVE SELF-SERVICE READINESS CHECKLIST -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2.5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h4 class="font-bold text-slate-900 text-sm" data-i18n="doc_checklist_title"></h4>
+              <p class="text-[11px] text-slate-500" data-i18n="doc_checklist_sub"></p>
+            </div>
+            <span id="doc-readiness-badge" class="text-xs font-extrabold bg-farm-100 text-farm-900 px-2.5 py-1 rounded-full">0%</span>
+          </div>
+          <div id="doc-checklist-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2"></div>
+        </div>
+
         <div id="scheme-cat-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar"></div>
-        <div class="flex gap-2">
+        <div class="flex flex-col sm:flex-row gap-2">
           <input id="scheme-search" type="text" maxlength="80" data-i18n-placeholder="scheme_search_ph" class="flex-1 px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
+          <select id="scheme-level-filter" aria-label="Scheme Scope" class="sm:w-44 px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:ring-2 focus:ring-farm-600 focus:outline-none"></select>
         </div>
         <div id="schemes-list" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      </div>
+
+      <!-- FARM PROFIT, BREAK-EVEN & KCC LOAN CALCULATORS PANEL -->
+      <div id="tools-panel" class="hidden space-y-4">
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="font-bold text-slate-900 text-base" data-i18n="profit_calc_title"></h3>
+              <p class="text-xs text-slate-500" data-i18n="profit_calc_sub"></p>
+            </div>
+            <a href="https://desagri.gov.in/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-farm-100 hover:bg-farm-200 text-farm-900 text-xs font-bold" data-i18n="btn_official_msp"></a>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="calc_area_lbl"></label><input id="pc-area" type="number" step="any" min="0.1" value="5" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="calc_seed_lbl"></label><input id="pc-seed" type="number" step="any" min="0" value="6000" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="calc_fert_lbl"></label><input id="pc-fert" type="number" step="any" min="0" value="12000" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="calc_labour_lbl"></label><input id="pc-labour" type="number" step="any" min="0" value="18000" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="calc_yield_lbl"></label><input id="pc-yield" type="number" step="any" min="1" value="120" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="calc_rate_lbl"></label><input id="pc-rate" type="number" step="any" min="1" value="520" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          </div>
+          <button type="button" data-action="calc-farm-profit" class="bg-farm-700 hover:bg-farm-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow" data-i18n="btn_calc_profit"></button>
+          <div id="profit-calc-output" class="bg-farm-50 border border-farm-200 rounded-2xl p-4 text-sm"></div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base" data-i18n="kcc_calc_title"></h3>
+            <p class="text-xs text-slate-500" data-i18n="kcc_calc_sub"></p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="kcc_amt_lbl"></label><input id="kcc-amount" type="number" step="any" min="1000" max="10000000" value="150000" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+            <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="kcc_months_lbl"></label><input id="kcc-months" type="number" min="1" max="60" value="12" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" /></div>
+          </div>
+          <button type="button" data-action="calc-kcc-loan" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow" data-i18n="btn_calc_kcc"></button>
+          <div id="kcc-calc-output" class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-sm"></div>
+        </div>
       </div>
 
       <!-- NEARBY AGRI CENTERS (KHATAR / BIYARAN / DAVA / KVK) PANEL -->
@@ -669,7 +759,7 @@
         <div class="flex items-center gap-3 bg-farm-50 p-3 rounded-2xl border border-farm-200">
           <div class="w-12 h-12 rounded-2xl bg-farm-700 text-white flex items-center justify-center text-2xl font-bold shrink-0">🌾</div>
           <div>
-            <div class="font-bold text-slate-900">KHEDUT SETU AI v7.3 PRO</div>
+            <div class="font-bold text-slate-900">KHEDUT SETU AI v8.1 PRO</div>
             <div class="text-xs text-slate-600" data-i18n="install_modal_sub"></div>
           </div>
         </div>
@@ -712,6 +802,7 @@
           <button type="button" data-action="voice-example" data-text="ડાંગર" class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold">"ડાંગર"</button>
           <button type="button" data-action="voice-example" data-text="ખેડૂત યોજના હપ્તો" class="px-2.5 py-1 rounded-full bg-farm-100 text-farm-900 font-semibold">"ખેડૂત યોજના હપ્તો"</button>
           <button type="button" data-action="voice-example" data-text="નજીકનું ખાતર કેન્દ્ર" class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 font-semibold">"નજીકનું ખાતર કેન્દ્ર"</button>
+          <button type="button" data-action="voice-example" data-text="આજનું હવામાન છંટકાવ" class="px-2.5 py-1 rounded-full bg-sky-100 text-sky-900 font-semibold">"આજનું હવામાન છંટકાવ"</button>
         </div>
       </div>
     </div>
@@ -1079,7 +1170,7 @@
                 if (!nw) return;
                 nw.addEventListener('statechange', () => {
                   if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-                    showToast('🔄 નવું અપડેટ તૈયાર છે — પેજ રિફ્રેશ થઈ રહ્યું છે...');
+                    showToast(state.lang === 'en' ? '🔄 New update ready — refreshing app...' : state.lang === 'hi' ? '🔄 नया अपडेट तैयार है — पेज रिफ्रेश हो रहा है...' : '🔄 નવું અપડેટ તૈયાર છે — પેજ રિફ્રેશ થઈ રહ્યું છે...');
                     nw.postMessage({ type: 'SKIP_WAITING' });
                   }
                 });
@@ -1164,7 +1255,7 @@
 
       async function shareKhedutSetuApp() {
         const shareUrl = window.location.origin + window.location.pathname;
-        const shareTitle = 'KHEDUT SETU AI v7.3 PRO';
+        const shareTitle = 'KHEDUT SETU AI v8.1 PRO';
         const shareText = state.lang === 'en'
           ? `Check out ${shareTitle} — All-India Daily Mandi Rates, Agri Inputs & AI Advisor: ${shareUrl}`
           : state.lang === 'hi'
@@ -1265,6 +1356,7 @@
       let latestPriceReqId = 0;
       let latestDoctorReqId = 0;
       let latestMultiReqId = 0;
+      let latestWeatherReqId = 0;
       let lastAiSpokenText = '';
 
       function formatSafeInr(val, fallback = 0) {
@@ -1317,7 +1409,8 @@
         tab: 'market', aiSubtab: 'price',
         mandiCatFilter: 'all', agriInputTypeFilter: 'all',
         mandiUnitMode: 'mann', mandiSource: '', mandiLastSync: '',
-        schemeCatFilter: 'all', centerTypeFilter: 'all',
+        schemeCatFilter: 'all', schemeLevelFilter: 'all', centerTypeFilter: 'all',
+        weatherDistrict: 'anand', weatherData: null, weatherCustomName: '', weatherIsGps: false, weatherLat: null, weatherLon: null,
         multiFile: null,
         user: null, profile: null, categories: [],
         selectedCategory: null, products: [], myProducts: [], apmcRates: [], aiLiveRates: [], aiLiveSource: '', agriInputs: [], transportList: [],
@@ -1412,7 +1505,7 @@
           centers_sub: 'નજીકના અધિકૃત કેન્દ્રોનું સરનામું, સંપર્ક નંબર અને Google Maps લોકેશન.',
           btn_maps_nearby: 'Maps પર નજીકના કેન્દ્રો',
           center_search_ph: 'જિલ્લો, તાલુકો, ખાતર, બિયારણ, દવા કે KVK શોધો...',
-          btn_add_center_shop: '+ તમારું કેન્દ્ર / દુકાન ઉમેરો', ai_load_live_btn: '🔄 સરકારી લાઇવ પાક લોડ', ai_scope_lbl: '📡 સરકારી મંડી વિસ્તાર', ai_custom_crop_lbl: '🔍 કોઈપણ અન્ય પાક લખો (વૈકલ્પિક)', ai_custom_crop_ph: 'દા.ત. જીરું, ડુંગળી, લસણ, ગાજર, ટામેટા...', ai_live_ready: '📡 સરકારી લાઇવ પાક લોડ થવા તૈયાર...', apmc_ready_msg: '📡 સરકારી લાઇવ મંડી ભાવ તૈયાર', kisan_helpline_btn: '📞 ખેડૂત હેલ્પલાઇન: 1800-180-1551', pmkisan_helpline_btn: '📞 પીએમ-કિસાન: 155261', badge_live_govt: '🟢 લાઇવ સરકારી', badge_pending_admin: '⏳ એડમિન મંજૂરી બાકી', badge_apmc: '✅ મંડી ભાવ', btn_share_card: '💬 શેર કરો', btn_calc_card: '💰 ગણતરી', btn_update_card: '✏️ અપડેટ', btn_apply_online: '✅ ઓનલાઇન અરજી ↗', btn_status_check: '🔍 સ્ટેટસ ચેક ↗', lbl_docs: '📄 જરૂરી દસ્તાવેજો:', btn_directions: '🗺️ રસ્તો જુઓ ↗', btn_mark_sold: '✅ વેચાઈ ગયું', btn_delete: '🗑️ ડિલીટ', btn_approve: 'મંજૂર', btn_reject: 'નામંજૂર', lbl_total: 'કુલ', lbl_rate_count: 'ભાવ' 
+          btn_add_center_shop: '+ તમારું કેન્દ્ર / દુકાન ઉમેરો', ai_load_live_btn: '🔄 સરકારી લાઇવ પાક લોડ', ai_scope_lbl: '📡 સરકારી મંડી વિસ્તાર', ai_custom_crop_lbl: '🔍 કોઈપણ અન્ય પાક લખો (વૈકલ્પિક)', ai_custom_crop_ph: 'દા.ત. જીરું, ડુંગળી, લસણ, ગાજર, ટામેટા...', ai_live_ready: '📡 સરકારી લાઇવ પાક લોડ થવા તૈયાર...', apmc_ready_msg: '📡 સરકારી લાઇવ મંડી ભાવ તૈયાર', kisan_helpline_btn: '📞 ખેડૂત હેલ્પલાઇન: 1800-180-1551', pmkisan_helpline_btn: '📞 પીએમ-કિસાન: 155261', badge_live_govt: '🟢 લાઇવ સરકારી', badge_pending_admin: '⏳ એડમિન મંજૂરી બાકી', badge_apmc: '✅ મંડી ભાવ', btn_share_card: '💬 શેર કરો', btn_calc_card: '💰 ગણતરી', btn_update_card: '✏️ અપડેટ', btn_apply_online: '✅ ઓનલાઇન અરજી ↗', btn_status_check: '🔍 સ્ટેટસ ચેક ↗', lbl_docs: '📄 જરૂરી દસ્તાવેજો:', btn_directions: '🗺️ રસ્તો જુઓ ↗', btn_mark_sold: '✅ વેચાઈ ગયું', btn_delete: '🗑️ ડિલીટ', btn_approve: 'મંજૂર', btn_reject: 'નામંજૂર', lbl_total: 'કુલ', lbl_rate_count: 'ભાવ', btn_weather_quick: '🌦️ હવામાન & છંટકાવ', btn_tools_quick: '🧮 ખર્ચ-નફો & KCC', tab_weather: '🌦️ હવામાન & છંટકાવ', tab_tools: '🧮 ખર્ચ-નફો & KCC લોન', weather_heading: '🌦️ લાઇવ ખેતી હવામાન, 7 દિવસની આગાહી અને દવા છંટકાવ સલાહ', weather_sub: 'તમારા જિલ્લાનું તાપમાન, વરસાદની શક્યતા, પવનની ગતિ અને દવા છાંટવાનો યોગ્ય સમય.', btn_weather_gps: '📍 મારું લોકેશન (GPS)', btn_imd_portal: '🏛️ IMD હવામાન ↗', weather_7day_title: '📅 આવતા 7 દિવસની હવામાન આગાહી', pmfby_helpline_btn: '🛡️ પાક વીમો (72 કલાક): 14447', pashu_helpline_btn: '🐄 પશુ હેલ્પલાઇન: 1962', btn_anyror_quick: '📄 7/12 અને 8-અ (AnyROR) ↗', doc_checklist_title: '✅ સરકારી સહાય અરજી તૈયારી ચેકલિસ્ટ (જાતે તપાસો)', doc_checklist_sub: 'ઓનલાઇન અરજી કરતા પહેલાં આ દસ્તાવેજો તૈયાર રાખો — તમારો ડેટા ફોનમાં જ સુરક્ષિત સેવ થાય છે.', profit_calc_title: '🧮 ખેતી ખર્ચ, નફો અને પડતર ભાવ (Break-Even) કેલ્ક્યુલેટર', profit_calc_sub: 'તમારી ખેતીનો કુલ ખર્ચ, 1 મણનો પડતર ભાવ અને ચોખ્ખો નફો જાતે ગણો.', btn_official_msp: '🏛️ સરકારી ટેકાના ભાવ (MSP) ↗', calc_area_lbl: 'જમીન (વીઘા / એકર)', calc_seed_lbl: 'બિયારણ ખર્ચ (₹)', calc_fert_lbl: 'ખાતર + દવા ખર્ચ (₹)', calc_labour_lbl: 'મજૂરી + ટ્રેક્ટર + પાણી (₹)', calc_yield_lbl: 'અંદાજિત ઉત્પાદન (મણ)', calc_rate_lbl: 'વેચાણ ભાવ (₹/મણ)', btn_calc_profit: '✨ નફો અને પડતર ભાવ ગણો', kcc_calc_title: '🏦 કિસાન ક્રેડિટ કાર્ડ (KCC) વ્યાજ અને સરકારી વ્યાજ રાહત કેલ્ક્યુલેટર', kcc_calc_sub: '₹3 લાખ સુધીની લોન સમયસર ભરવાથી 7% ના બદલે માત્ર 4% વ્યાજ (3% સરકારી વ્યાજ સહાય) કેટલી બચત થાય તે જુઓ.', kcc_amt_lbl: 'KCC લોનની રકમ (₹)', kcc_months_lbl: 'મુદત (મહિના)', btn_calc_kcc: '🏦 KCC વ્યાજ અને બચત ગણો' 
         }),
         hi: Object.freeze({
           tagline: 'संपूर्ण भारत दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि',
@@ -1501,7 +1594,7 @@
           centers_sub: 'नज़दीकी आधिकारिक केंद्र का पता, संपर्क नंबर और Google Maps लोकेशन।',
           btn_maps_nearby: 'Maps पर नज़दीकी केंद्र',
           center_search_ph: 'जिला, तालुका, खाद, बीज, दवा या KVK खोजें...',
-          btn_add_center_shop: '+ अपना केंद्र / दुकान जोड़ें', ai_load_live_btn: '🔄 सरकारी लाइव फसल लोड', ai_scope_lbl: '📡 सरकारी मंडी क्षेत्र', ai_custom_crop_lbl: '🔍 कोई अन्य फसल लिखें (वैकल्पिक)', ai_custom_crop_ph: 'जैसे: जीरा, प्याज़, लहसुन, गाजर, टमाटर...', ai_live_ready: '📡 सरकारी लाइव फसल लोड होने को तैयार...', apmc_ready_msg: '📡 सरकारी लाइव मंडी भाव तैयार', kisan_helpline_btn: '📞 किसान हेल्पलाइन: 1800-180-1551', pmkisan_helpline_btn: '📞 पीएम-किसान: 155261', badge_live_govt: '🟢 लाइव सरकारी', badge_pending_admin: '⏳ एडमिन स्वीकृति बाकी', badge_apmc: '✅ मंडी भाव', btn_share_card: '💬 शेयर करें', btn_calc_card: '💰 गणना', btn_update_card: '✏️ अपडेट', btn_apply_online: '✅ ऑनलाइन आवेदन ↗', btn_status_check: '🔍 स्थिति जांचें ↗', lbl_docs: '📄 ज़रूरी दस्तावेज़:', btn_directions: '🗺️ रास्ता देखें ↗', btn_mark_sold: '✅ बिक गया', btn_delete: '🗑️ डिलीट', btn_approve: 'स्वीकृत', btn_reject: 'अस्वीकृत', lbl_total: 'कुल', lbl_rate_count: 'भाव' 
+          btn_add_center_shop: '+ अपना केंद्र / दुकान जोड़ें', ai_load_live_btn: '🔄 सरकारी लाइव फसल लोड', ai_scope_lbl: '📡 सरकारी मंडी क्षेत्र', ai_custom_crop_lbl: '🔍 कोई अन्य फसल लिखें (वैकल्पिक)', ai_custom_crop_ph: 'जैसे: जीरा, प्याज़, लहसुन, गाजर, टमाटर...', ai_live_ready: '📡 सरकारी लाइव फसल लोड होने को तैयार...', apmc_ready_msg: '📡 सरकारी लाइव मंडी भाव तैयार', kisan_helpline_btn: '📞 किसान हेल्पलाइन: 1800-180-1551', pmkisan_helpline_btn: '📞 पीएम-किसान: 155261', badge_live_govt: '🟢 लाइव सरकारी', badge_pending_admin: '⏳ एडमिन स्वीकृति बाकी', badge_apmc: '✅ मंडी भाव', btn_share_card: '💬 शेयर करें', btn_calc_card: '💰 गणना', btn_update_card: '✏️ अपडेट', btn_apply_online: '✅ ऑनलाइन आवेदन ↗', btn_status_check: '🔍 स्थिति जांचें ↗', lbl_docs: '📄 ज़रूरी दस्तावेज़:', btn_directions: '🗺️ रास्ता देखें ↗', btn_mark_sold: '✅ बिक गया', btn_delete: '🗑️ डिलीट', btn_approve: 'स्वीकृत', btn_reject: 'अस्वीकृत', lbl_total: 'कुल', lbl_rate_count: 'भाव', btn_weather_quick: '🌦️ मौसम & छिड़काव', btn_tools_quick: '🧮 खर्च-मुनाफा & KCC', tab_weather: '🌦️ मौसम & छिड़काव', tab_tools: '🧮 खर्च-मुनाफा & KCC लोन', weather_heading: '🌦️ लाइव कृषि मौसम, 7 दिन का पूर्वानुमान और दवा छिड़काव सलाह', weather_sub: 'आपके जिले का तापमान, बारिश की संभावना, हवा की गति और छिड़काव का सही समय।', btn_weather_gps: '📍 मेरी लोकेशन (GPS)', btn_imd_portal: '🏛️ IMD मौसम ↗', weather_7day_title: '📅 अगले 7 दिनों का मौसम पूर्वानुमान', pmfby_helpline_btn: '🛡️ फसल बीमा (72 घंटे): 14447', pashu_helpline_btn: '🐄 पशु हेल्पलाइन: 1962', btn_anyror_quick: '📄 7/12 व भूलेख (AnyROR) ↗', doc_checklist_title: '✅ सरकारी योजना आवेदन तैयारी चेकलिस्ट (स्वयं जांचें)', doc_checklist_sub: 'ऑनलाइन आवेदन से पहले ये दस्तावेज़ तैयार रखें — यह आपके फ़ोन में सेव रहता है।', profit_calc_title: '🧮 खेती खर्च, मुनाफा और लागत (Break-Even) कैलकुलेटर', profit_calc_sub: 'अपनी खेती की कुल लागत, प्रति मण लागत और शुद्ध मुनाफा स्वयं निकालें।', btn_official_msp: '🏛️ सरकारी MSP पोर्टल ↗', calc_area_lbl: 'जमीन (बीघा / एकड़)', calc_seed_lbl: 'बीज खर्च (₹)', calc_fert_lbl: 'खाद + दवा खर्च (₹)', calc_labour_lbl: 'मजदूरी + ट्रैक्टर + सिंचाई (₹)', calc_yield_lbl: 'अनुमानित उपज (मण)', calc_rate_lbl: 'बिक्री भाव (₹/मण)', btn_calc_profit: '✨ मुनाफा और लागत गणना करें', kcc_calc_title: '🏦 किसान क्रेडिट कार्ड (KCC) ब्याज और सब्सिडी कैलकुलेटर', kcc_calc_sub: '₹3 लाख तक समय पर भुगतान करने पर 7% की जगह 4% प्रभावी ब्याज (3% सरकारी छूट) की बचत जानें।', kcc_amt_lbl: 'KCC लोन राशि (₹)', kcc_months_lbl: 'अवधि (महीने)', btn_calc_kcc: '🏦 KCC ब्याज व बचत जानें' 
         }),
         en: Object.freeze({
           tagline: 'All-India Daily Mandi Rates • Agri Inputs & Machinery • AI',
@@ -1590,7 +1683,7 @@
           centers_sub: 'Verified center addresses, phone numbers, WhatsApp and live Google Maps search.',
           btn_maps_nearby: 'Find on Google Maps',
           center_search_ph: 'Search district, taluka, fertilizer, seeds, pesticide or KVK...',
-          btn_add_center_shop: '+ Add Your Center / Shop', ai_load_live_btn: '🔄 Load Live Govt Crops', ai_scope_lbl: '📡 Govt Mandi Scope', ai_custom_crop_lbl: '🔍 Type Any Other Crop (Optional)', ai_custom_crop_ph: 'e.g. Cumin, Onion, Garlic, Castor, Tomato...', ai_live_ready: '📡 Live Agmarknet crops ready...', apmc_ready_msg: '📡 Live Agmarknet Ready', kisan_helpline_btn: '📞 Kisan Helpline: 1800-180-1551', pmkisan_helpline_btn: '📞 PM-KISAN: 155261', badge_live_govt: '🟢 LIVE Govt', badge_pending_admin: '⏳ Pending Admin', badge_apmc: '✅ APMC', btn_share_card: '💬 Share', btn_calc_card: '💰 Calculate', btn_update_card: '✏️ Update', btn_apply_online: '✅ Apply Online ↗', btn_status_check: '🔍 Status Check ↗', lbl_docs: '📄 Docs:', btn_directions: '🗺️ Directions ↗', btn_mark_sold: '✅ Mark Sold', btn_delete: '🗑️ Delete', btn_approve: 'Approve', btn_reject: 'Reject', lbl_total: 'Total', lbl_rate_count: 'rates' 
+          btn_add_center_shop: '+ Add Your Center / Shop', ai_load_live_btn: '🔄 Load Live Govt Crops', ai_scope_lbl: '📡 Govt Mandi Scope', ai_custom_crop_lbl: '🔍 Type Any Other Crop (Optional)', ai_custom_crop_ph: 'e.g. Cumin, Onion, Garlic, Castor, Tomato...', ai_live_ready: '📡 Live Agmarknet crops ready...', apmc_ready_msg: '📡 Live Agmarknet Ready', kisan_helpline_btn: '📞 Kisan Helpline: 1800-180-1551', pmkisan_helpline_btn: '📞 PM-KISAN: 155261', badge_live_govt: '🟢 LIVE Govt', badge_pending_admin: '⏳ Pending Admin', badge_apmc: '✅ APMC', btn_share_card: '💬 Share', btn_calc_card: '💰 Calculate', btn_update_card: '✏️ Update', btn_apply_online: '✅ Apply Online ↗', btn_status_check: '🔍 Status Check ↗', lbl_docs: '📄 Docs:', btn_directions: '🗺️ Directions ↗', btn_mark_sold: '✅ Mark Sold', btn_delete: '🗑️ Delete', btn_approve: 'Approve', btn_reject: 'Reject', lbl_total: 'Total', lbl_rate_count: 'rates', btn_weather_quick: '🌦️ Weather & Spray', btn_tools_quick: '🧮 Profit & KCC', tab_weather: '🌦️ Weather & Spray', tab_tools: '🧮 Profit & KCC Tools', weather_heading: '🌦️ Live Farm Weather, 7-Day Forecast & Spray Window Advisor', weather_sub: 'District temperature, rain probability, wind speed, and smart pesticide spray timing.', btn_weather_gps: '📍 Use My GPS', btn_imd_portal: '🏛️ IMD Mausam ↗', weather_7day_title: '📅 Next 7-Day Farm Weather Forecast', pmfby_helpline_btn: '🛡️ Crop Insurance (72h): 14447', pashu_helpline_btn: '🐄 Livestock Helpline: 1962', btn_anyror_quick: '📄 7/12 & 8-A Land Record ↗', doc_checklist_title: '✅ Farmer Scheme Readiness Checklist (Self-Check)', doc_checklist_sub: 'Keep these documents ready before applying online — saved privately on your device.', profit_calc_title: '🧮 Farm Expense, Net Profit & Break-Even Rate Calculator', profit_calc_sub: 'Calculate total farm cost, break-even rate per 20 kg mann, and net profit yourself.', btn_official_msp: '🏛️ Official Govt MSP ↗', calc_area_lbl: 'Land Area (Bigha/Acre)', calc_seed_lbl: 'Seed Cost (₹)', calc_fert_lbl: 'Fertilizer + Spray (₹)', calc_labour_lbl: 'Labour + Tractor + Water (₹)', calc_yield_lbl: 'Expected Yield (Mann)', calc_rate_lbl: 'Selling Rate (₹/Mann)', btn_calc_profit: '✨ Calculate Profit & Break-Even', kcc_calc_title: '🏦 Kisan Credit Card (KCC) Interest & Subvention Calculator', kcc_calc_sub: 'See your savings with timely repayment (effective 4% vs 7% on short-term crop loans up to ₹3 Lakh).', kcc_amt_lbl: 'KCC Loan Amount (₹)', kcc_months_lbl: 'Duration (Months)', btn_calc_kcc: '🏦 Calculate KCC Interest' 
         })
       });
 
@@ -1608,9 +1701,9 @@
 
 
       const SCHEME_CAT_CHIPS = Object.freeze({
-        gu: Object.freeze({ all: 'બધી યોજનાઓ', cash: '💰 હપ્તો & સહાય', subsidy: '🚜 સબસિડી & સાધન', insurance: '🛡️ પાક વીમો & લોન', market: '🌱 માટી & બજાર' }),
-        hi: Object.freeze({ all: 'सभी योजनाएं', cash: '💰 किस्त & सहायता', subsidy: '🚜 सब्सिडी & यंत्र', insurance: '🛡️ फसल बीमा & लोन', market: '🌱 मिट्टी & बाज़ार' }),
-        en: Object.freeze({ all: 'All Schemes', cash: '💰 Installment', subsidy: '🚜 Subsidy & Tools', insurance: '🛡️ Insurance & Loan', market: '🌱 Soil & Market' })
+        gu: Object.freeze({ all: 'બધી યોજનાઓ (18)', cash: '💰 હપ્તો & પેન્શન', subsidy: '🚜 સબસિડી & સોલાર', insurance: '🛡️ વીમો & લોન', livestock: '🐄 પશુપાલન & મત્સ્ય', land: '📄 7/12, માટી & બજાર' }),
+        hi: Object.freeze({ all: 'सभी योजनाएं (18)', cash: '💰 किस्त & पेंशन', subsidy: '🚜 सब्सिडी & सोलर', insurance: '🛡️ बीमा & लोन', livestock: '🐄 पशुपालन & मत्स्य', land: '📄 भूलेख, मिट्टी & बाज़ार' }),
+        en: Object.freeze({ all: 'All Schemes (18)', cash: '💰 Cash & Pension', subsidy: '🚜 Subsidy & Solar', insurance: '🛡️ Insurance & Loan', livestock: '🐄 Dairy & Livestock', land: '📄 Land, Soil & Market' })
       });
 
       const CENTER_TYPE_CHIPS = Object.freeze({
@@ -1619,90 +1712,272 @@
         en: Object.freeze({ all: 'All Centers', kvk: '🏛️ KVK Centers', khatar: '🌿 Fertilizer', biyaran: '🌱 Seeds', dava: '🧪 Pesticides', apmc: '📊 APMC Yard' })
       });
 
+      const FARMER_DOC_CHECKLIST = Object.freeze([
+        { id: 'land_712', gu: '📄 7/12 અને 8-અ ઉતારો (તાજો)', hi: '📄 7/12 व खतौनी (ताज़ा)', en: '📄 Updated 7/12 & 8-A Land Record' },
+        { id: 'bank_dbt', gu: '🏦 બેંક ખાતું DBT / NPCI લિંક', hi: '🏦 बैंक खाता DBT / NPCI लिंक', en: '🏦 Bank Account DBT / NPCI Linked' },
+        { id: 'ekyc_done', gu: '📱 મોબાઇલ લિંક અને e-KYC પૂર્ણ', hi: '📱 मोबाइल लिंक व e-KYC पूर्ण', en: '📱 Mobile Linked & e-KYC Completed' },
+        { id: 'soil_card', gu: '🌱 સોઇલ હેલ્થ કાર્ડ (માટી રિપોર્ટ)', hi: '🌱 मृदा स्वास्थ्य कार्ड', en: '🌱 Soil Health Card Report' },
+        { id: 'kcc_card', gu: '💳 કિસાન ક્રેડિટ કાર્ડ (KCC)', hi: '💳 किसान क्रेडिट कार्ड (KCC)', en: '💳 Kisan Credit Card (KCC)' },
+        { id: 'farmer_id', gu: '🆔 ખેડૂત ઓળખ / AgriStack નોંધણી', hi: '🆔 किसान आईडी / AgriStack पंजीकरण', en: '🆔 Digital Farmer ID / Registry' }
+      ]);
+
+      const WEATHER_DISTRICTS = Object.freeze([
+        { key: 'anand', gu: 'આણંદ', hi: 'आनंद', en: 'Anand', lat: 22.5645, lon: 72.9289 },
+        { key: 'ahmedabad', gu: 'અમદાવાદ', hi: 'अहमदाबाद', en: 'Ahmedabad', lat: 23.0225, lon: 72.5714 },
+        { key: 'rajkot', gu: 'રાજકોટ', hi: 'राजकोट', en: 'Rajkot', lat: 22.3039, lon: 70.8022 },
+        { key: 'surat', gu: 'સુરત', hi: 'सूरत', en: 'Surat', lat: 21.1702, lon: 72.8311 },
+        { key: 'vadodara', gu: 'વડોદરા', hi: 'वडोदरा', en: 'Vadodara', lat: 22.3072, lon: 73.1812 },
+        { key: 'kheda', gu: 'ખેડા (નડિયાદ)', hi: 'खेड़ा (नडियाद)', en: 'Kheda (Nadiad)', lat: 22.6916, lon: 72.8634 },
+        { key: 'mehsana', gu: 'મહેસાણા (ઊંઝા)', hi: 'मेहसाणा (ऊंझा)', en: 'Mehsana (Unjha)', lat: 23.5880, lon: 72.3693 },
+        { key: 'gandhinagar', gu: 'ગાંધીનગર', hi: 'गांधीनगर', en: 'Gandhinagar', lat: 23.2156, lon: 72.6369 },
+        { key: 'junagadh', gu: 'જૂનાગઢ', hi: 'जूनागढ़', en: 'Junagadh', lat: 21.5222, lon: 70.4579 },
+        { key: 'bhavnagar', gu: 'ભાવનગર', hi: 'भावनगर', en: 'Bhavnagar', lat: 21.7645, lon: 72.1519 },
+        { key: 'jamnagar', gu: 'જામનગર', hi: 'जामनगर', en: 'Jamnagar', lat: 22.4707, lon: 70.0577 },
+        { key: 'amreli', gu: 'અમરેલી', hi: 'अमरेली', en: 'Amreli', lat: 21.6015, lon: 71.2204 },
+        { key: 'banaskantha', gu: 'બનાસકાંઠા (પાલનપુર)', hi: 'बनासकांठा (पालनपुर)', en: 'Banaskantha (Palanpur)', lat: 24.1724, lon: 72.4346 },
+        { key: 'sabarkantha', gu: 'સાબરકાંઠા (હિંમતનગર)', hi: 'साबरकांठा', en: 'Sabarkantha', lat: 23.5977, lon: 72.9698 },
+        { key: 'kachchh', gu: 'કચ્છ (ભુજ)', hi: 'कच्छ (भुज)', en: 'Kachchh (Bhuj)', lat: 23.2420, lon: 69.6669 },
+        { key: 'surendranagar', gu: 'સુરેન્દ્રનગર', hi: 'सुरेंद्रनगर', en: 'Surendranagar', lat: 22.7284, lon: 71.6370 },
+        { key: 'morbi', gu: 'મોરબી', hi: 'मोरबी', en: 'Morbi', lat: 22.8173, lon: 70.8377 },
+        { key: 'bharuch', gu: 'ભરૂચ', hi: 'भरूच', en: 'Bharuch', lat: 21.7051, lon: 72.9959 },
+        { key: 'navsari', gu: 'નવસારી', hi: 'नवसारी', en: 'Navsari', lat: 20.9467, lon: 72.9520 },
+        { key: 'valsad', gu: 'વલસાડ', hi: 'वलसाड', en: 'Valsad', lat: 20.5992, lon: 72.9342 },
+        { key: 'patan', gu: 'પાટણ', hi: 'पाटन', en: 'Patan', lat: 23.8493, lon: 72.1266 },
+        { key: 'panchmahal', gu: 'પંચમહાલ (ગોધરા)', hi: 'पंचमहल (गोधरा)', en: 'Panchmahal (Godhra)', lat: 22.7788, lon: 73.6143 },
+        { key: 'dahod', gu: 'દાહોદ', hi: 'दाहोद', en: 'Dahod', lat: 22.8396, lon: 74.2531 },
+        { key: 'botad', gu: 'બોટાદ', hi: 'बोटाद', en: 'Botad', lat: 22.1714, lon: 71.6636 },
+        { key: 'gir_somnath', gu: 'ગીર સોમનાથ (વેરાવળ)', hi: 'गीर सोमनाथ', en: 'Gir Somnath', lat: 20.9159, lon: 70.3629 },
+        { key: 'porbandar', gu: 'પોરબંદર', hi: 'पोरबंदर', en: 'Porbandar', lat: 21.6417, lon: 69.6293 },
+        { key: 'aravalli', gu: 'અરવલ્લી (મોડાસા)', hi: 'अरावली (मोडासा)', en: 'Aravalli (Modasa)', lat: 23.4643, lon: 73.2988 },
+        { key: 'mahisagar', gu: 'મહીસાગર', hi: 'महीसागर', en: 'Mahisagar', lat: 23.1333, lon: 73.6167 },
+        { key: 'tapi', gu: 'તાપી (વ્યારા)', hi: 'तापी (व्यारा)', en: 'Tapi (Vyara)', lat: 21.1140, lon: 73.3958 },
+        { key: 'narmada', gu: 'નર્મદા (રાજપીપળા)', hi: 'नर्मदा', en: 'Narmada', lat: 21.8690, lon: 73.5040 },
+        { key: 'chhota_udepur', gu: 'છોટા ઉદેપુર', hi: 'छोटा उदेपुर', en: 'Chhota Udepur', lat: 22.3050, lon: 74.0124 },
+        { key: 'dwarka', gu: 'દેવભૂમિ દ્વારકા', hi: 'देवभूमि द्वारका', en: 'Devbhumi Dwarka', lat: 22.2442, lon: 68.9685 },
+        { key: 'dang', gu: 'ડાંગ (આહવા)', hi: 'डांग (आहवा)', en: 'Dang (Ahwa)', lat: 20.7556, lon: 73.6881 },
+        { key: 'pune', gu: 'પુણે (મહારાષ્ટ્ર)', hi: 'पुणे (महाराष्ट्र)', en: 'Pune (Maharashtra)', lat: 18.5204, lon: 73.8567 },
+        { key: 'indore', gu: 'ઇન્દોર (મધ્ય પ્રદેશ)', hi: 'इंदौर (मध्य प्रदेश)', en: 'Indore (MP)', lat: 22.7196, lon: 75.8577 },
+        { key: 'jaipur', gu: 'જયપુર (રાજસ્થાન)', hi: 'जयपुर (राजस्थान)', en: 'Jaipur (Rajasthan)', lat: 26.9124, lon: 75.7873 },
+        { key: 'ludhiana', gu: 'લુધિયાણા (પંજાબ)', hi: 'लुधियाना (पंजाब)', en: 'Ludhiana (Punjab)', lat: 30.9010, lon: 75.8573 },
+        { key: 'lucknow', gu: 'લખનૌ (ઉત્તર પ્રદેશ)', hi: 'लखनऊ (उत्तर प्रदेश)', en: 'Lucknow (UP)', lat: 26.8467, lon: 80.9462 }
+      ]);
+
       const FARMER_SCHEMES = Object.freeze([
         {
-          id: 'pm-kisan', cat: 'cash',
+          id: 'pm-kisan', cat: 'cash', level: 'central',
           title_gu: 'PM-KISAN સન્માન નિધિ (₹6,000/વર્ષ હપ્તો)',
           title_hi: 'PM-KISAN सम्मान निधि (₹6,000/वर्ष किस्त)',
           title_en: 'PM-KISAN Samman Nidhi (₹6,000/year)',
-          benefit_gu: 'દર વર્ષે ₹2,000 ના 3 હપ્તા સીધા બેંક ખાતામાં (DBT). e-KYC અને હપ્તાનું સ્ટેટસ ચેક કરો.',
-          benefit_hi: 'हर वर्ष ₹2,000 की 3 किस्तें सीधे बैंक खाते में (DBT)। e-KYC व किस्त स्थिति जांचें।',
-          benefit_en: '₹6,000/year in 3 installments of ₹2,000 directly to bank account. Check e-KYC & status.',
-          docs: 'Aadhaar, 7/12 & 8-A, Bank Passbook, Mobile',
+          benefit_gu: 'દર વર્ષે ₹2,000 ના 3 હપ્તા સીધા બેંક ખાતામાં (DBT). નવી નોંધણી, e-KYC અને હપ્તાનું સ્ટેટસ જાતે ચેક કરો.',
+          benefit_hi: 'हर वर्ष ₹2,000 की 3 किस्तें सीधे बैंक खाते में (DBT)। नया पंजीकरण, e-KYC व किस्त स्थिति जांचें।',
+          benefit_en: '₹6,000/year in 3 equal installments via DBT. Complete e-KYC, new registration & status check.',
+          docs: '7/12 & 8-A, Bank DBT Account, Mobile, ID Proof',
           applyUrl: 'https://pmkisan.gov.in/',
           statusUrl: 'https://pmkisan.gov.in/BeneficiaryStatus_New.aspx'
         },
         {
-          id: 'ikhedut-gujarat', cat: 'subsidy',
-          title_gu: 'આઈ-ખેડૂત પોર્ટલ (iKhedut — ગુજરાત સબસિડી)',
-          title_hi: 'आई-खेड़ूत पोर्टल (iKhedut — गुजरात सब्सिडी)',
-          title_en: 'iKhedut Portal (Gujarat Agriculture Subsidies)',
-          benefit_gu: 'ટ્રેક્ટર, રોટાવેટર, તાડપત્રી, સ્માર્ટફોન, ટપક સિંચાઈ, ગોડાઉન અને ખેતી સાધનો પર સરકારી સબસિડી.',
-          benefit_hi: 'ट्रैक्टर, रोटावेटर, तिरपाल, ड्रिप सिंचाई, गोदाम और कृषि यंत्रों पर गुजरात सरकार की सब्सिडी।',
-          benefit_en: 'Gujarat govt subsidies on tractors, farm machinery, drip irrigation, tarpaulin & storage.',
-          docs: '7/12 & 8-A, Aadhaar, Bank Details, Ration Card',
+          id: 'pm-kmy', cat: 'cash', level: 'central',
+          title_gu: 'PM-KISAN માનધન પેન્શન યોજના (₹3,000/મહિનો)',
+          title_hi: 'PM-KISAN मानधन पेंशन योजना (₹3,000/माह)',
+          title_en: 'PM-KISAN Maandhan Pension (₹3,000/month)',
+          benefit_gu: '18 થી 40 વર્ષના નાના અને સીમાંત ખેડૂતોને 60 વર્ષ પછી દર મહિને ₹3,000 નું નિશ્ચિત પેન્શન.',
+          benefit_hi: '18 से 40 वर्ष के लघु व सीमांत किसानों को 60 वर्ष के बाद ₹3,000 मासिक पेंशन।',
+          benefit_en: 'Assured ₹3,000/month pension after age 60 for small & marginal farmers aged 18-40.',
+          docs: 'ID Proof, Savings Bank / PM-KISAN Account, Mobile',
+          applyUrl: 'https://maandhan.in/',
+          statusUrl: 'https://maandhan.in/'
+        },
+        {
+          id: 'ikhedut-gujarat', cat: 'subsidy', level: 'gujarat',
+          title_gu: 'આઈ-ખેડૂત પોર્ટલ (iKhedut — ગુજરાતની તમામ ખેતી સહાય)',
+          title_hi: 'आई-खेड़ूत पोर्टल (iKhedut — गुजरात कृषि सब्सिडी)',
+          title_en: 'iKhedut Portal (All Gujarat Agriculture Subsidies)',
+          benefit_gu: 'ટ્રેક્ટર, રોટાવેટર, તાડપત્રી, સ્માર્ટફોન, તારની વાડ, ગોડાઉન, બાગાયત, દેશી ગાય નિભાવ અને પશુપાલન સબસિડી માટે સીધી અરજી.',
+          benefit_hi: 'ट्रैक्टर, रोटावेटर, तिरपाल, स्मार्टफोन, बाड़, गोदाम, बागवानी व पशुपालन पर गुजरात सरकार की सब्सिडी।',
+          benefit_en: 'Single window for Gujarat subsidies: tractors, machinery, tarpaulin, fencing, godown, horticulture & dairy.',
+          docs: '7/12 & 8-A, Bank Passbook, Ration Card, Mobile',
           applyUrl: 'https://ikhedut.gujarat.gov.in/',
           statusUrl: 'https://ikhedut.gujarat.gov.in/'
         },
         {
-          id: 'pmfby', cat: 'insurance',
+          id: 'anyror-712', cat: 'land', level: 'gujarat',
+          title_gu: 'AnyROR ગુજરાત — 7/12, 8-અ અને 6-નંબર હક્ક પત્રક',
+          title_hi: 'AnyROR गुजरात — ऑनलाइन 7/12, 8-अ भूलेख उतारा',
+          title_en: 'AnyROR Gujarat — Online 7/12 & 8-A Land Records',
+          benefit_gu: 'જમીનનો 7/12, 8-અ, હક્ક પત્રક (VF-6) અને નોંધની વિગતો ઘરે બેઠા મોબાઇલમાં જાતે જુઓ.',
+          benefit_hi: 'अपनी जमीन का 7/12, 8-अ और हक पत्रक ऑनलाइन मोबाइल पर स्वयं देखें।',
+          benefit_en: 'View your village 7/12, 8-A and VF-6 land mutation records directly online.',
+          docs: 'District, Taluka, Village & Survey/Khata Number',
+          applyUrl: 'https://anyror.gujarat.gov.in/',
+          statusUrl: 'https://anyror.gujarat.gov.in/'
+        },
+        {
+          id: 'pmfby', cat: 'insurance', level: 'central',
           title_gu: 'પ્રધાનમંત્રી ફસલ બીમા યોજના (PMFBY — પાક વીમો)',
           title_hi: 'प्रधानमंत्री फसल बीमा योजना (PMFBY)',
           title_en: 'Pradhan Mantri Fasal Bima Yojana (PMFBY)',
-          benefit_gu: 'કુદરતી આફત, અતિવૃષ્ટિ કે દુષ્કાળમાં પાક નુકસાન સામે વીમા કવચ (ખરીફ 2%, રવિ 1.5% પ્રીમિયમ).',
-          benefit_hi: 'प्राकृतिक आपदा में फसल नुकसान का बीमा कवर (खरीफ 2%, रबी 1.5% प्रीमियम)।',
-          benefit_en: 'Crop insurance cover against natural calamities & pests (2% Kharif, 1.5% Rabi premium).',
-          docs: 'Aadhaar, Land Record, Sowing Certificate, Bank Account',
+          benefit_gu: 'અતિવૃષ્ટિ, દુષ્કાળ કે કુદરતી આફતમાં પાક નુકસાન સામે વીમો (ખરીફ 2%, રવિ 1.5%). નુકસાનના 72 કલાકમાં 14447 પર જાણ કરો.',
+          benefit_hi: 'प्राकृतिक आपदा में फसल नुकसान बीमा कवर (खरीफ 2%, रबी 1.5%)। नुकसान के 72 घंटे में 14447 पर सूचना दें।',
+          benefit_en: 'Crop insurance cover (2% Kharif, 1.5% Rabi). Report localized crop loss within 72 hours on 14447.',
+          docs: 'Land 7/12, Sowing Proof, Bank Account, ID Proof',
           applyUrl: 'https://pmfby.gov.in/',
           statusUrl: 'https://pmfby.gov.in/'
         },
         {
-          id: 'kcc-loan', cat: 'insurance',
-          title_gu: 'કિસાન ક્રેડિટ કાર્ડ (KCC — ઓછા વ્યાજે પાક ધિરાણ)',
-          title_hi: 'किसान क्रेडिट कार्ड (KCC — कम ब्याज फसल ऋण)',
-          title_en: 'Kisan Credit Card (KCC — Low-Interest Crop Loan)',
-          benefit_gu: 'ખાતર, બિયારણ અને ખેતી ખર્ચ માટે ઓછા વ્યાજે (સમયસર ચુકવણી પર વ્યાજ રાહત) પાક લોન.',
-          benefit_hi: 'खाद, बीज व कृषि खर्च के लिए कम ब्याज दर पर फसल ऋण और समय पर भुगतान पर ब्याज छूट।',
-          benefit_en: 'Affordable short-term crop credit with interest subvention for timely repayment.',
-          docs: 'Aadhaar, PAN, Land 7/12, Passport Photo',
+          id: 'kcc-loan', cat: 'insurance', level: 'central',
+          title_gu: 'કિસાન ક્રેડિટ કાર્ડ (KCC — ઓછા વ્યાજે પાક અને પશુપાલન લોન)',
+          title_hi: 'किसान क्रेडिट कार्ड (KCC — कम ब्याज फसल व पशुपालन ऋण)',
+          title_en: 'Kisan Credit Card (KCC — Crop & Livestock Credit)',
+          benefit_gu: 'ખેતી, ખાતર-બિયારણ અને પશુપાલન માટે ₹3 લાખ સુધી સમયસર ભરપાઈ પર માત્ર 4% અસરકારક વ્યાજ દરે ધિરાણ.',
+          benefit_hi: 'खेती व पशुपालन के लिए ₹3 लाख तक समय पर भुगतान पर 4% प्रभावी ब्याज दर पर ऋण।',
+          benefit_en: 'Short-term credit for farming & animal husbandry at effective 4% interest on timely repayment.',
+          docs: 'Land 7/12 & 8-A, PAN/ID, Bank Account, Passport Photo',
           applyUrl: 'https://www.myscheme.gov.in/schemes/kcc',
           statusUrl: 'https://www.myscheme.gov.in/schemes/kcc'
         },
         {
-          id: 'pm-kusum', cat: 'subsidy',
+          id: 'pm-kusum', cat: 'subsidy', level: 'central',
           title_gu: 'PM-KUSUM સોલાર પંપ સહાય યોજના',
           title_hi: 'PM-KUSUM सोलर पंप सब्सिडी योजना',
           title_en: 'PM-KUSUM Solar Water Pump Subsidy',
-          benefit_gu: 'ખેતરમાં સોલાર વોટર પંપ લગાવવા માટે સરકારી સબસિડી — વીજળી બિલમાંથી મુક્તિ અને દિવસે સિંચાઈ.',
-          benefit_hi: 'खेत में सोलर वॉटर पंप लगाने पर सब्सिडी — बिजली बिल से राहत और दिन में सिंचाई।',
-          benefit_en: 'Government subsidy for installing solar agricultural water pumps.',
-          docs: 'Aadhaar, Land Record, Bank Account, Borewell Details',
+          benefit_gu: 'ખેતરમાં સોલાર વોટર પંપ લગાવવા માટે મોટી સરકારી સબસિડી — દિવસે મફત સિંચાઈ અને વીજળી બિલમાંથી મુક્તિ.',
+          benefit_hi: 'खेत में सोलर वॉटर पंप पर बड़ी सब्सिडी — दिन में सिंचाई और बिजली बिल से राहत।',
+          benefit_en: 'Major government subsidy for standalone & grid-connected solar agricultural water pumps.',
+          docs: 'Land Record, Borewell Details, Bank Account, ID Proof',
           applyUrl: 'https://pmkusum.mnre.gov.in/',
           statusUrl: 'https://pmkusum.mnre.gov.in/'
         },
         {
-          id: 'soil-health-card', cat: 'market',
-          title_gu: 'સોઇલ હેલ્થ કાર્ડ (જમીન ચકાસણી & ખાતર ભલામણ)',
-          title_hi: 'मृदा स्वास्थ्य कार्ड (Soil Health Card)',
-          title_en: 'Soil Health Card Scheme (Free Soil Testing)',
-          benefit_gu: 'ખેતરની માટીની તપાસ કરીને કયું ખાતર કેટલું નાખવું તેની વૈજ્ઞાનિક ભલામણ અને ઉત્પાદન વધારો.',
-          benefit_hi: 'खेत की मिट्टी की जांच कर सही खाद मात्रा की वैज्ञानिक सलाह।',
-          benefit_en: 'Scientific soil nutrient report and balanced fertilizer dosage recommendations.',
-          docs: 'Aadhaar, Mobile Number, Farm Survey No.',
+          id: 'ggrc-drip', cat: 'subsidy', level: 'gujarat',
+          title_gu: 'ટપક અને ફુવારા સિંચાઈ સહાય (PMKSY — GGRC ગુજરાત)',
+          title_hi: 'ड्रिप व स्प्रिंकलर सिंचाई सब्सिडी (PMKSY — GGRC)',
+          title_en: 'Micro-Irrigation Drip/Sprinkler Subsidy (PMKSY / GGRC)',
+          benefit_gu: 'પાણીની 50% બચત અને વધારે ઉત્પાદન માટે ટપક (Drip) તથા ફુવારા સિંચાઈ પર સરકારી સબસિડી.',
+          benefit_hi: 'पानी की बचत और अधिक उपज के लिए ड्रिप व स्प्रिंकलर सिंचाई पर सब्सिडी।',
+          benefit_en: 'Per Drop More Crop subsidy on drip and sprinkler micro-irrigation systems.',
+          docs: '7/12 & 8-A, Water Source Proof, Bank Passbook',
+          applyUrl: 'https://ggrc.co.in/',
+          statusUrl: 'https://pmksy.gov.in/'
+        },
+        {
+          id: 'smam-machinery', cat: 'subsidy', level: 'central',
+          title_gu: 'કૃષિ યાંત્રિકીકરણ સહાય (SMAM — ટ્રેક્ટર, રોટાવેટર, CHC)',
+          title_hi: 'कृषि यंत्रीकरण सब्सिडी (SMAM — कृषि यंत्र व CHC)',
+          title_en: 'Farm Mechanization Subsidy (SMAM & Custom Hiring)',
+          benefit_gu: 'પાવર ટીલર, થ્રેશર, સીડ ડ્રિલ, ડ્રોન અને કસ્ટમ હાયરિંગ સેન્ટર માટે કેન્દ્ર સરકારની સબસિડી.',
+          benefit_hi: 'पावर टिलर, थ्रेशर, सीड ड्रिल, ड्रोन व कस्टम हायरिंग सेंटर पर केंद्रीय सब्सिडी।',
+          benefit_en: 'Central assistance for modern farm equipment, sprayers, threshers & Custom Hiring Centers.',
+          docs: 'Land Record, Bank Details, Quotation, ID Proof',
+          applyUrl: 'https://agrimachinery.nic.in/',
+          statusUrl: 'https://agrimachinery.nic.in/'
+        },
+        {
+          id: 'aif-infra', cat: 'subsidy', level: 'central',
+          title_gu: 'એગ્રીકલ્ચર ઇન્ફ્રાસ્ટ્રક્ચર ફંડ (AIF — ગોડાઉન, કોલ્ડ સ્ટોરેજ)',
+          title_hi: 'कृषि अवसंरचना कोष (AIF — गोदाम, कोल्ड स्टोरेज)',
+          title_en: 'Agriculture Infrastructure Fund (AIF — Cold Storage/Warehouse)',
+          benefit_gu: 'ખેતર પર ગોડાઉન, કોલ્ડ સ્ટોરેજ, ગ્રેડિંગ કે પ્રોસેસિંગ યુનિટ માટે 3% વ્યાજ સહાય અને ક્રેડિટ ગેરંટી.',
+          benefit_hi: 'गोदाम, कोल्ड स्टोरेज, ग्रेडिंग व प्रोसेसिंग यूनिट के लिए 3% ब्याज छूट व लोन सहायता।',
+          benefit_en: '3% interest subvention & credit guarantee for warehouses, cold storages & grading units.',
+          docs: 'Project Report (DPR), Land Papers, Bank KYC',
+          applyUrl: 'https://agriinfra.dac.gov.in/',
+          statusUrl: 'https://agriinfra.dac.gov.in/'
+        },
+        {
+          id: 'soil-health-card', cat: 'land', level: 'central',
+          title_gu: 'સોઇલ હેલ્થ કાર્ડ (મફત માટી ચકાસણી & ખાતર ભલામણ)',
+          title_hi: 'मृदा स्वास्थ्य कार्ड (निःशुल्क मिट्टी जांच व खाद सलाह)',
+          title_en: 'Soil Health Card (Free Soil Testing & Fertilizer Guide)',
+          benefit_gu: 'ખેતરની માટીના પોષક તત્વોની તપાસ કરી કયું ખાતર કેટલું નાખવું તેની વૈજ્ઞાનિક ભલામણ — ખર્ચ ઘટાડો, ઉત્પાદન વધારો.',
+          benefit_hi: 'मिट्टी के पोषक तत्वों की जांच कर सही खाद मात्रा की वैज्ञानिक सलाह।',
+          benefit_en: 'Scientific soil nutrient testing and balanced crop-wise fertilizer dosage card.',
+          docs: 'Mobile Number, Farm Survey No., Soil Sample',
           applyUrl: 'https://soilhealth.dac.gov.in/',
           statusUrl: 'https://soilhealth.dac.gov.in/'
         },
         {
-          id: 'enam-portal', cat: 'market',
-          title_gu: 'e-NAM રાષ્ટ્રીય કૃષિ બજાર (ઓનલાઇન મંડી વેચાણ)',
-          title_hi: 'e-NAM राष्ट्रीय कृषि बाज़ार (ऑनलाइन मंडी)',
+          id: 'enam-portal', cat: 'land', level: 'central',
+          title_gu: 'e-NAM રાષ્ટ્રીય કૃષિ બજાર (ઓનલાઇન મંડી હરાજી)',
+          title_hi: 'e-NAM राष्ट्रीय कृषि बाज़ार (ऑनलाइन मंडी नीलामी)',
           title_en: 'e-NAM National Agriculture Market',
-          benefit_gu: 'દેશભરની મંડીઓના લાઇવ ભાવ અને પારદર્શક ઓનલાઇન હરાજી દ્વારા ઉપજનું વેચાણ.',
-          benefit_hi: 'देशभर की मंडियों के लाइव भाव और पारदर्शी ऑनलाइन नीलामी से बिक्री।',
-          benefit_en: 'Pan-India electronic APMC trading portal for transparent price discovery.',
-          docs: 'Aadhaar, Bank Account, Mobile Number',
+          benefit_gu: 'દેશભરની મંડીઓના લાઇવ ભાવ અને પારદર્શક ઓનલાઇન હરાજી દ્વારા સીધું વેચાણ અને બેંકમાં પેમેન્ટ.',
+          benefit_hi: 'देशभर की मंडियों के लाइव भाव और पारदर्शी ऑनलाइन नीलामी से सीधी बिक्री।',
+          benefit_en: 'Pan-India electronic APMC portal for transparent price discovery and online settlement.',
+          docs: 'Bank Passbook, Mobile Number, ID Proof',
           applyUrl: 'https://www.enam.gov.in/',
           statusUrl: 'https://www.enam.gov.in/web/dashboard/trade-data'
+        },
+        {
+          id: 'esamridhi-msp', cat: 'land', level: 'central',
+          title_gu: 'e-Samridhi (NAFED — ટેકાના ભાવે કઠોળ/તેલીબિયાં નોંધણી)',
+          title_hi: 'e-Samridhi (NAFED — MSP पर दलहन/तिलहन खरीद पंजीकरण)',
+          title_en: 'e-Samridhi (NAFED MSP Procurement Registration)',
+          benefit_gu: 'તુવેર, મગ, અડદ, ચણા, મગફળી, સોયાબીન વગેરે સરકારી ટેકાના ભાવે વેચવા ઓનલાઇન નોંધણી.',
+          benefit_hi: 'तुअर, मूंग, उड़द, चना, मूंगफली व सोयाबीन की सरकारी MSP खरीद के लिए ऑनलाइन पंजीकरण।',
+          benefit_en: 'Online farmer registration for direct MSP procurement of pulses & oilseeds by NAFED.',
+          docs: 'Land 7/12, Bank Account, Mobile Number',
+          applyUrl: 'https://esamridhi.in/',
+          statusUrl: 'https://esamridhi.in/'
+        },
+        {
+          id: 'natural-farming', cat: 'land', level: 'central',
+          title_gu: 'પ્રાકૃતિક ખેતી & દેશી ગાય નિભાવ સહાય (PKVY / NMNF)',
+          title_hi: 'प्राकृतिक खेती व जैविक कृषि सहायता (PKVY / NMNF)',
+          title_en: 'National Mission on Natural Farming & Organic (PKVY)',
+          benefit_gu: 'ઝેરમુક્ત પ્રાકૃતિક ખેતીની તાલીમ, જીવામૃત-ઘનામૃત માર્ગદર્શન અને ગુજરાતમાં દેશી ગાય નિભાવ ખર્ચ સહાય (iKhedut).',
+          benefit_hi: 'प्राकृतिक व जैविक खेती प्रशिक्षण, क्लस्टर सहायता और देसी गाय आधारित खेती लाभ।',
+          benefit_en: 'Support & training for chemical-free natural/organic farming and Gujarat desi cow maintenance aid.',
+          docs: '7/12 Record, Bank Account, Livestock Tag (for Gujarat aid)',
+          applyUrl: 'https://naturalfarming.dac.gov.in/',
+          statusUrl: 'https://ikhedut.gujarat.gov.in/'
+        },
+        {
+          id: 'nlm-livestock', cat: 'livestock', level: 'central',
+          title_gu: 'રાષ્ટ્રીય પશુધન મિશન (NLM — ડેરી, બકરા, મરઘાં & ઘાસચારો)',
+          title_hi: 'राष्ट्रीय पशुधन मिशन (NLM — डेयरी, बकरी, मुर्गी व चारा)',
+          title_en: 'National Livestock Mission (NLM — Dairy, Goat, Poultry)',
+          benefit_gu: 'બકરા-ઘેટાં પાલન, મરઘાં ઉછેર અને ઘાસચારા પ્રોસેસિંગ યુનિટ માટે કેન્દ્ર સરકારની 50% સુધી મૂડી સબસિડી.',
+          benefit_hi: 'बकरी-भेड़, मुर्गी पालन व चारा उद्यम के लिए केंद्र सरकार की 50% तक पूंजी सब्सिडी।',
+          benefit_en: 'Up to 50% capital subsidy for goat, sheep, poultry & fodder entrepreneurship.',
+          docs: 'Project Proposal, Land/Lease Proof, Bank Account',
+          applyUrl: 'https://nlm.udyamimitra.in/',
+          statusUrl: 'https://nlm.udyamimitra.in/'
+        },
+        {
+          id: 'pmmsy-fisheries', cat: 'livestock', level: 'central',
+          title_gu: 'પ્રધાનમંત્રી મત્સ્ય સંપદા યોજના (PMMSY — મત્સ્યપાલન સહાય)',
+          title_hi: 'प्रधानमंत्री मत्स्य संपदा योजना (PMMSY)',
+          title_en: 'PM Matsya Sampada Yojana (PMMSY — Fisheries)',
+          benefit_gu: 'ખેત-તલાવડીમાં મત્સ્ય ઉછેર, બાયોફ્લોક, કોલ્ડ બોક્સ અને મત્સ્ય વ્યવસાય પર 40% થી 60% સુધી સરકારી સહાય.',
+          benefit_hi: 'मछली पालन तालाब, बायोफ्लॉक व मत्स्य व्यवसाय पर 40% से 60% तक सरकारी सब्सिडी।',
+          benefit_en: '40% to 60% government subsidy for aquaculture ponds, biofloc & fisheries infrastructure.',
+          docs: 'Land/Pond Details, Bank Account, ID Proof',
+          applyUrl: 'https://pmmsy.dof.gov.in/',
+          statusUrl: 'https://pmmsy.dof.gov.in/'
+        },
+        {
+          id: 'myscheme-portal', cat: 'cash', level: 'central',
+          title_gu: 'myScheme ભારત સરકાર — તમારી પાત્રતા મુજબ બધી યોજના શોધો',
+          title_hi: 'myScheme भारत सरकार — अपनी पात्रता के अनुसार योजनाएं खोजें',
+          title_en: 'myScheme Govt of India — Official Scheme Eligibility Finder',
+          benefit_gu: 'તમારી ઉંમર, રાજ્ય અને જમીન મુજબ ભારત સરકારની કઈ-કઈ યોજનાઓ તમને લાગુ પડે છે તે 2 મિનિટમાં જાતે ચેક કરો.',
+          benefit_hi: 'अपनी उम्र, राज्य और पात्रता के अनुसार केंद्र व राज्य की सभी योजनाएं एक जगह जांचें।',
+          benefit_en: 'Official Government of India platform to discover every central & state scheme you qualify for.',
+          docs: 'Basic Profile Details (No document upload needed to check)',
+          applyUrl: 'https://www.myscheme.gov.in/',
+          statusUrl: 'https://www.myscheme.gov.in/'
+        },
+        {
+          id: 'digilocker-docs', cat: 'land', level: 'central',
+          title_gu: 'DigiLocker — ખેડૂતના બધા સરકારી દસ્તાવેજ મોબાઇલમાં સુરક્ષિત રાખો',
+          title_hi: 'DigiLocker — सभी सरकारी दस्तावेज़ मोबाइल में सुरक्षित रखें',
+          title_en: 'DigiLocker — Digital Government Document Wallet',
+          benefit_gu: 'બધા અસલ સરકારી દસ્તાવેજ મોબાઇલમાં ડિજિટલ સ્વરૂપે માન્ય અને સુરક્ષિત રાખો — કોઈપણ યોજનાની અરજીમાં તરત ઉપયોગી.',
+          benefit_hi: 'सभी आधिकारिक दस्तावेज़ मोबाइल में डिजिटल और मान्य रूप में सुरक्षित रखें।',
+          benefit_en: 'Store legally valid digital government certificates safely on your phone for instant applications.',
+          docs: 'Mobile Number',
+          applyUrl: 'https://www.digilocker.gov.in/',
+          statusUrl: 'https://www.digilocker.gov.in/'
         }
       ]);
 
@@ -2328,6 +2603,44 @@
         return map[key] || cleanText(u, 35);
       }
 
+      function localizeDocsText(raw) {
+        let s = cleanText(raw, 180);
+        if (!s || state.lang === 'en') return s;
+        const pairs = state.lang === 'hi'
+          ? [
+              [/7\/12\s*&\s*8-A/gi, '7/12 व 8-अ'], [/Land\s*7\/12/gi, 'ज़मीन 7/12'], [/7\/12\s*Record/gi, '7/12 रिकॉर्ड'],
+              [/Land\s*Record/gi, 'ज़मीन रिकॉर्ड'], [/Land\s*Papers/gi, 'ज़मीन कागज़ात'], [/Land\/Lease\s*Proof/gi, 'ज़मीन/लीज़ प्रमाण'],
+              [/Land\/Pond\s*Details/gi, 'ज़मीन/तालाब विवरण'], [/Bank\s*DBT\s*Account/gi, 'DBT बैंक खाता'],
+              [/Savings\s*Bank\s*\/\s*PM-KISAN\s*Account/gi, 'बचत बैंक / PM-KISAN खाता'], [/Bank\s*Passbook/gi, 'बैंक पासबुक'],
+              [/Bank\s*Account/gi, 'बैंक खाता'], [/Bank\s*Details/gi, 'बैंक विवरण'], [/Bank\s*KYC/gi, 'बैंक KYC'],
+              [/Mobile\s*Number/gi, 'मोबाइल नंबर'], [/Mobile/gi, 'मोबाइल'], [/ID\s*Proof/gi, 'पहचान पत्र'],
+              [/Ration\s*Card/gi, 'राशन कार्ड'], [/Sowing\s*Proof/gi, 'बुवाई प्रमाण'], [/Passport\s*Photo/gi, 'पासपोर्ट फोटो'],
+              [/Borewell\s*Details/gi, 'बोरवेल विवरण'], [/Water\s*Source\s*Proof/gi, 'पानी स्रोत प्रमाण'],
+              [/Project\s*Report\s*\(DPR\)/gi, 'प्रोजेक्ट रिपोर्ट (DPR)'], [/Project\s*Proposal/gi, 'प्रोजेक्ट प्रस्ताव'],
+              [/Quotation/gi, 'कोटेशन'], [/Farm\s*Survey\s*No\./gi, 'खेत सर्वे नंबर'], [/Soil\s*Sample/gi, 'मिट्टी नमूना'],
+              [/District,\s*Taluka,\s*Village\s*&\s*Survey\/Khata\s*Number/gi, 'जिला, तालुका, गांव और सर्वे/खाता नंबर'],
+              [/Livestock\s*Tag\s*\(for\s*Gujarat\s*aid\)/gi, 'पशु टैग (गुजरात सहायता हेतु)'],
+              [/Basic\s*Profile\s*Details\s*\(No\s*document\s*upload\s*needed\s*to\s*check\)/gi, 'बुनियादी जानकारी (पात्रता जांचने हेतु कोई दस्तावेज़ अपलोड नहीं)']
+            ]
+          : [
+              [/7\/12\s*&\s*8-A/gi, '7/12 અને 8-અ'], [/Land\s*7\/12/gi, 'જમીન 7/12'], [/7\/12\s*Record/gi, '7/12 ઉતારો'],
+              [/Land\s*Record/gi, 'જમીન ઉતારો'], [/Land\s*Papers/gi, 'જમીનના કાગળો'], [/Land\/Lease\s*Proof/gi, 'જમીન/ભાડાકરાર પુરાવો'],
+              [/Land\/Pond\s*Details/gi, 'જમીન/તલાવડી વિગત'], [/Bank\s*DBT\s*Account/gi, 'DBT લિંક બેંક ખાતું'],
+              [/Savings\s*Bank\s*\/\s*PM-KISAN\s*Account/gi, 'બચત ખાતું / PM-KISAN ખાતું'], [/Bank\s*Passbook/gi, 'બેંક પાસબુક'],
+              [/Bank\s*Account/gi, 'બેંક ખાતું'], [/Bank\s*Details/gi, 'બેંક વિગતો'], [/Bank\s*KYC/gi, 'બેંક KYC'],
+              [/Mobile\s*Number/gi, 'મોબાઇલ નંબર'], [/Mobile/gi, 'મોબાઇલ'], [/ID\s*Proof/gi, 'ઓળખ પુરાવો'],
+              [/Ration\s*Card/gi, 'રેશન કાર્ડ'], [/Sowing\s*Proof/gi, 'વાવેતરનો દાખલો'], [/Passport\s*Photo/gi, 'પાસપોર્ટ ફોટો'],
+              [/Borewell\s*Details/gi, 'બોરવેલની વિગત'], [/Water\s*Source\s*Proof/gi, 'પાણીના સ્રોતનો પુરાવો'],
+              [/Project\s*Report\s*\(DPR\)/gi, 'પ્રોજેક્ટ રિપોર્ટ (DPR)'], [/Project\s*Proposal/gi, 'પ્રોજેક્ટ દરખાસ્ત'],
+              [/Quotation/gi, 'ક્વોટેશન'], [/Farm\s*Survey\s*No\./gi, 'ખેતર સર્વે નં.'], [/Soil\s*Sample/gi, 'માટીનો નમૂનો'],
+              [/District,\s*Taluka,\s*Village\s*&\s*Survey\/Khata\s*Number/gi, 'જિલ્લો, તાલુકો, ગામ અને સર્વે/ખાતા નંબર'],
+              [/Livestock\s*Tag\s*\(for\s*Gujarat\s*aid\)/gi, 'પશુ ટેગ નંબર (ગુજરાત સહાય માટે)'],
+              [/Basic\s*Profile\s*Details\s*\(No\s*document\s*upload\s*needed\s*to\s*check\)/gi, 'મૂળભૂત વિગતો (પાત્રતા તપાસવા દસ્તાવેજ અપલોડ જરૂરી નથી)']
+            ];
+        for (const [rePat, rep] of pairs) s = s.replace(rePat, rep);
+        return s;
+      }
+
       function tr(k) { return (L[state.lang] && L[state.lang][k]) || L.gu[k] || k; }
       function pickLangField(o, b) { return o ? (o[`${b}_${state.lang}`] || o[`${b}_gu`] || o[`${b}_en`] || o[`${b}_hi`] || '') : ''; }
 
@@ -2426,12 +2739,12 @@
           }
           populateAiCropSelect();
           if (statusEl) statusEl.textContent = state.aiLiveRates.length
-            ? `📦 ${state.aiLiveRates.length} ઉપલબ્ધ ભાવ લોડ થયા`
-            : 'ℹ️ 37+ મુખ્ય પાક તૈયાર છે (કોઈપણ પાક પસંદ કરો અથવા ઉપર લખો)';
+            ? `📦 ${state.aiLiveRates.length} ${tr('lbl_rate_count')}`
+            : (state.lang === 'en' ? 'ℹ️ 37+ major Indian crops ready (select or type any crop above)' : state.lang === 'hi' ? 'ℹ️ 37+ मुख्य फसलें तैयार हैं (चुनें या ऊपर लिखें)' : 'ℹ️ 37+ મુખ્ય પાક તૈયાર છે (કોઈપણ પાક પસંદ કરો અથવા ઉપર લખો)');
         } catch {
           if (reqId !== latestAiCropsReqId) return;
           populateAiCropSelect();
-          if (statusEl) statusEl.textContent = 'ℹ️ 37+ મુખ્ય પાક તૈયાર છે';
+          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'ℹ️ 37+ major Indian crops ready' : state.lang === 'hi' ? 'ℹ️ 37+ मुख्य फसलें तैयार हैं' : 'ℹ️ 37+ મુખ્ય પાક તૈયાર છે';
         } finally {
           if (btn) btn.disabled = false;
         }
@@ -2538,6 +2851,23 @@
           trType.innerHTML = vKeys.map((k) => `<option value="${escapeHtml(k)}">${escapeHtml(localizeVehicleType(k))}</option>`).join('');
           trType.value = prev;
         }
+        const wSel = document.getElementById('weather-city-select');
+        if (wSel) {
+          const prevW = wSel.value || state.weatherDistrict || 'anand';
+          wSel.innerHTML = WEATHER_DISTRICTS.map((d) => `<option value="${escapeHtml(d.key)}">📍 ${escapeHtml(d[state.lang] || d.gu)}</option>`).join('');
+          if (WEATHER_DISTRICTS.some((d) => d.key === prevW)) wSel.value = prevW;
+        }
+        const slf = document.getElementById('scheme-level-filter');
+        if (slf) {
+          const prevSl = slf.value || state.schemeLevelFilter || 'all';
+          const slOpts = state.lang === 'gu'
+            ? [['all', '🇮🇳 ભારત + ગુજરાત (બધી)'], ['central', '🏛️ ભારત સરકાર (Central)'], ['gujarat', '🦁 ગુજરાત સરકાર (State)']]
+            : state.lang === 'hi'
+              ? [['all', '🇮🇳 भारत + गुजरात (सभी)'], ['central', '🏛️ भारत सरकार (केंद्र)'], ['gujarat', '🦁 गुजरात सरकार (राज्य)']]
+              : [['all', '🇮🇳 Central + Gujarat (All)'], ['central', '🏛️ Central Govt Only'], ['gujarat', '🦁 Gujarat State Only']];
+          slf.innerHTML = slOpts.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
+          slf.value = prevSl;
+        }
       }
 
       function renderChips() {
@@ -2575,8 +2905,19 @@
         renderApmcRates();
         renderAgriInputs();
         renderTransportList();
+        renderDocChecklist();
         renderSchemes();
         renderAgriCenters();
+        if (state.weatherData) {
+          const wDist = WEATHER_DISTRICTS.find((d) => d.key === state.weatherDistrict) || WEATHER_DISTRICTS[0];
+          const wTitle = state.weatherIsGps
+            ? (state.lang === 'en' ? 'My Farm GPS Location' : state.lang === 'hi' ? 'मेरा खेत (GPS लोकेशन)' : 'મારું ખેતર (GPS લોકેશન)')
+            : (wDist[state.lang] || wDist.gu);
+          state.weatherCustomName = wTitle;
+          renderWeatherDashboard(state.weatherData, wTitle);
+        }
+        if (document.getElementById('profit-calc-output')?.innerHTML) runFarmProfitCalculator();
+        if (document.getElementById('kcc-calc-output')?.innerHTML) runKccLoanCalculator();
         const pulse = document.getElementById('ai-pulse-summary');
         if (pulse) pulse.textContent = `${state.products.length} ${tr('active_items_lbl')}`;
         const apmcSt = document.getElementById('apmc-live-status');
@@ -2607,7 +2948,10 @@
         const low = spoken.toLowerCase();
         closeModal('voice-modal');
 
-        if (/યોજના|સહાય|હપ્તો|સબસિડી|kisan|ikhedut|scheme|subsidy|pmfby|loan|योजना|किस्त|सब्सिडी/.test(low)) { switchTab('yard'); switchYardSubtab('schemes'); return; }
+        if (/હવામાન|વરસાદ|પવન|તાપમાન|છંટકાવ|weather|rain|spray|मौसम|बारिश|छिड़काव/.test(low)) { switchTab('yard'); switchYardSubtab('weather'); return; }
+        if (/ખર્ચ|નફો|પડતર|વ્યાજ|kcc|હિસાબ|profit|calculator|खर्च|मुनाफा|ब्याज/.test(low)) { switchTab('yard'); switchYardSubtab('tools'); return; }
+        if (/7\/12|૮-અ|8-અ|જમીન|ઉતારો|anyror|ભૂલેખ|land/.test(low)) { state.schemeCatFilter = 'land'; switchTab('yard'); switchYardSubtab('schemes'); return; }
+        if (/યોજના|સહાય|હપ્તો|સબસિડી|પશુપાલન|kisan|ikhedut|scheme|subsidy|pmfby|loan|योजना|किस्त|सब्सिडी/.test(low)) { switchTab('yard'); switchYardSubtab('schemes'); return; }
         if (/કેન્દ્ર|દુકાન|kvk|center|shop|fertilizer center|કૃષિ કેન્દ્ર|केंद्र|दुकान/.test(low)) { switchTab('yard'); switchYardSubtab('centers'); return; }
         if (/ફોટો|ફાઇલ|સમસ્યા|નિવારણ|photo|file|upload|problem|समस्या/.test(low)) { switchTab('ai_advisor'); switchAiSubtab('multimodal'); return; }
         if (/ai|સલાહ|ડૉક્ટર|advisor|doctor|सलाह/.test(low)) { switchTab('ai_advisor'); return; }
@@ -2904,11 +3248,21 @@
                 : (stdCrop ? Math.round(stdCrop.mann * qualMult) : (safePositiveNumber(bestPayload.estimated_per_mann_inr, 0.01, 10000000) ?? 470));
               const totalInr = Math.round(perMann * qty);
               const metaRaw = bestPayload.metadata && typeof bestPayload.metadata === 'object' ? bestPayload.metadata : {};
+              const noAucNote = state.lang === 'en'
+                ? 'Khedut Setu Reference Calibration (No live auction entry for this crop today)'
+                : state.lang === 'hi'
+                  ? 'खेड़ूत सेतु संदर्भ अनुमान (आज सरकारी फीड में इस फसल की नीलामी नहीं है)'
+                  : 'ખેડૂત સેતુ સંદર્ભ અંદાજ (આજે સરકારી ફીડમાં આ પાકની હરાજી નથી)';
+              const refConf = state.lang === 'en'
+                ? 'Medium (Reference Model — verify at local APMC)'
+                : state.lang === 'hi'
+                  ? 'मध्यम (संदर्भ मॉडल — स्थानीय मंडी से पुष्टि करें)'
+                  : 'મધ્યમ (અંદાજિત — સ્થાનિક મંડી ખાતરી કરો)';
               renderLiveCard(displayCrop, perMann, totalInr, {
-                source: isGovLive ? cleanText(metaRaw.source, 140) : 'Khedut Setu Reference Calibration (આજે સરકારી ફીડમાં આ પાકની હરાજી નથી)',
+                source: isGovLive ? cleanText(metaRaw.source, 140) : noAucNote,
                 last_updated: metaRaw.last_updated || new Date().toISOString(),
-                confidence: isGovLive ? 'High (Govt Live)' : 'Medium (Reference Model — સ્થાનિક APMC ખાતરી કરો)',
-                limitations: cleanText(metaRaw.limitations, 180) || 'Actual auction prices vary daily.',
+                confidence: isGovLive ? 'High (Govt Live)' : refConf,
+                limitations: cleanText(metaRaw.limitations, 180) || (state.lang === 'en' ? 'Actual mandi auction prices vary daily by moisture & arrival.' : state.lang === 'hi' ? 'दैनिक आवक और नमी के अनुसार मंडी भाव बदल सकते हैं।' : 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.'),
                 expert_note: cleanText(metaRaw.expert_note, 160) || 'Kisan Helpline: 1800-180-1551'
               });
               return;
@@ -2922,7 +3276,7 @@
             source: 'Khedut Setu APMC Reference Calibration',
             last_updated: new Date().toISOString(),
             confidence: 'Indicative Reference — Verify Live Auction at Local APMC',
-            limitations: 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
+            limitations: state.lang === 'en' ? 'Actual mandi auction prices vary daily by arrivals, moisture & quality.' : state.lang === 'hi' ? 'दैनिक आवक, नमी और गुणवत्ता के अनुसार वास्तविक मंडी भाव बदलते हैं।' : 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
             expert_note: 'Kisan Helpline: 1800-180-1551'
           });
         } catch (err) {
@@ -3146,7 +3500,7 @@
               lastAiSpokenText = summaryText;
               out.innerHTML = `
                 <div class="space-y-2">
-                  <div class="font-bold text-slate-900 text-sm">🤖 AI નિરાકરણ ${fileObj ? `(${escapeHtml(fileObj.name)})` : ''}</div>
+                  <div class="font-bold text-slate-900 text-sm">${escapeHtml(state.lang === 'en' ? '🤖 AI Solution' : state.lang === 'hi' ? '🤖 AI समाधान' : '🤖 AI નિરાકરણ')} ${fileObj ? `(${escapeHtml(fileObj.name)})` : ''}</div>
                   <p class="text-xs sm:text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escapeHtml(summaryText)}</p>
                 </div>
                 ${renderAiMetadataBlock(resolvedMeta)}
@@ -3226,18 +3580,322 @@
 
       async function runAiMatch() {
         const box = document.getElementById('ai-match-output'); if (!box) return;
-        const { data } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(15));
-        box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)}) • ${escapeHtml(r.district || '')}</div>`).join('') || `<div class="text-xs text-slate-500">${escapeHtml(tr('no_products'))}</div>`;
+        const { data, error } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(15));
+        if (error) {
+          box.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(error.message || tr('offline_msg'))}</div>`;
+          return;
+        }
+        box.innerHTML = (data || []).map((r) => `<div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>${escapeHtml(r.product_required)}</strong> (${escapeHtml(r.required_quantity)} ${escapeHtml(localizeUnit(r.unit))}) • 📍 ${escapeHtml(localizePlace(r.district || ''))}</div>`).join('') || `<div class="text-xs text-slate-500">${escapeHtml(tr('no_products'))}</div>`;
       }
 
       // ==================== SCHEMES & NEARBY AGRI CENTERS ====================
+      function getSavedDocChecklist() {
+        try {
+          const raw = localStorage.getItem('ks_doc_checklist');
+          const parsed = raw ? safeJsonParse(raw) : null;
+          return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch { return {}; }
+      }
+
+      function renderDocChecklist() {
+        const grid = document.getElementById('doc-checklist-grid');
+        const badge = document.getElementById('doc-readiness-badge');
+        if (!grid) return;
+        const saved = getSavedDocChecklist();
+        let doneCount = 0;
+        grid.innerHTML = FARMER_DOC_CHECKLIST.map((item) => {
+          const checked = Boolean(saved[item.id]);
+          if (checked) doneCount++;
+          const label = item[state.lang] || item.gu;
+          return `<button type="button" data-action="toggle-doc-check" data-id="${escapeHtml(item.id)}" class="text-left px-3 py-2 rounded-xl border text-xs font-semibold flex items-center gap-2 transition ${checked ? 'bg-farm-50 border-farm-500 text-farm-900' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-white'}"><span class="text-sm">${checked ? '☑️' : '⬜'}</span><span>${escapeHtml(label)}</span></button>`;
+        }).join('');
+        const pct = Math.round((doneCount / FARMER_DOC_CHECKLIST.length) * 100);
+        if (badge) {
+          const lbl = state.lang === 'en' ? `${pct}% Ready` : state.lang === 'hi' ? `${pct}% तैयार` : `${pct}% તૈયાર`;
+          badge.textContent = lbl;
+        }
+      }
+
+      function describeWmoCode(code) {
+        const c = Number(code) || 0;
+        const map = {
+          clear: ['☀️', 'સ્વચ્છ આકાશ', 'साफ़ आकाश', 'Clear Sky'],
+          partly: ['⛅', 'આંશિક વાદળછાયું', 'आंशिक बादल', 'Partly Cloudy'],
+          fog: ['🌫️', 'ધુમ્મસ / ઝાકળ', 'कोहरा / धुंध', 'Fog / Mist'],
+          drizzle: ['🌦️', 'ઝરમર વરસાદ', 'हल्की बूंदाबांदी', 'Light Drizzle'],
+          rain: ['🌧️', 'વરસાદ', 'बारिश', 'Rain'],
+          heavy: ['⛈️', 'ભારે વરસાદ / ગાજવીજ', 'तेज़ बारिश / तूफ़ान', 'Heavy Rain / Storm']
+        };
+        let pick = map.clear;
+        if (c === 0) pick = map.clear;
+        else if (c <= 3) pick = map.partly;
+        else if (c === 45 || c === 48) pick = map.fog;
+        else if (c >= 51 && c <= 57) pick = map.drizzle;
+        else if ((c >= 61 && c <= 67) || (c >= 80 && c <= 82)) pick = map.rain;
+        else if (c >= 95) pick = map.heavy;
+        else pick = map.partly;
+        const idx = state.lang === 'hi' ? 2 : state.lang === 'en' ? 3 : 1;
+        return { icon: pick[0], text: pick[idx] };
+      }
+
+      function renderWeatherDashboard(data, placeTitle) {
+        const curBox = document.getElementById('weather-current-card');
+        const advBox = document.getElementById('weather-advisory-box');
+        const gridBox = document.getElementById('weather-7day-grid');
+        if (!curBox || !advBox || !gridBox || !data) return;
+
+        const cur = data.current || {};
+        const daily = data.daily || {};
+        const hasTemp = cur.temperature_2m != null && Number.isFinite(Number(cur.temperature_2m));
+        const hasHum = cur.relative_humidity_2m != null && Number.isFinite(Number(cur.relative_humidity_2m));
+        const hasWind = cur.wind_speed_10m != null && Number.isFinite(Number(cur.wind_speed_10m));
+        const temp = hasTemp ? Math.round(Number(cur.temperature_2m)) : null;
+        const hum = hasHum ? Math.round(Number(cur.relative_humidity_2m)) : null;
+        const wind = hasWind ? Math.round(Number(cur.wind_speed_10m)) : 0;
+        const rainNow = Number.isFinite(Number(cur.precipitation)) ? Number(cur.precipitation) : 0;
+        const wmo = describeWmoCode(cur.weather_code);
+        const rainProb0 = Number.isFinite(Number(daily.precipitation_probability_max?.[0])) ? Math.round(Number(daily.precipitation_probability_max[0])) : 0;
+        const rainProb1 = Number.isFinite(Number(daily.precipitation_probability_max?.[1])) ? Math.round(Number(daily.precipitation_probability_max[1])) : 0;
+
+        const lTemp = state.lang === 'en' ? 'Humidity' : state.lang === 'hi' ? 'नमी' : 'ભેજ';
+        const lWind = state.lang === 'en' ? 'Wind Speed' : state.lang === 'hi' ? 'हवा की गति' : 'પવનની ગતિ';
+        const lRain = state.lang === 'en' ? 'Rain Chance' : state.lang === 'hi' ? 'बारिश की संभावना' : 'વરસાદની શક્યતા';
+
+        curBox.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="text-4xl">${wmo.icon}</div>
+              <div>
+                <div class="text-xs font-bold text-sky-800">📍 ${escapeHtml(placeTitle)}</div>
+                <div class="text-2xl font-extrabold text-slate-900">${temp !== null ? temp + '°C' : '--'} <span class="text-sm font-semibold text-slate-600">• ${escapeHtml(wmo.text)}</span></div>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center w-full sm:w-auto">
+              <div class="bg-slate-50 px-3 py-2 rounded-xl border"><div class="text-[10px] text-slate-500">💧 ${escapeHtml(lTemp)}</div><div class="font-bold text-sm">${hum !== null ? hum + '%' : '--'}</div></div>
+              <div class="bg-slate-50 px-3 py-2 rounded-xl border"><div class="text-[10px] text-slate-500">💨 ${escapeHtml(lWind)}</div><div class="font-bold text-sm">${hasWind ? wind + ' km/h' : '--'}</div></div>
+              <div class="bg-sky-50 px-3 py-2 rounded-xl border border-sky-200"><div class="text-[10px] text-sky-800">🌧️ ${escapeHtml(lRain)}</div><div class="font-bold text-sm text-sky-900">${rainProb0}%</div></div>
+            </div>
+          </div>
+        `;
+
+        // Smart Spray Window Advisor
+        let sprayColor = 'bg-emerald-50 border-emerald-200 text-emerald-950';
+        let sprayTitle = state.lang === 'en' ? '🟢 Ideal for Spraying Today' : state.lang === 'hi' ? '🟢 आज दवा छिड़काव के लिए उत्तम मौसम' : '🟢 આજે દવા છંટકાવ માટે ઉત્તમ હવામાન';
+        let sprayBody = state.lang === 'en'
+          ? 'Low wind and minimal rain risk. Best time: early morning (6–9 AM) or evening (4–6 PM).'
+          : state.lang === 'hi'
+            ? 'हवा कम और बारिश की संभावना न्यूनतम है। सुबह 6–9 या शाम 4–6 बजे छिड़काव करें।'
+            : 'પવન ધીમો અને વરસાદની શક્યતા ઓછી છે. સવારે 6–9 અથવા સાંજે 4–6 વાગ્યે છંટકાવ કરવો શ્રેષ્ઠ રહેશે.';
+
+        if (rainNow > 0 || rainProb0 >= 45 || wind >= 16) {
+          sprayColor = 'bg-red-50 border-red-200 text-red-950';
+          sprayTitle = state.lang === 'en' ? '🔴 Avoid Spraying Today' : state.lang === 'hi' ? '🔴 आज दवा छिड़काव न करें' : '🔴 આજે દવા છંટકાવ ટાળો';
+          sprayBody = state.lang === 'en'
+            ? `High wind (${wind} km/h) or rain risk (${rainProb0}%). Spray will drift or wash off — wait for calmer weather.`
+            : state.lang === 'hi'
+              ? `तेज़ हवा (${wind} km/h) या बारिश (${rainProb0}%) की संभावना है। दवा बह सकती है — मौसम साफ़ होने पर छिड़काव करें।`
+              : `પવન (${wind} km/h) અથવા વરસાદ (${rainProb0}%) ની શક્યતા વધારે છે. દવા ઉડી કે ધોવાઈ શકે છે — હવામાન શાંત થાય પછી છંટકાવ કરો.`;
+        } else if (wind >= 11 || (temp !== null && temp >= 36)) {
+          sprayColor = 'bg-amber-50 border-amber-200 text-amber-950';
+          sprayTitle = state.lang === 'en' ? '🟡 Spray Only Early Morning / Evening' : state.lang === 'hi' ? '🟡 केवल सुबह या शाम को छिड़काव करें' : '🟡 ફક્ત સવારે કે સાંજે જ છંટકાવ કરો';
+          sprayBody = state.lang === 'en'
+            ? `Moderate wind (${wind} km/h) or heat (${temp}°C). Avoid afternoon spraying to prevent leaf burn & drift.`
+            : state.lang === 'hi'
+              ? `मध्यम हवा (${wind} km/h) या गर्मी (${temp}°C) है। दोपहर में छिड़काव न करें।`
+              : `પવન (${wind} km/h) કે ગરમી (${temp}°C) વધારે છે. બપોરે છંટકાવ ન કરવો, સવારે 9 પહેલાં પૂરું કરો.`;
+        }
+
+        // Smart Irrigation & Harvest Rain Alert (48h)
+        const max48Rain = Math.max(rainProb0, rainProb1);
+        const irrColor = max48Rain >= 50 ? 'bg-sky-50 border-sky-300 text-sky-950' : 'bg-farm-50 border-farm-200 text-farm-950';
+        const irrTitle = max48Rain >= 50
+          ? (state.lang === 'en' ? '🌧️ 48-Hour Rain & Harvest Alert' : state.lang === 'hi' ? '🌧️ 48 घंटे में बारिश — फसल सुरक्षित रखें' : '🌧️ 48 કલાકમાં વરસાદ — પાક સુરક્ષિત રાખો')
+          : (state.lang === 'en' ? '💧 Normal Irrigation & Harvest Window' : state.lang === 'hi' ? '💧 सिंचाई और कटाई के लिए अनुकूल समय' : '💧 સિંચાઈ અને કાપણી માટે અનુકૂળ સમય');
+        const irrBody = max48Rain >= 50
+          ? (state.lang === 'en' ? `Up to ${max48Rain}% rain chance in next 48 hours. Pause irrigation and cover harvested produce with tarpaulin.` : state.lang === 'hi' ? `अगले 48 घंटे में ${max48Rain}% बारिश संभावना। सिंचाई रोकें और कटी फसल तिरपाल से ढकें।` : `આવતા 48 કલાકમાં ${max48Rain}% વરસાદની શક્યતા છે. હાલ પિયત બંધ રાખો અને કાપેલો પાક તાડપત્રીથી ઢાંકીને સુરક્ષિત રાખો.`)
+          : (state.lang === 'en' ? `Low rain risk (${max48Rain}%) for the next 2 days. Safe for normal irrigation, drying, and mandi transport.` : state.lang === 'hi' ? `अगले 2 दिन बारिश की संभावना कम (${max48Rain}%) है। सामान्य सिंचाई व कटाई सुरक्षित है।` : `આવતા 2 દિવસ વરસાદની શક્યતા ઓછી (${max48Rain}%) છે. નિયમિત પિયત, પાક સૂકવણી અને મંડી પરિવહન માટે સારો સમય છે.`);
+
+        advBox.innerHTML = `
+          <div class="rounded-2xl p-4 border space-y-1 ${sprayColor}">
+            <div class="font-bold text-sm">${escapeHtml(sprayTitle)}</div>
+            <p class="text-xs leading-relaxed">${escapeHtml(sprayBody)}</p>
+          </div>
+          <div class="rounded-2xl p-4 border space-y-1 ${irrColor}">
+            <div class="font-bold text-sm">${escapeHtml(irrTitle)}</div>
+            <p class="text-xs leading-relaxed">${escapeHtml(irrBody)}</p>
+          </div>
+        `;
+
+        const times = Array.isArray(daily.time) ? daily.time : [];
+        gridBox.innerHTML = times.slice(0, 7).map((dtStr, i) => {
+          const dWmo = describeWmoCode(daily.weather_code?.[i]);
+          const tMax = Math.round(Number(daily.temperature_2m_max?.[i]) || 0);
+          const tMin = Math.round(Number(daily.temperature_2m_min?.[i]) || 0);
+          const pMax = Math.round(Number(daily.precipitation_probability_max?.[i]) || 0);
+          const dayLbl = (() => {
+            try {
+              const d = new Date(dtStr + 'T00:00:00');
+              return d.toLocaleDateString(state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN', { weekday: 'short', day: 'numeric' });
+            } catch { return dtStr; }
+          })();
+          return `
+            <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200 text-center space-y-1">
+              <div class="text-[11px] font-bold text-slate-700">${escapeHtml(dayLbl)}</div>
+              <div class="text-2xl">${dWmo.icon}</div>
+              <div class="text-xs font-extrabold text-slate-900">${tMax}° / ${tMin}°</div>
+              <div class="text-[10px] font-semibold ${pMax >= 40 ? 'text-sky-700' : 'text-slate-500'}">🌧️ ${pMax}%</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      async function loadLiveWeather(forceToast = false, customLat = null, customLon = null, customLabel = '') {
+        const reqId = ++latestWeatherReqId;
+        const curBox = document.getElementById('weather-current-card');
+        const btn = document.getElementById('weather-refresh-btn');
+        const selKey = document.getElementById('weather-city-select')?.value || state.weatherDistrict || 'anand';
+        const distObj = WEATHER_DISTRICTS.find((d) => d.key === selKey) || WEATHER_DISTRICTS[0];
+
+        const isGps = customLat !== null && customLon !== null;
+        const lat = isGps ? customLat : distObj.lat;
+        const lon = isGps ? customLon : distObj.lon;
+        const cacheKey = isGps ? 'weather_gps' : ('weather_' + distObj.key);
+        const title = isGps
+          ? (customLabel || (state.lang === 'en' ? 'My Farm GPS Location' : state.lang === 'hi' ? 'मेरा खेत (GPS लोकेशन)' : 'મારું ખેતર (GPS લોકેશન)'))
+          : (distObj[state.lang] || distObj.gu);
+        state.weatherDistrict = distObj.key;
+        state.weatherIsGps = isGps;
+        state.weatherCustomName = title;
+
+        if (btn) btn.disabled = true;
+        if (curBox && !state.weatherData) {
+          curBox.innerHTML = `<div class="text-xs font-semibold text-sky-800 animate-pulse">${escapeHtml(state.lang === 'en' ? '⏳ Fetching live weather...' : state.lang === 'hi' ? '⏳ लाइव मौसम लोड हो रहा है...' : '⏳ લાઇવ હવામાન લોડ થઈ રહ્યું છે...')}</div>`;
+        }
+
+        const showWeatherError = () => {
+          if (curBox) {
+            curBox.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(state.lang === 'en' ? 'Unable to load live weather right now. Check internet and tap Refresh.' : state.lang === 'hi' ? 'अभी लाइव मौसम लोड नहीं हो सका। इंटरनेट जांचें और रिफ्रेश करें।' : 'હાલ લાઇવ હવામાન લોડ થઈ શક્યું નથી. ઇન્ટરનેટ તપાસી રિફ્રેશ દબાવો.')}</div>`;
+          }
+        };
+
+        try {
+          if (navigator.onLine) {
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(lon)}&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FKolkata`;
+            const res = await withRetry(async () => {
+              const r = await fetch(url);
+              if (!r.ok) return { data: null, error: new Error('Weather API error') };
+              return { data: await r.json(), error: null };
+            }, 1, 400, 10000);
+            if (reqId !== latestWeatherReqId) return;
+            if (!res.error && res.data && res.data.current) {
+              state.weatherData = res.data;
+              saveCache(cacheKey, res.data);
+              renderWeatherDashboard(res.data, title);
+              if (forceToast) showToast(state.lang === 'en' ? '✅ Live weather updated!' : state.lang === 'hi' ? '✅ लाइव मौसम अपडेट हुआ!' : '✅ લાઇવ હવામાન અપડેટ થયું!');
+              return;
+            }
+          }
+          if (reqId !== latestWeatherReqId) return;
+          const cached = loadCache(cacheKey, 21600000);
+          if (cached) {
+            state.weatherData = cached;
+            renderWeatherDashboard(cached, title);
+          } else {
+            showWeatherError();
+          }
+        } catch {
+          if (reqId !== latestWeatherReqId) return;
+          const cached = loadCache(cacheKey, 21600000);
+          if (cached) {
+            state.weatherData = cached;
+            renderWeatherDashboard(cached, title);
+          } else {
+            showWeatherError();
+          }
+        } finally {
+          if (reqId === latestWeatherReqId && btn) btn.disabled = false;
+        }
+      }
+
+      function runFarmProfitCalculator() {
+        const out = document.getElementById('profit-calc-output');
+        if (!out) return;
+        const area = safePositiveNumber(document.getElementById('pc-area')?.value, 0.1, 10000);
+        const seed = safePositiveNumber(document.getElementById('pc-seed')?.value, 0, 100000000);
+        const fert = safePositiveNumber(document.getElementById('pc-fert')?.value, 0, 100000000);
+        const labour = safePositiveNumber(document.getElementById('pc-labour')?.value, 0, 100000000);
+        const yld = safePositiveNumber(document.getElementById('pc-yield')?.value, 0.1, 1000000);
+        const rate = safePositiveNumber(document.getElementById('pc-rate')?.value, 1, 1000000);
+
+        if (area === null || seed === null || fert === null || labour === null || yld === null || rate === null) {
+          showToast(state.lang === 'en' ? 'Please enter valid positive numbers.' : state.lang === 'hi' ? 'कृपया सही संख्या दर्ज करें।' : 'કૃપા કરીને યોગ્ય ધન સંખ્યા નાખો.', 'error');
+          return;
+        }
+
+        const totalCost = Math.round(seed + fert + labour);
+        const totalRev = Math.round(yld * rate);
+        const netProfit = totalRev - totalCost;
+        const breakEvenMann = Math.round((totalCost / yld) * 100) / 100;
+        const breakEvenQtl = Math.round(breakEvenMann * 5);
+        const perAreaProfit = Math.round(netProfit / area);
+        const isProfit = netProfit >= 0;
+
+        const uMann = state.lang === 'en' ? '20 kg (Mann)' : state.lang === 'hi' ? '20 किग्रा (मण)' : '20 કિલો (મણ)';
+        const uQtl = state.lang === 'en' ? '100 kg (Quintal)' : state.lang === 'hi' ? '100 किग्रा (क्विंटल)' : '100 કિલો (ક્વિન્ટલ)';
+        const lblCost = state.lang === 'en' ? 'Total Expense' : state.lang === 'hi' ? 'कुल खर्च' : 'કુલ ખર્ચ';
+        const lblRev = state.lang === 'en' ? 'Expected Revenue' : state.lang === 'hi' ? 'अनुमानित आय' : 'અંદાજિત આવક';
+        const lblNet = isProfit
+          ? (state.lang === 'en' ? 'Net Profit' : state.lang === 'hi' ? 'शुद्ध मुनाफा' : 'ચોખ્ખો નફો')
+          : (state.lang === 'en' ? 'Estimated Loss' : state.lang === 'hi' ? 'अनुमानित घाटा' : 'અંદાજિત નુકસાન');
+        const lblBreak = state.lang === 'en' ? 'Break-Even Rate (Min. Safe Price)' : state.lang === 'hi' ? 'पड़तर भाव (न्यूनतम सुरक्षित भाव)' : 'પડતર ભાવ (આનાથી નીચે વેચશો તો નુકસાન)';
+        const lblPerUnit = state.lang === 'en' ? 'Net per Bigha/Acre' : state.lang === 'hi' ? 'प्रति बीघा/एकड़ शुद्ध' : 'પ્રતિ વીઘા/એકર ચોખ્ખું';
+
+        out.innerHTML = `
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-3 rounded-xl border"><div class="text-[11px] text-slate-500">${escapeHtml(lblCost)}</div><div class="text-base font-extrabold text-slate-900">₹${formatSafeInr(totalCost)}</div></div>
+            <div class="bg-white p-3 rounded-xl border"><div class="text-[11px] text-slate-500">${escapeHtml(lblRev)}</div><div class="text-base font-extrabold text-farm-800">₹${formatSafeInr(totalRev)}</div></div>
+            <div class="p-3 rounded-xl border ${isProfit ? 'bg-emerald-100 border-emerald-300 text-emerald-950' : 'bg-red-100 border-red-300 text-red-950'}"><div class="text-[11px] font-semibold">${escapeHtml(lblNet)}</div><div class="text-base font-extrabold">${isProfit ? '' : '-'}₹${formatSafeInr(Math.abs(netProfit))}</div></div>
+          </div>
+          <div class="mt-3 p-3 rounded-xl bg-white border border-farm-200 text-xs space-y-1">
+            <div>⚖️ <strong>${escapeHtml(lblBreak)}:</strong> <span class="font-extrabold text-amber-800">₹${formatSafeInr(breakEvenMann)} / ${escapeHtml(uMann)}</span> (₹${formatSafeInr(breakEvenQtl)} / ${escapeHtml(uQtl)})</div>
+            <div>🌱 <strong>${escapeHtml(lblPerUnit)}:</strong> ${isProfit ? '' : '-'}₹${formatSafeInr(Math.abs(perAreaProfit))}</div>
+          </div>
+        `;
+      }
+
+      function runKccLoanCalculator() {
+        const out = document.getElementById('kcc-calc-output');
+        if (!out) return;
+        const amt = safePositiveNumber(document.getElementById('kcc-amount')?.value, 1000, 10000000) ?? 100000;
+        const months = safePositiveNumber(document.getElementById('kcc-months')?.value, 1, 60) ?? 12;
+        const yrs = months / 12;
+        const subventionCap = Math.min(amt, 300000);
+        const normalInterest = Math.round(amt * 0.07 * yrs);
+        const promptInterest = Math.round((subventionCap * 0.04 * yrs) + (Math.max(0, amt - 300000) * 0.07 * yrs));
+        const saved = Math.max(0, normalInterest - promptInterest);
+
+        const lNorm = state.lang === 'en' ? 'Standard 7% Interest' : state.lang === 'hi' ? 'सामान्य 7% ब्याज' : 'સામાન્ય 7% વ્યાજ';
+        const lPrompt = state.lang === 'en' ? 'Timely Repayment (4% Effective)' : state.lang === 'hi' ? 'समय पर भुगतान (4% प्रभावी)' : 'સમયસર ભરપાઈ પર (4% વ્યાજ)';
+        const lSave = state.lang === 'en' ? 'Govt Interest Subsidy Saved' : state.lang === 'hi' ? 'सरकारी ब्याज छूट बचत' : 'સરકારી વ્યાજ રાહત બચત';
+
+        out.innerHTML = `
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-center">
+            <div class="bg-white p-3 rounded-xl border"><div class="text-[11px] text-slate-500">${escapeHtml(lNorm)}</div><div class="text-base font-extrabold text-slate-900">₹${formatSafeInr(normalInterest)}</div></div>
+            <div class="bg-white p-3 rounded-xl border border-emerald-300"><div class="text-[11px] text-emerald-800 font-semibold">${escapeHtml(lPrompt)}</div><div class="text-base font-extrabold text-emerald-800">₹${formatSafeInr(promptInterest)}</div></div>
+            <div class="bg-amber-50 p-3 rounded-xl border border-amber-300"><div class="text-[11px] text-amber-900 font-semibold">🎉 ${escapeHtml(lSave)}</div><div class="text-base font-extrabold text-amber-900">₹${formatSafeInr(saved)}</div></div>
+          </div>
+        `;
+      }
+
       function renderSchemes() {
         const box = document.getElementById('schemes-list'); if (!box) return;
         const term = cleanText(document.getElementById('scheme-search')?.value, 80).toLowerCase();
+        const lvl = document.getElementById('scheme-level-filter')?.value || state.schemeLevelFilter || 'all';
         const list = FARMER_SCHEMES.filter((s) => {
           const catOk = state.schemeCatFilter === 'all' || s.cat === state.schemeCatFilter;
+          const lvlOk = lvl === 'all' || s.level === lvl;
           const txt = `${s.title_gu} ${s.title_hi} ${s.title_en} ${s.benefit_gu} ${s.benefit_hi} ${s.benefit_en} ${s.docs}`.toLowerCase();
-          return catOk && (!term || txt.includes(term));
+          return catOk && lvlOk && (!term || txt.includes(term));
         });
         if (!list.length) {
           box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
@@ -3246,11 +3904,14 @@
         box.innerHTML = list.map((s) => `
           <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col justify-between space-y-3">
             <div class="space-y-1.5">
-              <span class="inline-block text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full">${escapeHtml(localizeSchemeCat(s.cat))}</span>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="inline-block text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full">${escapeHtml(localizeSchemeCat(s.cat))}</span>
+                <span class="inline-block text-[10px] font-bold ${s.level === 'gujarat' ? 'bg-amber-100 text-amber-900' : 'bg-blue-100 text-blue-900'} px-2 py-0.5 rounded-full">${escapeHtml(s.level === 'gujarat' ? (state.lang === 'en' ? '🦁 Gujarat' : state.lang === 'hi' ? '🦁 गुजरात' : '🦁 ગુજરાત') : (state.lang === 'en' ? '🇮🇳 Central' : state.lang === 'hi' ? '🇮🇳 भारत सरकार' : '🇮🇳 ભારત સરકાર'))}</span>
+              </div>
               <h4 class="font-bold text-slate-900 text-sm sm:text-base">${escapeHtml(pickLangField(s, 'title'))}</h4>
               <p class="text-xs text-slate-600 leading-relaxed">${escapeHtml(pickLangField(s, 'benefit'))}</p>
               <div class="text-[11px] text-slate-500 bg-slate-50 p-2 rounded-xl border border-slate-100">
-                <strong>${escapeHtml(tr('lbl_docs'))}</strong> ${escapeHtml(s.docs)}
+                <strong>${escapeHtml(tr('lbl_docs'))}</strong> ${escapeHtml(localizeDocsText(s.docs))}
               </div>
             </div>
             <div class="flex gap-2 pt-1">
@@ -3317,13 +3978,15 @@
 
       // ==================== MANDI RATES, AGRI INPUTS & TRANSPORT ====================
       function switchYardSubtab(w) {
-        const panels = { apmc: 'apmc-panel', inputs: 'inputs-panel', transport: 'transport-panel', schemes: 'schemes-panel', centers: 'centers-panel' };
+        const panels = { apmc: 'apmc-panel', weather: 'weather-panel', schemes: 'schemes-panel', tools: 'tools-panel', centers: 'centers-panel', inputs: 'inputs-panel', transport: 'transport-panel' };
         Object.entries(panels).forEach(([k, id]) => document.getElementById(id)?.classList.toggle('hidden', k !== w));
         Object.keys(panels).forEach((k) => {
           const btn = document.getElementById(`subtab-${k}`);
           if (btn) btn.className = `shrink-0 px-3.5 py-2 rounded-lg text-xs font-bold transition ${k === w ? 'bg-farm-700 text-white' : 'text-slate-600 hover:bg-white'}`;
         });
-        if (w === 'schemes') { renderChips(); renderSchemes(); }
+        if (w === 'weather') { loadLiveWeather(false); }
+        if (w === 'schemes') { renderChips(); renderDocChecklist(); renderSchemes(); }
+        if (w === 'tools') { runFarmProfitCalculator(); runKccLoanCalculator(); }
         if (w === 'centers') { renderChips(); renderAgriCenters(); }
         refreshIcons();
       }
@@ -3530,6 +4193,7 @@
         await withSubmitLock(e.target, async () => {
           const editId = document.getElementById('mr-edit-id').value;
           const isAdm = isStrictAdminReady();
+          const isEdit = isValidUUID(editId);
           const payload = {
             rate_category: document.getElementById('mr-cat').value,
             crop_name_gu: cropNm, crop_name_en: cropNm,
@@ -3537,9 +4201,9 @@
             min_price: minP, modal_price: modP, max_price: maxP,
             unit: cleanText(document.getElementById('mr-unit').value, 35) || '20 kg (મણ)',
             rate_date: new Date().toISOString().split('T')[0],
-            submitted_by: state.user.id,
             approval_status: isAdm ? 'approved' : 'pending'
           };
+          if (!isEdit) payload.submitted_by = state.user.id;
           const res = isValidUUID(editId)
             ? await withRetry(() => sb.from('apmc_rates').update(payload).eq('id', editId))
             : await withRetry(() => sb.from('apmc_rates').insert(payload));
@@ -3609,8 +4273,8 @@
         await withSubmitLock(e.target, async () => {
           const editId = document.getElementById('ain-edit-id').value;
           const isAdm = isStrictAdminReady();
+          const isEdit = isValidUUID(editId);
           const payload = {
-            supplier_id: state.user.id,
             input_type: document.getElementById('ain-type').value,
             item_name_gu: itemNm, item_name_en: itemNm,
             brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null,
@@ -3621,6 +4285,7 @@
             stock_note: cleanText(document.getElementById('ain-note').value, 160) || null,
             approval_status: isAdm ? 'approved' : 'pending'
           };
+          if (!isEdit) payload.supplier_id = state.user.id;
           const res = isValidUUID(editId)
             ? await withRetry(() => sb.from('agri_inputs').update(payload).eq('id', editId))
             : await withRetry(() => sb.from('agri_inputs').insert(payload));
@@ -3660,6 +4325,9 @@
           withRetry(() => sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)),
           withRetry(() => sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25))
         ]);
+        if (mRes.error || iRes.error) {
+          showToast((mRes.error || iRes.error).message || tr('toast_rls_blocked'), 'error');
+        }
         if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${formatSafeInr(r.modal_price)}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">${escapeHtml(tr('btn_approve'))}</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">${escapeHtml(tr('btn_reject'))}</button><button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
         if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${formatSafeInr(it.price)}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">${escapeHtml(tr('btn_approve'))}</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">${escapeHtml(tr('btn_reject'))}</button><button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
       }
@@ -3678,6 +4346,9 @@
           withRetry(() => sb.from('agri_inputs').select('id, item_name_gu, input_type, price, district, approval_status').order('created_at', { ascending: false }).limit(25)),
           withRetry(() => sb.from('products').select('id, title_gu, expected_price, unit, district, state, status').is('deleted_at', null).order('created_at', { ascending: false }).limit(25))
         ]);
+        if (mRes.error || iRes.error || pRes.error) {
+          showToast((mRes.error || iRes.error || pRes.error).message || tr('toast_rls_blocked'), 'error');
+        }
 
         if (mBox) {
           mBox.innerHTML = (mRes.data || []).map((r) =>
@@ -3828,6 +4499,11 @@
           withRetry(() => sb.rpc('get_product_seller_payment_info', { p_product_id: productId }))
         ]);
 
+        if (contactRes.error && payRes.error) {
+          rpcBox.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(state.lang === 'en' ? 'Unable to load seller contact right now. Please try again.' : state.lang === 'hi' ? 'अभी विक्रेता संपर्क लोड नहीं हो सका। कृपया पुनः प्रयास करें।' : 'હાલ વેચનારનો સંપર્ક લોડ થઈ શક્યો નથી. ફરી પ્રયાસ કરો.')}</div>`;
+          return;
+        }
+
         const contact = Array.isArray(contactRes.data) ? contactRes.data[0] : contactRes.data;
         const payInfo = Array.isArray(payRes.data) ? payRes.data[0] : payRes.data;
         const ph = sanitizeIndianPhone(contact?.contact_number);
@@ -3939,6 +4615,17 @@
         if (p.district) {
           const adf = document.getElementById('apmc-district-filter');
           if (adf && !adf.value && !adf.dataset.userEdited) adf.value = p.district;
+          const wSel = document.getElementById('weather-city-select');
+          if (wSel && !wSel.dataset.userEdited) {
+            const pLow = String(p.district).trim().toLowerCase();
+            const matchedW = WEATHER_DISTRICTS.find((d) =>
+              d.key === pLow || d.en.toLowerCase().includes(pLow) || d.gu.includes(p.district) || d.hi.includes(p.district)
+            );
+            if (matchedW) {
+              wSel.value = matchedW.key;
+              state.weatherDistrict = matchedW.key;
+            }
+          }
         }
         document.getElementById('p-upi').value = p.upi_id || '';
         const allowUpiEl = document.getElementById('p-allow-upi');
@@ -3980,12 +4667,17 @@
           const r = state.apmcRates.find((x) => String(x.id) === el.getAttribute('data-id'));
           if (r) {
             const mult = state.mandiUnitMode === 'quintal' ? 5 : 1;
-            const unitTxt = state.mandiUnitMode === 'quintal' ? '100 કિલો (ક્વિન્ટલ)' : '20 કિલો (મણ)';
+            const unitTxt = state.lang === 'en'
+              ? (state.mandiUnitMode === 'quintal' ? '100 kg (Quintal)' : '20 kg (Mann)')
+              : state.lang === 'hi'
+                ? (state.mandiUnitMode === 'quintal' ? '100 किग्रा (क्विंटल)' : '20 किग्रा (मण)')
+                : (state.mandiUnitMode === 'quintal' ? '100 કિલો (ક્વિન્ટલ)' : '20 કિલો (મણ)');
             const cNm = localizeAgmarkCrop(r.crop_name_gu || r.crop_name_en || '');
             const yNm = localizePlace(r.yard_name || '');
             const dNm = localizePlace(r.district || '');
             const locS = (dNm && !yNm.includes(dNm)) ? `${yNm} (${dNm})` : yNm;
-            const msg = `🌾 *ખેડૂત સેતુ — આજના મંડી ભાવ*\n📌 ${cNm}\n📍 ${locS} | ${r.rate_date}\n💰 નીચો: ₹${formatSafeInr((Number(r.min_price) || 0) * mult)} | સરેરાશ: ₹${formatSafeInr((Number(r.modal_price) || 0) * mult)} | ઊંચો: ₹${formatSafeInr((Number(r.max_price) || 0) * mult)} (${unitTxt})\n🔗 ${window.location.origin + window.location.pathname}`;
+            const hdr = state.lang === 'en' ? '🌾 *KHEDUT SETU — Daily Mandi Rate*' : state.lang === 'hi' ? '🌾 *खेड़ूत सेतु — आज का मंडी भाव*' : '🌾 *ખેડૂત સેતુ — આજના મંડી ભાવ*';
+            const msg = `${hdr}\n📌 ${cNm}\n📍 ${locS} | ${r.rate_date}\n💰 ${tr('apmc_min')}: ₹${formatSafeInr((Number(r.min_price) || 0) * mult)} | ${tr('apmc_modal')}: ₹${formatSafeInr((Number(r.modal_price) || 0) * mult)} | ${tr('apmc_max')}: ₹${formatSafeInr((Number(r.max_price) || 0) * mult)} (${unitTxt})\n🔗 ${window.location.origin + window.location.pathname}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
           }
         }
@@ -4031,7 +4723,8 @@
           const out = document.getElementById('ai-multi-output'); if (out) out.innerHTML = '';
         }
         else if (a === 'voice-fill-ai') {
-          if (!SpeechRec) { showToast('Voice API not supported in this browser.', 'error'); return; }
+          if (!SpeechRec) { showToast(state.lang === 'en' ? 'Voice API not supported in this browser.' : state.lang === 'hi' ? 'इस ब्राउज़र में वॉइस समर्थित नहीं है।' : 'આ બ્રાઉઝરમાં વૉઇસ સપોર્ટ નથી.', 'error'); return; }
+          stopVoiceListening();
           try {
             const rec = new SpeechRec();
             rec.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
@@ -4042,9 +4735,45 @@
               const qEl = document.getElementById('ai-multi-query');
               if (qEl && spoken) { qEl.value = spoken; runAiMultimodal(); }
             };
+            rec.onerror = (ev) => {
+              const code = ev?.error || '';
+              if (code === 'not-allowed' || code === 'service-not-allowed') {
+                showToast(state.lang === 'en' ? 'Microphone permission denied.' : state.lang === 'hi' ? 'माइक की अनुमति नहीं मिली।' : 'માઇકની પરમિશન બંધ છે.', 'error');
+              } else if (code === 'no-speech') {
+                showToast(state.lang === 'en' ? 'No voice detected. Try again.' : state.lang === 'hi' ? 'आवाज़ सुनाई नहीं दी। फिर बोलें।' : 'અવાજ સંભળાયો નહીં. ફરી બોલો.', 'error');
+              }
+            };
             rec.start();
           } catch {}
         }
+        else if (a === 'open-weather-hub') { switchTab('yard'); switchYardSubtab('weather'); }
+        else if (a === 'open-tools-hub') { switchTab('yard'); switchYardSubtab('tools'); }
+        else if (a === 'refresh-weather') { state.weatherLat = null; state.weatherLon = null; loadLiveWeather(true); }
+        else if (a === 'weather-use-gps') {
+          if (!navigator.geolocation) { showToast(state.lang === 'en' ? 'GPS not supported.' : state.lang === 'hi' ? 'GPS उपलब्ध नहीं है।' : 'ફોનમાં GPS સપોર્ટ ઉપલબ્ધ નથી.', 'error'); return; }
+          showToast(state.lang === 'en' ? '📍 Detecting GPS location...' : state.lang === 'hi' ? '📍 GPS लोकेशन खोज रहे हैं...' : '📍 તમારું GPS લોકેશન શોધી રહ્યા છીએ...');
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              state.weatherLat = pos.coords.latitude;
+              state.weatherLon = pos.coords.longitude;
+              const gpsLbl = state.lang === 'en' ? 'My Farm GPS Location' : state.lang === 'hi' ? 'मेरा खेत (GPS लोकेशन)' : 'મારું ખેતર (GPS લોકેશન)';
+              loadLiveWeather(true, pos.coords.latitude, pos.coords.longitude, gpsLbl);
+            },
+            () => showToast(state.lang === 'en' ? 'GPS permission denied. Select district instead.' : state.lang === 'hi' ? 'GPS अनुमति नहीं मिली। कृपया जिला चुनें।' : 'GPS પરમિશન બંધ છે — કૃપા કરીને ઉપરથી જિલ્લો પસંદ કરો.', 'error'),
+            { timeout: 8000 }
+          );
+        }
+        else if (a === 'toggle-doc-check') {
+          const did = el.getAttribute('data-id');
+          if (did && FARMER_DOC_CHECKLIST.some((item) => item.id === did)) {
+            const saved = getSavedDocChecklist();
+            saved[did] = !saved[did];
+            try { localStorage.setItem('ks_doc_checklist', JSON.stringify(saved)); } catch {}
+            renderDocChecklist();
+          }
+        }
+        else if (a === 'calc-farm-profit') runFarmProfitCalculator();
+        else if (a === 'calc-kcc-loan') runKccLoanCalculator();
         else if (a === 'open-schemes-hub') { switchTab('yard'); switchYardSubtab('schemes'); }
         else if (a === 'open-centers-hub') { switchTab('yard'); switchYardSubtab('centers'); }
         else if (a === 'open-ai-multimodal') { switchTab('ai_advisor'); switchAiSubtab('multimodal'); }
@@ -4154,6 +4883,8 @@
       document.getElementById('agri-input-search')?.addEventListener('input', renderAgriInputs);
       document.getElementById('transport-search')?.addEventListener('input', renderTransportList);
       document.getElementById('scheme-search')?.addEventListener('input', renderSchemes);
+      document.getElementById('scheme-level-filter')?.addEventListener('change', (ev) => { state.schemeLevelFilter = ev.target.value || 'all'; renderSchemes(); });
+      document.getElementById('weather-city-select')?.addEventListener('change', (ev) => { if (ev?.target) ev.target.dataset.userEdited = '1'; state.weatherLat = null; state.weatherLon = null; state.weatherIsGps = false; loadLiveWeather(false); });
       document.getElementById('center-search')?.addEventListener('input', renderAgriCenters);
       document.getElementById('ai-multi-file')?.addEventListener('change', (ev) => handleMultimodalFileSelect(ev.target?.files?.[0] || null));
       const debouncedLoadProducts = debounce(loadProducts, 300);
@@ -4263,11 +4994,16 @@
         const q = safePositiveNumber(document.getElementById('np-qty').value, 0.1, 1000000);
         const pr = safePositiveNumber(document.getElementById('np-price').value, 1, 10000000);
         const unitVal = document.getElementById('np-unit').value;
+        const vil = cleanText(document.getElementById('np-village').value, 80);
+        const dist = cleanText(document.getElementById('np-district').value, 80);
         if (!isValidUUID(catId)) {
           showToast(state.lang === 'en' ? 'Please select a valid category.' : state.lang === 'hi' ? 'कृपया सही श्रेणी चुनें।' : 'કૃપા કરીને યોગ્ય કેટેગરી પસંદ કરો.', 'error');
           return;
         }
-        if (t.length < 2 || !q || !pr || !CONFIG.ALLOWED_UNITS.includes(unitVal)) { showToast(state.lang === 'en' ? 'Please fill valid crop title, quantity & price.' : state.lang === 'hi' ? 'सही उपज नाम, मात्रा और भाव भरें।' : 'યોગ્ય ઉપજનું નામ, જથ્થો અને ભાવ ભરો.', 'error'); return; }
+        if (t.length < 2 || !q || !pr || vil.length < 2 || dist.length < 2 || !CONFIG.ALLOWED_UNITS.includes(unitVal)) {
+          showToast(state.lang === 'en' ? 'Please fill valid crop title, quantity, price, village & district.' : state.lang === 'hi' ? 'सही उपज नाम, मात्रा, भाव, गांव और जिला भरें।' : 'યોગ્ય ઉપજનું નામ, જથ્થો, ભાવ, ગામ અને જિલ્લો ભરો.', 'error');
+          return;
+        }
 
         let uploadedFilePath = '';
         try {
@@ -4288,7 +5024,7 @@
             }
           }
 
-          const { error } = await sb.from('products').insert({
+          const { error } = await withRetry(() => sb.from('products').insert({
             seller_id: state.user.id,
             category_id: catId,
             title_gu: t, title_hi: t, title_en: t,
@@ -4296,11 +5032,11 @@
             unit: unitVal,
             expected_price: pr,
             price_unit: unitVal,
-            village: cleanText(document.getElementById('np-village').value, 80),
-            district: cleanText(document.getElementById('np-district').value, 80),
+            village: vil,
+            district: dist,
             state: cleanText(document.getElementById('np-state').value, 60) || 'Gujarat',
             image_paths: imagePaths
-          });
+          }));
           if (error) {
             if (uploadedFilePath) {
               await sb.storage.from('product-images').remove([uploadedFilePath]).catch(() => {});
