@@ -1,5 +1,5 @@
-const STATIC_CACHE = 'khedut-setu-static-v7.0.1-pro';
-const CDN_CACHE = 'khedut-setu-cdn-v7.0.1-pro';
+const STATIC_CACHE = 'khedut-setu-static-v7.3.0-pro';
+const CDN_CACHE = 'khedut-setu-cdn-v7.3.0-pro';
 const MAX_CDN_ENTRIES = 60;
 const NAV_TIMEOUT_MS = 4000;
 

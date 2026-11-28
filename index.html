@@ -7,8 +7,8 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://oqldgdnqypykbddwtwvq.supabase.co; connect-src 'self' https://oqldgdnqypykbddwtwvq.supabase.co wss://oqldgdnqypykbddwtwvq.supabase.co; manifest-src 'self' blob:; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
 
-  <title>KHEDUT SETU AI v7.0 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
-  <meta name="description" content="KHEDUT SETU AI v7.0 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
+  <title>KHEDUT SETU AI v7.3 PRO — ખેડૂત સેતુ | All-India સ્માર્ટ AI કૃષિ બજાર</title>
+  <meta name="description" content="KHEDUT SETU AI v7.3 PRO — All-India દૈનિક મંડી ભાવ, શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ, દવા-બિયારણ-યંત્ર, Direct UPI અને AI સલાહકાર." />
   <meta name="theme-color" content="#15803d" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -79,7 +79,7 @@
         <div class="min-w-0">
           <h1 class="text-sm sm:text-lg font-bold leading-tight tracking-wide flex items-center gap-1 truncate">
             KHEDUT SETU
-            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v7.0 PRO</span>
+            <span class="text-[10px] font-bold bg-amber-400/25 border border-amber-300/40 text-amber-100 px-1.5 py-0.5 rounded-md">✨ AI v7.3 PRO</span>
           </h1>
           <p class="text-[10px] sm:text-[11px] text-farm-100 leading-tight truncate" data-i18n="tagline"></p>
         </div>
@@ -148,7 +148,7 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div class="space-y-1">
             <div class="inline-flex items-center gap-1.5 text-[11px] font-bold bg-white/15 px-2.5 py-0.5 rounded-full text-amber-200">
-              <span>✨ KHEDUT SETU v7.0 PRO</span>
+              <span>✨ KHEDUT SETU v7.3 PRO</span>
               <span>•</span>
               <span data-i18n="ai_badge_sub"></span>
             </div>
@@ -230,7 +230,24 @@
       </div>
 
       <div id="ai-panel-price" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
-        <h3 class="font-bold text-slate-900 text-base" data-i18n="ai_price_heading"></h3>
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h3 class="font-bold text-slate-900 text-base" data-i18n="ai_price_heading"></h3>
+          <button type="button" id="ai-load-live-btn" data-action="load-ai-live-crops" class="px-3 py-1.5 rounded-xl bg-farm-100 hover:bg-farm-200 text-farm-900 text-xs font-bold flex items-center gap-1 transition">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+            <span data-i18n="ai_load_live_btn"></span>
+          </button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 bg-slate-50 p-3 rounded-xl border border-slate-200">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1" data-i18n="ai_scope_lbl"></label>
+<select id="ai-price-scope" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white"></select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-600 mb-1" data-i18n="ai_custom_crop_lbl"></label>
+            <input id="ai-crop-custom" type="text" maxlength="60" autocomplete="off" data-i18n-placeholder="ai_custom_crop_ph" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:ring-2 focus:ring-farm-600 focus:outline-none" />
+          </div>
+          <div id="ai-live-crops-status" class="sm:col-span-2 text-[11px] font-semibold text-farm-800" data-i18n="ai_live_ready"></div>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ai_select_crop"></label>
@@ -238,7 +255,7 @@
           </div>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ai_qty_label"></label>
-            <input id="ai-qty-input" type="number" min="1" max="10000" value="50" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" />
+            <input id="ai-qty-input" type="number" min="1" max="100000" value="50" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" />
           </div>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="quality"></label>
@@ -350,11 +367,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <select id="apmc-state-filter" aria-label="Mandi State" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-farm-600 focus:outline-none"></select>
             <input id="apmc-district-filter" type="text" maxlength="60" autocomplete="off" data-i18n-placeholder="district_placeholder" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-farm-600 focus:outline-none" />
-            <select id="apmc-sort" aria-label="Sort Mandi Rates" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-farm-600 focus:outline-none">
-              <option value="latest">🕒 Latest / તાજા ભાવ</option>
-              <option value="high">📈 Highest Modal / સૌથી ઊંચો ભાવ</option>
-              <option value="low">📉 Lowest Modal / સૌથી નીચો ભાવ</option>
-            </select>
+<select id="apmc-sort" aria-label="Sort Mandi Rates" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-farm-600 focus:outline-none"></select>
           </div>
           <div class="flex flex-col sm:flex-row gap-2">
             <input id="apmc-search" type="text" maxlength="60" data-i18n-placeholder="apmc_search_ph" class="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-farm-600 focus:outline-none" />
@@ -364,7 +377,7 @@
             </button>
           </div>
           <div id="apmc-live-status" class="text-[11px] font-semibold text-farm-800 bg-farm-50 border border-farm-200 rounded-xl px-3 py-1.5 flex flex-wrap items-center justify-between gap-2">
-            <span>📡 Live Agmarknet Ready</span>
+            <span data-i18n="apmc_ready_msg"></span>
             <span id="apmc-live-count">0</span>
           </div>
         </div>
@@ -404,8 +417,8 @@
               <p class="text-xs text-farm-100" data-i18n="schemes_sub"></p>
             </div>
             <div class="flex flex-wrap gap-2">
-              <a href="tel:18001801551" class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 text-xs font-extrabold shadow-sm">📞 Kisan Helpline: 1800-180-1551</a>
-              <a href="tel:155261" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold">📞 PM-KISAN: 155261</a>
+              <a href="tel:18001801551" class="px-3 py-1.5 rounded-xl bg-amber-400 text-slate-900 text-xs font-extrabold shadow-sm" data-i18n="kisan_helpline_btn"></a>
+              <a href="tel:155261" class="px-3 py-1.5 rounded-xl bg-white/15 border border-white/25 text-white text-xs font-bold" data-i18n="pmkisan_helpline_btn"></a>
             </div>
           </div>
         </div>
@@ -656,7 +669,7 @@
         <div class="flex items-center gap-3 bg-farm-50 p-3 rounded-2xl border border-farm-200">
           <div class="w-12 h-12 rounded-2xl bg-farm-700 text-white flex items-center justify-center text-2xl font-bold shrink-0">🌾</div>
           <div>
-            <div class="font-bold text-slate-900">KHEDUT SETU AI v7.0 PRO</div>
+            <div class="font-bold text-slate-900">KHEDUT SETU AI v7.3 PRO</div>
             <div class="text-xs text-slate-600" data-i18n="install_modal_sub"></div>
           </div>
         </div>
@@ -715,13 +728,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mr_cat_lbl"></label>
-            <select id="mr-cat" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
-              <option value="vegetables">🥬 શાકભાજી / Vegetables</option>
-              <option value="fruits">🍎 ફળો / Fruits</option>
-              <option value="flowers">🌸 ફૂલો / Flowers</option>
-              <option value="pulses">🫘 કઠોળ / Pulses</option>
-              <option value="grains">🌾 અનાજ / Grains</option>
-            </select>
+<select id="mr-cat" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select>
           </div>
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mr_crop_lbl"></label>
@@ -755,13 +762,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ain_type_lbl"></label>
-            <select id="ain-type" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white">
-              <option value="dava">🧪 દવા / Pesticides</option>
-              <option value="biyaran">🌱 બિયારણ / Seeds</option>
-              <option value="khatar">🌿 ખાતર / Fertilizer</option>
-              <option value="sadhano">🛠️ સાધનો / Tools</option>
-              <option value="yantro">⚙️ યંત્રો / Machinery</option>
-            </select>
+<select id="ain-type" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select>
           </div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="ain_name_lbl"></label><input id="ain-name" type="text" required minlength="2" maxlength="120" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
@@ -790,7 +791,7 @@
       <form id="add-transport-form" class="p-4 space-y-3">
         <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_driver_lbl"></label><input id="tr-name" type="text" required minlength="2" maxlength="80" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         <div class="grid grid-cols-2 gap-2.5">
-          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_type_lbl"></label><select id="tr-type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"><option value="Tempo / Chhota Hathi">Tempo / Chhota Hathi</option><option value="Tractor Trolley">Tractor Trolley</option><option value="Pickup Bolero">Pickup Bolero</option><option value="Eicher / Mini Truck">Eicher / Mini Truck</option></select></div>
+          <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="tr_type_lbl"></label><select id="tr-type" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm bg-white"></select></div>
           <div><label class="block text-xs font-semibold text-slate-600 mb-1" data-i18n="mobile"></label><input id="tr-mobile" type="tel" required maxlength="15" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm" /></div>
         </div>
         <div class="grid grid-cols-2 gap-2.5">
@@ -935,6 +936,26 @@
         return (data?.publicUrl || '').startsWith(STORAGE_PREFIX) ? data.publicUrl : null;
       }
 
+      function safeExternalUrl(url) {
+        try {
+          const u = new URL(String(url || ''));
+          return u.protocol === 'https:' ? u.href : '#';
+        } catch {
+          return '#';
+        }
+      }
+
+      async function withSubmitLock(formEl, asyncFn) {
+        const btn = formEl?.querySelector?.('button[type="submit"]') || null;
+        if (btn && btn.disabled) return;
+        if (btn) btn.disabled = true;
+        try {
+          return await asyncFn();
+        } finally {
+          if (btn) btn.disabled = false;
+        }
+      }
+
       // Prototype-Pollution Safe JSON Parser
       function safeJsonParse(raw) {
         if (typeof raw !== 'string' || raw.length > 500000) return null;
@@ -977,9 +998,12 @@
             el.onerror = () => reject(new Error('Image decode failed'));
             el.src = imgUrl;
           });
+          let w = img.naturalWidth || 0;
+          let h = img.naturalHeight || 0;
+          if (w <= 0 || h <= 0 || w > 8000 || h > 8000 || (w * h) > 40000000) {
+            throw new Error(state.lang === 'en' ? 'Unsafe or oversized image dimensions blocked.' : state.lang === 'hi' ? 'असुरक्षित या बहुत बड़ी इमेज ब्लॉक की गई।' : 'અસુરક્ષિત અથવા અતિ મોટા માપનો ફોટો બ્લોક કરવામાં આવ્યો છે.');
+          }
           const maxDim = 1080;
-          let w = img.naturalWidth || 800;
-          let h = img.naturalHeight || 600;
           if (w > maxDim || h > maxDim) {
             if (w >= h) { h = Math.round((h * maxDim) / w); w = maxDim; }
             else { w = Math.round((w * maxDim) / h); h = maxDim; }
@@ -1140,7 +1164,7 @@
 
       async function shareKhedutSetuApp() {
         const shareUrl = window.location.origin + window.location.pathname;
-        const shareTitle = 'KHEDUT SETU AI v7.0 PRO';
+        const shareTitle = 'KHEDUT SETU AI v7.3 PRO';
         const shareText = state.lang === 'en'
           ? `Check out ${shareTitle} — All-India Daily Mandi Rates, Agri Inputs & AI Advisor: ${shareUrl}`
           : state.lang === 'hi'
@@ -1218,6 +1242,11 @@
       const cooldownMap = new Map();
       function checkRateLimit(key, waitMs = 1500) {
         const now = Date.now();
+        if (cooldownMap.size > 150) {
+          for (const [k, ts] of cooldownMap.entries()) {
+            if (now - ts > 60000) cooldownMap.delete(k);
+          }
+        }
         const prev = cooldownMap.get(key) || 0;
         if (now - prev < waitMs) return false;
         cooldownMap.set(key, now);
@@ -1232,6 +1261,7 @@
       }
       let latestProductsReqId = 0;
       let latestApmcReqId = 0;
+      let latestAiCropsReqId = 0;
       let latestPriceReqId = 0;
       let latestDoctorReqId = 0;
       let latestMultiReqId = 0;
@@ -1245,24 +1275,35 @@
       function saveCache(key, data) {
         try { localStorage.setItem('ks_cache_' + key, JSON.stringify({ ts: Date.now(), data })); } catch {}
       }
-      function loadCache(key) {
+      function loadCache(key, maxAgeMs = 86400000) {
         try {
           const raw = localStorage.getItem('ks_cache_' + key);
           const parsed = raw ? safeJsonParse(raw) : null;
-          return parsed ? (parsed.data ?? null) : null;
+          if (!parsed || typeof parsed !== 'object') return null;
+          if (maxAgeMs > 0 && Number.isFinite(Number(parsed.ts)) && (Date.now() - Number(parsed.ts)) > maxAgeMs) {
+            localStorage.removeItem('ks_cache_' + key);
+            return null;
+          }
+          return parsed.data ?? null;
         } catch { return null; }
       }
-      async function withRetry(fn, retries = 2, delayMs = 600) {
+      async function withRetry(fn, retries = 2, delayMs = 600, timeoutMs = 16000) {
         let lastErr = null;
         for (let i = 0; i <= retries; i++) {
+          let timer = null;
           try {
-            const res = await fn();
+            const res = await Promise.race([
+              Promise.resolve().then(fn),
+              new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Request timeout')), timeoutMs); })
+            ]);
+            clearTimeout(timer);
             if (res && res.error && /Failed to fetch|NetworkError|timeout|502|503|504/i.test(String(res.error.message || '')) && i < retries) {
               await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
               continue;
             }
             return res;
           } catch (err) {
+            clearTimeout(timer);
             lastErr = err;
             if (i < retries) await new Promise((r) => setTimeout(r, delayMs * (i + 1)));
           }
@@ -1279,38 +1320,38 @@
         schemeCatFilter: 'all', centerTypeFilter: 'all',
         multiFile: null,
         user: null, profile: null, categories: [],
-        selectedCategory: null, products: [], myProducts: [], apmcRates: [], agriInputs: [], transportList: [],
+        selectedCategory: null, products: [], myProducts: [], apmcRates: [], aiLiveRates: [], aiLiveSource: '', agriInputs: [], transportList: [],
         isListening: false
       };
 
       const L = Object.freeze({
         gu: Object.freeze({
-          tagline: 'All-India દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ',
+          tagline: 'સમગ્ર ભારત દૈનિક મંડી ભાવ • દવા-બિયારણ-યંત્ર • AI કૃષિ',
           offline_msg: '⚠️ ઇન્ટરનેટ બંધ છે — સાચવેલો ડેટા ઉપલબ્ધ છે.',
           nav_market: 'બજાર', nav_ai: '✨ AI સલાહકાર', nav_ai_short: 'AI સલાહ', nav_yard: 'મંડી & સાધન', nav_yard_short: 'મંડી ભાવ',
           nav_requests: 'ખરીદી માંગ', nav_sell: 'વેચાણ', nav_account: 'ખાતું',
           search_placeholder: 'પાક, શાકભાજી, ફળ, ફૂલ, કઠોળ, ગામ કે જિલ્લો શોધો...', district_placeholder: 'જિલ્લો (દા.ત. આણંદ)',
-          all_states: '🇮🇳 સમગ્ર ભારત (All States)', state_lbl: 'રાજ્ય (State) *',
-          ai_badge_sub: 'All-India એડમિન મંજૂરી સાથે દૈનિક અપડેટ', hero_title: 'મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ અને કૃષિ સામગ્રી',
+          all_states: '🇮🇳 સમગ્ર ભારત (બધા રાજ્યો)', state_lbl: 'રાજ્ય *',
+          ai_badge_sub: 'સમગ્ર ભારતના સરકારી લાઇવ દૈનિક અપડેટ', hero_title: 'મોસમી શાકભાજી, ફળ, ફૂલ, કઠોળ, અનાજ અને કૃષિ સામગ્રી',
           btn_daily_rates: '📊 દૈનિક મંડી ભાવ', btn_post_crop: 'ઉપજ મૂકો', btn_ai_doc_short: '✨ AI ડૉક્ટર', btn_voice_float: 'AI બોલો',
-          btn_install: 'Install', btn_share: 'Share',
-          pwa_card_title: '📱 ફોનમાં App Icon સાથે Install કરો અને ખેડૂતોને Share કરો',
-          pwa_card_sub: 'Home Screen પર App Icon મુકો — 1 ક્લિકમાં સીધું ખુલશે અને મિત્રોને WhatsApp/Link મોકલો.',
-          install_modal_title: '📱 KHEDUT SETU App Install કરો', install_modal_sub: 'મોબાઇલ Home Screen પર App Icon ઉમેરો',
+          btn_install: 'ઇન્સ્ટોલ', btn_share: 'શેર',
+          pwa_card_title: '📱 ફોનમાં એપ ઇન્સ્ટોલ કરો અને ખેડૂતોને શેર કરો',
+          pwa_card_sub: 'હોમ સ્ક્રીન પર એપ આઇકન મુકો — 1 ક્લિકમાં ખુલશે અને મિત્રોને WhatsApp પર મોકલો.',
+          install_modal_title: '📱 ખેડૂત સેતુ એપ ઇન્સ્ટોલ કરો', install_modal_sub: 'મોબાઇલ હોમ સ્ક્રીન પર એપ ઉમેરો',
           install_step_android: 'Android Chrome: ઉપર જમણી બાજુ ⋮ (3 dots) → "Install app" અથવા "Add to Home screen" દબાવો.',
           install_step_ios: 'iPhone Safari: નીચે Share (↑) બટન → "Add to Home Screen" દબાવો.',
           latest_listings: 'તાજેતરની મંજૂર ઉપજ', refresh: 'રિફ્રેશ', all_categories: 'બધી કેટેગરી',
           no_products: 'હાલ કોઈ માહિતી ઉપલબ્ધ નથી.', active_items_lbl: 'સક્રિય ઉપજ ઉપલબ્ધ છે',
-          btn_view_contact_upi: '📞 સંપર્ક & 💳 UPI વિગત', pd_modal_title: '🌾 ઉપજ વિગત, સંપર્ક અને Direct UPI',
-          ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'Server-Side AI ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ મેચિંગ',
+          btn_view_contact_upi: '📞 સંપર્ક અને 💳 UPI વિગત', pd_modal_title: '🌾 ઉપજ વિગત, સંપર્ક અને સીધું UPI',
+          ai_hub_title: '✨ KHEDUT SETU AI સલાહકાર', ai_hub_sub: 'સરકારી લાઇવ ભાવ અંદાજ, પાક રોગ નિદાન અને સ્માર્ટ મેચિંગ',
           aisub_price_btn: '💰 AI ભાવ અંદાજ', aisub_doctor_btn: '🩺 પાક ડૉક્ટર', aisub_match_btn: '🎯 સ્માર્ટ મેચ',
           ai_price_heading: '💰 AI સ્માર્ટ ભાવ અંદાજ', ai_select_crop: 'પાક પસંદ કરો', ai_qty_label: 'જથ્થો (મણ / 20 kg)',
           quality: 'ગુણવત્તા', ai_calc_price_btn: '✨ AI ભાવ ગણતરી કરો', ai_doc_heading: '🩺 AI પાક ડૉક્ટર',
           ai_doc_crop_lbl: 'પાકનો પ્રકાર', ai_doc_sym_lbl: 'લક્ષણ પસંદ કરો', ai_doc_extra_ph: 'વધારાના લક્ષણો...',
           ai_doc_btn: '🩺 AI નિદાન જુઓ', ai_match_heading: '🎯 AI સ્માર્ટ મેચિંગ', ai_match_sub: 'માંગ અને ઉપજ મેચિંગ', ai_match_refresh: '↻ તાજા કરો',
           ai_loading: '⏳ AI સર્વર પરથી સુરક્ષિત વિશ્લેષણ થઈ રહ્યું છે...',
-          ai_meta_source: '📌 સ્રોત (Source)', ai_meta_updated: '🕒 છેલ્લું અપડેટ',
-          ai_meta_confidence: '📊 વિશ્વસનીયતા (Confidence)', ai_meta_limitations: '⚠️ મર્યાદાઓ (Limitations)',
+          ai_meta_source: '📌 સ્રોત', ai_meta_updated: '🕒 છેલ્લું અપડેટ',
+          ai_meta_confidence: '📊 વિશ્વસનીયતા', ai_meta_limitations: '⚠️ મર્યાદાઓ',
           ai_meta_expert: '👨‍🌾 કૃષિ નિષ્ણાતની સલાહની નોંધ',
           yard_hub_title: 'દૈનિક મંડી ભાવ, દવા-બિયારણ-યંત્ર અને વાહન', yard_hub_sub: 'નજીકની મંડીના ભાવ અપડેટ (Admin મંજૂરી સાથે) અને કૃષિ સામગ્રી',
           tab_apmc: '📊 મંડી ભાવ (શાકભાજી/ફળ/ફૂલ/કઠોળ/અનાજ)', tab_inputs: '🧪 દવા, બિયારણ, સાધન & યંત્ર', tab_transport: '🚜 ટેમ્પો / ટ્રેક્ટર',
@@ -1318,7 +1359,7 @@
           apmc_min: 'નીચો', apmc_modal: 'સરેરાશ', apmc_max: 'ઊંચો',
           inputs_heading: '🧪 કૃષિ દવા, બિયારણ, ખાતર, સાધનો અને યંત્રો', inputs_sub: 'દૈનિક ભાવ અપડેટ અને Admin મંજૂરી સાથે ઉપલબ્ધ સામગ્રી',
           btn_add_update_input: '+ દવા / બિયારણ / યંત્ર ભાવ મૂકો', input_search_ph: 'દવા, બિયારણ, સાધન કે યંત્ર શોધો...',
-          tr_search_ph: 'ગામ, જિલ્લો કે વાહન શોધો...', btn_add_vehicle: '+ વાહન ઉમેરો', tr_call: '📞 કૉલ', tr_wa: '💬 WhatsApp', tr_login_num: 'નંબર જોવા લૉગિન કરો',
+          tr_search_ph: 'ગામ, જિલ્લો કે વાહન શોધો...', btn_add_vehicle: '+ વાહન ઉમેરો', tr_call: '📞 કૉલ', tr_wa: '💬 વોટ્સએપ', tr_login_num: 'નંબર જોવા લૉગિન કરો',
           req_title: 'ખરીદારોની માંગ', req_sub: 'ખરીદારોને કઈ ઉપજ જોઈએ છે તે જુઓ.', btn_add_req: 'નવી માંગ મૂકો',
           sell_login_title: 'વેચાણ માટે લૉગિન કરો', sell_login_sub: 'સીધી ઉપજ વેચો.', btn_go_login: 'લૉગિન / નવું ખાતું',
           seller_hub: 'ખેડૂત વેચાણ ડેશબોર્ડ', seller_hub_sub: 'તમારી મૂકેલી ઉપજ અને નવી ઉપજ ઉમેરો', btn_add_product: 'નવી ઉપજ મૂકો',
@@ -1326,9 +1367,9 @@
           email: 'ઈમેલ', password: 'પાસવર્ડ', password_8: 'પાસવર્ડ (8+ અક્ષર) *', full_name: 'પૂરું નામ *', full_name_lbl: 'પૂરું નામ',
           mobile: 'મોબાઇલ નંબર *', mobile_lbl: 'મોબાઇલ નંબર', role_label: 'તમે કોણ છો? *', role_seller: 'ખેડૂત / વેચનાર', role_buyer: 'ખરીદાર',
           village: 'ગામ / શહેર', village_req: 'ગામ *', district: 'જિલ્લો', district_req: 'જિલ્લો *', upi_id_lbl: '💳 UPI ID',
-          allow_upi_lbl: 'ખરીદારોને મારો UPI ID બતાવો (Direct UPI Payment માટે)',
+          allow_upi_lbl: 'ખરીદારોને મારો UPI ID બતાવો (સીધા UPI પેમેન્ટ માટે)',
           create_account: 'નવું ખાતું બનાવો', logout: 'લૉગઆઉટ', profile_settings: 'પ્રોફાઇલ વિગતો', save_profile: 'સેવ કરો',
-          admin_heading: 'Admin Panel — મંજૂરી & નિયંત્રણ કેન્દ્ર', admin_sub: 'મંડી ભાવ, કૃષિ સામગ્રી મંજૂરી અને લાઇવ ડેટા ડિલીટ (ફક્ત Admin)',
+          admin_heading: 'એડમિન પેનલ — મંજૂરી અને નિયંત્રણ કેન્દ્ર', admin_sub: 'મંડી ભાવ, કૃષિ સામગ્રી મંજૂરી અને લાઇવ ડેટા નિયંત્રણ (ફક્ત એડમિન)',
           admin_pending_mandi: '📊 મંજૂરી માટે બાકી મંડી ભાવ', admin_pending_inputs: '🧪 મંજૂરી માટે બાકી દવા / બિયારણ / યંત્ર',
           admin_apmc_title: '📊 Admin સીધો મંડી ભાવ ઉમેરો', ap_yard_ph: 'મંડી', ap_dist_ph: 'જિલ્લો', ap_crop_ph: 'પાક/વસ્તુ',
           ap_min_ph: 'નીચો', ap_max_ph: 'ઊંચો', ap_modal_ph: 'સરેરાશ', ap_publish_btn: 'લાઇવ કરો',
@@ -1364,25 +1405,25 @@
           ai_speak_btn: '🔊 જવાબ સાંભળો',
           ai_clear_btn: 'સાફ કરો',
           tab_schemes: '🏛️ સહાય, યોજના & હપ્તો', tab_centers: '📍 ખાતર-બિયારણ-દવા કેન્દ્રો',
-          schemes_heading: '🏛️ ખેડૂત સહાય, સરકારી યોજનાઓ અને હપ્તા (Apply & Status)',
+          schemes_heading: '🏛️ ખેડૂત સહાય, સરકારી યોજનાઓ અને હપ્તા (અરજી અને સ્ટેટસ)',
           schemes_sub: 'PM-KISAN હપ્તો, iKhedut સબસિડી, પાક વીમો, KCC લોન અને સોલાર પંપ માટે સીધી અધિકૃત લિંક.',
           scheme_search_ph: 'યોજના, હપ્તો, ટ્રેક્ટર, ટપક, વીમો કે લોન શોધો...',
           centers_heading: '📍 નજીકના ખાતર, બિયારણ, દવા & KVK કેન્દ્રો',
           centers_sub: 'નજીકના અધિકૃત કેન્દ્રોનું સરનામું, સંપર્ક નંબર અને Google Maps લોકેશન.',
           btn_maps_nearby: 'Maps પર નજીકના કેન્દ્રો',
           center_search_ph: 'જિલ્લો, તાલુકો, ખાતર, બિયારણ, દવા કે KVK શોધો...',
-          btn_add_center_shop: '+ તમારું કેન્દ્ર / દુકાન ઉમેરો' 
+          btn_add_center_shop: '+ તમારું કેન્દ્ર / દુકાન ઉમેરો', ai_load_live_btn: '🔄 સરકારી લાઇવ પાક લોડ', ai_scope_lbl: '📡 સરકારી મંડી વિસ્તાર', ai_custom_crop_lbl: '🔍 કોઈપણ અન્ય પાક લખો (વૈકલ્પિક)', ai_custom_crop_ph: 'દા.ત. જીરું, ડુંગળી, લસણ, ગાજર, ટામેટા...', ai_live_ready: '📡 સરકારી લાઇવ પાક લોડ થવા તૈયાર...', apmc_ready_msg: '📡 સરકારી લાઇવ મંડી ભાવ તૈયાર', kisan_helpline_btn: '📞 ખેડૂત હેલ્પલાઇન: 1800-180-1551', pmkisan_helpline_btn: '📞 પીએમ-કિસાન: 155261', badge_live_govt: '🟢 લાઇવ સરકારી', badge_pending_admin: '⏳ એડમિન મંજૂરી બાકી', badge_apmc: '✅ મંડી ભાવ', btn_share_card: '💬 શેર કરો', btn_calc_card: '💰 ગણતરી', btn_update_card: '✏️ અપડેટ', btn_apply_online: '✅ ઓનલાઇન અરજી ↗', btn_status_check: '🔍 સ્ટેટસ ચેક ↗', lbl_docs: '📄 જરૂરી દસ્તાવેજો:', btn_directions: '🗺️ રસ્તો જુઓ ↗', btn_mark_sold: '✅ વેચાઈ ગયું', btn_delete: '🗑️ ડિલીટ', btn_approve: 'મંજૂર', btn_reject: 'નામંજૂર', lbl_total: 'કુલ', lbl_rate_count: 'ભાવ' 
         }),
         hi: Object.freeze({
-          tagline: 'All-India दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि',
+          tagline: 'संपूर्ण भारत दैनिक मंडी भाव • दवा-बीज-यंत्र • AI कृषि',
           offline_msg: '⚠️ इंटरनेट बंद है — सेव किया डेटा उपलब्ध है।',
           nav_market: 'बाज़ार', nav_ai: '✨ AI सलाहकार', nav_ai_short: 'AI सलाह', nav_yard: 'मंडी & सामग्री', nav_yard_short: 'मंडी भाव',
           nav_requests: 'खरीद मांग', nav_sell: 'बेचें', nav_account: 'खाता',
           search_placeholder: 'सब्ज़ी, फल, फूल, दलहन, अनाज, गांव या जिला खोजें...', district_placeholder: 'जिला (जैसे आनंद)',
-          all_states: '🇮🇳 संपूर्ण भारत (All States)', state_lbl: 'राज्य (State) *',
+          all_states: '🇮🇳 संपूर्ण भारत (सभी राज्य)', state_lbl: 'राज्य *',
           ai_badge_sub: 'All-India एडमिन स्वीकृति के साथ दैनिक अपडेट', hero_title: 'मौसमी सब्ज़ी, फल, फूल, दलहन, अनाज और कृषि सामग्री',
           btn_daily_rates: '📊 दैनिक मंडी भाव', btn_post_crop: 'उपज डालें', btn_ai_doc_short: '✨ AI डॉक्टर', btn_voice_float: 'AI बोलें',
-          btn_install: 'Install', btn_share: 'Share',
+          btn_install: 'इंस्टॉल', btn_share: 'शेयर',
           pwa_card_title: '📱 फ़ोन में App Icon के साथ Install करें और Share करें',
           pwa_card_sub: 'Home Screen पर App Icon जोड़ें — तुरंत खुलेगा और साथियों को शेयर करें.',
           install_modal_title: '📱 KHEDUT SETU App Install करें', install_modal_sub: 'मोबाइल Home Screen पर App Icon जोड़ें',
@@ -1398,8 +1439,8 @@
           ai_doc_crop_lbl: 'फसल का प्रकार', ai_doc_sym_lbl: 'लक्षण चुनें', ai_doc_extra_ph: 'अतिरिक्त लक्षण...',
           ai_doc_btn: '🩺 AI निदान देखें', ai_match_heading: '🎯 AI स्मार्ट मैचिंग', ai_match_sub: 'मांग और उपज मिलान', ai_match_refresh: '↻ ताज़ा करें',
           ai_loading: '⏳ AI सर्वर से सुरक्षित विश्लेषण हो रहा है...',
-          ai_meta_source: '📌 स्रोत (Source)', ai_meta_updated: '🕒 अंतिम अपडेट',
-          ai_meta_confidence: '📊 विश्वसनीयता (Confidence)', ai_meta_limitations: '⚠️ सीमाएं (Limitations)',
+          ai_meta_source: '📌 स्रोत', ai_meta_updated: '🕒 अंतिम अपडेट',
+          ai_meta_confidence: '📊 विश्वसनीयता', ai_meta_limitations: '⚠️ सीमाएं',
           ai_meta_expert: '👨‍🌾 कृषि विशेषज्ञ सलाह नोट',
           yard_hub_title: 'दैनिक मंडी भाव, दवा-बीज-यंत्र और वाहन', yard_hub_sub: 'नज़दीकी मंडी भाव अपडेट (Admin स्वीकृति के साथ) और कृषि सामग्री',
           tab_apmc: '📊 मंडी भाव (सब्ज़ी/फल/फूल/दलहन/अनाज)', tab_inputs: '🧪 दवा, बीज, साधन & यंत्र', tab_transport: '🚜 टेम्पो / ट्रैक्टर',
@@ -1460,7 +1501,7 @@
           centers_sub: 'नज़दीकी आधिकारिक केंद्र का पता, संपर्क नंबर और Google Maps लोकेशन।',
           btn_maps_nearby: 'Maps पर नज़दीकी केंद्र',
           center_search_ph: 'जिला, तालुका, खाद, बीज, दवा या KVK खोजें...',
-          btn_add_center_shop: '+ अपना केंद्र / दुकान जोड़ें' 
+          btn_add_center_shop: '+ अपना केंद्र / दुकान जोड़ें', ai_load_live_btn: '🔄 सरकारी लाइव फसल लोड', ai_scope_lbl: '📡 सरकारी मंडी क्षेत्र', ai_custom_crop_lbl: '🔍 कोई अन्य फसल लिखें (वैकल्पिक)', ai_custom_crop_ph: 'जैसे: जीरा, प्याज़, लहसुन, गाजर, टमाटर...', ai_live_ready: '📡 सरकारी लाइव फसल लोड होने को तैयार...', apmc_ready_msg: '📡 सरकारी लाइव मंडी भाव तैयार', kisan_helpline_btn: '📞 किसान हेल्पलाइन: 1800-180-1551', pmkisan_helpline_btn: '📞 पीएम-किसान: 155261', badge_live_govt: '🟢 लाइव सरकारी', badge_pending_admin: '⏳ एडमिन स्वीकृति बाकी', badge_apmc: '✅ मंडी भाव', btn_share_card: '💬 शेयर करें', btn_calc_card: '💰 गणना', btn_update_card: '✏️ अपडेट', btn_apply_online: '✅ ऑनलाइन आवेदन ↗', btn_status_check: '🔍 स्थिति जांचें ↗', lbl_docs: '📄 ज़रूरी दस्तावेज़:', btn_directions: '🗺️ रास्ता देखें ↗', btn_mark_sold: '✅ बिक गया', btn_delete: '🗑️ डिलीट', btn_approve: 'स्वीकृत', btn_reject: 'अस्वीकृत', lbl_total: 'कुल', lbl_rate_count: 'भाव' 
         }),
         en: Object.freeze({
           tagline: 'All-India Daily Mandi Rates • Agri Inputs & Machinery • AI',
@@ -1549,7 +1590,7 @@
           centers_sub: 'Verified center addresses, phone numbers, WhatsApp and live Google Maps search.',
           btn_maps_nearby: 'Find on Google Maps',
           center_search_ph: 'Search district, taluka, fertilizer, seeds, pesticide or KVK...',
-          btn_add_center_shop: '+ Add Your Center / Shop' 
+          btn_add_center_shop: '+ Add Your Center / Shop', ai_load_live_btn: '🔄 Load Live Govt Crops', ai_scope_lbl: '📡 Govt Mandi Scope', ai_custom_crop_lbl: '🔍 Type Any Other Crop (Optional)', ai_custom_crop_ph: 'e.g. Cumin, Onion, Garlic, Castor, Tomato...', ai_live_ready: '📡 Live Agmarknet crops ready...', apmc_ready_msg: '📡 Live Agmarknet Ready', kisan_helpline_btn: '📞 Kisan Helpline: 1800-180-1551', pmkisan_helpline_btn: '📞 PM-KISAN: 155261', badge_live_govt: '🟢 LIVE Govt', badge_pending_admin: '⏳ Pending Admin', badge_apmc: '✅ APMC', btn_share_card: '💬 Share', btn_calc_card: '💰 Calculate', btn_update_card: '✏️ Update', btn_apply_online: '✅ Apply Online ↗', btn_status_check: '🔍 Status Check ↗', lbl_docs: '📄 Docs:', btn_directions: '🗺️ Directions ↗', btn_mark_sold: '✅ Mark Sold', btn_delete: '🗑️ Delete', btn_approve: 'Approve', btn_reject: 'Reject', lbl_total: 'Total', lbl_rate_count: 'rates' 
         })
       });
 
@@ -1668,96 +1709,743 @@
       const VERIFIED_AGRI_CENTERS = Object.freeze([
         {
           id: 'kvk-anand', type: 'kvk',
-          name: 'Krishi Vigyan Kendra (KVK), Anand (AAU)',
-          address: 'Anand Agricultural University Campus, Anand, Gujarat 388110',
+          name_gu: 'કૃષિ વિજ્ઞાન કેન્દ્ર (KVK), આણંદ (આણંદ કૃષિ યુનિવર્સિટી)',
+          name_hi: 'कृषि विज्ञान केंद्र (KVK), आनंद',
+          name_en: 'Krishi Vigyan Kendra (KVK), Anand (AAU)',
+          address_gu: 'આણંદ કૃષિ યુનિવર્સિટી કેમ્પસ, આણંદ, ગુજરાત 388110',
+          address_hi: 'आनंद कृषि विश्वविद्यालय परिसर, आनंद, गुजरात 388110',
+          address_en: 'Anand Agricultural University Campus, Anand, Gujarat 388110',
           district: 'Anand', phone: '18001801551',
-          services: 'માટી ચકાસણી, પાક રોગ નિદાન, બિયારણ માર્ગદર્શન'
+          services_gu: 'માટી ચકાસણી, પાક રોગ નિદાન, બિયારણ માર્ગદર્શન',
+          services_hi: 'मिट्टी जांच, फसल रोग निदान, बीज मार्गदर्शन',
+          services_en: 'Soil testing, crop disease diagnosis, seed guidance'
         },
         {
           id: 'gsfc-anand', type: 'khatar',
-          name: 'GSFC Agro & Fertilizer Depot — Anand / Borsad Road',
-          address: 'APMC Market Yard Road, Anand, Gujarat',
+          name_gu: 'GSFC એગ્રો અને ખાતર ડેપો — આણંદ / બોરસદ રોડ',
+          name_hi: 'GSFC एग्रो व खाद डिपो — आनंद / बोरसद रोड',
+          name_en: 'GSFC Agro & Fertilizer Depot — Anand / Borsad Road',
+          address_gu: 'એપીએમસી માર્કેટ યાર્ડ રોડ, આણંદ, ગુજરાત',
+          address_hi: 'एपीएमसी मार्केट यार्ड रोड, आनंद, गुजरात',
+          address_en: 'APMC Market Yard Road, Anand, Gujarat',
           district: 'Anand', phone: '18002332025',
-          services: 'યુરિયા, DAP, NPK, સલ્ફર, બાયો-ખાતર'
+          services_gu: 'યુરિયા, DAP, NPK, સલ્ફર, બાયો-ખાતર',
+          services_hi: 'यूरिया, DAP, NPK, सल्फर, बायो-खाद',
+          services_en: 'Urea, DAP, NPK, Sulphur, Bio-fertilizer'
         },
         {
           id: 'iffco-guj', type: 'khatar',
-          name: 'IFFCO eBazar / Kisan Seva Kendra (Gujarat)',
-          address: 'District Cooperative Sangh / Taluka Seva Sahakari Mandali',
+          name_gu: 'IFFCO ઈ-બજાર / કિસાન સેવા કેન્દ્ર (ગુજરાત)',
+          name_hi: 'IFFCO ई-बाज़ार / किसान सेवा केंद्र (गुजरात)',
+          name_en: 'IFFCO eBazar / Kisan Seva Kendra (Gujarat)',
+          address_gu: 'જિલ્લા સહકારી સંઘ / તાલુકા સેવા સહકારી મંડળી',
+          address_hi: 'जिला सहकारी संघ / तालुका सेवा सहकारी मंडली',
+          address_en: 'District Cooperative Sangh / Taluka Seva Sahakari Mandali',
           district: 'Gujarat', phone: '18001031967',
-          services: 'નેનો યુરિયા, નેનો DAP, સાગરિકા, ખાતર & બિયારણ'
+          services_gu: 'નેનો યુરિયા, નેનો DAP, સાગરિકા, ખાતર અને બિયારણ',
+          services_hi: 'नैनो यूरिया, नैनो DAP, सागरिका, खाद व बीज',
+          services_en: 'Nano Urea, Nano DAP, Sagarika, fertilizers & seeds'
         },
         {
           id: 'kvk-rajkot', type: 'kvk',
-          name: 'Krishi Vigyan Kendra (KVK), Targhadia — Rajkot',
-          address: 'Targhadia, Rajkot-Morbi Highway, Rajkot, Gujarat',
+          name_gu: 'કૃષિ વિજ્ઞાન કેન્દ્ર (KVK), તરઘડિયા — રાજકોટ',
+          name_hi: 'कृषि विज्ञान केंद्र (KVK), तरघड़िया — राजकोट',
+          name_en: 'Krishi Vigyan Kendra (KVK), Targhadia — Rajkot',
+          address_gu: 'તરઘડિયા, રાજકોટ-મોરબી હાઇવે, રાજકોટ, ગુજરાત',
+          address_hi: 'तरघड़िया, राजकोट-मोरबी हाईवे, राजकोट, गुजरात',
+          address_en: 'Targhadia, Rajkot-Morbi Highway, Rajkot, Gujarat',
           district: 'Rajkot', phone: '18001801551',
-          services: 'કપાસ-મગફળી નિદાન, બિયારણ, તાલીમ કેન્દ્ર'
+          services_gu: 'કપાસ-મગફળી નિદાન, બિયારણ, તાલીમ કેન્દ્ર',
+          services_hi: 'कपास-मूंगफली निदान, बीज, प्रशिक्षण केंद्र',
+          services_en: 'Cotton-groundnut diagnosis, seeds, training center'
         },
         {
           id: 'kvk-ahmedabad', type: 'kvk',
-          name: 'Krishi Vigyan Kendra (KVK), Arnej — Ahmedabad',
-          address: 'Arnej, Taluka Dholka, Ahmedabad, Gujarat',
+          name_gu: 'કૃષિ વિજ્ઞાન કેન્દ્ર (KVK), અરણેજ — અમદાવાદ',
+          name_hi: 'कृषि विज्ञान केंद्र (KVK), अरनेज — अहमदाबाद',
+          name_en: 'Krishi Vigyan Kendra (KVK), Arnej — Ahmedabad',
+          address_gu: 'અરણેજ, તાલુકો ધોળકા, અમદાવાદ, ગુજરાત',
+          address_hi: 'अरनेज, तालुका धोलका, अहमदाबाद, गुजरात',
+          address_en: 'Arnej, Taluka Dholka, Ahmedabad, Gujarat',
           district: 'Ahmedabad', phone: '18001801551',
-          services: 'ઘઉં-ડાંગર સલાહ, માટી-પાણી તપાસ, દવા માર્ગદર્શન'
+          services_gu: 'ઘઉં-ડાંગર સલાહ, માટી-પાણી તપાસ, દવા માર્ગદર્શન',
+          services_hi: 'गेहूं-धान सलाह, मिट्टी-पानी जांच, दवा मार्गदर्शन',
+          services_en: 'Wheat-paddy advice, soil-water testing, crop care'
         },
         {
           id: 'kvk-surat', type: 'kvk',
-          name: 'Krishi Vigyan Kendra (KVK), Surat (NAU)',
-          address: 'Athwa Farm, Ghod Dod Road, Surat, Gujarat',
+          name_gu: 'કૃષિ વિજ્ઞાન કેન્દ્ર (KVK), સુરત (નવસારી કૃષિ યુનિવર્સિટી)',
+          name_hi: 'कृषि विज्ञान केंद्र (KVK), सूरत',
+          name_en: 'Krishi Vigyan Kendra (KVK), Surat (NAU)',
+          address_gu: 'અઠવા ફાર્મ, ઘોડદોડ રોડ, સુરત, ગુજરાત',
+          address_hi: 'अठवा फार्म, घोड़दौड़ रोड, सूरत, गुजरात',
+          address_en: 'Athwa Farm, Ghod Dod Road, Surat, Gujarat',
           district: 'Surat', phone: '18001801551',
-          services: 'શાકભાજી-ફળ-શેરડી નિદાન, જૈવિક ખાતર & દવા'
+          services_gu: 'શાકભાજી-ફળ-શેરડી નિદાન, જૈવિક ખાતર અને દવા',
+          services_hi: 'सब्ज़ी-फल-गन्ना निदान, जैविक खाद व दवा',
+          services_en: 'Veg-fruit-sugarcane diagnosis, organic inputs'
         },
         {
           id: 'apmc-unjha', type: 'apmc',
-          name: 'APMC Unjha — જીરું, વરિયાળી & ઈસબગુલ માર્કેટ યાર્ડ',
-          address: 'Station Road, Unjha, District Mehsana, Gujarat',
+          name_gu: 'એપીએમસી ઊંઝા — જીરું, વરિયાળી અને ઈસબગુલ માર્કેટ યાર્ડ',
+          name_hi: 'एपीएमसी ऊंझा — जीरा, सौंफ व ईसबगोल मंडी',
+          name_en: 'APMC Unjha — Cumin, Fennel & Isabgol Market Yard',
+          address_gu: 'સ્ટેશન રોડ, ઊંઝા, જિલ્લો મહેસાણા, ગુજરાત',
+          address_hi: 'स्टेशन रोड, ऊंझा, जिला मेहसाणा, गुजरात',
+          address_en: 'Station Road, Unjha, District Mehsana, Gujarat',
           district: 'Mehsana', phone: '18001801551',
-          services: 'દૈનિક હરાજી, મસાલા પાક, બિયારણ & એગ્રો સ્ટોર્સ'
+          services_gu: 'દૈનિક હરાજી, મસાલા પાક, બિયારણ અને એગ્રો સ્ટોર્સ',
+          services_hi: 'दैनिक नीलामी, मसाला फसल, बीज व एग्रो स्टोर्स',
+          services_en: 'Daily auction, spice crops, seeds & agro stores'
         },
         {
           id: 'apmc-gondal', type: 'apmc',
-          name: 'APMC Gondal — મગફળી, કપાસ, મરચા & શાકભાજી યાર્ડ',
-          address: 'NH-27, Gondal, District Rajkot, Gujarat',
+          name_gu: 'એપીએમસી ગોંડલ — મગફળી, કપાસ, મરચા અને શાકભાજી યાર્ડ',
+          name_hi: 'एपीएमसी गोंडल — मूंगफली, कपास, मिर्च व सब्ज़ी मंडी',
+          name_en: 'APMC Gondal — Groundnut, Cotton, Chilli & Veg Yard',
+          address_gu: 'નેશનલ હાઇવે-27, ગોંડલ, જિલ્લો રાજકોટ, ગુજરાત',
+          address_hi: 'नेशनल हाईवे-27, गोंडल, जिला राजकोट, गुजरात',
+          address_en: 'NH-27, Gondal, District Rajkot, Gujarat',
           district: 'Rajkot', phone: '18001801551',
-          services: 'દૈનિક મંડી ભાવ, ખાતર-બિયારણ-દવા કેન્દ્રો'
+          services_gu: 'દૈનિક મંડી ભાવ, ખાતર-બિયારણ-દવા કેન્દ્રો',
+          services_hi: 'दैनिक मंडी भाव, खाद-बीज-दवा केंद्र',
+          services_en: 'Daily mandi rates, agri input centers'
         }
       ]);
 
       const AI_CROPS = Object.freeze({
-        paddy: Object.freeze({ gu: 'ડાંગર', hi: 'धान', en: 'Paddy', mann: 470, qtl: 2350 }),
-        wheat: Object.freeze({ gu: 'ઘઉં', hi: 'गेहूं', en: 'Wheat', mann: 555, qtl: 2775 }),
-        bajra: Object.freeze({ gu: 'બાજરી', hi: 'बाजरा', en: 'Bajra', mann: 480, qtl: 2400 }),
-        pulses: Object.freeze({ gu: 'કઠોળ (મગ/તુવેર)', hi: 'दलहन (मूंग/तुअर)', en: 'Pulses (Moong/Tuver)', mann: 1560, qtl: 7800 }),
-        veg: Object.freeze({ gu: 'શાકભાજી', hi: 'सब्ज़ी', en: 'Vegetables', mann: 350, qtl: 1750 }),
-        cotton: Object.freeze({ gu: 'કપાસ', hi: 'कपास', en: 'Cotton', mann: 1480, qtl: 7400 }),
-        groundnut: Object.freeze({ gu: 'મગફળી', hi: 'मूंगफली', en: 'Groundnut', mann: 1250, qtl: 6250 })
+        paddy: Object.freeze({ gu: 'ડાંગર', hi: 'धान', en: 'Paddy / Rice', term: 'paddy', terms: ['paddy', 'rice'], mann: 470 }),
+        wheat: Object.freeze({ gu: 'ઘઉં', hi: 'गेहूं', en: 'Wheat', term: 'wheat', terms: ['wheat'], mann: 555 }),
+        bajra: Object.freeze({ gu: 'બાજરી', hi: 'बाजरा', en: 'Bajra', term: 'bajra', terms: ['bajra', 'pearl millet'], mann: 480 }),
+        maize: Object.freeze({ gu: 'મકાઈ', hi: 'मक्का', en: 'Maize', term: 'maize', terms: ['maize', 'corn'], mann: 450 }),
+        jowar: Object.freeze({ gu: 'જુવાર', hi: 'ज्वार', en: 'Jowar', term: 'jowar', terms: ['jowar', 'sorghum'], mann: 620 }),
+        cotton: Object.freeze({ gu: 'કપાસ', hi: 'कपास', en: 'Cotton', term: 'cotton', terms: ['cotton'], mann: 1480 }),
+        groundnut: Object.freeze({ gu: 'મગફળી', hi: 'मूंगफली', en: 'Groundnut', term: 'groundnut', terms: ['groundnut', 'peanut'], mann: 1250 }),
+        castor: Object.freeze({ gu: 'એરંડા', hi: 'अरंडी', en: 'Castor Seed', term: 'castor', terms: ['castor'], mann: 1240 }),
+        mustard: Object.freeze({ gu: 'રાયડો', hi: 'सरसों', en: 'Mustard', term: 'mustard', terms: ['mustard', 'raydo'], mann: 1150 }),
+        sesame: Object.freeze({ gu: 'તલ', hi: 'तिल', en: 'Sesamum / Til', term: 'sesamum', terms: ['sesamum', 'sesame', 'til'], mann: 2400 }),
+        soyabean: Object.freeze({ gu: 'સોયાબીન', hi: 'सोयाबीन', en: 'Soyabean', term: 'soyabean', terms: ['soyabean', 'soybean'], mann: 920 }),
+        cumin: Object.freeze({ gu: 'જીરું', hi: 'जीरा', en: 'Cumin Seed (Jeera)', term: 'cummin', terms: ['cummin', 'cumin', 'jeera'], mann: 4600 }),
+        fennel: Object.freeze({ gu: 'વરિયાળી', hi: 'सौंफ', en: 'Fennel / Saunf', term: 'fennel', terms: ['fennel', 'saunf', 'variyali'], mann: 1700 }),
+        coriander: Object.freeze({ gu: 'ધાણા', hi: 'धनिया', en: 'Coriander', term: 'coriander', terms: ['coriander', 'dhania'], mann: 1400 }),
+        turmeric: Object.freeze({ gu: 'હળદર', hi: 'हल्दी', en: 'Turmeric', term: 'turmeric', terms: ['turmeric'], mann: 2600 }),
+        garlic: Object.freeze({ gu: 'લસણ', hi: 'लहसुन', en: 'Garlic', term: 'garlic', terms: ['garlic'], mann: 1800 }),
+        ginger: Object.freeze({ gu: 'આદુ', hi: 'अदरक', en: 'Ginger', term: 'ginger', terms: ['ginger'], mann: 1200 }),
+        tuver: Object.freeze({ gu: 'તુવેર', hi: 'तुअर / अरहर', en: 'Arhar / Tur', term: 'arhar', terms: ['arhar', 'tur', 'tuver', 'red gram'], mann: 1700 }),
+        moong: Object.freeze({ gu: 'મગ', hi: 'मूंग', en: 'Green Gram (Moong)', term: 'green gram', terms: ['green gram', 'moong', 'mung'], mann: 1560 }),
+        chana: Object.freeze({ gu: 'ચણા', hi: 'चना', en: 'Bengal Gram (Chana)', term: 'bengal gram', terms: ['bengal gram', 'gram', 'chana'], mann: 1220 }),
+        urad: Object.freeze({ gu: 'અડદ', hi: 'उड़द', en: 'Black Gram (Urad)', term: 'black gram', terms: ['black gram', 'urad'], mann: 1650 }),
+        guar: Object.freeze({ gu: 'ગુવાર', hi: 'ग्वार', en: 'Guar / Cluster Beans', term: 'guar', terms: ['guar', 'cluster'], mann: 1050 }),
+        onion: Object.freeze({ gu: 'ડુંગળી', hi: 'प्याज़', en: 'Onion', term: 'onion', terms: ['onion'], mann: 450 }),
+        potato: Object.freeze({ gu: 'બટાટા', hi: 'आलू', en: 'Potato', term: 'potato', terms: ['potato'], mann: 380 }),
+        tomato: Object.freeze({ gu: 'ટામેટા', hi: 'टमाटर', en: 'Tomato', term: 'tomato', terms: ['tomato'], mann: 420 }),
+        green_chilli: Object.freeze({ gu: 'લીલા મરચા', hi: 'हरी मिर्च', en: 'Green Chilli', term: 'green chilli', terms: ['green chilli', 'chilli', 'chilly'], mann: 500 }),
+        carrot: Object.freeze({ gu: 'ગાજર', hi: 'गाजर', en: 'Carrot', term: 'carrot', terms: ['carrot'], mann: 450 }),
+        bitter_gourd: Object.freeze({ gu: 'કારેલા', hi: 'करेला', en: 'Bitter Gourd', term: 'bitter gourd', terms: ['bitter gourd'], mann: 450 }),
+        bottle_gourd: Object.freeze({ gu: 'દૂધી', hi: 'लौकी', en: 'Bottle Gourd', term: 'bottle gourd', terms: ['bottle gourd'], mann: 320 }),
+        bhindi: Object.freeze({ gu: 'ભીંડા', hi: 'भिंडी', en: 'Bhindi (Ladies Finger)', term: 'bhindi', terms: ['bhindi', 'ladies finger', 'okra'], mann: 520 }),
+        brinjal: Object.freeze({ gu: 'રીંગણ', hi: 'बैंगन', en: 'Brinjal', term: 'brinjal', terms: ['brinjal'], mann: 360 }),
+        cabbage: Object.freeze({ gu: 'કોબીજ', hi: 'पत्ता गोभी', en: 'Cabbage', term: 'cabbage', terms: ['cabbage'], mann: 300 }),
+        cauliflower: Object.freeze({ gu: 'ફ્લાવર', hi: 'फूल गोभी', en: 'Cauliflower', term: 'cauliflower', terms: ['cauliflower'], mann: 380 }),
+        lemon: Object.freeze({ gu: 'લીંબુ', hi: 'नींबू', en: 'Lemon / Lime', term: 'lemon', terms: ['lemon', 'lime'], mann: 900 }),
+        banana: Object.freeze({ gu: 'કેળા', hi: 'केला', en: 'Banana', term: 'banana', terms: ['banana'], mann: 360 }),
+        mango: Object.freeze({ gu: 'કેરી', hi: 'आम', en: 'Mango', term: 'mango', terms: ['mango'], mann: 1100 }),
+        pomegranate: Object.freeze({ gu: 'દાડમ', hi: 'अनार', en: 'Pomegranate', term: 'pomegranate', terms: ['pomegranate'], mann: 1600 }),
+        papaya: Object.freeze({ gu: 'પપૈયા', hi: 'पपीता', en: 'Papaya', term: 'papaya', terms: ['papaya'], mann: 340 })
       });
+
+      const STATE_LABELS = Object.freeze({
+        gu: Object.freeze({
+          'Gujarat': 'ગુજરાત', 'Maharashtra': 'મહારાષ્ટ્ર', 'Rajasthan': 'રાજસ્થાન', 'Madhya Pradesh': 'મધ્ય પ્રદેશ',
+          'Punjab': 'પંજાબ', 'Haryana': 'હરિયાણા', 'Uttar Pradesh': 'ઉત્તર પ્રદેશ', 'Karnataka': 'કર્ણાટક',
+          'Tamil Nadu': 'તમિલનાડુ', 'Andhra Pradesh': 'આંધ્ર પ્રદેશ', 'Telangana': 'તેલંગાણા', 'Bihar': 'બિહાર',
+          'West Bengal': 'પશ્ચિમ બંગાળ', 'Odisha': 'ઓડિશા', 'Chhattisgarh': 'છત્તીસગઢ', 'Jharkhand': 'ઝારખંડ',
+          'Assam': 'આસામ', 'Kerala': 'કેરળ', 'Himachal Pradesh': 'હિમાચલ પ્રદેશ', 'Uttarakhand': 'ઉત્તરાખંડ',
+          'Goa': 'ગોવા', 'Delhi': 'દિલ્હી', 'Jammu & Kashmir': 'જમ્મુ અને કાશ્મીર', 'Ladakh': 'લદ્દાખ', 'Other UT': 'અન્ય કેન્દ્રશાસિત પ્રદેશ'
+        }),
+        hi: Object.freeze({
+          'Gujarat': 'गुजरात', 'Maharashtra': 'महाराष्ट्र', 'Rajasthan': 'राजस्थान', 'Madhya Pradesh': 'मध्य प्रदेश',
+          'Punjab': 'पंजाब', 'Haryana': 'हरियाणा', 'Uttar Pradesh': 'उत्तर प्रदेश', 'Karnataka': 'कर्नाटक',
+          'Tamil Nadu': 'तमिलनाडु', 'Andhra Pradesh': 'आंध्र प्रदेश', 'Telangana': 'तेलंगाना', 'Bihar': 'बिहार',
+          'West Bengal': 'पश्चिम बंगाल', 'Odisha': 'ओडिशा', 'Chhattisgarh': 'छत्तीसगढ़', 'Jharkhand': 'झारखंड',
+          'Assam': 'असम', 'Kerala': 'केरल', 'Himachal Pradesh': 'हिमाचल प्रदेश', 'Uttarakhand': 'उत्तराखंड',
+          'Goa': 'गोवा', 'Delhi': 'दिल्ली', 'Jammu & Kashmir': 'जम्मू और कश्मीर', 'Ladakh': 'लद्दाख', 'Other UT': 'अन्य केंद्रशासित प्रदेश'
+        })
+      });
+
+      const GOV_CROP_DICT = Object.freeze([
+        [/sweet\s*potato|shakarkand/i, 'શક્કરિયા', 'शकरकंद'],
+        [/bitter\s*gourd|karela/i, 'કારેલા', 'करेला'],
+        [/bottle\s*gourd|lauki|dudhi/i, 'દૂધી', 'लौकी'],
+        [/ridge\s*gourd|turai|turiya/i, 'તુરિયા', 'तुरई'],
+        [/sponge\s*gourd|galka|nenua/i, 'ગલકા', 'गिलकी'],
+        [/pointed\s*gourd|parwal/i, 'પરવળ', 'परवल'],
+        [/ivy\s*gourd|tinda|tindora|little\s*gourd|donda/i, 'ટીંડોળા', 'टिंडोरा'],
+        [/ash\s*gourd|petha/i, 'સફેદ કોળું', 'पेठा कद्दू'],
+        [/snake\s*gourd|padwal/i, 'પંડોળા', 'चिचिंडा'],
+        [/green\s*chill|chillies?\s*green/i, 'લીલા મરચા', 'हरी मिर्च'],
+        [/dry\s*chill|red\s*chill/i, 'સૂકા લાલ મરચા', 'सूखी लाल मिर्च'],
+        [/chilli|chilly/i, 'મરચા', 'मिर्च'],
+        [/capsicum|shimla/i, 'શિમલા મરચા', 'शिमला मिर्च'],
+        [/cauliflower|gobhi/i, 'ફ્લાવર', 'फूल गोभी'],
+        [/cabbage/i, 'કોબીજ', 'पत्ता गोभी'],
+        [/carrot/i, 'ગાજર', 'गाजर'],
+        [/tomato/i, 'ટામેટા', 'टमाटर'],
+        [/potato/i, 'બટાટા', 'आलू'],
+        [/onion\s*green|spring\s*onion/i, 'લીલી ડુંગળી', 'हरा प्याज़'],
+        [/onion/i, 'ડુંગળી', 'प्याज़'],
+        [/garlic/i, 'લસણ', 'लहसुन'],
+        [/ginger\s*\(green\)|green\s*ginger/i, 'લીલું આદુ', 'हरा अदरक'],
+        [/ginger\s*\(dry\)/i, 'સૂંઠ', 'सोंठ'],
+        [/ginger/i, 'આદુ', 'अदरक'],
+        [/brinjal|eggplant|baingan/i, 'રીંગણ', 'बैंगन'],
+        [/bhindi|ladies\s*finger|okra/i, 'ભીંડા', 'भिंडी'],
+        [/cucumber|kheera/i, 'કાકડી', 'खीरा'],
+        [/pumpkin|kaddu/i, 'કોળું', 'कद्दू'],
+        [/drumstick|moringa/i, 'સરગવો', 'सहजन'],
+        [/spinach|palak/i, 'પાલક', 'पालक'],
+        [/methi\s*leaves|fenugreek\s*leaves/i, 'લીલી મેથી', 'हरी मेथी'],
+        [/methi|fenugreek/i, 'મેથી', 'मेथी'],
+        [/coriander\s*\(leaves\)|corriander\s*leaves/i, 'લીલા ધાણા (કોથમીર)', 'हरा धनिया'],
+        [/coriander|corriander|dhania/i, 'ધાણા', 'धनिया'],
+        [/mint|pudina/i, 'ફુદીનો', 'पुदीना'],
+        [/curry\s*leaves/i, 'મીઠો લીમડો', 'कड़ी पत्ता'],
+        [/lemon|lime|nimbu/i, 'લીંબુ', 'नींबू'],
+        [/radish|mooli/i, 'મૂળા', 'मूली'],
+        [/beetroot|beet/i, 'બીટ', 'चुकंदर'],
+        [/turnip|shalgam/i, 'સલગમ', 'शलजम'],
+        [/yam|suran|elephant/i, 'સૂરણ', 'सूरन'],
+        [/colacasia|arvi|taro/i, 'અળવી', 'अरबी'],
+        [/peas\s*green|green\s*peas/i, 'લીલા વટાણા', 'हरी मटर'],
+        [/peas|matar/i, 'વટાણા', 'मटर'],
+        [/cluster\s*bean|guar\s*seed|guar|gawar/i, 'ગુવાર', 'ग्वार'],
+        [/french\s*bean|beans/i, 'ફણસી', 'फली / बीन्स'],
+        [/cowpea\s*\(veg\)|lobia|choli/i, 'ચોળી', 'लोबिया / चौली'],
+        [/broad\s*bean|papdi|val/i, 'વાલોળ / પાપડી', 'सेम फली'],
+        [/indian\s*beans|sem/i, 'વાલોળ', 'सेम'],
+        [/green\s*avare|tuver\s*lilva/i, 'તુવેર લીલવા', 'हरी तुअर'],
+        [/amla|gooseberry/i, 'આંબળા', 'आंवला'],
+        [/tamarind|imli/i, 'આમલી', 'इमली'],
+        [/paddy|dhan/i, 'ડાંગર', 'धान'],
+        [/rice|chawal/i, 'ચોખા', 'चावल'],
+        [/wheat|gehu/i, 'ઘઉં', 'गेहूं'],
+        [/bajra|pearl\s*millet/i, 'બાજરી', 'बाजरा'],
+        [/maize|corn|makka/i, 'મકાઈ', 'मक्का'],
+        [/jowar|sorghum/i, 'જુવાર', 'ज्वार'],
+        [/ragi|finger\s*millet/i, 'રાગી / નાગલી', 'रागी'],
+        [/barley|jau/i, 'જવ', 'जौ'],
+        [/cotton\s*seed/i, 'કપાસિયા', 'बिनौला'],
+        [/cotton|kapas/i, 'કપાસ', 'कपास'],
+        [/groundnut\s*pods|groundnut/i, 'મગફળી', 'मूंगफली'],
+        [/castor\s*seed|castor/i, 'એરંડા', 'अरंडी'],
+        [/mustard|raydo|sarson/i, 'રાયડો', 'सरसों'],
+        [/sesamum|sesame|til\b/i, 'તલ', 'तिल'],
+        [/soyabean|soybean/i, 'સોયાબીન', 'सोयाबीन'],
+        [/sunflower/i, 'સૂર્યમુખી', 'सूरजमुखी'],
+        [/linseed|alsi/i, 'અળસી', 'अलसी'],
+        [/cummin|cumin|jeera/i, 'જીરું', 'जीरा'],
+        [/fennel|saunf|variyali/i, 'વરિયાળી', 'सौंफ'],
+        [/ajwan|ajwain/i, 'અજમો', 'अजवाइन'],
+        [/isabgol|psyllium/i, 'ઈસબગુલ', 'ईसबगोल'],
+        [/turmeric|haldi/i, 'હળદર', 'हल्दी'],
+        [/black\s*pepper/i, 'કાળા મરી', 'काली मिर्च'],
+        [/cardamom/i, 'એલચી', 'इलायची'],
+        [/sugarcane/i, 'શેરડી', 'गन्ना'],
+        [/jaggery|gur\b/i, 'ગોળ', 'गुड़'],
+        [/tobacco/i, 'તમાકુ', 'तंबाकू'],
+        [/arhar|tur\b|tuver|red\s*gram/i, 'તુવેર', 'तुअर / अरहर'],
+        [/green\s*gram|moong|mung/i, 'મગ', 'मूंग'],
+        [/bengal\s*gram|chana|gram\b/i, 'ચણા', 'चना'],
+        [/black\s*gram|urad/i, 'અડદ', 'उड़द'],
+        [/lentil|masur/i, 'મસૂર', 'मसूर'],
+        [/moth\b/i, 'મઠ', 'मोठ'],
+        [/kabuli\s*chana/i, 'કાબુલી ચણા', 'काबुली चना'],
+        [/rajma/i, 'રાજમા', 'राजमा'],
+        [/banana\s*-\s*green|green\s*banana/i, 'કાચા કેળા', 'कच्चा केला'],
+        [/banana/i, 'કેળા', 'केला'],
+        [/mango\s*\(raw\)|raw\s*mango/i, 'કાચી કેરી', 'कच्चा आम'],
+        [/mango/i, 'કેરી', 'आम'],
+        [/papaya/i, 'પપૈયા', 'पपीता'],
+        [/pomegranate|anar/i, 'દાડમ', 'अनार'],
+        [/guava|amrud/i, 'જામફળ', 'अमरूद'],
+        [/apple/i, 'સફરજન', 'सेब'],
+        [/grapes?/i, 'દ્રાક્ષ', 'अंगूर'],
+        [/mousambi|mosambi|sweet\s*lime/i, 'મોસંબી', 'मौसंबी'],
+        [/orange|santra/i, 'સંતરા', 'संतरा'],
+        [/chikoo|sapota/i, 'ચીકુ', 'चीकू'],
+        [/water\s*melon|watermelon/i, 'તરબૂચ', 'तरबूज'],
+        [/musk\s*melon|kharbuja/i, 'ટેટી / શક્કરટેટી', 'खरबूजा'],
+        [/pineapple/i, 'અનાનસ', 'अनानास'],
+        [/coconut|tender\s*coconut/i, 'નાળિયેર', 'नारियल'],
+        [/custard\s*apple|sitaphal/i, 'સીતાફળ', 'सीताफल'],
+        [/ber\b|zizyphus/i, 'બોર', 'बेर'],
+        [/jamun/i, 'જાંબુ', 'जामुन'],
+        [/fig\b|anjeer/i, 'અંજીર', 'अंजीर'],
+        [/kinnow/i, 'કિન્નૂ', 'किन्नू'],
+        [/pear\b/i, 'નાસપતી', 'नाशपाती'],
+        [/marigold/i, 'ગલગોટા', 'गेंदा'],
+        [/rose\b/i, 'ગુલાબ', 'गुलाब'],
+        [/jasmine|mogra/i, 'મોગરા / ચમેલી', 'मोगरा / चमेली'],
+        [/chrysanthemum/i, 'સેવંતી', 'गुलदाउदी'],
+        [/tuberose/i, 'રજનીગંધા', 'रजनीगंधा'],
+        [/flower/i, 'ફૂલ', 'फूल']
+      ]);
+
+      const VARIETY_DICT = Object.freeze([
+        [/^other$|^faq$|^non-faq$|^average$|^mixed$/i, '', ''],
+        [/deshi|desi|local/i, 'દેશી', 'देसी'],
+        [/hybrid/i, 'હાઇબ્રિડ', 'हाइब्रिड'],
+        [/common/i, 'સામાન્ય', 'सामान्य'],
+        [/fine|super\s*fine/i, 'ઝીણો / ઉત્તમ', 'बढ़िया / पतला'],
+        [/bold|big|large/i, 'મોટો', 'बड़ा'],
+        [/medium/i, 'મધ્યમ', 'मध्यम'],
+        [/small/i, 'નાનો', 'छोटा'],
+        [/red/i, 'લાલ', 'लाल'],
+        [/white/i, 'સફેદ', 'सफेद'],
+        [/yellow/i, 'પીળો', 'पीला'],
+        [/green/i, 'લીલો', 'हरा'],
+        [/black/i, 'કાળો', 'काला'],
+        [/lokwan/i, 'લોકવન', 'लोकवन'],
+        [/sharbati/i, 'શરબતી', 'शरबती'],
+        [/tukdi|tukada/i, 'ટુકડી', 'टुकड़ी'],
+        [/basmati/i, 'બાસમતી', 'बासमती'],
+        [/sona\s*masuri/i, 'સોના મસૂરી', 'सोना मसूरी'],
+        [/shankar\s*-?\s*6/i, 'શંકર-6', 'शंकर-6'],
+        [/bt\s*cotton/i, 'બીટી', 'बीटी'],
+        [/kesar/i, 'કેસર', 'केसर'],
+        [/nasik/i, 'નાસિક', 'नासिक'],
+        [/g-?20/i, 'જી-20', 'जी-20']
+      ]);
+
+      const PLACE_DICT = Object.freeze([
+        [/\bgujarat\b/gi, 'ગુજરાત', 'गुजरात'],
+        [/\bmaharashtra\b/gi, 'મહારાષ્ટ્ર', 'महाराष्ट्र'],
+        [/\brajasthan\b/gi, 'રાજસ્થાન', 'राजस्थान'],
+        [/\bmadhya\s*pradesh\b/gi, 'મધ્ય પ્રદેશ', 'मध्य प्रदेश'],
+        [/\buttar\s*pradesh\b/gi, 'ઉત્તર પ્રદેશ', 'उत्तर प्रदेश'],
+        [/\bpunjab\b/gi, 'પંજાબ', 'पंजाब'],
+        [/\bharyana\b/gi, 'હરિયાણા', 'हरियाणा'],
+        [/\bkarnataka\b/gi, 'કર્ણાટક', 'कर्नाटक'],
+        [/\btamil\s*nadu\b/gi, 'તમિલનાડુ', 'तमिलनाडु'],
+        [/\bandhra\s*pradesh\b/gi, 'આંધ્ર પ્રદેશ', 'आंध्र प्रदेश'],
+        [/\btelangana\b/gi, 'તેલંગાણા', 'तेलंगाना'],
+        [/\bbihar\b/gi, 'બિહાર', 'बिहार'],
+        [/\bwest\s*bengal\b/gi, 'પશ્ચિમ બંગાળ', 'पश्चिम बंगाल'],
+        [/\bodisha\b/gi, 'ઓડિશા', 'ओडिशा'],
+        [/\bchhattisgarh\b/gi, 'છત્તીસગઢ', 'छत्तीसगढ़'],
+        [/\bkerala\b/gi, 'કેરળ', 'केरल'],
+        [/\bdelhi\b/gi, 'દિલ્હી', 'दिल्ली'],
+        [/\ball[\s-]*india\b/gi, 'સમગ્ર ભારત', 'संपूर्ण भारत'],
+        [/\bindia\b/gi, 'ભારત', 'भारत'],
+        [/\banand\b/gi, 'આણંદ', 'आनंद'],
+        [/\bahmedabad\b/gi, 'અમદાવાદ', 'अहमदाबाद'],
+        [/\brajkot\b/gi, 'રાજકોટ', 'राजकोट'],
+        [/\bsurat\b/gi, 'સુરત', 'सूरत'],
+        [/\bvadodara\b|\bbaroda\b/gi, 'વડોદરા', 'वडोदरा'],
+        [/\bmehsana\b|\bmahesana\b/gi, 'મહેસાણા', 'मेहसाणा'],
+        [/\bunjha\b/gi, 'ઊંઝા', 'ऊंझा'],
+        [/\bgondal\b/gi, 'ગોંડલ', 'गोंडल'],
+        [/\bjunagadh\b/gi, 'જૂનાગઢ', 'जूनागढ़'],
+        [/\bbhavnagar\b/gi, 'ભાવનગર', 'भावनगर'],
+        [/\bjamnagar\b/gi, 'જામનગર', 'जामनगर'],
+        [/\bkachchh\b|\bkutch\b/gi, 'કચ્છ', 'कच्छ'],
+        [/\bbanaskantha\b|\bbanaskanth\b/gi, 'બનાસકાંઠા', 'बनासकांठा'],
+        [/\bsabarkantha\b|\bsabarkanth\b/gi, 'સાબરકાંઠા', 'साबरकांठा'],
+        [/\bamreli\b/gi, 'અમરેલી', 'अमरेली'],
+        [/\bkheda\b/gi, 'ખેડા', 'खेड़ा'],
+        [/\bnadiad\b/gi, 'નડિયાદ', 'नडियाद'],
+        [/\bgandhinagar\b/gi, 'ગાંધીનગર', 'गांधीनगर'],
+        [/\bnavsari\b/gi, 'નવસારી', 'नवसारी'],
+        [/\bvalsad\b/gi, 'વલસાડ', 'वलसाड'],
+        [/\bbharuch\b/gi, 'ભરૂચ', 'भरूच'],
+        [/\bsurendranagar\b/gi, 'સુરેન્દ્રનગર', 'सुरेंद्रनगर'],
+        [/\bmorbi\b/gi, 'મોરબી', 'मोरबी'],
+        [/\bporbandar\b/gi, 'પોરબંદર', 'पोरबंदर'],
+        [/\bpanchmahals?\b/gi, 'પંચમહાલ', 'पंचमहल'],
+        [/\bdahod\b/gi, 'દાહોદ', 'दाहोद'],
+        [/\bpatan\b/gi, 'પાટણ', 'पाटन'],
+        [/\bbotad\b/gi, 'બોટાદ', 'बोटाद'],
+        [/\bgir\s*somnath\b/gi, 'ગીર સોમનાથ', 'गीर सोमनाथ'],
+        [/\baravalli\b/gi, 'અરવલ્લી', 'अरावली'],
+        [/\bmahisagar\b/gi, 'મહીસાગર', 'महीसागर'],
+        [/\btapi\b/gi, 'તાપી', 'तापी'],
+        [/\bnarmada\b/gi, 'નર્મદા', 'नर्मदा'],
+        [/\bchhota\s*udepur\b/gi, 'છોટા ઉદેપુર', 'छोटा उदेपुर'],
+        [/\bdevbhumi\s*dwarka\b/gi, 'દેવભૂમિ દ્વારકા', 'देवभूमि द्वारका'],
+        [/\bdehgam\b|\bdahegam\b/gi, 'દહેગામ', 'दहेगाम'],
+        [/\bborsad\b/gi, 'બોરસદ', 'बोरसद'],
+        [/\bpetlad\b/gi, 'પેટલાદ', 'पेटलाद'],
+        [/\bkhambhat\b/gi, 'ખંભાત', 'खंभात'],
+        [/\bumreth\b/gi, 'ઉમરેઠ', 'उमरेठ'],
+        [/\btarasapur\b|\btarapur\b/gi, 'તારાપુર', 'तारापुर'],
+        [/\bsojitra\b/gi, 'સોજિત્રા', 'सोजित्रा'],
+        [/\bkapadvanj\b|\bkapadwanj\b/gi, 'કપડવંજ', 'कपड़वंज'],
+        [/\bmahudha\b/gi, 'મહુધા', 'महुधा'],
+        [/\bdeesa\b|\bdisa\b/gi, 'ડીસા', 'डीसा'],
+        [/\bpalanpur\b/gi, 'પાલનપુર', 'पालनपुर'],
+        [/\bvisnagar\b/gi, 'વિસનગર', 'विसनगर'],
+        [/\bvijapur\b/gi, 'વિજાપુર', 'विजापुर'],
+        [/\bkadi\b/gi, 'કડી', 'कड़ी'],
+        [/\bkalol\b/gi, 'કલોલ', 'कलोल'],
+        [/\bmansa\b/gi, 'માણસા', 'माणसा'],
+        [/\bhimmatnagar\b|\bhimatnagar\b/gi, 'હિંમતનગર', 'हिम्मतनगर'],
+        [/\bmodasa\b/gi, 'મોડાસા', 'मोडासा'],
+        [/\bgodhra\b/gi, 'ગોધરા', 'गोधरा'],
+        [/\bbavla\b/gi, 'બાવળા', 'बावला'],
+        [/\bsanand\b/gi, 'સાણંદ', 'साणंद'],
+        [/\bviramgam\b/gi, 'વિરમગામ', 'विरमगाम'],
+        [/\bdholka\b/gi, 'ધોળકા', 'धोलका'],
+        [/\bjetpur\b/gi, 'જેતપુર', 'जेतपुर'],
+        [/\bjasdan\b/gi, 'જસદણ', 'जसदण'],
+        [/\bdhoraji\b/gi, 'ધોરાજી', 'धोराजी'],
+        [/\bveraval\b/gi, 'વેરાવળ', 'वेरावल'],
+        [/\bmahuva\b/gi, 'મહુવા', 'महुवा'],
+        [/\bhalvad\b/gi, 'હળવદ', 'हलवद'],
+        [/\bwankaner\b/gi, 'વાંકાનેર', 'वांकानेर'],
+        [/\bbhuj\b/gi, 'ભુજ', 'भुज'],
+        [/\banjar\b/gi, 'અંજાર', 'अंजार'],
+        [/\bpadra\b/gi, 'પાદરા', 'पादरा'],
+        [/\bdabhoi\b/gi, 'ડભોઇ', 'डभोई'],
+        [/\bkarjan\b/gi, 'કરજણ', 'करजण'],
+        [/\bankleshwar\b/gi, 'અંકલેશ્વર', 'अंकलेश्वर'],
+        [/\bbardoli\b/gi, 'બારડોલી', 'बारडोली'],
+        [/\bvyara\b/gi, 'વ્યારા', 'व्यारा'],
+        [/\bbilimora\b/gi, 'બિલીમોરા', 'बिलीमोरा'],
+        [/\bchikhli\b/gi, 'ચીખલી', 'चिखली'],
+        [/\bveg(?:etable)?[\s,.\-]*yard\b/gi, 'શાકભાજી યાર્ડ', 'सब्ज़ी मंडी'],
+        [/\bveg(?:etable)?[\s,.\-]*market\b/gi, 'શાકભાજી બજાર', 'सब्ज़ी बाज़ार'],
+        [/\bfruit[\s,.\-]*market\b/gi, 'ફળ બજાર', 'फल बाज़ार'],
+        [/\bgrain[\s,.\-]*market\b/gi, 'અનાજ બજાર', 'अनाज मंडी'],
+        [/\bflower[\s,.\-]*market\b/gi, 'ફૂલ બજાર', 'फूल बाज़ार'],
+        [/\bmarket[\s,.\-]*yard\b/gi, 'માર્કેટ યાર્ડ', 'मार्केट यार्ड'],
+        [/\bsub[\s,.\-]*yard\b/gi, 'સબ યાર્ડ', 'सब यार्ड'],
+        [/\byard\b/gi, 'યાર્ડ', 'यार्ड'],
+        [/\bmarket\b/gi, 'માર્કેટ', 'मार्केट'],
+        [/\bapmc\b/gi, 'એપીએમસી', 'एपीएमसी']
+      ]);
+
+      const GU_CUSTOM_TO_EN = Object.freeze({
+        'ડાંગર': 'paddy', 'ઘઉં': 'wheat', 'બાજરી': 'bajra', 'મકાઈ': 'maize', 'જુવાર': 'jowar',
+        'કપાસ': 'cotton', 'મગફળી': 'groundnut', 'એરંડા': 'castor', 'રાયડો': 'mustard', 'તલ': 'sesamum',
+        'સોયાબીન': 'soyabean', 'જીરું': 'cummin', 'જીરૂ': 'cummin', 'વરિયાળી': 'fennel', 'ધાણા': 'coriander',
+        'હળદર': 'turmeric', 'લસણ': 'garlic', 'આદુ': 'ginger', 'તુવેર': 'arhar', 'મગ': 'green gram',
+        'ચણા': 'bengal gram', 'અડદ': 'black gram', 'ગુવાર': 'guar', 'ડુંગળી': 'onion', 'બટાટા': 'potato',
+        'ટામેટા': 'tomato', 'મરચા': 'chilli', 'લીલા મરચા': 'green chilli', 'ગાજર': 'carrot',
+        'કારેલા': 'bitter gourd', 'દૂધી': 'bottle gourd', 'ભીંડા': 'bhindi', 'રીંગણ': 'brinjal',
+        'કોબીજ': 'cabbage', 'ફ્લાવર': 'cauliflower', 'કાકડી': 'cucumber', 'લીંબુ': 'lemon',
+        'કેળા': 'banana', 'કેરી': 'mango', 'દાડમ': 'pomegranate', 'પપૈયા': 'papaya', 'પાલક': 'spinach',
+        'કોળું': 'pumpkin', 'મૂળા': 'radish', 'વટાણા': 'peas', 'સરગવો': 'drumstick', 'ગલગોટા': 'marigold', 'ગુલાબ': 'rose'
+      });
+
+      function localizeStateName(st) {
+        if (!st) return '';
+        if (state.lang === 'gu') return STATE_LABELS.gu[st] || st;
+        if (state.lang === 'hi') return STATE_LABELS.hi[st] || st;
+        return st;
+      }
+
+      function localizeAgmarkCrop(rawName) {
+        const clean = cleanText(rawName, 120);
+        if (!clean) return '';
+        const idx = state.lang === 'hi' ? 2 : state.lang === 'gu' ? 1 : 0;
+        if (idx === 0) {
+          // Clean duplicate parentheses in English too, e.g. "Carrot (Carrot)" -> "Carrot"
+          const mEn = clean.match(/^([^(]+)\(([^)]+)\)\s*$/);
+          if (mEn && mEn[1].trim().toLowerCase().replace(/[^a-z]/g, '') === mEn[2].trim().toLowerCase().replace(/[^a-z]/g, '')) {
+            return mEn[1].trim();
+          }
+          return clean;
+        }
+        if (/[\u0A80-\u0AFF\u0900-\u097F]/.test(clean)) return clean;
+
+        let mainPart = clean;
+        let varPart = '';
+        const parenAll = clean.match(/^([^(]+)\(([^)]+)\)(?:\s*\(([^)]+)\))?\s*$/);
+        if (parenAll) {
+          mainPart = parenAll[1].trim();
+          varPart = (parenAll[3] || parenAll[2] || '').trim();
+        }
+
+        let localizedMain = '';
+        for (const row of GOV_CROP_DICT) {
+          if (row[0].test(mainPart) || row[0].test(clean)) {
+            localizedMain = row[idx];
+            break;
+          }
+        }
+        if (!localizedMain) return clean;
+
+        let localizedVar = '';
+        if (varPart) {
+          // Skip variety if it duplicates the crop name (e.g. Carrot (Carrot), Green Chilli (Green Chilly))
+          const a = mainPart.toLowerCase().replace(/[^a-z]/g, '');
+          const b = varPart.toLowerCase().replace(/[^a-z]/g, '');
+          const isDup = a && b && (a === b || a.slice(0, 5) === b.slice(0, 5));
+          if (!isDup) {
+            for (const vRow of VARIETY_DICT) {
+              if (vRow[0].test(varPart)) {
+                localizedVar = vRow[idx];
+                break;
+              }
+            }
+          }
+        }
+        return localizedVar ? `${localizedMain} (${localizedVar})` : localizedMain;
+      }
+
+      function localizePlace(rawText) {
+        const clean = cleanText(rawText, 120);
+        if (!clean || state.lang === 'en') return clean;
+        const idx = state.lang === 'hi' ? 2 : 1;
+        let out = clean;
+        for (const row of PLACE_DICT) {
+          out = out.replace(row[0], row[idx]);
+        }
+        // Clean messy Agmarknet punctuation like "આણંદ(શાકભાજી યાર્ડ,આણંદ)" -> "આણંદ શાકભાજી યાર્ડ"
+        out = out
+          .replace(/\(\s*([^)]+)\s*\)/g, ' $1 ')
+          .replace(/,/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        // Remove consecutive duplicate words (e.g. "આણંદ શાકભાજી યાર્ડ આણંદ" -> keep first)
+        const words = out.split(' ');
+        const deduped = [];
+        for (const w of words) {
+          if (deduped.length >= 1 && deduped[deduped.length - 1] === w) continue;
+          if (deduped.length >= 2 && deduped[0] === w && w.length > 2) continue;
+          deduped.push(w);
+        }
+        return deduped.join(' ');
+      }
+
+      function localizeSourceText(raw) {
+        let s = cleanText(raw, 160);
+        if (!s || state.lang === 'en') return s;
+        if (state.lang === 'gu') {
+          s = s
+            .replace(/Govt\.?\s*Agmarknet\s*Live\s*(?:API|Feed)?/gi, 'સરકારી લાઇવ મંડી')
+            .replace(/Khedut\s*Setu\s*Approved\s*APMC\s*(?:Database|DB|Feed)/gi, 'ખેડૂત સેતુ મંજૂર મંડી ડેટા')
+            .replace(/Khedut\s*Setu\s*APMC\s*(?:Database|Reference\s*Calibration)/gi, 'ખેડૂત સેતુ મંડી અંદાજ')
+            .replace(/KHEDUT\s*SETU\s*Live\s*Gemini\s*AI/gi, 'ખેડૂત સેતુ લાઇવ AI')
+            .replace(/KHEDUT\s*SETU\s*(?:Price\s*Engine|Engine|Advisor)/gi, 'ખેડૂત સેતુ AI એન્જિન')
+            .replace(/Offline\s*Cached\s*APMC\s*Rates/gi, 'ઑફલાઇન સાચવેલા મંડી ભાવ')
+            .replace(/Approved\s*APMC/gi, 'મંજૂર મંડી');
+        } else if (state.lang === 'hi') {
+          s = s
+            .replace(/Govt\.?\s*Agmarknet\s*Live\s*(?:API|Feed)?/gi, 'सरकारी लाइव मंडी')
+            .replace(/Khedut\s*Setu\s*Approved\s*APMC\s*(?:Database|DB|Feed)/gi, 'खेड़ूत सेतु स्वीकृत मंडी डेटा')
+            .replace(/KHEDUT\s*SETU\s*Live\s*Gemini\s*AI/gi, 'खेड़ूत सेतु लाइव AI')
+            .replace(/Offline\s*Cached\s*APMC\s*Rates/gi, 'ऑफ़लाइन सहेजे गए मंडी भाव');
+        }
+        return localizePlace(s);
+      }
+
+      function localizeMetaValue(key, raw) {
+        const s = cleanText(raw, 200);
+        if (!s || state.lang === 'en') return s;
+        if (key === 'source') return localizeSourceText(s);
+        if (key === 'confidence') {
+          if (state.lang === 'gu') {
+            if (/govt\s*live/i.test(s)) return 'ઉચ્ચ (સરકારી લાઇવ ભાવ)';
+            if (/live\s*(multimodal\s*)?ai/i.test(s)) return 'ઉચ્ચ (લાઇવ AI)';
+            if (/apmc\s*feed/i.test(s)) return 'ઉચ્ચ (મંજૂર મંડી ભાવ)';
+            if (/medium|reference|indicative/i.test(s)) return 'મધ્યમ (અંદાજિત — સ્થાનિક મંડી ખાતરી કરો)';
+          } else if (state.lang === 'hi') {
+            if (/govt\s*live/i.test(s)) return 'उच्च (सरकारी लाइव भाव)';
+            if (/live\s*(multimodal\s*)?ai/i.test(s)) return 'उच्च (लाइव AI)';
+            if (/apmc\s*feed/i.test(s)) return 'उच्च (मंडी भाव)';
+            if (/medium|reference|indicative/i.test(s)) return 'मध्यम (अनुमानित — स्थानीय मंडी पुष्टि करें)';
+          }
+        }
+        if (key === 'limitations') {
+          if (state.lang === 'gu' && /[A-Za-z]{4,}/.test(s)) return 'દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ મંડી ભાવ બદલાઈ શકે છે; દવાના ડોઝ માટે KVK ની ખાતરી કરો.';
+          if (state.lang === 'hi' && /[A-Za-z]{4,}/.test(s)) return 'दैनिक आवक और नमी के अनुसार मंडी भाव बदल सकते हैं; दवा की मात्रा KVK से पुष्टि करें।';
+        }
+        if (key === 'expert_note') {
+          if (state.lang === 'gu' && /helpline|call\s*centre|confirm|verify/i.test(s)) return 'ખેડૂત હેલ્પલાઇન (ટોલ-ફ્રી): 1800-180-1551';
+          if (state.lang === 'hi' && /helpline|call\s*centre|confirm|verify/i.test(s)) return 'किसान हेल्पलाइन (टोल-फ्री): 1800-180-1551';
+        }
+        return s;
+      }
+
+      function localizeQuality(q) {
+        if (state.lang === 'gu') return q === 'prime' ? 'ઉત્તમ (A+)' : q === 'moisture' ? 'ભેજવાળો' : 'સામાન્ય';
+        if (state.lang === 'hi') return q === 'prime' ? 'उत्तम (A+)' : q === 'moisture' ? 'नमी युक्त' : 'सामान्य';
+        return q === 'prime' ? 'Prime (A+)' : q === 'moisture' ? 'High Moisture' : 'Standard';
+      }
+
+      function localizeStatusBadge(st) {
+        if (state.lang === 'gu') return ({ approved: 'મંજૂર', pending: 'બાકી', sold: 'વેચાયેલ', rejected: 'નામંજૂર' }[st]) || st;
+        if (state.lang === 'hi') return ({ approved: 'स्वीकृत', pending: 'लंबित', sold: 'बिक गया', rejected: 'अस्वीकृत' }[st]) || st;
+        return st;
+      }
+
+      function localizeInputType(t) {
+        const m = AGRI_TYPE_CHIPS[state.lang] || AGRI_TYPE_CHIPS.gu;
+        return m[t] || t;
+      }
+
+      function localizeCenterType(t) {
+        const m = CENTER_TYPE_CHIPS[state.lang] || CENTER_TYPE_CHIPS.gu;
+        return m[t] || localizeInputType(t);
+      }
+
+      function localizeSchemeCat(c) {
+        const m = SCHEME_CAT_CHIPS[state.lang] || SCHEME_CAT_CHIPS.gu;
+        return m[c] || c;
+      }
+
+      function localizeVehicleType(v) {
+        if (state.lang === 'gu') {
+          return ({
+            'Tempo / Chhota Hathi': 'ટેમ્પો / છોટા હાથી',
+            'Tractor Trolley': 'ટ્રેક્ટર ટ્રોલી',
+            'Pickup Bolero': 'પિકઅપ બોલેરો',
+            'Eicher / Mini Truck': 'આઇશર / મિની ટ્રક'
+          }[v]) || v;
+        }
+        if (state.lang === 'hi') {
+          return ({
+            'Tempo / Chhota Hathi': 'टेम्पो / छोटा हाथी',
+            'Tractor Trolley': 'ट्रैक्टर ट्रॉली',
+            'Pickup Bolero': 'पिकअप बोलेरो',
+            'Eicher / Mini Truck': 'आयशर / मिनी ट्रक'
+          }[v]) || v;
+        }
+        return v;
+      }
 
       // Exact DB Enum quantity_unit labels
       const UNIT_LABELS = Object.freeze({
-        gu: Object.freeze({ kg: 'કિલો (kg)', quintal: 'ક્વિન્ટલ / 5 મણ (quintal)', ton: 'ટન (ton)', bag: 'થેલી / બોરી (bag)', bundle: 'પુળિયા (bundle)', bale: 'ગાંસડી (bale)' }),
-        hi: Object.freeze({ kg: 'किलो (kg)', quintal: 'क्विंटल / 5 मण (quintal)', ton: 'टन (ton)', bag: 'बोरा (bag)', bundle: 'पूलिया (bundle)', bale: 'गांठ (bale)' }),
+        gu: Object.freeze({ kg: 'કિલો', quintal: 'ક્વિન્ટલ (5 મણ)', ton: 'ટન', bag: 'થેલી / બોરી', bundle: 'પુળિયા', bale: 'ગાંસડી' }),
+        hi: Object.freeze({ kg: 'किलो', quintal: 'क्विंटल (5 मण)', ton: 'टन', bag: 'बोरा', bundle: 'पूलिया', bale: 'गांठ' }),
         en: Object.freeze({ kg: 'kg', quintal: 'quintal (100 kg)', ton: 'ton', bag: 'bag', bundle: 'bundle', bale: 'bale' })
       });
+
+      function localizeUnit(u) {
+        const key = String(u || '').trim().toLowerCase();
+        const map = UNIT_LABELS[state.lang] || UNIT_LABELS.gu;
+        return map[key] || cleanText(u, 35);
+      }
 
       function tr(k) { return (L[state.lang] && L[state.lang][k]) || L.gu[k] || k; }
       function pickLangField(o, b) { return o ? (o[`${b}_${state.lang}`] || o[`${b}_gu`] || o[`${b}_en`] || o[`${b}_hi`] || '') : ''; }
 
-      function populateSelects() {
+      function populateAiCropSelect() {
         const aiCrop = document.getElementById('ai-crop-select');
-        if (aiCrop) {
-          const prev = aiCrop.value || 'paddy';
-          aiCrop.innerHTML = Object.keys(AI_CROPS).map((k) => `<option value="${k}">${escapeHtml(AI_CROPS[k][state.lang])}</option>`).join('');
+        if (!aiCrop) return;
+        const prev = aiCrop.value;
+        const livePool = (Array.isArray(state.aiLiveRates) && state.aiLiveRates.length)
+          ? state.aiLiveRates
+          : (Array.isArray(state.apmcRates) ? state.apmcRates : []);
+
+        const liveOpts = [];
+        const seen = new Set();
+        const mannWord = state.lang === 'en' ? '20kg' : state.lang === 'hi' ? 'मण' : 'મણ';
+        livePool.forEach((r, idx) => {
+          const modal = Number(r?.modal_price) || 0;
+          if (modal <= 0) return;
+          const title = localizeAgmarkCrop(r.crop_name_gu || r.crop_name_en || 'Crop');
+          const yard = localizePlace(r.yard_name || 'APMC');
+          const dist = localizePlace(r.district || '');
+          const showDist = dist && !yard.includes(dist);
+          const dedupeKey = `${title}|${yard}|${modal}`;
+          if (seen.has(dedupeKey)) return;
+          seen.add(dedupeKey);
+          liveOpts.push(`<option value="live::${idx}">🟢 ${escapeHtml(title)} • ${escapeHtml(yard)}${showDist ? ` (${escapeHtml(dist)})` : ''} — ₹${formatSafeInr(modal)}/${mannWord}</option>`);
+        });
+
+        const stdOpts = Object.keys(AI_CROPS)
+          .map((k) => `<option value="${k}">${escapeHtml(AI_CROPS[k][state.lang] || AI_CROPS[k].gu)}</option>`)
+          .join('');
+
+        const liveGroupLabel = state.lang === 'en'
+          ? `🟢 Live Govt Mandi Crops (${liveOpts.length})`
+          : state.lang === 'hi'
+            ? `🟢 आज के सरकारी लाइव मंडी भाव (${liveOpts.length})`
+            : `🟢 આજના સરકારી લાઇવ મંડી પાક (${liveOpts.length})`;
+        const stdGroupLabel = state.lang === 'en'
+          ? '🌾 All Major Indian Crops (37+)'
+          : state.lang === 'hi'
+            ? '🌾 भारत की सभी मुख्य फसलें (37+)'
+            : '🌾 ભારતના તમામ મુખ્ય પાક (37+)';
+
+        aiCrop.innerHTML =
+          (liveOpts.length ? `<optgroup label="${escapeHtml(liveGroupLabel)}">${liveOpts.join('')}</optgroup>` : '') +
+          `<optgroup label="${escapeHtml(stdGroupLabel)}">${stdOpts}</optgroup>`;
+
+        if (prev && Array.from(aiCrop.options).some((o) => o.value === prev)) {
           aiCrop.value = prev;
+        } else if (liveOpts.length) {
+          aiCrop.selectedIndex = 0;
+        } else {
+          aiCrop.value = 'paddy';
         }
+      }
+
+      async function loadAiLiveCrops(forceToast = false) {
+        const reqId = ++latestAiCropsReqId;
+        const statusEl = document.getElementById('ai-live-crops-status');
+        const btn = document.getElementById('ai-load-live-btn');
+        const scope = document.getElementById('ai-price-scope')?.value || 'gujarat';
+
+        let stName = 'Gujarat';
+        let dist = '';
+        if (scope === 'district') {
+          stName = cleanText(document.getElementById('apmc-state-filter')?.value || state.profile?.state || 'Gujarat', 60);
+          dist = cleanText(document.getElementById('apmc-district-filter')?.value || document.getElementById('district-filter')?.value || state.profile?.district || '', 60);
+        } else if (scope === 'india') {
+          stName = '';
+          dist = '';
+        }
+
+        if (btn) btn.disabled = true;
+        if (statusEl) statusEl.textContent = state.lang === 'en' ? '⏳ Loading live government mandi crops...' : state.lang === 'hi' ? '⏳ सरकारी लाइव मंडी फसलें लोड हो रही हैं...' : '⏳ સરકારી લાઇવ મંડી પાક લોડ થઈ રહ્યા છે...';
+
+        try {
+          if (navigator.onLine) {
+            const { data, error } = await withRetry(() =>
+              sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+                body: { mode: 'daily_mandi', lang: state.lang, state: stName, district: dist }
+              }), 1, 400
+            );
+            if (reqId !== latestAiCropsReqId) return;
+            if (!error && data && Array.isArray(data.rates) && data.rates.length > 0) {
+              state.aiLiveRates = data.rates;
+              state.aiLiveSource = cleanText(data.source, 120) || 'Govt. Agmarknet Live';
+              populateAiCropSelect();
+              if (statusEl) statusEl.textContent = `🟢 ${data.rates.length} ${tr('lbl_rate_count')} (${localizeSourceText(state.aiLiveSource)})`;
+              if (forceToast) showToast(state.lang === 'en' ? `✅ ${data.rates.length} live crops loaded!` : state.lang === 'hi' ? `✅ ${data.rates.length} सरकारी लाइव फसलें लोड हुईं!` : `✅ ${data.rates.length} સરકારી લાઇવ પાક લોડ થયા!`);
+              return;
+            }
+          }
+          if (reqId !== latestAiCropsReqId) return;
+          if (!state.aiLiveRates.length && state.apmcRates.length) {
+            state.aiLiveRates = state.apmcRates;
+            state.aiLiveSource = state.mandiSource || 'Khedut Setu APMC';
+          }
+          populateAiCropSelect();
+          if (statusEl) statusEl.textContent = state.aiLiveRates.length
+            ? `📦 ${state.aiLiveRates.length} ઉપલબ્ધ ભાવ લોડ થયા`
+            : 'ℹ️ 37+ મુખ્ય પાક તૈયાર છે (કોઈપણ પાક પસંદ કરો અથવા ઉપર લખો)';
+        } catch {
+          if (reqId !== latestAiCropsReqId) return;
+          populateAiCropSelect();
+          if (statusEl) statusEl.textContent = 'ℹ️ 37+ મુખ્ય પાક તૈયાર છે';
+        } finally {
+          if (btn) btn.disabled = false;
+        }
+      }
+
+      function populateSelects() {
+        populateAiCropSelect();
         const aiQual = document.getElementById('ai-qual-select');
         if (aiQual) {
           const prev = aiQual.value || 'standard';
           const qLabels = state.lang === 'gu'
-            ? [['prime', 'A+ (ઉત્તમ)'], ['standard', 'સામાન્ય (Standard)'], ['moisture', 'ભેજવાળો (Moisture)']]
+            ? [['prime', 'ઉત્તમ (A+)'], ['standard', 'સામાન્ય'], ['moisture', 'ભેજવાળો']]
             : state.lang === 'hi'
-              ? [['prime', 'A+ (उत्तम)'], ['standard', 'सामान्य (Standard)'], ['moisture', 'नमी युक्त (Moisture)']]
+              ? [['prime', 'उत्तम (A+)'], ['standard', 'सामान्य'], ['moisture', 'नमी युक्त']]
               : [['prime', 'A+ (Prime)'], ['standard', 'Standard'], ['moisture', 'High Moisture']];
           aiQual.innerHTML = qLabels.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
           aiQual.value = prev;
@@ -1766,9 +2454,9 @@
         if (docSym) {
           const prev = docSym.value || 'yellow';
           const sLabels = state.lang === 'gu'
-            ? [['yellow', 'પાન પીળા પડવા (Yellowing)'], ['spots', 'ડાઘ / ફૂગ (Spots/Fungus)'], ['pests', 'જીવાત / ઈયળ (Pests)'], ['wilting', 'છોડ સુકાવો (Wilting)']]
+            ? [['yellow', 'પાન પીળા પડવા'], ['spots', 'ડાઘ / ફૂગ લાગવી'], ['pests', 'જીવાત / ઈયળનો ઉપદ્રવ'], ['wilting', 'છોડ સુકાવો / કરમાવો']]
             : state.lang === 'hi'
-              ? [['yellow', 'पत्ते पीले पड़ना (Yellowing)'], ['spots', 'धब्बे / फफूंद (Spots/Fungus)'], ['pests', 'कीट / इल्ली (Pests)'], ['wilting', 'पौधा मुरझाना (Wilting)']]
+              ? [['yellow', 'पत्ते पीले पड़ना'], ['spots', 'धब्बे / फफूंद'], ['pests', 'कीट / इल्ली का प्रकोप'], ['wilting', 'पौधा मुरझाना']]
               : [['yellow', 'Leaf Yellowing'], ['spots', 'Leaf Spots / Fungus'], ['pests', 'Pests / Insects'], ['wilting', 'Plant Wilting']];
           docSym.innerHTML = sLabels.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
           docSym.value = prev;
@@ -1785,14 +2473,14 @@
         if (sf) {
           const prevSt = sf.value || '';
           sf.innerHTML = `<option value="">${escapeHtml(tr('all_states'))}</option>` +
-            INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('');
+            INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(localizeStateName(st))}</option>`).join('');
           sf.value = prevSt;
         }
         ['p-state', 'np-state'].forEach((id) => {
           const el = document.getElementById(id);
           if (el) {
             const prev = el.value || 'Gujarat';
-            el.innerHTML = INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('');
+            el.innerHTML = INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(localizeStateName(st))}</option>`).join('');
             el.value = INDIA_STATES.includes(prev) ? prev : 'Gujarat';
           }
         });
@@ -1800,8 +2488,55 @@
         if (asf) {
           const prevA = asf.value || state.profile?.state || 'Gujarat';
           asf.innerHTML = `<option value="">${escapeHtml(tr('all_states'))}</option>` +
-            INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(st)}</option>`).join('');
+            INDIA_STATES.map((st) => `<option value="${escapeHtml(st)}">${escapeHtml(localizeStateName(st))}</option>`).join('');
           asf.value = prevA;
+        }
+        const sortEl = document.getElementById('apmc-sort');
+        if (sortEl) {
+          const prevS = sortEl.value || 'latest';
+          const sOpts = state.lang === 'gu'
+            ? [['latest', '🕒 તાજા ભાવ'], ['high', '📈 સૌથી ઊંચો ભાવ'], ['low', '📉 સૌથી નીચો ભાવ']]
+            : state.lang === 'hi'
+              ? [['latest', '🕒 ताज़ा भाव'], ['high', '📈 सबसे ज़्यादा भाव'], ['low', '📉 सबसे कम भाव']]
+              : [['latest', '🕒 Latest Rates'], ['high', '📈 Highest Modal'], ['low', '📉 Lowest Modal']];
+          sortEl.innerHTML = sOpts.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
+          sortEl.value = prevS;
+        }
+        const scopeEl = document.getElementById('ai-price-scope');
+        if (scopeEl) {
+          const prevSc = scopeEl.value || 'gujarat';
+          const scOpts = state.lang === 'gu'
+            ? [['gujarat', '🏛️ ગુજરાતની બધી મંડી (લાઇવ)'], ['district', '📍 મારો જિલ્લો (લાઇવ)'], ['india', '🇮🇳 સમગ્ર ભારત (લાઇવ)']]
+            : state.lang === 'hi'
+              ? [['gujarat', '🏛️ गुजरात की सभी मंडियां (लाइव)'], ['district', '📍 मेरा जिला (लाइव)'], ['india', '🇮🇳 संपूर्ण भारत (लाइव)']]
+              : [['gujarat', '🏛️ All Gujarat Mandis (Live)'], ['district', '📍 My District (Live)'], ['india', '🇮🇳 All-India (Live)']];
+          scopeEl.innerHTML = scOpts.map(([v, l]) => `<option value="${v}">${escapeHtml(l)}</option>`).join('');
+          scopeEl.value = prevSc;
+        }
+        const mCatMap = MANDI_CAT_CHIPS[state.lang] || MANDI_CAT_CHIPS.gu;
+        ['mr-cat', 'ap-cat'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) {
+            const prev = el.value || 'vegetables';
+            el.innerHTML = ['vegetables', 'fruits', 'flowers', 'pulses', 'grains']
+              .map((k) => `<option value="${k}">${escapeHtml(mCatMap[k])}</option>`).join('');
+            el.value = prev;
+          }
+        });
+        const aTypeMap = AGRI_TYPE_CHIPS[state.lang] || AGRI_TYPE_CHIPS.gu;
+        const ainType = document.getElementById('ain-type');
+        if (ainType) {
+          const prev = ainType.value || 'dava';
+          ainType.innerHTML = ['dava', 'biyaran', 'khatar', 'sadhano', 'yantro']
+            .map((k) => `<option value="${k}">${escapeHtml(aTypeMap[k])}</option>`).join('');
+          ainType.value = prev;
+        }
+        const trType = document.getElementById('tr-type');
+        if (trType) {
+          const prev = trType.value || 'Tempo / Chhota Hathi';
+          const vKeys = ['Tempo / Chhota Hathi', 'Tractor Trolley', 'Pickup Bolero', 'Eicher / Mini Truck'];
+          trType.innerHTML = vKeys.map((k) => `<option value="${escapeHtml(k)}">${escapeHtml(localizeVehicleType(k))}</option>`).join('');
+          trType.value = prev;
         }
       }
 
@@ -1844,6 +2579,15 @@
         renderAgriCenters();
         const pulse = document.getElementById('ai-pulse-summary');
         if (pulse) pulse.textContent = `${state.products.length} ${tr('active_items_lbl')}`;
+        const apmcSt = document.getElementById('apmc-live-status');
+        if (apmcSt && state.mandiSource) {
+          const isGov = /agmarknet|data\.gov/i.test(state.mandiSource);
+          apmcSt.innerHTML = `<span>${isGov ? '🟢' : '📦'} ${escapeHtml(localizeSourceText(state.mandiSource))}${state.mandiLastSync ? ` • 🕒 ${escapeHtml(state.mandiLastSync)}` : ''}</span><span id="apmc-live-count" class="font-extrabold">${state.apmcRates.length} ${escapeHtml(tr('lbl_rate_count'))}</span>`;
+        }
+        const aiLiveSt = document.getElementById('ai-live-crops-status');
+        if (aiLiveSt && state.aiLiveRates.length) {
+          aiLiveSt.textContent = `🟢 ${state.aiLiveRates.length} ${tr('lbl_rate_count')} (${localizeSourceText(state.aiLiveSource || 'Govt. Agmarknet Live')})`;
+        }
       }
 
       // ==================== VOICE ASSISTANT ENGINE ====================
@@ -1906,7 +2650,7 @@
           state.isListening = true;
           const btn = document.getElementById('voice-mic-trigger');
           if (btn) { btn.classList.add('voice-pulse', 'bg-red-600'); btn.classList.remove('bg-farm-700'); }
-          if (statusEl) statusEl.textContent = 'Listening... 🎙️';
+          if (statusEl) statusEl.textContent = state.lang === 'en' ? 'Listening... 🎙️' : state.lang === 'hi' ? 'सुन रहा हूँ... बोलिए 🎙️' : 'સાંભળી રહ્યો છું... બોલો 🎙️';
           if (trEl) trEl.textContent = '';
 
           let finalTxt = '';
@@ -1920,7 +2664,19 @@
             if (trEl) trEl.textContent = `"${(finalTxt || interim).trim()}"`;
             if (finalTxt.trim()) { stopVoiceListening(); processVoiceCommand(finalTxt.trim()); }
           };
-          recognition.onerror = () => { stopVoiceListening(); };
+          recognition.onerror = (ev) => {
+            stopVoiceListening();
+            const errCode = ev?.error || '';
+            if (statusEl) {
+              if (errCode === 'not-allowed' || errCode === 'service-not-allowed') {
+                statusEl.textContent = state.lang === 'en' ? 'Microphone permission denied. Please allow mic access.' : state.lang === 'hi' ? 'माइक की अनुमति नहीं मिली। कृपया ब्राउज़र में माइक अनुमति दें।' : 'માઇકની પરમિશન બંધ છે — કૃપા કરીને બ્રાઉઝરમાં માઇક ચાલુ કરો.';
+              } else if (errCode === 'no-speech') {
+                statusEl.textContent = state.lang === 'en' ? 'No voice detected. Tap mic and try again.' : state.lang === 'hi' ? 'आवाज़ सुनाई नहीं दी। माइक दबाकर फिर बोलें।' : 'અવાજ સંભળાયો નહીં. માઇક દબાવીને ફરી બોલો.';
+              } else {
+                statusEl.textContent = tr('voice_prompt');
+              }
+            }
+          };
           recognition.onend = () => { if (state.isListening) stopVoiceListening(); };
           recognition.start();
         } catch { stopVoiceListening(); }
@@ -1941,7 +2697,7 @@
           b.classList.toggle('text-slate-500', !active);
         });
         if (tab === 'market') loadProducts();
-        if (tab === 'ai_advisor') { runAiMatch(); }
+        if (tab === 'ai_advisor') { runAiMatch(); if (!state.aiLiveRates.length) loadAiLiveCrops(false); else populateAiCropSelect(); }
         if (tab === 'yard') { loadApmcRates(); loadAgriInputs(); loadTransportList(); }
         if (tab === 'requests') loadBuyerRequests();
         if (tab === 'sell') refreshSellTab();
@@ -1979,12 +2735,12 @@
         const m = meta || {};
         return `
           <div class="mt-3 pt-3 border-t border-slate-200/80 space-y-1.5 text-xs text-slate-700 bg-white/90 rounded-xl p-3">
-            <div><strong>${escapeHtml(tr('ai_meta_source'))}:</strong> ${escapeHtml(m.source || '-')}</div>
+            <div><strong>${escapeHtml(tr('ai_meta_source'))}:</strong> ${escapeHtml(localizeMetaValue('source', m.source) || '-')}</div>
             <div><strong>${escapeHtml(tr('ai_meta_updated'))}:</strong> ${formatAiTimestamp(m.last_updated)}</div>
-            <div><strong>${escapeHtml(tr('ai_meta_confidence'))}:</strong> ${escapeHtml(m.confidence || '-')}</div>
-            <div><strong>${escapeHtml(tr('ai_meta_limitations'))}:</strong> ${escapeHtml(m.limitations || '-')}</div>
+            <div><strong>${escapeHtml(tr('ai_meta_confidence'))}:</strong> ${escapeHtml(localizeMetaValue('confidence', m.confidence) || '-')}</div>
+            <div><strong>${escapeHtml(tr('ai_meta_limitations'))}:</strong> ${escapeHtml(localizeMetaValue('limitations', m.limitations) || '-')}</div>
             <div class="mt-2 p-2.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-950">
-              <strong>${escapeHtml(tr('ai_meta_expert'))}:</strong> ${escapeHtml(m.expert_note || '-')}
+              <strong>${escapeHtml(tr('ai_meta_expert'))}:</strong> ${escapeHtml(localizeMetaValue('expert_note', m.expert_note) || '-')}
             </div>
           </div>
         `;
@@ -2012,92 +2768,163 @@
       async function runAiPrice() {
         const out = document.getElementById('ai-price-output');
         if (!out) return;
-        if (!checkRateLimit('ai_price_call', 800)) return;
+        if (!checkRateLimit('ai_price_call', 600)) return;
         const reqId = ++latestPriceReqId;
 
-        const cropKey = document.getElementById('ai-crop-select')?.value || 'paddy';
-        const c = (Object.prototype.hasOwnProperty.call(AI_CROPS, cropKey) && AI_CROPS[cropKey]) || AI_CROPS.paddy;
-        const cropName = cleanText(c[state.lang] || c.gu, 80) || c.gu;
         const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) ?? 50;
         const quality = cleanText(document.getElementById('ai-qual-select')?.value, 30) || 'standard';
-        const district = cleanText(document.getElementById('district-filter')?.value, 60);
+        const qualMult = quality === 'prime' ? 1.08 : quality === 'moisture' ? 0.92 : 1.0;
+        const customRaw = cleanText(document.getElementById('ai-crop-custom')?.value, 60);
+        const selVal = document.getElementById('ai-crop-select')?.value || 'paddy';
+        const scope = document.getElementById('ai-price-scope')?.value || 'gujarat';
 
+        const scopeState = scope === 'india'
+          ? ''
+          : cleanText(document.getElementById('apmc-state-filter')?.value || state.profile?.state || 'Gujarat', 60);
+        const scopeDist = scope === 'district'
+          ? cleanText(document.getElementById('apmc-district-filter')?.value || document.getElementById('district-filter')?.value || state.profile?.district || '', 60)
+          : '';
+
+        const renderLiveCard = (title, perMann, totalInr, meta, minMann = null, maxMann = null) => {
+          const perQuintal = Math.round(perMann * 5);
+          const perKg = Math.round((perMann / 20) * 100) / 100;
+          const uMann = state.lang === 'en' ? '20 kg (Mann)' : state.lang === 'hi' ? '20 किग्रा (मण)' : '20 કિલો (મણ)';
+          const uQtl = state.lang === 'en' ? '100 kg (Quintal)' : state.lang === 'hi' ? '100 किग्रा (क्विंटल)' : '100 કિલો (ક્વિન્ટલ)';
+          const uKg = state.lang === 'en' ? '1 kg' : state.lang === 'hi' ? '1 किलो' : '1 કિલો';
+          const rangeLbl = state.lang === 'en' ? 'Mandi Range' : state.lang === 'hi' ? 'मंडी रेंज' : 'મંડી રેન્જ';
+          const rangeHtml = (minMann && maxMann)
+            ? `<div class="text-xs text-slate-600">📊 ${escapeHtml(rangeLbl)}: ${escapeHtml(tr('apmc_min'))} ₹${formatSafeInr(minMann)} • ${escapeHtml(tr('apmc_max'))} ₹${formatSafeInr(maxMann)} / ${escapeHtml(uMann)}</div>`
+            : '';
+          lastAiSpokenText = state.lang === 'en'
+            ? `${title}, ${perMann} rupees per 20 kg, total ${totalInr} rupees.`
+            : state.lang === 'hi'
+              ? `${title}, ${perMann} रुपये प्रति मण, कुल ${totalInr} रुपये।`
+              : `${title}, ${perMann} રૂપિયા પ્રતિ મણ, કુલ ${totalInr} રૂપિયા.`;
+          out.innerHTML = `
+            <div class="space-y-1.5">
+              <div class="font-bold text-slate-900 text-sm">${escapeHtml(title)} (${formatSafeInr(qty, 1)} ${escapeHtml(uMann)})</div>
+              <div class="text-sm font-extrabold text-farm-800">₹${formatSafeInr(perMann)} / ${escapeHtml(uMann)} • ${escapeHtml(tr('lbl_total'))}: ₹${formatSafeInr(totalInr)}</div>
+              <div class="text-xs font-semibold text-slate-700">⚖️ ${escapeHtml(uKg)}: ₹${formatSafeInr(perKg)} • ${escapeHtml(uQtl)}: ₹${formatSafeInr(perQuintal)} • ${escapeHtml(tr('quality'))}: ${escapeHtml(localizeQuality(quality))}</div>
+              ${rangeHtml}
+            </div>
+            ${renderAiMetadataBlock(meta)}
+          `;
+        };
+
+        // Case 1: User picked a specific live Govt Agmarknet row directly from dropdown (and didn't type custom crop)
+        const livePool = (Array.isArray(state.aiLiveRates) && state.aiLiveRates.length) ? state.aiLiveRates : state.apmcRates;
+        if (!customRaw && selVal.startsWith('live::')) {
+          const idx = Number(selVal.slice(6));
+          const r = Number.isInteger(idx) ? livePool[idx] : null;
+          if (r && Number(r.modal_price) > 0) {
+            const title = localizeAgmarkCrop(r.crop_name_gu || r.crop_name_en || 'Crop');
+            const perMann = Math.round(Number(r.modal_price) * qualMult);
+            const totalInr = Math.round(perMann * qty);
+            const minM = Number(r.min_price) > 0 ? Math.round(Number(r.min_price) * qualMult) : null;
+            const maxM = Number(r.max_price) > 0 ? Math.round(Number(r.max_price) * qualMult) : null;
+            renderLiveCard(title, perMann, totalInr, {
+              source: `${state.aiLiveSource || 'Govt. Agmarknet Live'} (${cleanText(r.yard_name, 70)}, ${cleanText(r.district, 40)})`,
+              last_updated: r.rate_date || new Date().toISOString(),
+              confidence: r.is_live_api ? 'High (Govt Live)' : 'High (APMC Feed)',
+              limitations: state.lang === 'en' ? 'Daily arrivals and moisture shift auction prices.' : state.lang === 'hi' ? 'दैनिक आवक और नमी के अनुसार मंडी भाव बदल सकते हैं।' : 'દૈનિક આવક અને ભેજ મુજબ મંડીના ભાવમાં ફેરફાર થઈ શકે છે.',
+              expert_note: 'Kisan Helpline: 1800-180-1551'
+            }, minM, maxM);
+            return;
+          }
+        }
+
+        // Resolve display name, search terms, and fallback baseline
+        const stdCrop = (!customRaw && Object.prototype.hasOwnProperty.call(AI_CROPS, selVal)) ? AI_CROPS[selVal] : null;
+        const displayCrop = customRaw
+          ? localizeAgmarkCrop(customRaw)
+          : (stdCrop ? (stdCrop[state.lang] || stdCrop.gu) : 'ડાંગર');
+        const customMapped = customRaw ? (GU_CUSTOM_TO_EN[customRaw] || customRaw.toLowerCase()) : '';
+        const searchTerm = customRaw ? customMapped : (stdCrop?.term || 'paddy');
+        const searchTerms = customRaw
+          ? Array.from(new Set([customRaw.toLowerCase(), customMapped]))
+          : (stdCrop?.terms || [searchTerm]);
+
+        // Case 2: Instant match inside already-loaded live Govt Agmarknet pool
+        const combinedPool = [...(state.aiLiveRates || []), ...(state.apmcRates || [])];
+        const instantHit = combinedPool.find((r) => {
+          if (!r || !(Number(r.modal_price) > 0)) return false;
+          const hay = `${r.crop_name_gu || ''} ${r.crop_name_en || ''}`.toLowerCase();
+          return searchTerms.some((t) => t && hay.includes(t));
+        });
+        if (instantHit) {
+          const perMann = Math.round(Number(instantHit.modal_price) * qualMult);
+          const totalInr = Math.round(perMann * qty);
+          const minM = Number(instantHit.min_price) > 0 ? Math.round(Number(instantHit.min_price) * qualMult) : null;
+          const maxM = Number(instantHit.max_price) > 0 ? Math.round(Number(instantHit.max_price) * qualMult) : null;
+          renderLiveCard(
+            localizeAgmarkCrop(instantHit.crop_name_gu || instantHit.crop_name_en || displayCrop),
+            perMann,
+            totalInr,
+            {
+              source: `${instantHit.is_live_api ? 'Govt. Agmarknet Live' : 'Approved APMC'} (${cleanText(instantHit.yard_name, 70)}, ${cleanText(instantHit.district, 40)})`,
+              last_updated: instantHit.rate_date || new Date().toISOString(),
+              confidence: instantHit.is_live_api ? 'High (Govt Live)' : 'High (APMC Feed)',
+              limitations: state.lang === 'en' ? 'Daily arrivals and moisture shift auction prices.' : state.lang === 'hi' ? 'दैनिक आवक और नमी के अनुसार मंडी भाव बदल सकते हैं।' : 'દૈનિક આવક અને ભેજ મુજબ મંડીના ભાવમાં ફેરફાર થઈ શકે છે.',
+              expert_note: 'Kisan Helpline: 1800-180-1551'
+            },
+            minM,
+            maxM
+          );
+          return;
+        }
+
+        // Case 3: Query Edge Function live (District -> State -> All-India smart fallback)
         out.innerHTML = `<div class="text-xs font-semibold text-farm-800">${escapeHtml(tr('ai_loading'))}</div>`;
 
         try {
           if (navigator.onLine) {
-            const { data, error } = await withRetry(() =>
-              sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
-                body: { mode: 'price', lang: state.lang, cropName, qty, quality, district }
-              }), 1, 400
-            );
-            if (reqId !== latestPriceReqId) return;
+            const attempts = [];
+            if (scopeDist) attempts.push({ state: scopeState, district: scopeDist });
+            if (scopeState) attempts.push({ state: scopeState, district: '' });
+            attempts.push({ state: '', district: '' });
 
-            const payload = data && typeof data === 'object' ? data : null;
-            const hasLivePayload = Boolean(
-              !error && payload &&
-              (payload.ok || payload.summary || payload.metadata || payload.source ||
-               payload.estimated_per_mann_inr !== undefined || payload.estimated_total_inr !== undefined)
-            );
+            let bestPayload = null;
+            for (const att of attempts) {
+              const { data, error } = await withRetry(() =>
+                sb.functions.invoke(CONFIG.AI_EDGE_FUNCTION, {
+                  body: { mode: 'price', lang: state.lang, cropName: searchTerm, qty, quality, state: att.state, district: att.district }
+                }), 1, 350
+              );
+              if (reqId !== latestPriceReqId) return;
+              if (!error && data && typeof data === 'object' && data.ok) {
+                bestPayload = data;
+                if (/govt\s*live/i.test(String(data?.metadata?.confidence || ''))) break;
+              }
+            }
 
-            if (hasLivePayload) {
-              const perMann = safePositiveNumber(payload.estimated_per_mann_inr, 0.01, 10000000);
-              const totalInr = safePositiveNumber(payload.estimated_total_inr, 0.01, 1000000000)
-                ?? (perMann !== null ? safePositiveNumber(perMann * qty, 0.01, 1000000000) : null);
-              const metaRaw = payload.metadata && typeof payload.metadata === 'object' ? payload.metadata : {};
-              const resolvedMeta = Object.assign({}, metaRaw, {
-                source: cleanText(metaRaw.source || payload.source, 140) || 'Khedut Setu Live / APMC Edge Function',
-                last_updated: metaRaw.last_updated || new Date().toISOString()
+            if (bestPayload) {
+              const isGovLive = /govt\s*live/i.test(String(bestPayload?.metadata?.confidence || ''));
+              const perMann = isGovLive
+                ? (safePositiveNumber(bestPayload.estimated_per_mann_inr, 0.01, 10000000) ?? Math.round((stdCrop?.mann || 470) * qualMult))
+                : (stdCrop ? Math.round(stdCrop.mann * qualMult) : (safePositiveNumber(bestPayload.estimated_per_mann_inr, 0.01, 10000000) ?? 470));
+              const totalInr = Math.round(perMann * qty);
+              const metaRaw = bestPayload.metadata && typeof bestPayload.metadata === 'object' ? bestPayload.metadata : {};
+              renderLiveCard(displayCrop, perMann, totalInr, {
+                source: isGovLive ? cleanText(metaRaw.source, 140) : 'Khedut Setu Reference Calibration (આજે સરકારી ફીડમાં આ પાકની હરાજી નથી)',
+                last_updated: metaRaw.last_updated || new Date().toISOString(),
+                confidence: isGovLive ? 'High (Govt Live)' : 'Medium (Reference Model — સ્થાનિક APMC ખાતરી કરો)',
+                limitations: cleanText(metaRaw.limitations, 180) || 'Actual auction prices vary daily.',
+                expert_note: cleanText(metaRaw.expert_note, 160) || 'Kisan Helpline: 1800-180-1551'
               });
-              const summaryText = cleanText(payload.summary, 1500);
-              lastAiSpokenText = summaryText || `${cropName}: ${perMann || ''} INR per 20kg`;
-
-              out.innerHTML = `
-                <div class="space-y-1.5">
-                  <div class="font-bold text-slate-900 text-sm">${escapeHtml(cropName)} (${formatSafeInr(qty, 1)} મણ / 20 kg)</div>
-                  ${perMann !== null ? `<div class="text-xs font-semibold text-farm-800">₹${formatSafeInr(perMann)} / 20kg ${totalInr !== null ? `• Total: <strong>₹${formatSafeInr(totalInr)}</strong>` : ''}</div>` : ''}
-                  ${summaryText ? `<p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(summaryText)}</p>` : ''}
-                </div>
-                ${renderAiMetadataBlock(resolvedMeta)}
-              `;
               return;
             }
           }
 
           if (reqId !== latestPriceReqId) return;
-          const localMatches = (Array.isArray(state.apmcRates) ? state.apmcRates : []).filter((r) =>
-            `${r?.crop_name_gu || ''} ${r?.crop_name_en || ''}`.toLowerCase().includes((c.gu || '').toLowerCase())
-          );
-          const latestRate = localMatches[0];
-          const parsedRate = latestRate ? Number(latestRate.modal_price) : Number(c.mann);
-          const unitMannPrice = Number.isFinite(parsedRate) && parsedRate > 0 ? parsedRate : c.mann;
-          const computedTotal = safePositiveNumber(qty * unitMannPrice, 0, 1000000000) ?? 0;
-
-          const fallbackMeta = {
-            source: latestRate
-              ? `Khedut Setu Approved APMC Record (${cleanText(latestRate.yard_name, 80)})`
-              : 'Khedut Setu APMC Reference Calibration',
-            last_updated: latestRate && latestRate.rate_date ? latestRate.rate_date : new Date().toISOString(),
-            confidence: latestRate
-              ? 'Medium (Grounded in Approved Local APMC Data)'
-              : 'Indicative Reference — Verify Live Auction at Local APMC',
-            limitations: state.lang === 'en'
-              ? 'Actual mandi auction rates vary daily based on arrivals, moisture percentage, and lot grading.'
-              : state.lang === 'hi'
-                ? 'वास्तविक मंडी भाव दैनिक आवक, नमी और गुणवत्ता ग्रेडिंग के अनुसार बदलते रहते हैं।'
-                : 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
-            expert_note: state.lang === 'en'
-              ? 'Always confirm today’s official auction slip at your nearest APMC / e-NAM yard or consult an agriculture officer before selling.'
-              : state.lang === 'hi'
-                ? 'बिक्री से पहले नज़दीकी APMC / e-NAM मंडी या कृषि अधिकारी से आज के भाव की पुष्टि ज़रूर करें।'
-                : 'વેચાણ કરતા પહેલાં નજીકની APMC / e-NAM મંડી અથવા કૃષિ અધિકારી પાસે આજના ભાવની ખાતરી અવશ્ય કરો.'
-          };
-
-          lastAiSpokenText = `${cropName}, ${unitMannPrice} rupees per 20 kg, total ${computedTotal} rupees.`;
-          out.innerHTML = `
-            <div><strong>${escapeHtml(cropName)}</strong> • ₹${formatSafeInr(unitMannPrice)}/20kg • Total: <strong>₹${formatSafeInr(computedTotal)}</strong></div>
-            ${renderAiMetadataBlock(fallbackMeta)}
-          `;
+          const unitMannPrice = Math.round((stdCrop?.mann || 470) * qualMult);
+          const computedTotal = Math.round(qty * unitMannPrice);
+          renderLiveCard(displayCrop, unitMannPrice, computedTotal, {
+            source: 'Khedut Setu APMC Reference Calibration',
+            last_updated: new Date().toISOString(),
+            confidence: 'Indicative Reference — Verify Live Auction at Local APMC',
+            limitations: 'ખરેખર મંડી ભાવ દૈનિક આવક, ભેજ અને ગુણવત્તા મુજબ બદલાય છે.',
+            expert_note: 'Kisan Helpline: 1800-180-1551'
+          });
         } catch (err) {
           if (reqId !== latestPriceReqId) return;
           out.innerHTML = `<div class="text-xs text-red-700 font-semibold">${escapeHtml(cleanText(err?.message || 'Price calculation error.', 180))}</div>`;
@@ -2215,6 +3042,16 @@
         const isWebp = b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46 && b[8] === 0x57 && b[9] === 0x45 && b[10] === 0x42 && b[11] === 0x50;
         const isPdf = b[0] === 0x25 && b[1] === 0x50 && b[2] === 0x44 && b[3] === 0x46;
         const isTxt = file.type === 'text/plain';
+        if (isTxt) {
+          // Reject binary/executable files disguised as .txt (null bytes or ELF/MZ/PE magic headers)
+          const headSample = new Uint8Array(await file.slice(0, 512).arrayBuffer());
+          const hasNullByte = headSample.some((byte) => byte === 0x00);
+          const isExe = (headSample[0] === 0x4D && headSample[1] === 0x5A) || (headSample[0] === 0x7F && headSample[1] === 0x45);
+          if (hasNullByte || isExe) {
+            showToast(state.lang === 'en' ? 'Binary file disguised as text blocked.' : state.lang === 'hi' ? 'असुरक्षित फ़ाइल ब्लॉक की गई।' : 'ટેક્સ્ટના નામે અસુરક્ષિત ફાઇલ બ્લોક કરવામાં આવી છે.', 'error');
+            return;
+          }
+        }
 
         if (!isJpeg && !isPng && !isWebp && !isPdf && !isTxt) {
           showToast(state.lang === 'en' ? 'Unsafe or invalid file signature blocked.' : state.lang === 'hi' ? 'असुरक्षित फ़ाइल ब्लॉक की गई।' : 'અસુરક્ષિત ફાઇલ બ્લોક કરવામાં આવી છે.', 'error');
@@ -2252,12 +3089,16 @@
                 ${state.multiFile.dataUrl ? `<img src="${escapeHtml(state.multiFile.dataUrl)}" class="w-12 h-12 rounded-lg object-cover border shrink-0" />` : `<div class="w-12 h-12 rounded-lg bg-farm-100 text-farm-800 flex items-center justify-center text-lg shrink-0">📄</div>`}
                 <div class="min-w-0">
                   <div class="text-xs font-bold text-slate-900 truncate">${escapeHtml(state.multiFile.name)}</div>
-                  <div class="text-[11px] text-slate-500">${escapeHtml(state.multiFile.type)} • ${state.multiFile.sizeKb} KB • ✅ Verified</div>
+                  <div class="text-[11px] text-slate-500">${escapeHtml(state.multiFile.sizeKb)} KB • ✅ ${escapeHtml(state.lang === 'en' ? 'Verified' : state.lang === 'hi' ? 'सुरक्षित' : 'સુરક્ષિત')}</div>
                 </div>
               </div>
               <button type="button" data-action="clear-ai-file" class="px-2.5 py-1 rounded-lg bg-red-50 text-red-700 text-xs font-bold shrink-0">✕</button>
             `;
           }
+        };
+        reader.onerror = () => {
+          state.multiFile = null;
+          showToast(state.lang === 'en' ? 'Failed to read file. Please try again.' : state.lang === 'hi' ? 'फ़ाइल पढ़ने में त्रुटि हुई।' : 'ફાઇલ વાંચવામાં ભૂલ આવી. ફરી પ્રયાસ કરો.', 'error');
         };
         reader.readAsDataURL(processedFile);
       }
@@ -2322,7 +3163,7 @@
             (/યોજના|સહાય|હપ્તો|kisan|ikhedut|scheme|subsidy|loan|વીમો|योजना|किस्त/.test(qLow))
           ).slice(0, 3);
           const matchedCenters = VERIFIED_AGRI_CENTERS.filter((c) =>
-            `${c.name} ${c.district} ${c.services}`.toLowerCase().includes(qLow) ||
+            `${c.name_gu} ${c.name_hi} ${c.name_en} ${c.district} ${c.services_gu} ${c.services_en}`.toLowerCase().includes(qLow) ||
             (/ખાતર|બિયારણ|દવા|કેન્દ્ર|kvk|center|fertilizer|seed|खाद|बीज/.test(qLow))
           ).slice(0, 3);
 
@@ -2355,15 +3196,16 @@
 
           lastAiSpokenText = localSummary;
           const schemeHtml = matchedSchemes.length
-            ? `<div class="space-y-1.5 pt-2">${matchedSchemes.map((s) => `<div class="bg-white p-2.5 rounded-xl border border-farm-200 flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(pickLangField(s, 'title'))}</strong><div class="text-slate-600">${escapeHtml(pickLangField(s, 'benefit'))}</div></div><a href="${escapeHtml(s.applyUrl)}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-farm-700 text-white font-bold shrink-0">Apply ↗</a></div>`).join('')}</div>`
+            ? `<div class="space-y-1.5 pt-2">${matchedSchemes.map((s) => `<div class="bg-white p-2.5 rounded-xl border border-farm-200 flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(pickLangField(s, 'title'))}</strong><div class="text-slate-600">${escapeHtml(pickLangField(s, 'benefit'))}</div></div><a href="${escapeHtml(safeExternalUrl(s.applyUrl))}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-farm-700 text-white font-bold shrink-0">${escapeHtml(tr('btn_apply_online'))}</a></div>`).join('')}</div>`
             : '';
           const centerHtml = matchedCenters.length
-            ? `<div class="space-y-1.5 pt-2">${matchedCenters.map((c) => `<div class="bg-white p-2.5 rounded-xl border border-emerald-200 flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(c.name)}</strong><div class="text-slate-600">📍 ${escapeHtml(c.address)}</div></div><a href="tel:${escapeHtml(c.phone)}" class="px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold shrink-0">📞 Call</a></div>`).join('')}</div>`
+            ? `<div class="space-y-1.5 pt-2">${matchedCenters.map((c) => `<div class="bg-white p-2.5 rounded-xl border border-emerald-200 flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(pickLangField(c, 'name'))}</strong><div class="text-slate-600">📍 ${escapeHtml(pickLangField(c, 'address'))}</div></div><a href="tel:${escapeHtml(c.phone)}" class="px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold shrink-0">${escapeHtml(tr('tr_call'))}</a></div>`).join('')}</div>`
             : '';
+          const smartAiTitle = state.lang === 'en' ? '🤖 KHEDUT SETU Smart AI Search' : state.lang === 'hi' ? '🤖 खेड़ूत सेतु स्मार्ट AI खोज' : '🤖 ખેડૂત સેતુ સ્માર્ટ AI સલાહ';
 
           out.innerHTML = `
             <div class="space-y-2">
-              <div class="font-bold text-slate-900 text-sm">🤖 KHEDUT SETU Smart AI Search</div>
+              <div class="font-bold text-slate-900 text-sm">${escapeHtml(smartAiTitle)}</div>
               <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(localSummary)}</p>
               ${schemeHtml}
               ${centerHtml}
@@ -2404,16 +3246,16 @@
         box.innerHTML = list.map((s) => `
           <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col justify-between space-y-3">
             <div class="space-y-1.5">
-              <span class="inline-block text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full uppercase">${escapeHtml(s.cat)}</span>
+              <span class="inline-block text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-0.5 rounded-full">${escapeHtml(localizeSchemeCat(s.cat))}</span>
               <h4 class="font-bold text-slate-900 text-sm sm:text-base">${escapeHtml(pickLangField(s, 'title'))}</h4>
               <p class="text-xs text-slate-600 leading-relaxed">${escapeHtml(pickLangField(s, 'benefit'))}</p>
               <div class="text-[11px] text-slate-500 bg-slate-50 p-2 rounded-xl border border-slate-100">
-                <strong>📄 Docs:</strong> ${escapeHtml(s.docs)}
+                <strong>${escapeHtml(tr('lbl_docs'))}</strong> ${escapeHtml(s.docs)}
               </div>
             </div>
             <div class="flex gap-2 pt-1">
-              <a href="${escapeHtml(s.applyUrl)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2.5 rounded-xl text-center transition">✅ Apply Online ↗</a>
-              <a href="${escapeHtml(s.statusUrl)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold py-2.5 rounded-xl text-center transition">🔍 Status Check ↗</a>
+              <a href="${escapeHtml(safeExternalUrl(s.applyUrl))}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2.5 rounded-xl text-center transition">${escapeHtml(tr('btn_apply_online'))}</a>
+              <a href="${escapeHtml(safeExternalUrl(s.statusUrl))}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold py-2.5 rounded-xl text-center transition">${escapeHtml(tr('btn_status_check'))}</a>
             </div>
           </div>
         `).join('');
@@ -2422,22 +3264,32 @@
       function renderAgriCenters() {
         const box = document.getElementById('centers-list'); if (!box) return;
         const term = cleanText(document.getElementById('center-search')?.value, 80).toLowerCase();
+        const verifiedMapped = VERIFIED_AGRI_CENTERS.map((c) => ({
+          id: c.id,
+          type: c.type,
+          name: pickLangField(c, 'name'),
+          address: pickLangField(c, 'address'),
+          district: c.district || '',
+          phone: c.phone || '',
+          services: pickLangField(c, 'services'),
+          searchHay: `${c.name_gu} ${c.name_hi} ${c.name_en} ${c.address_gu} ${c.address_en} ${c.district} ${c.services_gu} ${c.services_en}`.toLowerCase()
+        }));
         const dynamicCenters = (state.agriInputs || [])
           .filter((x) => x.approval_status === 'approved')
           .map((x) => ({
             id: x.id,
             type: x.input_type || 'dava',
             name: `${x.item_name_gu}${x.brand_name ? ` (${x.brand_name})` : ''}`,
-            address: [x.village, x.district].filter(Boolean).join(', '),
+            address: localizePlace([x.village, x.district].filter(Boolean).join(', ')),
             district: x.district || '',
             phone: sanitizeIndianPhone(x.contact_number) || '',
-            services: `₹${formatSafeInr(x.price)} / ${x.unit}${x.stock_note ? ` • ${x.stock_note}` : ''}`
+            services: `₹${formatSafeInr(x.price)} / ${x.unit}${x.stock_note ? ` • ${x.stock_note}` : ''}`,
+            searchHay: `${x.item_name_gu} ${x.brand_name || ''} ${x.village || ''} ${x.district || ''}`.toLowerCase()
           }));
-        const merged = [...VERIFIED_AGRI_CENTERS, ...dynamicCenters];
+        const merged = [...verifiedMapped, ...dynamicCenters];
         const list = merged.filter((c) => {
           const typeOk = state.centerTypeFilter === 'all' || c.type === state.centerTypeFilter;
-          const txt = `${c.name} ${c.address} ${c.district} ${c.services}`.toLowerCase();
-          return typeOk && (!term || txt.includes(term));
+          return typeOk && (!term || c.searchHay.includes(term));
         });
         if (!list.length) {
           box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
@@ -2449,14 +3301,14 @@
           return `
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 flex flex-col justify-between space-y-2.5">
               <div class="space-y-1">
-                <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-900 px-2 py-0.5 rounded-full uppercase">${escapeHtml(c.type)}</span>
+                <span class="inline-block text-[10px] font-bold bg-blue-100 text-blue-900 px-2 py-0.5 rounded-full">${escapeHtml(localizeCenterType(c.type))}</span>
                 <h4 class="font-bold text-slate-900 text-sm sm:text-base">${escapeHtml(c.name)}</h4>
                 <div class="text-xs text-slate-600">📍 ${escapeHtml(c.address)}</div>
                 <div class="text-xs text-farm-800 font-medium">🌾 ${escapeHtml(c.services)}</div>
               </div>
               <div class="pt-2 border-t border-slate-100 flex gap-2">
-                ${ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2 rounded-xl text-center">📞 Call</a>` : ''}
-                <a href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-xl text-center">🗺️ Directions ↗</a>
+                ${ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 hover:bg-farm-800 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a>` : ''}
+                <a href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('btn_directions'))}</a>
               </div>
             </div>
           `;
@@ -2529,7 +3381,7 @@
             state.mandiSource = sourceLabel;
             state.mandiLastSync = new Date().toLocaleTimeString(state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN', { hour: '2-digit', minute: '2-digit' });
             saveCache('apmc', mergedRows);
-            if (forceToast) showToast(`✅ ${mergedRows.length} live mandi rates updated!`);
+            if (forceToast) showToast(state.lang === 'en' ? `✅ ${mergedRows.length} live mandi rates updated!` : state.lang === 'hi' ? `✅ ${mergedRows.length} लाइव मंडी भाव अपडेट हुए!` : `✅ ${mergedRows.length} લાઇવ મંડી ભાવ અપડેટ થયા!`);
           } else {
             state.apmcRates = loadCache('apmc') || [];
             state.mandiSource = 'Offline Cached APMC Rates';
@@ -2542,8 +3394,13 @@
           if (refreshBtn) refreshBtn.disabled = false;
           if (statusEl) {
             const isGov = /agmarknet|data\.gov/i.test(state.mandiSource);
-            statusEl.innerHTML = `<span>${isGov ? '🟢' : '📦'} ${escapeHtml(state.mandiSource)}${state.mandiLastSync ? ` • 🕒 ${escapeHtml(state.mandiLastSync)}` : ''}</span><span id="apmc-live-count" class="font-extrabold">${state.apmcRates.length} ભાવ</span>`;
+            statusEl.innerHTML = `<span>${isGov ? '🟢' : '📦'} ${escapeHtml(localizeSourceText(state.mandiSource))}${state.mandiLastSync ? ` • 🕒 ${escapeHtml(state.mandiLastSync)}` : ''}</span><span id="apmc-live-count" class="font-extrabold">${state.apmcRates.length} ${escapeHtml(tr('lbl_rate_count'))}</span>`;
           }
+          if (!state.aiLiveRates.length && state.apmcRates.length) {
+            state.aiLiveRates = state.apmcRates;
+            state.aiLiveSource = state.mandiSource;
+          }
+          populateAiCropSelect();
           renderApmcRates();
         }
       }
@@ -2554,41 +3411,61 @@
         const sortMode = document.getElementById('apmc-sort')?.value || 'latest';
         const isQuintal = state.mandiUnitMode === 'quintal';
         const mult = isQuintal ? 5 : 1;
-        const unitText = isQuintal ? '100 kg (ક્વિન્ટલ)' : '20 kg (મણ)';
+        const unitText = state.lang === 'en'
+          ? (isQuintal ? '100 kg (Quintal)' : '20 kg (Mann)')
+          : state.lang === 'hi'
+            ? (isQuintal ? '100 किग्रा (क्विंटल)' : '20 किग्रा (मण)')
+            : (isQuintal ? '100 કિલો (ક્વિન્ટલ)' : '20 કિલો (મણ)');
 
         const unitBtn = document.getElementById('mandi-unit-toggle');
-        if (unitBtn) unitBtn.textContent = isQuintal ? '⚖️ 100 kg (ક્વિન્ટલ)' : '⚖️ 20 kg (મણ)';
+        if (unitBtn) unitBtn.textContent = `⚖️ ${unitText}`;
 
         let list = state.apmcRates.filter((r) => {
           const visOk = r.approval_status === 'approved' || (state.user && r.submitted_by === state.user.id) || isStrictAdminReady();
           const catOk = state.mandiCatFilter === 'all' || (r.rate_category || 'grains') === state.mandiCatFilter;
-          const termOk = !term || (r.yard_name || '').toLowerCase().includes(term) || (r.district || '').toLowerCase().includes(term) || (r.crop_name_gu || '').toLowerCase().includes(term) || (r.crop_name_en || '').toLowerCase().includes(term);
-          return visOk && catOk && termOk;
+          if (!visOk || !catOk) return false;
+          if (!term) return true;
+          const locCrop = localizeAgmarkCrop(r.crop_name_gu || r.crop_name_en || '');
+          const locYard = localizePlace(r.yard_name || '');
+          const locDist = localizePlace(r.district || '');
+          const hay = `${r.yard_name || ''} ${r.district || ''} ${r.crop_name_gu || ''} ${r.crop_name_en || ''} ${locCrop} ${locYard} ${locDist}`.toLowerCase();
+          return hay.includes(term);
         });
 
         if (sortMode === 'high') list = [...list].sort((a, b) => (Number(b.modal_price) || 0) - (Number(a.modal_price) || 0));
         else if (sortMode === 'low') list = [...list].sort((a, b) => (Number(a.modal_price) || 0) - (Number(b.modal_price) || 0));
 
         const countEl = document.getElementById('apmc-live-count');
-        if (countEl) countEl.textContent = `${list.length} ભાવ`;
+        if (countEl) countEl.textContent = `${list.length} ${tr('lbl_rate_count')}`;
 
         if (!list.length) {
           box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border border-slate-200">${escapeHtml(tr('no_products'))}</div>`;
           return;
         }
 
-        box.innerHTML = list.map((r) => {
+        let bestRow = null;
+        for (const r of list) {
+          if ((Number(r.modal_price) || 0) > (Number(bestRow?.modal_price) || 0)) bestRow = r;
+        }
+        const bestBanner = (bestRow && list.length > 1 && Number(bestRow.modal_price) > 0)
+          ? `<div class="col-span-full bg-gradient-to-r from-amber-50 to-farm-50 border border-amber-200 rounded-2xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs"><div class="font-bold text-slate-900">🏆 ${escapeHtml(state.lang === 'en' ? 'Highest Rate Today' : state.lang === 'hi' ? 'आज का सबसे ऊंचा भाव' : 'આજનો સૌથી ઊંચો ભાવ')}: <span class="text-farm-800">${escapeHtml(localizeAgmarkCrop(bestRow.crop_name_gu || bestRow.crop_name_en || ''))}</span> — ₹${formatSafeInr(Math.round(Number(bestRow.modal_price) * mult))} / ${escapeHtml(unitText)}</div><div class="text-slate-600 font-semibold">📍 ${escapeHtml(localizePlace(bestRow.yard_name || ''))}</div></div>`
+          : '';
+
+        box.innerHTML = bestBanner + list.map((r) => {
           const isLiveApi = Boolean(r.is_live_api) || !isValidUUID(r.id);
           const canUpdate = !isLiveApi && state.user && (r.submitted_by === state.user.id || isStrictAdminReady());
           const minVal = Math.round((Number(r.min_price) || 0) * mult);
           const modalVal = Math.round((Number(r.modal_price) || 0) * mult);
           const maxVal = Math.round((Number(r.max_price) || 0) * mult);
-          const cropLabel = state.lang === 'en' && r.crop_name_en ? r.crop_name_en : (r.crop_name_gu || r.crop_name_en || 'Crop');
+          const cropLabel = localizeAgmarkCrop(state.lang === 'en' && r.crop_name_en ? r.crop_name_en : (r.crop_name_gu || r.crop_name_en || 'Crop'));
+          const yardLabel = localizePlace(r.yard_name || 'APMC');
+          const distLabel = localizePlace(r.district || '');
+          const locLine = (distLabel && !yardLabel.includes(distLabel)) ? `${yardLabel} (${distLabel})` : yardLabel;
           const badge = isLiveApi
-            ? `<span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">🟢 LIVE Govt</span>`
+            ? `<span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">${escapeHtml(tr('badge_live_govt'))}</span>`
             : (r.approval_status === 'pending'
-              ? `<span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">⏳ Pending Admin</span>`
-              : `<span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full">✅ APMC</span>`);
+              ? `<span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">${escapeHtml(tr('badge_pending_admin'))}</span>`
+              : `<span class="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full">${escapeHtml(tr('badge_apmc'))}</span>`);
 
           return `
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2.5">
@@ -2598,7 +3475,7 @@
                     <h4 class="font-bold text-slate-900 text-base">${escapeHtml(cropLabel)}</h4>
                     ${badge}
                   </div>
-                  <div class="text-xs text-slate-500">📍 ${escapeHtml(r.yard_name)} (${escapeHtml(r.district)}) • ${escapeHtml(r.rate_date)}</div>
+                  <div class="text-xs text-slate-500">📍 ${escapeHtml(locLine)} • ${escapeHtml(r.rate_date)}</div>
                 </div>
                 <span class="text-[10px] font-bold bg-farm-100 text-farm-800 px-2 py-1 rounded-full shrink-0">${escapeHtml(unitText)}</span>
               </div>
@@ -2609,10 +3486,10 @@
               </div>
               <div class="pt-1.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
                 <div class="flex gap-1.5">
-                  <button type="button" data-action="share-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold">💬 Share</button>
-                  <button type="button" data-action="calc-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1.5 rounded-lg bg-farm-50 hover:bg-farm-100 text-farm-800 text-xs font-bold">💰 ગણતરી</button>
+                  <button type="button" data-action="share-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold">${escapeHtml(tr('btn_share_card'))}</button>
+                  <button type="button" data-action="calc-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1.5 rounded-lg bg-farm-50 hover:bg-farm-100 text-farm-800 text-xs font-bold">${escapeHtml(tr('btn_calc_card'))}</button>
                 </div>
-                ${canUpdate ? `<button type="button" data-action="edit-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">✏️ Update</button>` : ''}
+                ${canUpdate ? `<button type="button" data-action="edit-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">${escapeHtml(tr('btn_update_card'))}</button>` : ''}
               </div>
             </div>
           `;
@@ -2640,37 +3517,40 @@
         e.preventDefault();
         if (!state.user) { switchTab('account'); return; }
         if (!checkRateLimit('mandi_sub', 1800)) return;
-        const editId = document.getElementById('mr-edit-id').value;
+        const cropNm = cleanText(document.getElementById('mr-crop').value, 100);
+        const yardNm = cleanText(document.getElementById('mr-yard').value, 90);
+        const distNm = cleanText(document.getElementById('mr-dist').value, 70);
         const minP = safePositiveNumber(document.getElementById('mr-min').value, 0, 1000000);
         const modP = safePositiveNumber(document.getElementById('mr-modal').value, 0, 1000000);
         const maxP = safePositiveNumber(document.getElementById('mr-max').value, 0, 1000000);
-        if (minP === null || modP === null || maxP === null || maxP < minP) {
-          showToast(state.lang === 'en' ? 'Invalid min/modal/max prices.' : state.lang === 'hi' ? 'अमान्य भाव।' : 'ભાવની રકમ બરાબર નથી.', 'error');
+        if (cropNm.length < 2 || yardNm.length < 2 || distNm.length < 2 || minP === null || modP === null || maxP === null || maxP < minP) {
+          showToast(state.lang === 'en' ? 'Enter valid crop, mandi, district & prices.' : state.lang === 'hi' ? 'सही फसल, मंडी, जिला व भाव दर्ज करें।' : 'યોગ્ય પાક, મંડી, જિલ્લો અને ભાવ નાખો.', 'error');
           return;
         }
-        const isAdm = isStrictAdminReady();
-        const payload = {
-          rate_category: document.getElementById('mr-cat').value,
-          crop_name_gu: cleanText(document.getElementById('mr-crop').value, 100),
-          crop_name_en: cleanText(document.getElementById('mr-crop').value, 100),
-          yard_name: cleanText(document.getElementById('mr-yard').value, 90),
-          district: cleanText(document.getElementById('mr-dist').value, 70),
-          min_price: minP, modal_price: modP, max_price: maxP,
-          unit: cleanText(document.getElementById('mr-unit').value, 35) || '20 kg (મણ)',
-          rate_date: new Date().toISOString().split('T')[0],
-          submitted_by: state.user.id,
-          approval_status: isAdm ? 'approved' : 'pending'
-        };
-        const res = isValidUUID(editId)
-          ? await sb.from('apmc_rates').update(payload).eq('id', editId)
-          : await sb.from('apmc_rates').insert(payload);
-        if (res.error) showToast(res.error.message, 'error');
-        else {
-          closeModal('mandi-rate-modal');
-          showToast(isAdm ? tr('toast_saved') : tr('toast_submitted_pending'));
-          loadApmcRates();
-          if (isAdm) loadV5AdminQueues();
-        }
+        await withSubmitLock(e.target, async () => {
+          const editId = document.getElementById('mr-edit-id').value;
+          const isAdm = isStrictAdminReady();
+          const payload = {
+            rate_category: document.getElementById('mr-cat').value,
+            crop_name_gu: cropNm, crop_name_en: cropNm,
+            yard_name: yardNm, district: distNm,
+            min_price: minP, modal_price: modP, max_price: maxP,
+            unit: cleanText(document.getElementById('mr-unit').value, 35) || '20 kg (મણ)',
+            rate_date: new Date().toISOString().split('T')[0],
+            submitted_by: state.user.id,
+            approval_status: isAdm ? 'approved' : 'pending'
+          };
+          const res = isValidUUID(editId)
+            ? await withRetry(() => sb.from('apmc_rates').update(payload).eq('id', editId))
+            : await withRetry(() => sb.from('apmc_rates').insert(payload));
+          if (res.error) showToast(res.error.message, 'error');
+          else {
+            closeModal('mandi-rate-modal');
+            showToast(isAdm ? tr('toast_saved') : tr('toast_submitted_pending'));
+            loadApmcRates();
+            if (isAdm) loadV5AdminQueues();
+          }
+        });
       }
 
       async function loadAgriInputs() {
@@ -2693,7 +3573,7 @@
         box.innerHTML = list.map((it) => {
           const ph = sanitizeIndianPhone(it.contact_number); const wa = ph ? `91${ph}` : '';
           const canEdit = state.user && (it.supplier_id === state.user.id || isStrictAdminReady());
-          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><span class="text-[10px] font-bold bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full uppercase">${escapeHtml(it.input_type)}</span>${it.approval_status === 'pending' ? `<span class="ml-1 text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">⏳ Pending</span>` : ''}<h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(it.item_name_gu)}</h4><div class="text-xs text-slate-500">${it.brand_name ? `${escapeHtml(it.brand_name)} • ` : ''}📍 ${escapeHtml([it.village, it.district].filter(Boolean).join(', '))}</div></div><div class="text-right"><div class="text-base font-extrabold text-farm-800">₹${formatSafeInr(it.price)}</div><div class="text-[11px] text-slate-500">/ ${escapeHtml(it.unit)}</div></div></div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="flex-1 bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}${canEdit ? `<button type="button" data-action="edit-agri-input" data-id="${escapeHtml(it.id)}" class="px-3 py-2 rounded-xl bg-amber-100 text-amber-900 text-xs font-bold">✏️ Update</button>` : ''}</div></div>`;
+          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><div class="flex items-start justify-between gap-2"><div><span class="text-[10px] font-bold bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded-full ">${escapeHtml(localizeInputType(it.input_type))}</span>${it.approval_status === 'pending' ? `<span class="ml-1 text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">${escapeHtml(tr('badge_pending_admin'))}</span>` : ''}<h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(it.item_name_gu)}</h4><div class="text-xs text-slate-500">${it.brand_name ? `${escapeHtml(it.brand_name)} • ` : ''}📍 ${escapeHtml([localizePlace(it.village), localizePlace(it.district)].filter(Boolean).join(', '))}</div></div><div class="text-right"><div class="text-base font-extrabold text-farm-800">₹${formatSafeInr(it.price)}</div><div class="text-[11px] text-slate-500">/ ${escapeHtml(it.unit)}</div></div></div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="flex-1 bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}${canEdit ? `<button type="button" data-action="edit-agri-input" data-id="${escapeHtml(it.id)}" class="px-3 py-2 rounded-xl bg-amber-100 text-amber-900 text-xs font-bold">${escapeHtml(tr('btn_update_card'))}</button>` : ''}</div></div>`;
         }).join('');
       }
       function openAgriInputModal(it = null) {
@@ -2717,38 +3597,41 @@
         e.preventDefault();
         if (!state.user) { switchTab('account'); return; }
         if (!checkRateLimit('input_sub', 1800)) return;
-        const editId = document.getElementById('ain-edit-id').value;
+        const itemNm = cleanText(document.getElementById('ain-name').value, 120);
+        const vilNm = cleanText(document.getElementById('ain-village').value, 70);
+        const distNm = cleanText(document.getElementById('ain-district').value, 70);
         const price = safePositiveNumber(document.getElementById('ain-price').value, 0, 10000000);
         const ph = sanitizeIndianPhone(document.getElementById('ain-mobile').value);
-        if (price === null || !ph) {
-          showToast(state.lang === 'en' ? 'Valid price & 10-digit mobile required.' : state.lang === 'hi' ? 'सही भाव और मोबाइल नंबर डालें।' : 'યોગ્ય ભાવ અને ૧૦ અંકનો મોબાઇલ નંબર નાખો.', 'error');
+        if (itemNm.length < 2 || !vilNm || !distNm || price === null || !ph) {
+          showToast(state.lang === 'en' ? 'Valid item name, location, price & 10-digit mobile required.' : state.lang === 'hi' ? 'सही नाम, स्थान, भाव और मोबाइल नंबर डालें।' : 'યોગ્ય નામ, ગામ-જિલ્લો, ભાવ અને ૧૦ અંકનો મોબાઇલ નંબર નાખો.', 'error');
           return;
         }
-        const isAdm = isStrictAdminReady();
-        const payload = {
-          supplier_id: state.user.id,
-          input_type: document.getElementById('ain-type').value,
-          item_name_gu: cleanText(document.getElementById('ain-name').value, 120),
-          item_name_en: cleanText(document.getElementById('ain-name').value, 120),
-          brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null,
-          price,
-          unit: cleanText(document.getElementById('ain-unit').value, 35) || '1 Unit',
-          village: cleanText(document.getElementById('ain-village').value, 70),
-          district: cleanText(document.getElementById('ain-district').value, 70),
-          contact_number: ph,
-          stock_note: cleanText(document.getElementById('ain-note').value, 160) || null,
-          approval_status: isAdm ? 'approved' : 'pending'
-        };
-        const res = isValidUUID(editId)
-          ? await sb.from('agri_inputs').update(payload).eq('id', editId)
-          : await sb.from('agri_inputs').insert(payload);
-        if (res.error) showToast(res.error.message, 'error');
-        else {
-          closeModal('agri-input-modal');
-          showToast(isAdm ? tr('toast_saved') : tr('toast_submitted_pending'));
-          loadAgriInputs();
-          if (isAdm) loadV5AdminQueues();
-        }
+        await withSubmitLock(e.target, async () => {
+          const editId = document.getElementById('ain-edit-id').value;
+          const isAdm = isStrictAdminReady();
+          const payload = {
+            supplier_id: state.user.id,
+            input_type: document.getElementById('ain-type').value,
+            item_name_gu: itemNm, item_name_en: itemNm,
+            brand_name: cleanText(document.getElementById('ain-brand').value, 80) || null,
+            price,
+            unit: cleanText(document.getElementById('ain-unit').value, 35) || '1 Unit',
+            village: vilNm, district: distNm,
+            contact_number: ph,
+            stock_note: cleanText(document.getElementById('ain-note').value, 160) || null,
+            approval_status: isAdm ? 'approved' : 'pending'
+          };
+          const res = isValidUUID(editId)
+            ? await withRetry(() => sb.from('agri_inputs').update(payload).eq('id', editId))
+            : await withRetry(() => sb.from('agri_inputs').insert(payload));
+          if (res.error) showToast(res.error.message, 'error');
+          else {
+            closeModal('agri-input-modal');
+            showToast(isAdm ? tr('toast_saved') : tr('toast_submitted_pending'));
+            loadAgriInputs();
+            if (isAdm) loadV5AdminQueues();
+          }
+        });
       }
 
       async function loadTransportList() {
@@ -2764,7 +3647,7 @@
         if (!list.length) { box.innerHTML = `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border border-slate-200">${escapeHtml(tr('no_products'))}</div>`; return; }
         box.innerHTML = list.map((item) => {
           const ph = sanitizeIndianPhone(item.mobile_number); const wa = ph ? `91${ph}` : '';
-          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full">🚜 ${escapeHtml(item.vehicle_type)}</span><h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(item.driver_name)}</h4><div class="text-xs text-slate-500">📍 ${escapeHtml([item.village, item.district].filter(Boolean).join(', '))}</div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="w-full bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}</div></div>`;
+          return `<div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80 space-y-2"><span class="text-[11px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full">🚜 ${escapeHtml(localizeVehicleType(item.vehicle_type))}</span><h4 class="font-bold text-slate-900 text-base mt-1">${escapeHtml(item.driver_name)}</h4><div class="text-xs text-slate-500">📍 ${escapeHtml([localizePlace(item.village), localizePlace(item.district)].filter(Boolean).join(', '))}</div><div class="pt-2 border-t border-slate-100 flex gap-2">${state.user && ph ? `<a href="tel:${escapeHtml(ph)}" class="flex-1 bg-farm-700 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_call'))}</a><a href="https://wa.me/${escapeHtml(wa)}" target="_blank" rel="noopener noreferrer" class="flex-1 bg-emerald-600 text-white text-xs font-bold py-2 rounded-xl text-center">${escapeHtml(tr('tr_wa'))}</a>` : `<button type="button" data-action="nav-tab" data-tab="account" class="w-full bg-slate-100 text-farm-800 text-xs font-bold py-2 rounded-xl">${escapeHtml(tr('tr_login_num'))}</button>`}</div></div>`;
         }).join('');
       }
 
@@ -2777,8 +3660,8 @@
           withRetry(() => sb.from('apmc_rates').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25)),
           withRetry(() => sb.from('agri_inputs').select('*').eq('approval_status', 'pending').order('created_at', { ascending: false }).limit(25))
         ]);
-        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${formatSafeInr(r.modal_price)}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
-        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${formatSafeInr(it.price)}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">Approve</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">Reject</button><button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (mBox) mBox.innerHTML = (mRes.data || []).map((r) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(r.crop_name_gu)}</strong> (${escapeHtml(r.yard_name)}) — ₹${formatSafeInr(r.modal_price)}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">${escapeHtml(tr('btn_approve'))}</button><button type="button" data-action="moderate-mandi" data-id="${escapeHtml(r.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">${escapeHtml(tr('btn_reject'))}</button><button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
+        if (iBox) iBox.innerHTML = (iRes.data || []).map((it) => `<div class="bg-slate-50 p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs"><div><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] — ₹${formatSafeInr(it.price)}</div><div class="flex gap-1 shrink-0"><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="approved" class="px-2.5 py-1 rounded-lg bg-farm-700 text-white font-bold">${escapeHtml(tr('btn_approve'))}</button><button type="button" data-action="moderate-input" data-id="${escapeHtml(it.id)}" data-st="rejected" class="px-2.5 py-1 rounded-lg bg-amber-600 text-white font-bold">${escapeHtml(tr('btn_reject'))}</button><button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 text-white font-bold">🗑️</button></div></div>`).join('') || '<div class="text-xs text-slate-400">-</div>';
       }
 
       async function loadAdminLiveRecords() {
@@ -2800,7 +3683,7 @@
           mBox.innerHTML = (mRes.data || []).map((r) =>
             `<div class="bg-slate-50 px-3 py-2 rounded-xl border flex items-center justify-between gap-2">
               <span><strong>${escapeHtml(r.crop_name_gu)}</strong> — ${escapeHtml(r.yard_name)} (${escapeHtml(r.district || '')}) • ₹${formatSafeInr(r.modal_price)}</span>
-              <button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">🗑️ Delete</button>
+              <button type="button" data-action="delete-mandi-rate" data-id="${escapeHtml(r.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">${escapeHtml(tr('btn_delete'))}</button>
             </div>`
           ).join('') || '<div class="text-slate-400">-</div>';
         }
@@ -2808,7 +3691,7 @@
           iBox.innerHTML = (iRes.data || []).map((it) =>
             `<div class="bg-slate-50 px-3 py-2 rounded-xl border flex items-center justify-between gap-2">
               <span><strong>${escapeHtml(it.item_name_gu)}</strong> [${escapeHtml(it.input_type)}] • ₹${formatSafeInr(it.price)}</span>
-              <button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">🗑️ Delete</button>
+              <button type="button" data-action="delete-agri-input" data-id="${escapeHtml(it.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">${escapeHtml(tr('btn_delete'))}</button>
             </div>`
           ).join('') || '<div class="text-slate-400">-</div>';
         }
@@ -2816,7 +3699,7 @@
           pBox.innerHTML = (pRes.data || []).map((p) =>
             `<div class="bg-slate-50 px-3 py-2 rounded-xl border flex items-center justify-between gap-2">
               <span><strong>${escapeHtml(p.title_gu)}</strong> (${escapeHtml(p.district || '')}, ${escapeHtml(p.state || '')}) • ₹${formatSafeInr(p.expected_price)}/${escapeHtml(p.unit)}</span>
-              <button type="button" data-action="delete-product-admin" data-id="${escapeHtml(p.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">🗑️ Delete</button>
+              <button type="button" data-action="delete-product-admin" data-id="${escapeHtml(p.id)}" class="px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white font-bold shrink-0">${escapeHtml(tr('btn_delete'))}</button>
             </div>`
           ).join('') || '<div class="text-slate-400">-</div>';
         }
@@ -2878,7 +3761,7 @@
         }
         g.innerHTML = state.products.map((p) => {
           const imgs = Array.isArray(p.image_paths) ? p.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
-          const loc = [p.village, p.district, p.state].filter(Boolean).join(', ');
+          const loc = [localizePlace(p.village), localizePlace(p.district), localizeStateName(p.state)].filter(Boolean).join(', ');
           return `
             <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 flex flex-col justify-between">
               <div>
@@ -2888,10 +3771,10 @@
                 <div class="p-3.5 space-y-1.5">
                   <div class="flex items-start justify-between gap-2">
                     <h4 class="font-bold text-sm text-slate-900">${escapeHtml(pickLangField(p, 'title'))}</h4>
-                    <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md shrink-0">${escapeHtml(p.available_quantity)} ${escapeHtml(p.unit)}</span>
+                    <span class="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md shrink-0">${escapeHtml(p.available_quantity)} ${escapeHtml(localizeUnit(p.unit))}</span>
                   </div>
                   <p class="text-xs text-slate-500">📍 ${escapeHtml(loc)}</p>
-                  <div class="text-base font-extrabold text-farm-800">₹${formatSafeInr(p.expected_price)} / ${escapeHtml(p.unit)}</div>
+                  <div class="text-base font-extrabold text-farm-800">₹${formatSafeInr(p.expected_price)} / ${escapeHtml(localizeUnit(p.unit))}</div>
                 </div>
               </div>
               <div class="px-3.5 pb-3.5">
@@ -2913,15 +3796,15 @@
         if (!body) return;
 
         const imgs = Array.isArray(prod.image_paths) ? prod.image_paths.map(getSafeImgUrl).filter(Boolean) : [];
-        const loc = [prod.village, prod.district, prod.state].filter(Boolean).join(', ');
+        const loc = [localizePlace(prod.village), localizePlace(prod.district), localizeStateName(prod.state)].filter(Boolean).join(', ');
         const loadingText = state.lang === 'en' ? 'Loading verified seller details...' : state.lang === 'hi' ? 'विक्रेता विवरण लोड हो रहा है...' : 'વેચનારની સુરક્ષિત વિગત લોડ થાય છે...';
 
         body.innerHTML = `
           ${imgs[0] ? `<img src="${escapeHtml(imgs[0])}" class="w-full h-48 object-cover rounded-2xl border" />` : ''}
           <div>
             <h4 class="font-bold text-lg text-slate-900">${escapeHtml(pickLangField(prod, 'title'))}</h4>
-            <p class="text-xs text-slate-500">📍 ${escapeHtml(loc)} • ${escapeHtml(prod.available_quantity)} ${escapeHtml(prod.unit)}</p>
-            <div class="text-lg font-extrabold text-farm-800 mt-1">₹${formatSafeInr(prod.expected_price)} / ${escapeHtml(prod.unit)}</div>
+            <p class="text-xs text-slate-500">📍 ${escapeHtml(loc)} • ${escapeHtml(prod.available_quantity)} ${escapeHtml(localizeUnit(prod.unit))}</p>
+            <div class="text-lg font-extrabold text-farm-800 mt-1">₹${formatSafeInr(prod.expected_price)} / ${escapeHtml(localizeUnit(prod.unit))}</div>
           </div>
           <div id="pd-rpc-box" class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-600">${escapeHtml(loadingText)}</div>
         `;
@@ -2972,9 +3855,9 @@
             </div>` : `<div class="text-xs text-slate-500">${escapeHtml(noContactMsg)}</div>`}
             ${safeUpi ? `
               <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-2">
-                <div class="text-xs font-bold text-amber-950">💳 Direct Seller UPI ID: <span class="font-mono select-all">${escapeHtml(safeUpi)}</span></div>
+                <div class="text-xs font-bold text-amber-950">💳 ${escapeHtml(state.lang === 'en' ? 'Direct Seller UPI ID' : state.lang === 'hi' ? 'विक्रेता का सीधा UPI ID' : 'વેચનારનું સીધું UPI ID')}: <span class="font-mono select-all">${escapeHtml(safeUpi)}</span></div>
                 <a href="${escapeHtml(upiDeepLink)}" class="block w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 rounded-lg text-center text-xs">
-                  ⚡ Open UPI App to Pay Farmer
+                  ⚡ ${escapeHtml(state.lang === 'en' ? 'Open UPI App to Pay Farmer' : state.lang === 'hi' ? 'UPI ऐप से किसान को भुगतान करें' : 'UPI એપ ખોલીને ખેડૂતને પેમેન્ટ કરો')}
                 </a>
               </div>
             ` : ''}
@@ -3010,15 +3893,15 @@
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2">
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${badgeClass}">${escapeHtml(p.status)}</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeClass}">${escapeHtml(localizeStatusBadge(p.status))}</span>
                   <h4 class="font-bold text-slate-900 text-sm mt-1">${escapeHtml(p.title_gu)}</h4>
-                  <p class="text-xs text-slate-500">📍 ${escapeHtml([p.village, p.district, p.state].filter(Boolean).join(', '))}</p>
+                  <p class="text-xs text-slate-500">📍 ${escapeHtml([localizePlace(p.village), localizePlace(p.district), localizeStateName(p.state)].filter(Boolean).join(', '))}</p>
                 </div>
-                <div class="text-right font-extrabold text-farm-800 text-sm">₹${formatSafeInr(p.expected_price)}/${escapeHtml(p.unit)}</div>
+                <div class="text-right font-extrabold text-farm-800 text-sm">₹${formatSafeInr(p.expected_price)}/${escapeHtml(localizeUnit(p.unit))}</div>
               </div>
               <div class="pt-2 border-t border-slate-100 flex gap-2">
-                ${p.status === 'approved' ? `<button type="button" data-action="mark-product-sold" data-id="${escapeHtml(p.id)}" class="flex-1 bg-slate-800 text-white text-xs font-bold py-1.5 rounded-lg">✅ Mark Sold</button>` : ''}
-                <button type="button" data-action="delete-my-product" data-id="${escapeHtml(p.id)}" class="px-3 py-1.5 rounded-lg bg-red-50 text-red-700 text-xs font-bold">🗑️ Delete</button>
+                ${p.status === 'approved' ? `<button type="button" data-action="mark-product-sold" data-id="${escapeHtml(p.id)}" class="flex-1 bg-slate-800 text-white text-xs font-bold py-1.5 rounded-lg">${escapeHtml(tr('btn_mark_sold'))}</button>` : ''}
+                <button type="button" data-action="delete-my-product" data-id="${escapeHtml(p.id)}" class="px-3 py-1.5 rounded-lg bg-red-50 text-red-700 text-xs font-bold">${escapeHtml(tr('btn_delete'))}</button>
               </div>
             </div>
           `;
@@ -3028,7 +3911,7 @@
       async function loadBuyerRequests() {
         const { data } = await withRetry(() => sb.from('public_buyer_requests').select('*').limit(30));
         const box = document.getElementById('requests-list');
-        if (box) box.innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border shadow-sm space-y-1"><strong class="text-sm text-slate-900">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-600">${escapeHtml(r.required_quantity)} ${escapeHtml(r.unit)} • 📍 ${escapeHtml([r.delivery_location, r.district].filter(Boolean).join(', '))}</div></div>`).join('') || `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
+        if (box) box.innerHTML = (data || []).map((r) => `<div class="bg-white rounded-2xl p-4 border shadow-sm space-y-1"><strong class="text-sm text-slate-900">${escapeHtml(r.product_required)}</strong><div class="text-xs text-slate-600">${escapeHtml(r.required_quantity)} ${escapeHtml(localizeUnit(r.unit))} • 📍 ${escapeHtml([localizePlace(r.delivery_location), localizePlace(r.district)].filter(Boolean).join(', '))}</div></div>`).join('') || `<div class="col-span-full bg-white p-6 rounded-2xl text-center text-xs text-slate-500 border">${escapeHtml(tr('no_products'))}</div>`;
       }
 
       function refreshSellTab() {
@@ -3097,23 +3980,30 @@
           const r = state.apmcRates.find((x) => String(x.id) === el.getAttribute('data-id'));
           if (r) {
             const mult = state.mandiUnitMode === 'quintal' ? 5 : 1;
-            const unitTxt = state.mandiUnitMode === 'quintal' ? '100 kg (ક્વિન્ટલ)' : '20 kg (મણ)';
-            const msg = `🌾 *KHEDUT SETU — આજના મંડી ભાવ*\n📌 ${r.crop_name_gu || r.crop_name_en}\n📍 ${r.yard_name} (${r.district}) | ${r.rate_date}\n💰 નીચો: ₹${formatSafeInr((Number(r.min_price) || 0) * mult)} | સરેરાશ: ₹${formatSafeInr((Number(r.modal_price) || 0) * mult)} | ઊંચો: ₹${formatSafeInr((Number(r.max_price) || 0) * mult)} (${unitTxt})\n🔗 ${window.location.origin + window.location.pathname}`;
+            const unitTxt = state.mandiUnitMode === 'quintal' ? '100 કિલો (ક્વિન્ટલ)' : '20 કિલો (મણ)';
+            const cNm = localizeAgmarkCrop(r.crop_name_gu || r.crop_name_en || '');
+            const yNm = localizePlace(r.yard_name || '');
+            const dNm = localizePlace(r.district || '');
+            const locS = (dNm && !yNm.includes(dNm)) ? `${yNm} (${dNm})` : yNm;
+            const msg = `🌾 *ખેડૂત સેતુ — આજના મંડી ભાવ*\n📌 ${cNm}\n📍 ${locS} | ${r.rate_date}\n💰 નીચો: ₹${formatSafeInr((Number(r.min_price) || 0) * mult)} | સરેરાશ: ₹${formatSafeInr((Number(r.modal_price) || 0) * mult)} | ઊંચો: ₹${formatSafeInr((Number(r.max_price) || 0) * mult)} (${unitTxt})\n🔗 ${window.location.origin + window.location.pathname}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
           }
         }
         else if (a === 'calc-mandi-rate') {
-          const r = state.apmcRates.find((x) => String(x.id) === el.getAttribute('data-id'));
+          const idAttr = el.getAttribute('data-id');
+          const r = state.apmcRates.find((x) => String(x.id) === idAttr);
           if (r) {
-            const mannRate = Number(r.modal_price) || 0;
-            const qty = safePositiveNumber(document.getElementById('ai-qty-input')?.value, 1, 100000) ?? 50;
-            const total = Math.round(mannRate * qty);
+            state.aiLiveRates = [...state.apmcRates];
+            state.aiLiveSource = state.mandiSource || 'Govt. Agmarknet Live';
+            const matchIdx = state.aiLiveRates.findIndex((x) => String(x.id) === idAttr);
             switchTab('ai_advisor');
             switchAiSubtab('price');
-            const out = document.getElementById('ai-price-output');
-            if (out) {
-              out.innerHTML = `<div class="space-y-1.5"><div class="font-bold text-slate-900 text-sm">🌾 ${escapeHtml(r.crop_name_gu || r.crop_name_en)} — ${escapeHtml(r.yard_name)} (${escapeHtml(r.district)})</div><div class="text-sm font-extrabold text-farm-800">₹${formatSafeInr(mannRate)} / 20 kg (મણ) × ${formatSafeInr(qty)} મણ = ₹${formatSafeInr(total)}</div><div class="text-xs text-slate-600">📅 ${escapeHtml(r.rate_date)} • 100 kg (ક્વિન્ટલ): ₹${formatSafeInr(mannRate * 5)}</div></div>`;
-            }
+            populateAiCropSelect();
+            const customEl = document.getElementById('ai-crop-custom');
+            if (customEl) customEl.value = '';
+            const selEl = document.getElementById('ai-crop-select');
+            if (selEl && matchIdx >= 0) selEl.value = `live::${matchIdx}`;
+            runAiPrice();
           }
         }
         else if (a === 'pd-go-login') {
@@ -3123,6 +4013,7 @@
         else if (a === 'yard-subtab') switchYardSubtab(el.getAttribute('data-subtab'));
         else if (a === 'ai-subtab') switchAiSubtab(el.getAttribute('data-subtab'));
         else if (a === 'run-ai-price') runAiPrice();
+        else if (a === 'load-ai-live-crops') loadAiLiveCrops(true);
         else if (a === 'run-ai-doctor') runAiDoctor();
         else if (a === 'run-ai-match') runAiMatch();
         else if (a === 'run-ai-multimodal') runAiMultimodal();
@@ -3145,7 +4036,7 @@
             const rec = new SpeechRec();
             rec.lang = state.lang === 'hi' ? 'hi-IN' : state.lang === 'en' ? 'en-IN' : 'gu-IN';
             rec.interimResults = false;
-            showToast('🎙️ Listening...');
+            showToast(state.lang === 'en' ? '🎙️ Listening...' : state.lang === 'hi' ? '🎙️ सुन रहा हूँ... बोलिए' : '🎙️ સાંભળી રહ્યો છું... બોલો');
             rec.onresult = (ev) => {
               const spoken = cleanText(ev.results?.[0]?.[0]?.transcript || '', 400);
               const qEl = document.getElementById('ai-multi-query');
@@ -3258,6 +4149,8 @@
       document.getElementById('apmc-state-filter')?.addEventListener('change', (ev) => { ev.target.dataset.userEdited = '1'; loadApmcRates(false); });
       document.getElementById('apmc-district-filter')?.addEventListener('input', debounce((ev) => { if (ev?.target) ev.target.dataset.userEdited = '1'; loadApmcRates(false); }, 450));
       document.getElementById('apmc-sort')?.addEventListener('change', renderApmcRates);
+      document.getElementById('ai-price-scope')?.addEventListener('change', () => loadAiLiveCrops(false));
+      document.getElementById('ai-crop-select')?.addEventListener('change', () => { const c = document.getElementById('ai-crop-custom'); if (c) c.value = ''; });
       document.getElementById('agri-input-search')?.addEventListener('input', renderAgriInputs);
       document.getElementById('transport-search')?.addEventListener('input', renderTransportList);
       document.getElementById('scheme-search')?.addEventListener('input', renderSchemes);
@@ -3276,8 +4169,10 @@
           showToast(state.lang === 'en' ? 'Valid email & password required.' : state.lang === 'hi' ? 'सही ईमेल और पासवर्ड डालें।' : 'સાચો ઈમેલ અને પાસવર્ડ નાખો.', 'error');
           return;
         }
-        const { error } = await sb.auth.signInWithPassword({ email: em, password: pw });
-        if (error) showToast(error.message, 'error'); else switchTab('market');
+        await withSubmitLock(e.target, async () => {
+          const { error } = await withRetry(() => sb.auth.signInWithPassword({ email: em, password: pw }), 1, 500);
+          if (error) showToast(error.message, 'error'); else switchTab('market');
+        });
       });
 
       document.getElementById('register-form')?.addEventListener('submit', async (e) => {
@@ -3290,12 +4185,14 @@
           showToast(state.lang === 'en' ? 'Please fill valid details (8+ char password, 10-digit mobile).' : state.lang === 'hi' ? 'कृपया सभी सही विवरण भरें।' : 'કૃપા કરીને સાચી વિગતો ભરો.', 'error');
           return;
         }
-        const { error } = await sb.auth.signUp({
-          email: em,
-          password: pw,
-          options: { data: { full_name: nm, mobile_number: mb, role: document.getElementById('reg-role').value } }
+        await withSubmitLock(e.target, async () => {
+          const { error } = await withRetry(() => sb.auth.signUp({
+            email: em,
+            password: pw,
+            options: { data: { full_name: nm, mobile_number: mb, role: document.getElementById('reg-role').value } }
+          }), 1, 500);
+          if (error) showToast(error.message, 'error'); else showToast(tr('toast_saved'));
         });
-        if (error) showToast(error.message, 'error'); else showToast(tr('toast_saved'));
       });
 
       document.getElementById('profile-form')?.addEventListener('submit', async (e) => {
@@ -3335,25 +4232,27 @@
         const minP = safePositiveNumber(document.getElementById('ap-min').value, 0, 1000000);
         const maxP = safePositiveNumber(document.getElementById('ap-max').value, 0, 1000000);
         const modP = safePositiveNumber(document.getElementById('ap-modal').value, 0, 1000000);
-        if (minP === null || maxP === null || modP === null || maxP < minP) {
-          showToast(state.lang === 'en' ? 'Invalid rates.' : state.lang === 'hi' ? 'अमान्य भाव।' : 'ભાવ બરાબર નથી.', 'error');
+        const cropTxt = cleanText(document.getElementById('ap-crop').value, 80);
+        const yardTxt = cleanText(document.getElementById('ap-yard').value, 80);
+        const distTxt = cleanText(document.getElementById('ap-dist').value, 60);
+        if (!cropTxt || !yardTxt || !distTxt || minP === null || maxP === null || modP === null || maxP < minP) {
+          showToast(state.lang === 'en' ? 'Invalid rates or fields.' : state.lang === 'hi' ? 'अमान्य भाव या विवरण।' : 'વિગતો અથવા ભાવ બરાબર નથી.', 'error');
           return;
         }
-        const cropTxt = cleanText(document.getElementById('ap-crop').value, 80);
-        const { error } = await sb.from('apmc_rates').insert({
-          rate_category: document.getElementById('ap-cat').value,
-          yard_name: cleanText(document.getElementById('ap-yard').value, 80),
-          district: cleanText(document.getElementById('ap-dist').value, 60),
-          crop_name_gu: cropTxt,
-          crop_name_en: cropTxt,
-          min_price: minP, max_price: maxP, modal_price: modP,
-          unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)',
-          rate_date: new Date().toISOString().split('T')[0],
-          submitted_by: state.user.id,
-          approval_status: 'approved'
+        await withSubmitLock(e.target, async () => {
+          const { error } = await withRetry(() => sb.from('apmc_rates').insert({
+            rate_category: document.getElementById('ap-cat').value,
+            yard_name: yardTxt, district: distTxt,
+            crop_name_gu: cropTxt, crop_name_en: cropTxt,
+            min_price: minP, max_price: maxP, modal_price: modP,
+            unit: cleanText(document.getElementById('ap-unit').value, 35) || '20 kg (મણ)',
+            rate_date: new Date().toISOString().split('T')[0],
+            submitted_by: state.user.id,
+            approval_status: 'approved'
+          }));
+          if (error) showToast(error.message, 'error');
+          else { e.target.reset(); showToast(tr('toast_saved')); loadApmcRates(); }
         });
-        if (error) showToast(error.message, 'error');
-        else { e.target.reset(); showToast(tr('toast_saved')); loadApmcRates(); }
       });
 
       document.getElementById('add-product-form')?.addEventListener('submit', async (e) => {
@@ -3368,7 +4267,7 @@
           showToast(state.lang === 'en' ? 'Please select a valid category.' : state.lang === 'hi' ? 'कृपया सही श्रेणी चुनें।' : 'કૃપા કરીને યોગ્ય કેટેગરી પસંદ કરો.', 'error');
           return;
         }
-        if (!t || !q || !pr || !CONFIG.ALLOWED_UNITS.includes(unitVal)) return;
+        if (t.length < 2 || !q || !pr || !CONFIG.ALLOWED_UNITS.includes(unitVal)) { showToast(state.lang === 'en' ? 'Please fill valid crop title, quantity & price.' : state.lang === 'hi' ? 'सही उपज नाम, मात्रा और भाव भरें।' : 'યોગ્ય ઉપજનું નામ, જથ્થો અને ભાવ ભરો.', 'error'); return; }
 
         let uploadedFilePath = '';
         try {
@@ -3422,44 +4321,54 @@
 
       document.getElementById('add-request-form')?.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!state.user) return;
+        const reqProd = cleanText(document.getElementById('nr-product').value, 150);
+        const reqQty = safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000);
+        const reqLoc = cleanText(document.getElementById('nr-loc').value, 100);
+        const reqDist = cleanText(document.getElementById('nr-district').value, 80);
         const ph = sanitizeIndianPhone(document.getElementById('nr-phone').value);
         const unitVal = document.getElementById('nr-unit').value;
-        if (!ph || !CONFIG.ALLOWED_UNITS.includes(unitVal)) {
-          showToast(state.lang === 'en' ? 'Valid 10-digit mobile required.' : state.lang === 'hi' ? 'सही 10 अंकों का मोबाइल नंबर डालें।' : '૧૦ અંકનો સાચો મોબાઇલ નંબર નાખો.', 'error');
+        if (reqProd.length < 2 || !reqQty || reqLoc.length < 2 || reqDist.length < 2 || !ph || !CONFIG.ALLOWED_UNITS.includes(unitVal)) {
+          showToast(state.lang === 'en' ? 'Fill valid produce, quantity, location & 10-digit mobile.' : state.lang === 'hi' ? 'सही उपज, मात्रा, स्थान और 10 अंकों का मोबाइल नंबर डालें।' : 'યોગ્ય ઉપજ, જથ્થો, સ્થળ અને ૧૦ અંકનો મોબાઇલ નંબર નાખો.', 'error');
           return;
         }
-        const { error } = await sb.from('buyer_requests').insert({
-          buyer_id: state.user.id,
-          product_required: cleanText(document.getElementById('nr-product').value, 150),
-          required_quantity: safePositiveNumber(document.getElementById('nr-qty').value, 0.1, 1000000),
-          unit: unitVal,
-          delivery_location: cleanText(document.getElementById('nr-loc').value, 100),
-          district: cleanText(document.getElementById('nr-district').value, 80),
-          contact_number: ph,
-          buyer_name: cleanText(state.profile?.full_name || state.user.email, 80)
+        await withSubmitLock(e.target, async () => {
+          const { error } = await withRetry(() => sb.from('buyer_requests').insert({
+            buyer_id: state.user.id,
+            product_required: reqProd,
+            required_quantity: reqQty,
+            unit: unitVal,
+            delivery_location: reqLoc,
+            district: reqDist,
+            contact_number: ph,
+            buyer_name: cleanText(state.profile?.full_name || state.user.email, 80)
+          }));
+          if (error) showToast(error.message, 'error');
+          else { e.target.reset(); closeModal('add-request-modal'); showToast(tr('toast_saved')); loadBuyerRequests(); }
         });
-        if (error) showToast(error.message, 'error');
-        else { e.target.reset(); closeModal('add-request-modal'); showToast(tr('toast_saved')); loadBuyerRequests(); }
       });
 
       document.getElementById('add-transport-form')?.addEventListener('submit', async (e) => {
         e.preventDefault(); if (!state.user) return;
+        const drvNm = cleanText(document.getElementById('tr-name').value, 80);
+        const vilNm = cleanText(document.getElementById('tr-village').value, 80);
+        const distNm = cleanText(document.getElementById('tr-district').value, 80);
         const ph = sanitizeIndianPhone(document.getElementById('tr-mobile').value);
-        if (!ph) {
-          showToast(state.lang === 'en' ? 'Valid 10-digit mobile required.' : state.lang === 'hi' ? 'सही मोबाइल नंबर डालें।' : 'સાચો મોબાઇલ નંબર નાખો.', 'error');
+        if (drvNm.length < 2 || !vilNm || !distNm || !ph) {
+          showToast(state.lang === 'en' ? 'Valid driver name, location & 10-digit mobile required.' : state.lang === 'hi' ? 'सही ड्राइवर नाम, स्थान और मोबाइल नंबर डालें।' : 'યોગ્ય ડ્રાઇવરનું નામ, ગામ-જિલ્લો અને ૧૦ અંકનો મોબાઇલ નંબર નાખો.', 'error');
           return;
         }
-        // Uses exact RLS-enforced column name: owner_id
-        const { error } = await sb.from('transport_providers').insert({
-          owner_id: state.user.id,
-          driver_name: cleanText(document.getElementById('tr-name').value, 80),
-          vehicle_type: cleanText(document.getElementById('tr-type').value, 60),
-          mobile_number: ph,
-          village: cleanText(document.getElementById('tr-village').value, 80),
-          district: cleanText(document.getElementById('tr-district').value, 80)
+        await withSubmitLock(e.target, async () => {
+          const { error } = await withRetry(() => sb.from('transport_providers').insert({
+            owner_id: state.user.id,
+            driver_name: drvNm,
+            vehicle_type: cleanText(document.getElementById('tr-type').value, 60),
+            mobile_number: ph,
+            village: vilNm,
+            district: distNm
+          }));
+          if (error) showToast(error.message, 'error');
+          else { e.target.reset(); closeModal('add-transport-modal'); showToast(tr('toast_saved')); loadTransportList(); }
         });
-        if (error) showToast(error.message, 'error');
-        else { e.target.reset(); closeModal('add-transport-modal'); showToast(tr('toast_saved')); loadTransportList(); }
       });
 
       function syncOnline() {
